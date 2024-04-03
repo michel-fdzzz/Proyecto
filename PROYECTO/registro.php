@@ -28,10 +28,18 @@
   session_start();
   ?>
    <section class="menuPrincipal">
-    <div class='containerMenuSecundario'>
-        <img src="imagenes/menuLineas.webp" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p>
+    <div class="desplegable">
+      <button onclick="desplegable()" class="botonDesplegar"><img src="imagenes/menuLineas.png" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p></button>
+      <div class="containerDesplegable">
+          <a href="#">Opción 1</a>
+          <a href="#">Opción 2</a>
+          <a href="#">Opción 3</a>
+      </div>
     </div>
-    <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="90em" height="90em" alt="Logo" /></a>
+    <!--<div class='containerMenuSecundario'>
+        <img src="imagenes/menuLineas.webp" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p>
+    </div>-->
+    <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="100em" height="100em" alt="Logo" /></a>
     
     <!--<div class='containerBuscador'>
         <input type="text" name="buscador" id='buscador' placeholder="Buscar" />
@@ -57,71 +65,107 @@
   </section>
 
 
+  <form action="https://formsubmit.co/ino@rentdays.com" method="POST" class="contac">
+        <div class="flex-container">
+            <label for="Nombre">
+                Nombre
+            </label>
+            <input type="text" class="nombre_campo" name="Nombre">
+            <label for="email">
+                Correo
+            </label>
+            <input type="email" class="nombre_campo" name="Email">
+            <label for="email">
+                Piso 
+            </label>
+            <select name="" id="">
+                <option value="Planetario">Planetario</option>
+                <option value="Casa_adosada">Casa adosada</option>
+                <option value="Apartamento_de_lujo">Apartamento de lujo</option>
+            </select>
+            
+
+
+            <label for="Entrada" class="entrada_label">Dia de entrada</label>
+            <input type="date" class="entrada_campo" id="entrada_fecha" name="Fecha_entrada_reserva" value="2023-04-24" min="2023-04-24" max="2023-12-31">
+
+            <label for="salida" class="salida_label">Dia de salida</label>
+            <input type="date" class="salida_campo" id="salida_fecha" name="Fecha_salida_reserva" value="2023-04-25" min="2023-04-24" max="2023-12-31">
+
+
+            <label for="adulto" class="adulto_label">Cantidad de Adultos </label>
+            <input type="number" class="adulto_campo" id="adulto_cantidad" name="Cantidad_Adultos" value="1" min="1" step="1">
+
+            <label for="niños" class="niños_label">Cantidad de niños:</label>
+            <input type="number" class="niños_campo" id="niños_cantidad" name="Cantidad_Niños" value="0" min="0" step="1">
+
+            <input type="submit" class="enviar_btn" value="Enviar">
+
+        </div>
+    </form>
+
+
+
+
+
+
   <script defer>
     let body =  document.querySelector('body');
     let lupaContainer = document.querySelector('.lupa');
     let lupaImagen = document.querySelector('.lupaImagen');
-    let menuSecundario = document.querySelector('.containerMenuSecundario');
+    let menuSecundario = document.querySelector('.desplegable');
     let menuTexto = document.querySelector('.menu');
 
     let busqueda = document.querySelector('.containerBusqueda');
-   
+    busqueda = null; // Declarar la variable fuera del alcance de la función
+
 
     lupaContainer.addEventListener('click', function() {
-        
-        // Si busqueda existe
-        if (busqueda) {
-            busqueda.remove();
-            menuTexto.textContent = 'Menú';
-        } else {
-            menuTexto.textContent = 'Cerrar';
-            // Si no existe lo mostramos
-            busqueda = document.createElement('div');
-            busqueda.setAttribute('class', 'containerBusqueda');
-            let input = document.createElement('input');
-            input.setAttribute('type', 'text');
-            input.setAttribute('name', 'buscador');
-            input.setAttribute('id', 'buscador');
-            input.setAttribute('placeholder', 'Buscar');
-            busqueda.appendChild(input);
-            body.appendChild(busqueda);
-        }
+      if (busqueda) {
+        busqueda.remove();
+        menuTexto.textContent = 'Menú';
+        busqueda = null; // Establecer la variable como nula después de eliminar el elemento de búsqueda
+    } else {
+        busqueda = document.createElement('div');
+        busqueda.setAttribute('class', 'containerBusqueda');
+        let input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('name', 'buscador');
+        input.setAttribute('id', 'buscador');
+        input.setAttribute('placeholder', 'Buscar');
+        busqueda.appendChild(input);
+        body.appendChild(busqueda);
+    }
     });
 
-    menuSecundario.addEventListener('click', function() {
-        // Tiene que ser con un elemnto a través de una clase, no crearr el div en sí
-        let div = document.querySelector('.containerDiv');
-        lupaImagen.remove();
+    function desplegable() {
+      var desplegable = document.querySelector(".containerDesplegable");
+      
+      if (desplegable.classList.contains("mostrar")) {
+          desplegable.style.display = "none";
+          menuTexto.textContent = 'Menú';
+          lupaImagen.src = 'imagenes/lupa.png';
+          desplegable.classList.remove("mostrar");
 
-        if (div) {
-            div.remove();
-            menuTexto.textContent = 'Menú';
-            let img = document.createElement('img');
-            // Establecer los atributos src, width, height y alt
-            img.src = 'imagenes/lupa.png';
-            img.width = '25em';
-            img.height = '25em';
-            img.alt = 'Busqueda';
-            img.classList.add('lupaImagen');
-            // Agregar la imagen al cuerpo del documento (o a cualquier otro elemento que desees)
-            lupaContainer.appendChild(img);
-        } else if (busqueda){
-            busqueda.remove();
-            menuTexto.textContent = 'Menú';
-        } else {
-            menuTexto.textContent = 'Cerrar';
-            div = document.createElement('div');
-            div.setAttribute('class', 'containerDiv');
-        
-            let seccion1 = document.createElement('p');
-            seccion1.textContent = 'fe';
+      } else {
+          desplegable.style.display = "block";
+          menuTexto.textContent = 'Cerrar';
+          desplegable.classList.add("mostrar");
+          // Añadir un event listener para cerrar el dropdown cuando haces clic fuera de él
+          document.addEventListener('click', cerrarDesplegable);
+      }
+    }
 
-            div.appendChild(seccion1);
-            body.appendChild(div);
-        }
-    });
+  function cerrarDesplegable(event) {
+      var desplegable = document.querySelector(".containerDesplegable");
+      var button = document.querySelector(".botonDesplegar");
+      if (!desplegable.contains(event.target) && event.target !== button) {
+          desplegable.style.display = "none";
+          document.removeEventListener('click', cerrarDesplegable);
+      }
+  }
 
-  </script>
+</script>
 </body>
 
 </html>
