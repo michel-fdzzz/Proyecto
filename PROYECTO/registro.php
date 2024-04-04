@@ -64,46 +64,83 @@
     </div>
   </section>
 
+  <div class='buscadorContainer'></div>
 
-  <form action="https://formsubmit.co/ino@rentdays.com" method="POST" class="contac">
+
+  <form action="#" method="POST" class="formulario" onsubmit="return validarContrasenia()">
         <div class="flex-container">
-            <label for="Nombre">
-                Nombre
-            </label>
-            <input type="text" class="nombre_campo" name="Nombre">
-            <label for="email">
-                Correo
-            </label>
-            <input type="email" class="nombre_campo" name="Email">
-            <label for="email">
-                Piso 
-            </label>
-            <select name="" id="">
-                <option value="Planetario">Planetario</option>
-                <option value="Casa_adosada">Casa adosada</option>
-                <option value="Apartamento_de_lujo">Apartamento de lujo</option>
-            </select>
-            
+          <h2>Registro</h2>
 
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" required>
 
-            <label for="Entrada" class="entrada_label">Dia de entrada</label>
-            <input type="date" class="entrada_campo" id="entrada_fecha" name="Fecha_entrada_reserva" value="2023-04-24" min="2023-04-24" max="2023-12-31">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" name="apellidos" required>
 
-            <label for="salida" class="salida_label">Dia de salida</label>
-            <input type="date" class="salida_campo" id="salida_fecha" name="Fecha_salida_reserva" value="2023-04-25" min="2023-04-24" max="2023-12-31">
+            <label for="email">Correo</label>
+            <input type="email" name="correo" required>
 
+            <label for="contrasenia">Contraseña</label>
+            <input type="password"  name="contrasenia" required>
 
-            <label for="adulto" class="adulto_label">Cantidad de Adultos </label>
-            <input type="number" class="adulto_campo" id="adulto_cantidad" name="Cantidad_Adultos" value="1" min="1" step="1">
+            <label for="domicilio">Domicilio</label>
+            <input type="text" name="domicilio">
 
-            <label for="niños" class="niños_label">Cantidad de niños:</label>
-            <input type="number" class="niños_campo" id="niños_cantidad" name="Cantidad_Niños" value="0" min="0" step="1">
-
-            <input type="submit" class="enviar_btn" value="Enviar">
+            <input type="submit" value="Enviar" name='enviar'>
 
         </div>
     </form>
+    <?php
+    /*
+    Si pulsas el botón de registrarse hacemos la conexion con la base de datos para insertar
+    el nuevo usuario en la tabla de usuarioRegistrado 
+    */
+    if (isset($_POST['enviar'])) {
+      $con = new Conexion();
+      $con = $con->conectar();
 
+      if ($con->connect_error) {
+        die('Conexion fallida: ' . $con->connect_error);
+      } else {
+
+        $select = "select correoElectronico from usuarioRegistrado 
+                where correoElectronico = '" . $_POST['correo'] . "'";
+        $restCuentaExiste = $con->query($select);
+
+        //Si el correo con el que queremos registrarnos existe, informamos al usuario que ya está registrado
+        if ($restCuentaExiste->num_rows > 0) {
+          echo "<div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>";
+
+          //Si el correo no existe, ejecutamos el insert
+        } else {
+          $insert = "insert into usuarioRegistrado (nombre, apellidos, domicilio, correoElectronico, contrasenia) 
+          values ('" . $_POST['nombre'] . "', '" . $_POST['apellidos'] . "', '" . $_POST['domicilio'] . "', '" . $_POST['correo'] . "', '" . $_POST['contrasenia'] . "')";
+
+          $rest = $con->query($insert);
+          // Obtenemos el id del usuario que hemos registrado a través de un select
+          if ($rest === true) {
+            $select = "select id from usuarioRegistrado 
+                where correoElectronico = '" . $_POST['correo'] . "' 
+                and contrasenia = '" . $_POST['contrasenia'] . "'";
+            $restId = $con->query($select);
+
+            // Si devuelve el resultado del select significa que el correo  y la contraseña y existen y vamos a recoger el id de ese usuario en una variable de sesión
+            // para usarla más adelante, como en tienda.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
+            if ($restId->num_rows > 0) {
+              while ($fila = $restId->fetch_assoc()) {
+                foreach ($fila as $id) {
+                  echo $id;
+                  $_SESSION['idCliente'] = $id;
+                }
+              }
+              header('Location: tienda.php');
+            }
+          }
+        }
+      }
+      $con->close();
+    }
+    ?>
 
 
 
@@ -126,6 +163,7 @@
         menuTexto.textContent = 'Menú';
         busqueda = null; // Establecer la variable como nula después de eliminar el elemento de búsqueda
     } else {
+        let contenedor = document.querySelector('.buscadorContainer') 
         busqueda = document.createElement('div');
         busqueda.setAttribute('class', 'containerBusqueda');
         let input = document.createElement('input');
@@ -134,7 +172,10 @@
         input.setAttribute('id', 'buscador');
         input.setAttribute('placeholder', 'Buscar');
         busqueda.appendChild(input);
-        body.appendChild(busqueda);
+        contenedor.appendChild(busqueda);
+        //Insertar el contenedor antes del formulario en el DOM
+        body.insertBefore(contenedor, document.querySelector('form')); 
+       
     }
     });
 

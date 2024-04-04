@@ -4,7 +4,7 @@
         private $host = "localhost";
         private $usuario = "root";
         private $contraseña = "nikita01C#";
-        private $base_datos = "tiendaRelojes";
+        private $base_datos = "tienda";
 
         // Hace la conexión con la base de datos
         public function conectar() {
