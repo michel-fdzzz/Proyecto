@@ -16,7 +16,7 @@ create table usuarioRegistrado (
     contrasenia varchar(30) not null,
     domicilio varchar (100) not null
 );
-
+/*Prueba*/
 
 create table carrito (
     idProducto int not null,
