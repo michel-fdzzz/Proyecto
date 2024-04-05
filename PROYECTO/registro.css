@@ -49,6 +49,7 @@ body {
     cursor: pointer;
 }
 
+
 .containerBusqueda {
     display: flex;
     margin: auto;
@@ -85,7 +86,8 @@ input {
 
 /* Dropdown container */
 .desplegable {
-    margin: auto 1em;
+    margin: auto 0;
+    margin-right: 1em;
     width: 6.5em;
 }
 
@@ -109,10 +111,11 @@ input {
     display: none;
     position: absolute;
     background-color: #efefef;
-    min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    min-width: 10em;
+    /*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
     z-index: 1;
-    top: 5em;
+    top: 7em;
+    height: 100vh;
     transition: right 0.3s;
 }
 
@@ -123,6 +126,7 @@ input {
 
 /* Links inside the dropdown */
 .containerDesplegable a {
+    margin-left: 2em;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -188,8 +192,19 @@ input[type="submit"] {
     font-size: 16px;
     border-radius: 4px;
     transition: background-color 0.2s;
+    margin-bottom: 1em;
 }
 
 input[type="submit"]:hover {
     background-color: #bdbdbd;
+}
+
+.linkRegistroInicioSesion{
+    margin-top: 2em;
+    text-decoration: none;
+    color: black;
+}
+
+.linkRegistroInicioSesion:hover{
+    text-decoration: underline blue;
 }

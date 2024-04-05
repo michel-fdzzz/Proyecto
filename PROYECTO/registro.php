@@ -91,6 +91,7 @@
       <input type="submit" value="Enviar" name='enviar'>
 
     </div>
+    <a href="iniciarSesion.php" target="_self" class='linkRegistroInicioSesion'>Ya tengo cuenta, iniciar sesión.</a>
   </form>
   <?php
   /*
@@ -155,9 +156,8 @@
     let menuSecundario = document.querySelector('.desplegable');
     let menuTexto = document.querySelector('.menu');
 
-    let busqueda = document.querySelector('.containerBusqueda');
+    let busqueda = document.querySelector('.buscadorContainer');
     busqueda = null; // Declarar la variable fuera del alcance de la función
-
 
     lupaContainer.addEventListener('click', function() {
       if (busqueda) {
@@ -180,6 +180,7 @@
 
       }
     });
+
 
     function desplegable() {
       var desplegable = document.querySelector(".containerDesplegable");
