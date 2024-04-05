@@ -10,7 +10,7 @@
         public function conectar() {
             $con = new mysqli($this->host, $this->usuario, $this->contraseña, $this->base_datos);
             if ($con->connect_error) {
-                die("Error d conexión: " . $con->connect_error);
+                die("Error de conexión: " . $con->connect_error);
             }
             return $con;
         }
