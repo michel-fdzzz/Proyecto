@@ -27,28 +27,30 @@
   <?php include 'conexion.php';
   session_start();
   ?>
-   <section class="menuPrincipal">
+  <section class="menuPrincipal">
     <div class="desplegable">
-      <button onclick="desplegable()" class="botonDesplegar"><img src="imagenes/menuLineas.png" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p></button>
+      <button onclick="desplegable()" class="botonDesplegar"><img src="imagenes/menuLineas.png" width="40em" height="30em" alt="Menu" />
+        <p class='menu'>Menú</p>
+      </button>
       <div class="containerDesplegable">
-          <a href="#">Opción 1</a>
-          <a href="#">Opción 2</a>
-          <a href="#">Opción 3</a>
+        <a href="#">Opción 1</a>
+        <a href="#">Opción 2</a>
+        <a href="#">Opción 3</a>
       </div>
     </div>
     <!--<div class='containerMenuSecundario'>
         <img src="imagenes/menuLineas.webp" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p>
     </div>-->
     <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="100em" height="100em" alt="Logo" /></a>
-    
+
     <!--<div class='containerBuscador'>
         <input type="text" name="buscador" id='buscador' placeholder="Buscar" />
     </div>-->
 
     <div class="containerIconos">
-        <div class="lupa">
-            <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
-        </div>
+      <div class="lupa">
+        <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
+      </div>
 
       <div class="iconoInicioSesion">
         <a href="inicioSesion.php" target="_self">
@@ -68,86 +70,86 @@
 
 
   <form action="#" method="POST" class="formulario" onsubmit="return validarContrasenia()">
-        <div class="flex-container">
-          <h2>Registro</h2>
+    <div class="flex-container">
+      <h2>Registro</h2>
 
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" required>
+      <label for="nombre">Nombre</label>
+      <input type="text" name="nombre" required>
 
-            <label for="apellidos">Apellidos</label>
-            <input type="text" name="apellidos" required>
+      <label for="apellidos">Apellidos</label>
+      <input type="text" name="apellidos" required>
 
-            <label for="email">Correo</label>
-            <input type="email" name="correo" required>
+      <label for="email">Correo</label>
+      <input type="email" name="correo" required>
 
-            <label for="contrasenia">Contraseña</label>
-            <input type="password"  name="contrasenia" required>
+      <label for="contrasenia">Contraseña</label>
+      <input type="password" name="contrasenia" id='contrasenia' required>
 
-            <label for="domicilio">Domicilio</label>
-            <input type="text" name="domicilio">
+      <label for="domicilio">Domicilio</label>
+      <input type="text" name="domicilio">
 
-            <input type="submit" value="Enviar" name='enviar'>
+      <input type="submit" value="Enviar" name='enviar'>
 
-        </div>
-    </form>
-    <?php
-    /*
+    </div>
+  </form>
+  <?php
+  /*
     Si pulsas el botón de registrarse hacemos la conexion con la base de datos para insertar
     el nuevo usuario en la tabla de usuarioRegistrado 
     */
-    if (isset($_POST['enviar'])) {
-      $con = new Conexion();
-      $con = $con->conectar();
+  if (isset($_POST['enviar'])) {
+    $con = new Conexion();
+    $con = $con->conectar();
 
-      if ($con->connect_error) {
-        die('Conexion fallida: ' . $con->connect_error);
-      } else {
+    if ($con->connect_error) {
+      die('Conexion fallida: ' . $con->connect_error);
+    } else {
 
-        $select = "select correoElectronico from usuarioRegistrado 
+      $select = "select correoElectronico from usuarioRegistrado 
                 where correoElectronico = '" . $_POST['correo'] . "'";
-        $restCuentaExiste = $con->query($select);
+      $restCuentaExiste = $con->query($select);
 
-        //Si el correo con el que queremos registrarnos existe, informamos al usuario que ya está registrado
-        if ($restCuentaExiste->num_rows > 0) {
-          echo "<div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>";
+      //Si el correo con el que queremos registrarnos existe, informamos al usuario que ya está registrado
+      if ($restCuentaExiste->num_rows > 0) {
+        echo "<div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>";
 
-          //Si el correo no existe, ejecutamos el insert
-        } else {
-          $insert = "insert into usuarioRegistrado (nombre, apellidos, domicilio, correoElectronico, contrasenia) 
+        //Si el correo no existe, ejecutamos el insert
+      } else {
+        $insert = "insert into usuarioRegistrado (nombre, apellidos, domicilio, correoElectronico, contrasenia) 
           values ('" . $_POST['nombre'] . "', '" . $_POST['apellidos'] . "', '" . $_POST['domicilio'] . "', '" . $_POST['correo'] . "', '" . $_POST['contrasenia'] . "')";
 
-          $rest = $con->query($insert);
-          // Obtenemos el id del usuario que hemos registrado a través de un select
-          if ($rest === true) {
-            $select = "select id from usuarioRegistrado 
+        $rest = $con->query($insert);
+        // Obtenemos el id del usuario que hemos registrado a través de un select
+        if ($rest === true) {
+          $select = "select id from usuarioRegistrado 
                 where correoElectronico = '" . $_POST['correo'] . "' 
                 and contrasenia = '" . $_POST['contrasenia'] . "'";
-            $restId = $con->query($select);
+          $restId = $con->query($select);
 
-            // Si devuelve el resultado del select significa que el correo  y la contraseña y existen y vamos a recoger el id de ese usuario en una variable de sesión
-            // para usarla más adelante, como en tienda.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
-            if ($restId->num_rows > 0) {
-              while ($fila = $restId->fetch_assoc()) {
-                foreach ($fila as $id) {
-                  echo $id;
-                  $_SESSION['idCliente'] = $id;
-                }
+          // Si devuelve el resultado del select significa que el correo  y la contraseña y existen y vamos a recoger el id de ese usuario en una variable de sesión
+          // para usarla más adelante, como en tienda.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
+          if ($restId->num_rows > 0) {
+            while ($fila = $restId->fetch_assoc()) {
+              foreach ($fila as $id) {
+                echo $id;
+                $_SESSION['idCliente'] = $id;
               }
-              header('Location: tienda.php');
             }
+            header('Location: tienda.php');
           }
         }
       }
-      $con->close();
     }
-    ?>
+    $con->close();
+  }
+  ?>
 
 
 
 
 
   <script defer>
-    let body =  document.querySelector('body');
+    let body = document.querySelector('body');
     let lupaContainer = document.querySelector('.lupa');
     let lupaImagen = document.querySelector('.lupaImagen');
     let menuSecundario = document.querySelector('.desplegable');
@@ -162,8 +164,8 @@
         busqueda.remove();
         menuTexto.textContent = 'Menú';
         busqueda = null; // Establecer la variable como nula después de eliminar el elemento de búsqueda
-    } else {
-        let contenedor = document.querySelector('.buscadorContainer') 
+      } else {
+        let contenedor = document.querySelector('.buscadorContainer')
         busqueda = document.createElement('div');
         busqueda.setAttribute('class', 'containerBusqueda');
         let input = document.createElement('input');
@@ -174,39 +176,38 @@
         busqueda.appendChild(input);
         contenedor.appendChild(busqueda);
         //Insertar el contenedor antes del formulario en el DOM
-        body.insertBefore(contenedor, document.querySelector('form')); 
-       
-    }
+        body.insertBefore(contenedor, document.querySelector('form'));
+
+      }
     });
 
     function desplegable() {
       var desplegable = document.querySelector(".containerDesplegable");
-      
+
       if (desplegable.classList.contains("mostrar")) {
-          desplegable.style.display = "none";
-          menuTexto.textContent = 'Menú';
-          lupaImagen.src = 'imagenes/lupa.png';
-          desplegable.classList.remove("mostrar");
+        desplegable.style.display = "none";
+        menuTexto.textContent = 'Menú';
+        lupaImagen.src = 'imagenes/lupa.png';
+        desplegable.classList.remove("mostrar");
 
       } else {
-          desplegable.style.display = "block";
-          menuTexto.textContent = 'Cerrar';
-          desplegable.classList.add("mostrar");
-          // Añadir un event listener para cerrar el dropdown cuando haces clic fuera de él
-          document.addEventListener('click', cerrarDesplegable);
+        desplegable.style.display = "block";
+        menuTexto.textContent = 'Cerrar';
+        desplegable.classList.add("mostrar");
+        // Añadir un event listener para cerrar el dropdown cuando haces clic fuera de él
+        document.addEventListener('click', cerrarDesplegable);
       }
     }
 
-  function cerrarDesplegable(event) {
+    function cerrarDesplegable(event) {
       var desplegable = document.querySelector(".containerDesplegable");
       var button = document.querySelector(".botonDesplegar");
       if (!desplegable.contains(event.target) && event.target !== button) {
-          desplegable.style.display = "none";
-          document.removeEventListener('click', cerrarDesplegable);
+        desplegable.style.display = "none";
+        document.removeEventListener('click', cerrarDesplegable);
       }
-  }
-
-</script>
+    }
+  </script>
 </body>
 
 </html>
