@@ -48,14 +48,15 @@
     </div>-->
 
     <div class="containerIconos">
-      <div class="lupa">
-        <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
-      </div>
 
       <div class="iconoInicioSesion">
         <a href="inicioSesion.php" target="_self">
           <img src="imagenes/perfil-removebg-preview (1).png" width="29em" height="29em" alt="Carrito" />
         </a>
+      </div>
+
+      <div class="lupa">
+        <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
       </div>
 
       <div class="carrito">

@@ -6,21 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
     <link href="tienda.css" rel="stylesheet" type="text/css">
-    <script>
-        function validarContrasenia() {
-            let contraseña = document.getElementById("contrasenia").value;
-            let tieneMayuscula = /[A-Z]/.test(contraseña); // Comprueba si hay al menos una o varias mayúsculas
-            let tieneSimbolo = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(contraseña); // Comprueba si hay uno o varios simbolos
-            let tieneNumero = /[0-9]/.test(contraseña); // Comprueba si uno o varios números
-
-            if (!tieneMayuscula || !tieneSimbolo || !tieneNumero || contraseña.length < 8) {
-                alert("La contraseña debe tener al menos 8 caracteres y contener al menos una mayúscula, un símbolo y un número.");
-                document.getElementById("contrasenia").value = "";
-                return false;
-            }
-            return true;
-        }
-    </script>
 </head>
 
 <body>
@@ -47,16 +32,28 @@
         <input type="text" name="buscador" id='buscador' placeholder="Buscar" />
     </div>-->
 
+
+
         <div class="containerIconos">
+            <?php
+            if ($_SESSION['idCliente'] > 0) {
+                //Ponerle en el hover el subrayado que tenog en el 3 en raya
+                echo '
+                <p class="desconexion">Desconectarse de la sesion.</p>';
+            } else {
+                echo
+                '<div class="iconoInicioSesion">
+                    <a href="iniciarSesion.php" target="_self">
+                        <img src="imagenes/perfil-removebg-preview (1).png" width="29em" height="29em" alt="Carrito" />
+                    </a>
+                </div>';
+            }
+            ?>
+
             <div class="lupa">
                 <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
             </div>
 
-            <div class="iconoInicioSesion">
-                <a href="inicioSesion.php" target="_self">
-                    <img src="imagenes/perfil-removebg-preview (1).png" width="29em" height="29em" alt="Carrito" />
-                </a>
-            </div>
 
             <div class="carrito">
                 <a href="carrito.php" target="_self">
@@ -67,6 +64,50 @@
     </section>
 
     <div class='buscadorContainer'></div>
+
+
+
+    <?php
+    if (isset($_SESSION['idCliente'])) {
+        $con = new Conexion();
+        $con = $con->conectar();
+        $select = "select * from producto";
+        $rest = $con->query($select);
+        $campos = $rest->fetch_all();
+        if ($rest->num_rows > 0) {
+            foreach ($campos as $campo) {
+                echo
+                "<div class='producto'>
+                <img src='" . $campo[4] . "'/>
+        <p class='bold'>" . $campo[1] . "</p>
+        <p class='bold'>" . $campo[2] . "€</p>
+        Talla (EU): <input type='number' id='talla" . $campo[0] . "' max='50' min='15' /><br>
+        Cantidad: <input type='number' id='numProductos" . $campo[0] . "' max='3' min='1' /><br>
+        <button onclick=\"añadirCarrito(" . $campo[0] . "," . $_SESSION['idCliente'] . ",'" . $campo[1] . "',document.getElementById('talla" . $campo[0] . "').value , document.getElementById('numProductos" . $campo[0] . "').value,'" . $campo[2] . "')\">Añadir al carrito</button>
+    </div>";
+            }
+        } else {
+            echo '
+    <div class="mensaje">
+        <p>Actualmente no hay productos insertados en la base de datos</p>
+    </div>';
+        }
+    } else {
+        echo '
+    <div class="mensaje">
+        <p>No has iniciado sesión, registrate o inicia sesión para poder comprar productos</p>
+        <a class="linkMensaje" href="inicioSesion.php" target="_self">
+            <div class="boton">
+                <p>Iniciar sesión/Registrarme</p>
+            </div>
+        </a>
+    </div>';
+    }
+
+    ?>
+
+
+
 
 
 
@@ -131,6 +172,23 @@
                 desplegable.style.display = "none";
                 document.removeEventListener('click', cerrarDesplegable);
             }
+        }
+
+
+        try {
+            document.querySelector('.desconexion').addEventListener('click', function() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log('Conexion hecha')
+                        window.location.href = "tienda.php";
+                    }
+                };
+                xhttp.open("POST", "desconectarse.php", true);
+                xhttp.send();
+            });
+        } catch {
+            console.log('La clase no existe porque no hay ningún id asociado a la variable de seison')
         }
     </script>
 </body>
