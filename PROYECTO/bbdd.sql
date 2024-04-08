@@ -5,6 +5,7 @@ use tiendaRelojes;
 create table producto (
     id int auto_increment primary key,
     nombre varchar(50) not null,
+    marca varchar(50) not null,
     modelo varchar(50) not null,
     precio decimal(10, 2) not null,
     imagen varchar(500) not null
@@ -46,3 +47,8 @@ create table pedido (
 
 
 insert into producto values (null, 'Oyster Perpetual 41', 'Oyster', 6600, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001');
+insert into producto values (null, 'Dajejust 36', 'Dajejust', 13350, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039');
+
+
+
+

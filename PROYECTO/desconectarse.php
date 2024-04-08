@@ -1,3 +1,3 @@
 <?php
 session_start();
-$_SESSION['idCliente'] = 0;
+$_SESSION['idCliente'] = null;

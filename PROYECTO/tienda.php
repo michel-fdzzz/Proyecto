@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
-    <link href="tienda.css" rel="stylesheet" type="text/css">
+    <link href="CSS/tienda.css" rel="stylesheet" type="text/css">
+    <link href="CSS/registro.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 
         <div class="containerIconos">
             <?php
-            if ($_SESSION['idCliente'] > 0) {
+            if (isset($_SESSION['idCliente'])) {
                 //Ponerle en el hover el subrayado que tenog en el 3 en raya
                 echo '
                 <p class="desconexion">Desconectarse de la sesion.</p>';
@@ -65,10 +66,15 @@
 
     <div class='buscadorContainer'></div>
 
+    <article class="intro">
+        <h1>Michel & CO</h1>
+        <h2><i>"El tiempo nunca se detiene, encuentra tu estilo en cada segundo."</i></h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos non perspiciatis, vero obcaecati amet itaque voluptatum consectetur iste enim voluptatem maiores. Numquam ratione, ducimus magnam sapiente accusantium veritatis cum. Corrupti.</p>
+    </article>
+    <article class="productos-container">
 
+        <?php
 
-    <?php
-    if (isset($_SESSION['idCliente'])) {
         $con = new Conexion();
         $con = $con->conectar();
         $select = "select * from producto";
@@ -78,118 +84,31 @@
             foreach ($campos as $campo) {
                 echo
                 "<div class='producto'>
-                <img src='" . $campo[4] . "'/>
+                <img src='" . $campo[4] . "' width='200em' height='300em'/>
         <p class='bold'>" . $campo[1] . "</p>
-        <p class='bold'>" . $campo[2] . "€</p>
-        Talla (EU): <input type='number' id='talla" . $campo[0] . "' max='50' min='15' /><br>
-        Cantidad: <input type='number' id='numProductos" . $campo[0] . "' max='3' min='1' /><br>
-        <button onclick=\"añadirCarrito(" . $campo[0] . "," . $_SESSION['idCliente'] . ",'" . $campo[1] . "',document.getElementById('talla" . $campo[0] . "').value , document.getElementById('numProductos" . $campo[0] . "').value,'" . $campo[2] . "')\">Añadir al carrito</button>
-    </div>";
-            }
-        } else {
-            echo '
-    <div class="mensaje">
-        <p>Actualmente no hay productos insertados en la base de datos</p>
-    </div>';
-        }
-    } else {
-        echo '
-    <div class="mensaje">
-        <p>No has iniciado sesión, registrate o inicia sesión para poder comprar productos</p>
-        <a class="linkMensaje" href="inicioSesion.php" target="_self">
-            <div class="boton">
-                <p>Iniciar sesión/Registrarme</p>
-            </div>
-        </a>
-    </div>';
-    }
+        <p class='bold'>" . intval($campo[3]) . " €</p>
+        Cantidad: <input type='number' id='numProductos" . $campo[0] . "' max='3' min='1' /><br>";
 
-    ?>
-
-
-
-
-
-
-
-
-
-    <script defer>
-        let body = document.querySelector('body');
-        let lupaContainer = document.querySelector('.lupa');
-        let lupaImagen = document.querySelector('.lupaImagen');
-        let menuSecundario = document.querySelector('.desplegable');
-        let menuTexto = document.querySelector('.menu');
-
-        let busqueda = document.querySelector('.containerBusqueda');
-        busqueda = null; // Declarar la variable fuera del alcance de la función
-
-
-        lupaContainer.addEventListener('click', function() {
-            if (busqueda) {
-                busqueda.remove();
-                menuTexto.textContent = 'Menú';
-                busqueda = null; // Establecer la variable como nula después de eliminar el elemento de búsqueda
-            } else {
-                let contenedor = document.querySelector('.buscadorContainer')
-                busqueda = document.createElement('div');
-                busqueda.setAttribute('class', 'containerBusqueda');
-                let input = document.createElement('input');
-                input.setAttribute('type', 'text');
-                input.setAttribute('name', 'buscador');
-                input.setAttribute('id', 'buscador');
-                input.setAttribute('placeholder', 'Buscar');
-                busqueda.appendChild(input);
-                contenedor.appendChild(busqueda);
-                //Insertar el contenedor antes del formulario en el DOM
-                body.insertBefore(contenedor, document.querySelector('form'));
-
-            }
-        });
-
-        function desplegable() {
-            var desplegable = document.querySelector(".containerDesplegable");
-
-            if (desplegable.classList.contains("mostrar")) {
-                desplegable.style.display = "none";
-                menuTexto.textContent = 'Menú';
-                lupaImagen.src = 'imagenes/lupa.png';
-                desplegable.classList.remove("mostrar");
-
-            } else {
-                desplegable.style.display = "block";
-                menuTexto.textContent = 'Cerrar';
-                desplegable.classList.add("mostrar");
-                // Añadir un event listener para cerrar el dropdown cuando haces clic fuera de él
-                document.addEventListener('click', cerrarDesplegable);
+                if (isset($_SESSION['idCliente'])) {
+                    echo "<button onclick=\"añadirCarrito(" . $campo[0] . "," . $_SESSION['idCliente'] . ",'" . $campo[1] . "',document.getElementById('talla" . $campo[0] . "').value , document.getElementById('numProductos" . $campo[0] . "').value,'" . $campo[2] . "')\">Añadir al carrito</button>";
+                } else {
+                    echo "<button onclick\"añadirSinUsuario()>Añadir al carrito</button>";
+                }
+                echo "</div>";
             }
         }
 
-        function cerrarDesplegable(event) {
-            var desplegable = document.querySelector(".containerDesplegable");
-            var button = document.querySelector(".botonDesplegar");
-            if (!desplegable.contains(event.target) && event.target !== button) {
-                desplegable.style.display = "none";
-                document.removeEventListener('click', cerrarDesplegable);
-            }
-        }
+        ?>
+
+    </article>
 
 
-        try {
-            document.querySelector('.desconexion').addEventListener('click', function() {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        console.log('Conexion hecha')
-                        window.location.href = "tienda.php";
-                    }
-                };
-                xhttp.open("POST", "desconectarse.php", true);
-                xhttp.send();
-            });
-        } catch {
-            console.log('La clase no existe porque no hay ningún id asociado a la variable de seison')
-        }
+
+
+
+
+
+    <script defer src='JS/tienda.js'>
     </script>
 </body>
 
