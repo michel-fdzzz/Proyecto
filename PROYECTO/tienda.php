@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
     <link href="CSS/tienda.css" rel="stylesheet" type="text/css">
-    <link href="CSS/registro.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -68,7 +67,7 @@
 
     <article class="intro">
         <h1>Michel & CO</h1>
-        <h2><i>"El tiempo nunca se detiene, encuentra tu estilo en cada segundo."</i></h2>
+        <h2 class="slogan">"El tiempo nunca se detiene, encuentra tu estilo en cada segundo."</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos non perspiciatis, vero obcaecati amet itaque voluptatum consectetur iste enim voluptatem maiores. Numquam ratione, ducimus magnam sapiente accusantium veritatis cum. Corrupti.</p>
     </article>
     <article class="productos-container">

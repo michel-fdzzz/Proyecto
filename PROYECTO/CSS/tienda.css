@@ -172,3 +172,20 @@ input {
     align-items: center;
     text-align: center;
 }
+
+.slogan{
+    font-style: italic;
+    color:#989898;
+}
+
+button{
+    margin: 1em;
+}
+
+.intro{
+    margin: auto 10%;
+}
+
+.intro > p{
+    margin: auto 10%;
+}

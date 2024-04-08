@@ -1,3 +1,19 @@
+
+
+
+
+
+
+
+/*Cambiar la base de datos por esta nueva*/
+
+
+
+
+
+
+
+
 drop database if exists tiendaRelojes;
 create database if not exists tiendaRelojes;
 use tiendaRelojes;
@@ -8,7 +24,8 @@ create table producto (
     marca varchar(50) not null,
     modelo varchar(50) not null,
     precio decimal(10, 2) not null,
-    imagen varchar(500) not null
+    imagen varchar(500) not null, 
+    stock int not null
 );
 create table usuarioRegistrado (
     id int auto_increment primary key,
