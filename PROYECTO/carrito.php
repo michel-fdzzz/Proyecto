@@ -95,15 +95,9 @@
                     <p>Cantidad: " . $cantidad . "</p>
                     <p>Precio unitario: " . $precio . "€</p>
                     <p>Precio total: " . $precioTotalPorProducto . "€</p>
-                    Eliminar unidades: <input type='number' id='numEliminar" . $idProducto . $modelo . "' name='numEliminar' max='3' min='1'/>
-                    <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . "," . $modelo . "," . $cantidad . ", document.getElementById('numEliminar" . $idProducto . $modelo . "').value)\">Eliminar unidades</button>
-                    <br> 
-                    <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . "," . $modelo . "," . $cantidad . ")\">Eliminar producto</button>
-                    <button onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . "," . $modelo . "," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
-                    </div>";
+                    </div><br>";
                 }
                 echo '</div>';
-                echo "<button id='comprarTodo' onclick=\"comprarTodo(" . $_SESSION['idCliente'] . ")\">Comprar todo</button>";
             } else {
                 echo '
             <div class="mensajeProductosCarrito">

@@ -77,8 +77,8 @@ INSERT INTO producto VALUES (null, 'Oyster Perpetual 41', 'Oyster', 6600, 'https
 insert into producto values (null, 'Dajejust 36', 'Dajejust', 13350, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039');
 
 INSERT INTO producto (nombre, marca, modelo, precio, imagen)
-VALUES ('Oyster Perpetual 41', 'Oyster', 'Modelo1', 6600.00, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001'),
-       ('Dajejust 36', 'Dajejust', 'Modelo2', 13350.00, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039');
+VALUES ('Oyster Perpetual 41', 'Rolex', 'Oyster', 6600.00, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001'),
+       ('Dajejust 36', 'Rolex', 'Dajejust', 13350.00, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039');
 
 -- con estock y descripcion
 

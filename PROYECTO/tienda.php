@@ -85,11 +85,11 @@
                 "<div class='producto'>
                 <img src='" . $campo[5] . "' width='200em' height='300em'/>
         <p class='bold'>" . $campo[1] . "</p>
-        <p class='bold'>" . intval($campo[3]) . " €</p>
+        <p class='bold'>" . intval($campo[4]) . " €</p>
         Cantidad: <input type='number' id='numProductos" . $campo[0] . "' max='3' min='1' /><br>";
 
                 if (isset($_SESSION['idCliente'])) {
-                    echo "<button onclick=\"añadirCarrito(" . $campo[0] . "," . $_SESSION['idCliente'] . ",'" . $campo[1] . "','" . $campo[2] . "', document.getElementById('numProductos" . $campo[0] . "').value,'" . $campo[3] . "')\">Añadir al carrito</button>";
+                    echo "<button onclick=\"añadirCarrito(" . $campo[0] . "," . $_SESSION['idCliente'] . ",'" . $campo[1] . "','" . $campo[2] . "', document.getElementById('numProductos" . $campo[0] . "').value,'" . $campo[4] . "')\">Añadir al carrito</button>";
                 } else {
                     echo "<button onclick\"añadirSinUsuario()>Añadir al carrito</button>";
                 }
