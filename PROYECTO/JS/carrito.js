@@ -56,3 +56,19 @@ let body = document.querySelector('body');
                 document.removeEventListener('click', cerrarDesplegable);
             }
         }
+
+        try {
+            document.querySelector('.desconexion').addEventListener('click', function() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log('Conexion hecha')
+                        window.location.href = "tienda.php";
+                    }
+                };
+                xhttp.open("POST", "desconectarse.php", true);
+                xhttp.send();
+            });
+        } catch {
+            console.log('La clase no existe porque no hay ningún id asociado a la variable de seison')
+        }

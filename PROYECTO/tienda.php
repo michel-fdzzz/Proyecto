@@ -39,7 +39,7 @@
             if (isset($_SESSION['idCliente'])) {
                 //Ponerle en el hover el subrayado que tenog en el 3 en raya
                 echo '
-                <p class="desconexion">Desconectarse de la sesion.</p>';
+                <p class="desconexion">Desconectarse</p>';
             } else {
                 echo
                 '<div class="iconoInicioSesion">
@@ -83,7 +83,7 @@
             foreach ($campos as $campo) {
                 echo
                 "<div class='producto'>
-                <img src='" . $campo[4] . "' width='200em' height='300em'/>
+                <img src='" . $campo[5] . "' width='200em' height='300em'/>
         <p class='bold'>" . $campo[1] . "</p>
         <p class='bold'>" . intval($campo[3]) . " €</p>
         Cantidad: <input type='number' id='numProductos" . $campo[0] . "' max='3' min='1' /><br>";
@@ -108,6 +108,7 @@
 
 
     <script defer src='JS/tienda.js'>
+
     </script>
 
     <script defer>

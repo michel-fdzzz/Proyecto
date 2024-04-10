@@ -97,4 +97,5 @@ let body = document.querySelector('body');
             let contenedor = document.createElement('div');
             let mensajeIniciarSesion = document.createElement('p');
             let link = document.createElement('button');
+            alert('Debes iniciar sesion para añadir productos al carrito');
         }
