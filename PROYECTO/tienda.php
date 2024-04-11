@@ -91,7 +91,7 @@
                 if (isset($_SESSION['idCliente'])) {
                     echo "<button onclick=\"añadirCarrito(" . $campo[0] . "," . $_SESSION['idCliente'] . ",'" . $campo[1] . "','" . $campo[2] . "', document.getElementById('numProductos" . $campo[0] . "').value,'" . $campo[4] . "')\">Añadir al carrito</button>";
                 } else {
-                    echo "<button onclick\"añadirSinUsuario()>Añadir al carrito</button>";
+                    echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
                 }
                 echo "</div>";
             }
