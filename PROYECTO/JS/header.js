@@ -5,14 +5,13 @@ let body = document.querySelector('body');
         let menuTexto = document.querySelector('.menu');
 
         let busqueda = document.querySelector('.containerBusqueda');
-        busqueda = null; // Declarar la variable fuera del alcance de la función
-
+        busqueda = null; //para que no se quede vacía como tal y no de error
 
         lupaContainer.addEventListener('click', function() {
             if (busqueda) {
                 busqueda.remove();
                 menuTexto.textContent = 'Menú';
-                busqueda = null; // Establecer la variable como nula después de eliminar el elemento de búsqueda
+                busqueda = null;  //para que no se quede vacía como tal y no de error
             } else {
                 let contenedor = document.querySelector('.buscadorContainer')
                 busqueda = document.createElement('div');
@@ -24,7 +23,7 @@ let body = document.querySelector('body');
                 input.setAttribute('placeholder', 'Buscar');
                 busqueda.appendChild(input);
                 contenedor.appendChild(busqueda);
-                //Insertar el contenedor antes del formulario en el DOM
+                 //Así lo inserta antes que el elemento que le especificamos
                 body.insertBefore(contenedor, document.querySelector('form'));
 
             }
@@ -33,17 +32,18 @@ let body = document.querySelector('body');
         function desplegable() {
             var desplegable = document.querySelector(".containerDesplegable");
 
+            //Si se está mostrando
             if (desplegable.classList.contains("mostrar")) {
                 desplegable.style.display = "none";
                 menuTexto.textContent = 'Menú';
                 lupaImagen.src = 'imagenes/lupa.png';
                 desplegable.classList.remove("mostrar");
 
+                //Si no se muestra
             } else {
                 desplegable.style.display = "block";
                 menuTexto.textContent = 'Cerrar';
                 desplegable.classList.add("mostrar");
-                // Añadir un event listener para cerrar el dropdown cuando haces clic fuera de él
                 document.addEventListener('click', cerrarDesplegable);
             }
         }
@@ -51,8 +51,12 @@ let body = document.querySelector('body');
         function cerrarDesplegable(event) {
             var desplegable = document.querySelector(".containerDesplegable");
             var button = document.querySelector(".botonDesplegar");
+
+            //Si el click no se da en el área donde está el evento ni ha dado concretamente al botón. Se cierra el desplegable
             if (!desplegable.contains(event.target) && event.target !== button) {
                 desplegable.style.display = "none";
-                document.removeEventListener('click', cerrarDesplegable);
+                menuTexto.textContent = 'Menú';
+                desplegable.classList.remove("mostrar");
+                //document.removeEventListener('click', cerrarDesplegable);
             }
         }
