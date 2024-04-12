@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
+    <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/carrito.css">
+    <script defer src="JS/carrito.js">
+    </script>
+    <script defer src="JS/menuDesplegable.js">
+    </script>
 </head>
 
 <body>
@@ -37,7 +42,7 @@
             if (isset($_SESSION['idCliente'])) {
                 //Ponerle en el hover el subrayado que tenog en el 3 en raya
                 echo '
-                <p class="desconexion">Desconectarse</p>';
+                <img class="desconexion" src="imagenes/salida-de-incendios.png" width="25em" height="25em" alt="Carrito" />';
             } else {
                 echo
                 '<div class="iconoInicioSesion">
@@ -117,10 +122,6 @@
 
 
     </article>
-
-
-    <script defer src="JS/carrito.js">
-    </script>
 </body>
 
 </html>

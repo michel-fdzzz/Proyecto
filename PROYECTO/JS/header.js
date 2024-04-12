@@ -1,7 +1,6 @@
 let body = document.querySelector('body');
         let lupaContainer = document.querySelector('.lupa');
         let lupaImagen = document.querySelector('.lupaImagen');
-        let menuSecundario = document.querySelector('.desplegable');
         let menuTexto = document.querySelector('.menu');
 
         let busqueda = document.querySelector('.containerBusqueda');

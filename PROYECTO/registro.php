@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrarse</title>
   <link href="CSS/registro.css" rel="stylesheet" type="text/css">
+  <link href="CSS/header.css" rel="stylesheet" type="text/css">
   <script>
     function validarContrasenia() {
       let contraseña = document.getElementById("contrasenia").value;
