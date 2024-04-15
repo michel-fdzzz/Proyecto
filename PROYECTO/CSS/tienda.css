@@ -36,9 +36,6 @@
     color:#989898;
 }
 
-button{
-    margin: 1em;
-}
 
 .intro{
     margin: auto 10%;
@@ -58,6 +55,9 @@ button {
     border-radius: 4px;
     transition: background-color 0.2s;
     margin-bottom: 1em;
+    margin: 1em;
+    font-family: 'Oswald', sans-serif;
+    
 }
 
 button:hover {
@@ -67,4 +67,27 @@ button:hover {
 .grey{
     font-weight: 200;
     color: grey;
+}
+
+.mensajeBusqueda{
+    position: absolute;
+    background-color: #000000;
+    width: 20em;
+    height: 7em;
+    top: 40%; /* Lo colocamos en el 50% del eje vertical */
+    left: 50%; /* Lo colocamos en el 50% del eje horizontal */
+    transform: translate(-50%, -50%); /* Lo movemos hacia arriba y hacia la izquierda en la mitad de su propio tamaño */
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border: 2px solid rgb(69, 134, 255);
+    border-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: mensajeB 0.3s;
+}
+
+.mensajeBusqueda > p{
+    font-size: 1.5rem;
+    margin-bottom:0 ;
+    animation: mensajeB 0.3s;
 }

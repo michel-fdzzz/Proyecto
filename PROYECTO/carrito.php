@@ -100,6 +100,8 @@
                     <p>Cantidad: " . $cantidad . "</p>
                     <p>Precio unitario: " . $precio . "€</p>
                     <p>Precio total: " . $precioTotalPorProducto . "€</p>
+                    <button onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
+                    
                     </div><br>";
                 }
                 echo '</div>';
@@ -114,7 +116,7 @@
         } else {
             echo  '
             <div class="mensaje">
-                <p>No has iniciado sesión, registrate o inicia sesión para poder entrar en el carrito</p>
+                <p>No has iniciado sesión, registrate o inicia sesión para poder ver tus productos en el carrito.</p>
                 <a class="linkMensaje" href="inicioSesion.php" target="_self"><div class="boton"><p>Iniciar sesión/Registrarme</p></div></a>
             </div>';
         }

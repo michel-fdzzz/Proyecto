@@ -27,17 +27,7 @@
                 <a href="#">Opción 3</a>
             </div>
         </div>
-        <!--<div class='containerMenuSecundario'>
-        <img src="imagenes/menuLineas.webp" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p>
-    </div>-->
         <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="100em" height="100em" alt="Logo" /></a>
-
-        <!--<div class='containerBuscador'>
-        <input type="text" name="buscador" id='buscador' placeholder="Buscar" />
-    </div>-->
-
-
-
         <div class="containerIconos">
             <?php
             if (isset($_SESSION['idCliente'])) {
@@ -107,73 +97,129 @@
 
     </article>
 
+    <script>
+        let body = document.querySelector('body');
+        let lupaContainer = document.querySelector('.lupa');
+        let introduccion = document.querySelector('.intro')
+
+        let busqueda = document.querySelector('.buscadorContainer');
+        busqueda = null; //para que no se quede vacía como tal y no de error
+
+        lupaContainer.addEventListener('click', function() {
+            if (busqueda) {
+                busqueda.remove();
+                menuTexto.textContent = 'Menú';
+                busqueda = null; //para que no se quede vacía como tal y no de error
+            } else {
+                let contenedor = document.querySelector('.buscadorContainer')
+                busqueda = document.createElement('div');
+                busqueda.setAttribute('class', 'containerBusqueda');
+                let input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('name', 'buscador');
+                input.setAttribute('id', 'buscador');
+                input.setAttribute('placeholder', 'Buscar');
+                busqueda.appendChild(input);
+                contenedor.appendChild(busqueda);
+                //Así lo inserta antes que el elemento que le especificamos
+                body.insertBefore(introduccion, document.querySelector('article'));
 
 
+                function buscar(texto) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            // Se controla que si introduces mal el nombre, salga un mensaje de que no se ha encontrado el producto que buscas pero salen los productos similares.
+                            // try {
+                            mostrarProductos(JSON.parse(this.responseText));
+                            /* } catch {
+                                 let body = document.querySelector('body');
+                                 let div = document.createElement('div');
+                                 div.setAttribute('class', 'mensajeBusqueda');
+                                 let p = document.createElement('p');
+                                 p.innerHTML = 'No se han encontrado resultados de tu busqueda: ' + texto;
+                                 div.appendChild(p);
+                                 body.appendChild(div);
+                                 let seg = 2.5;
 
+                                 function temp() {
+                                     if (seg <= 0) {
+                                         clearInterval(tiempo);
+                                         div.remove();
+                                         p.remove();
+                                     } else {
+                                         seg--;
+                                     }
+                                 }
+                                 temp();
+                                 let tiempo = setInterval(temp, 1000);
+                             }*/
+                        }
+                    };
+                    xhttp.open("POST", "busqueda.php", true);
+                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhttp.send("input=" + texto);
+                    return false;
+                }
 
+                // Según se escribe en el buscador se va recibiendo su valor
+                let buscador = document.getElementById('buscador');
+                buscador.addEventListener('input', function() {
+                    let texto = document.querySelector('#buscador').value;
+                    buscar(texto);
+                });
+            }
+        });
 
-
-
-    </script>
-
-    <script defer>
         // Muestra los productos según los resultados de la busqueda que optenemos mediante un select en busqueda.php
         function mostrarProductos(productos) {
-            let containerProductos = document.querySelector('.containerProductos');
+            console.log(productos);
+            let containerProductos = document.querySelector('.productos-container');
             containerProductos.innerHTML = '';
 
             // Se muestran todos los productos de forma dinámica
             for (let producto of productos) {
 
-                let productoDiv = document.createElement('div');
-                productoDiv.classList.add('producto');
+                let producto_container = document.createElement('div');
+                producto_container.classList.add('producto');
+
+                let img = document.createElement('img');
+                img.setAttribute('src', '' + producto[4] + '');
+                img.setAttribute('width', '200em');
+                img.setAttribute('height', '300em');
 
                 let nombre = document.createElement('p');
                 nombre.textContent = producto[1];
-                nombre.classList.add('bold');
+
+                let marca = document.createElement('p');
+                marca.textContent = producto[2];
 
                 let precio = document.createElement('p');
-                precio.textContent = producto[2] + '€';
-                precio.classList.add('bold');
+                marca.textContent = producto[4];
 
                 let labelProductos = document.createElement('label');
                 labelProductos.textContent = 'Cantidad: ';
 
-                let labelTalla = document.createElement('label');
-                labelTalla.textContent = 'Talla (EU): ';
+                let inputCantidad = document.createElement('input');
+                inputCantidad.setAttribute('type', 'number');
+                inputCantidad.setAttribute('id', 'numProductos' + producto[0]);
 
-                let br1 = document.createElement('br');
+                let caracteristicas = document.createElement('p');
+                caracteristicas.textContent = '' + producto[7] + '';
+                caracteristicas.setAttribute('class', 'grey');
 
-                let inputTalla = document.createElement('input');
-                inputTalla.setAttribute('type', 'number');
-                inputTalla.setAttribute('id', 'talla' + producto[0]);
-                inputTalla.setAttribute('max', '50');
-                inputTalla.setAttribute('min', '15');
-
-                let br2 = document.createElement('br');
-
-                let inputNumeros = document.createElement('input');
-                inputNumeros.setAttribute('type', 'number');
-                inputNumeros.setAttribute('id', 'numProductos' + producto[0]);
-                inputNumeros.setAttribute('max', '3');
-                inputNumeros.setAttribute('min', '1');
-
-                let botonAniadirCarrito = document.createElement('button');
-                botonAniadirCarrito.textContent = 'Añadir al carrito';
-
-                botonAniadirCarrito.setAttribute('onclick',
-                    'añadirCarrito(' + producto[0] + ',' + <?php echo $_SESSION['idCliente']; ?> + ',"' + producto[1] + '",document.getElementById(\'talla' + producto[0] + '\').value , document.getElementById(\'numProductos' + producto[0] + '\').value, "' + producto[2] + '" )');
-
-                productoDiv.appendChild(nombre);
-                productoDiv.appendChild(precio);
-                productoDiv.appendChild(labelTalla);
-                productoDiv.appendChild(inputTalla);
-                productoDiv.appendChild(br1);
-                productoDiv.appendChild(labelProductos);
-                productoDiv.appendChild(inputNumeros);
-                productoDiv.appendChild(br2);
-                productoDiv.appendChild(botonAniadirCarrito);
-                containerProductos.appendChild(productoDiv);
+                let stock = document.createElement('p');
+                stock.textContent = 'Quedan' + producto[6] + '';
+                stock.setAttribute('class', 'grey');
+                producto_container.appendChild(img);
+                producto_container.appendChild(nombre);
+                producto_container.appendChild(marca);
+                producto_container.appendChild(precio);
+                producto_container.appendChild(labelProductos);
+                producto_container.appendChild(inputCantidad);
+                producto_container.appendChild(caracteristicas);
+                producto_container.appendChild(stock);
+                containerProductos.appendChild(producto_container);
             }
         }
     </script>
