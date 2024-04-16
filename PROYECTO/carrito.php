@@ -69,6 +69,9 @@
 
     <h1 class="tituloCarrito">Su <br> Carrito</h1>
 
+
+
+    // PONERLO COMO LA CESTA DEL JD
     <article class="productos-carrito-container">
         <?php
         // Si la variable de sesión tiene valor es que el usuario a iniciado sesion o se ha registrado y puede ver el carrito y comprar productos
@@ -77,7 +80,10 @@
             $con = new Conexion();
             $con = $con->conectar();
 
-            $select = "select distinct nombreProducto, modelo, cantidad, precio, idProducto from carrito where idCliente = " . $_SESSION['idCliente'] . "";
+            $select = "select distinct carrito.nombreProducto, carrito.modelo, carrito.cantidad, carrito.precio, carrito.idProducto , producto.imagen
+            from carrito
+            inner join producto on producto.id = carrito.idProducto
+            where carrito.idCliente = " . $_SESSION['idCliente'] . "";
             $rest = $con->query($select);
             $campos = $rest->fetch_all();
 
@@ -92,16 +98,21 @@
                     $cantidad = $campo[2];
                     $precio = $campo[3];
                     $idProducto = $campo[4];
+                    $imagen = $campo[5];
 
                     echo
                     "<div class='producto'>
-                    <p>" . $nombreProducto . "</p>
-                    <p>Modelo: " . $modelo . "</p>
-                    <p>Cantidad: " . $cantidad . "</p>
-                    <p>Precio unitario: " . $precio . "€</p>
-                    <p>Precio total: " . $precioTotalPorProducto . "€</p>
-                    <button onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
-                    
+                        <div class='imagenCarrito'>
+                            <img src='" . $imagen . "' width='200em' height='300em'/>
+                        </div>
+                        <div class='informacionCarrito'>
+                            <p>" . $nombreProducto . "</p>
+                            <p>Modelo: " . $modelo . "</p>
+                            <p>Cantidad: " . $cantidad . "</p>
+                            <p>Precio unitario: " . $precio . "€</p>
+                            <p>Precio total: " . $precioTotalPorProducto . "€</p>
+                            <button onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
+                        </div>
                     </div><br>";
                 }
                 echo '</div>';

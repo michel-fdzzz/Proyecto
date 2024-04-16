@@ -14,6 +14,14 @@
     
 }
 
+.producto{
+    display: flex;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    width: 40em;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
 
 .desconexion{
     margin: auto;
