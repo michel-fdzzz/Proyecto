@@ -60,3 +60,16 @@ let body = document.querySelector('body');
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&modelo=" + modelo + "&cantidad=" + cantidad + '&nombreProducto=' + nombreProducto + ' &precio=' + precio);
         }
+
+        function eliminarProducto(idProducto, idCliente){
+                
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.href = "carrito.php";
+                }
+            };
+            xhttp.open("POST", "eliminarProducto.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente);
+        }

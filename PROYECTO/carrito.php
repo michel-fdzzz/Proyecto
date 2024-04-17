@@ -102,16 +102,23 @@
 
                     echo
                     "<div class='producto'>
-                        <div class='imagenCarrito'>
-                            <img src='" . $imagen . "' width='200em' height='300em'/>
+                        <div class='info-producto-container'>
+                            <div>
+                                <img src='" . $imagen . "' width='170em' height='250em'/>
+                                <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ")\">Eliminar producto</button>
+                            </div> 
+                            <div class='informacionCarrito'>
+                                <p>" . $nombreProducto . "</p>
+                                <p>" . $modelo . "</p>
+                                <p>Precio unitario: " . $precio . "€</p>
+                                <p>Total: " . $precioTotalPorProducto . "€</p>
+                                <button onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
+                            </div>
                         </div>
-                        <div class='informacionCarrito'>
-                            <p>" . $nombreProducto . "</p>
-                            <p>Modelo: " . $modelo . "</p>
-                            <p>Cantidad: " . $cantidad . "</p>
-                            <p>Precio unitario: " . $precio . "€</p>
-                            <p>Precio total: " . $precioTotalPorProducto . "€</p>
-                            <button onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
+                        <div class='mas-menos-container'>
+                            <div class='mas'><p>+</p></div>
+                            <p>$cantidad</p>
+                            <div class='menos'><p>-</p></div>
                         </div>
                     </div><br>";
                 }
