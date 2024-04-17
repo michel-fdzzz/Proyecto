@@ -58,11 +58,11 @@ body {
     display: flex;
     margin: auto;
     background-color: #efefef;
-    animation: busqueda 0.5s;
+    transition: all .5s ease;
 }
 
 #buscador {
-    animation: busqueda 0.5s;
+    transition: all .5s ease;
     margin: auto;
     border: none;
     font-size: 1rem;
@@ -71,6 +71,10 @@ body {
     border-bottom: 2px solid black;
     margin-bottom: 1em;
     font-family: 'Oswald', sans-serif;
+}
+
+#buscador:focus{
+    outline: none;
 }
 
 input {

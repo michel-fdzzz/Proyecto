@@ -28,14 +28,8 @@
                 <a href="#">Opción 3</a>
             </div>
         </div>
-        <!--<div class='containerMenuSecundario'>
-        <img src="imagenes/menuLineas.webp" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p>
-    </div>-->
         <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="100em" height="100em" alt="Logo" /></a>
 
-        <!--<div class='containerBuscador'>
-        <input type="text" name="buscador" id='buscador' placeholder="Buscar" />
-    </div>-->
 
         <div class="containerIconos">
             <?php
