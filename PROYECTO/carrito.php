@@ -108,11 +108,12 @@
                                 <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ")\">Eliminar producto</button>
                             </div> 
                             <div class='informacionCarrito'>
-                                <p>" . $nombreProducto . "</p>
-                                <p>" . $modelo . "</p>
-                                <p>Precio unitario: " . $precio . "€</p>
-                                <p>Total: " . $precioTotalPorProducto . "€</p>
-                                <button onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
+                                <div>
+                                    <p>" . $nombreProducto . "</p>
+                                    <p>" . $modelo . "</p>
+                                    <p>Precio unitario: " . $precio . "€</p>
+                                </div>
+                                <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
                             </div>
                         </div>
                         <div class='mas-menos-container'>

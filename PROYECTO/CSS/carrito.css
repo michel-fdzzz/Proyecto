@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 10%;
+    margin: 5%;
     gap: 5%;
     
 }
@@ -106,4 +106,8 @@ button {
 
 button:hover {
     background-color: #bdbdbd;
+}
+
+.comprar {
+    margin-bottom: -1;
 }

@@ -10,11 +10,15 @@ body {
     box-sizing: border-box;
 }
 .menuPrincipal {
-    margin-top: 1em;
+   /* position: fixed;
+    top: 0; /* Lo fija en la parte superior de la ventana */
+  /*  left: 0; /* Lo fija en el borde izquierdo de la ventana */
+   /* width: 100%; /* Ancho completo de la ventana */
     display: flex;
     justify-content: space-between;
     height: 6em;
     background-color: #efefef;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
 }
 
 .containerMenuSecundario {
