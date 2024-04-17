@@ -58,11 +58,14 @@ body {
     display: flex;
     margin: auto;
     background-color: #efefef;
-    transition: all .5s ease;
+    animation: busqueda 0.5s;
 }
 
 #buscador {
-    transition: all .5s ease;
+    animation: busqueda 0.5s;
+    animation-name: mostrarDesdeArriba; /* Nombre de la animación */
+    animation-duration: 0.5s; /* Duración de la animación */
+    animation-timing-function: ease-out; /* Función de temporización */
     margin: auto;
     border: none;
     font-size: 1rem;
@@ -72,6 +75,26 @@ body {
     margin-bottom: 1em;
     font-family: 'Oswald', sans-serif;
 }
+/* Definimos la animación para ocultar de abajo hacia arriba */
+@keyframes ocultarHaciaArriba {
+    from {
+      opacity: 1; /* Comienza visible */
+      transform: translateY(0); /* Comienza en su posición original */
+    }
+    to {
+      opacity: 0; /* Termina invisible */
+      transform: translateY(-100%); /* Termina arriba de la pantalla */
+    }
+  }
+  
+  /* Aplicamos la animación al contenedor de búsqueda cuando se cierra */
+  .cerrarBusqueda {
+    animation-name: ocultarHaciaArriba; /* Nombre de la animación */
+    animation-duration: 0.5s; /* Duración de la animación */
+    animation-timing-function: ease-out; /* Función de temporización */
+  }
+
+
 
 #buscador:focus{
     outline: none;
@@ -84,13 +107,13 @@ input {
 
 @keyframes busqueda {
     from {
-        opacity: 0;
-
-    }
-
-    to {
-        opacity: 1;
-    }
+        opacity: 0; /* Comienza invisible */
+        transform: translateY(-100%); /* Comienza arriba de la pantalla */
+      }
+      to {
+        opacity: 1; /* Termina visible */
+        transform: translateY(0); /* Termina en su posición original */
+      }
 }
 
 /* Dropdown container */
@@ -123,7 +146,6 @@ input {
     min-width: 10em;
     /*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
     z-index: 1;
-    top: 7em;
     transition: right 0.3s;
 }
 

@@ -24,14 +24,7 @@
                 <a href="#">Opción 3</a>
             </div>
         </div>
-        <!--<div class='containerMenuSecundario'>
-        <img src="imagenes/menuLineas.webp" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p>
-    </div>-->
         <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="100em" height="100em" alt="Logo" /></a>
-
-        <!--<div class='containerBuscador'>
-        <input type="text" name="buscador" id='buscador' placeholder="Buscar" />
-    </div>-->
 
         <div class="containerIconos">
             <div class="iconoInicioSesion">
@@ -55,63 +48,63 @@
 
     <div class='buscadorContainer'></div>
 
+    <section class="main">
+        <form action="#" method="POST" class="formulario">
+            <div class="flex-container">
+                <h2>Inicio de sesión</h2>
 
-    <form action="#" method="POST" class="formulario">
-        <div class="flex-container">
-            <h2>Inicio de sesión</h2>
+                <label for="email">Correo</label>
+                <input type="email" name="correo" required>
 
-            <label for="email">Correo</label>
-            <input type="email" name="correo" required>
+                <label for="contrasenia">Contraseña</label>
+                <input type="password" name="contrasenia" id='contrasenia' required>
 
-            <label for="contrasenia">Contraseña</label>
-            <input type="password" name="contrasenia" id='contrasenia' required>
+                <input type="submit" value="Enviar" name='enviar'>
 
-            <input type="submit" value="Enviar" name='enviar'>
+            </div>
+            <a href="registro.php" target="_self" class='linkRegistroInicioSesion'>No tengo cuenta, registrarme.</a>
+        </form>
+        <?php
+        // Si inicias sesión comprobamos mediante un select que la cuenta esté registrada en la base de datos
+        if (isset($_POST['enviar'])) {
+            $con = new Conexion();
+            $con = $con->conectar();
 
-        </div>
-        <a href="registro.php" target="_self" class='linkRegistroInicioSesion'>No tengo cuenta, registrarme.</a>
-    </form>
-    <?php
-    // Si inicias sesión comprobamos mediante un select que la cuenta esté registrada en la base de datos
-    if (isset($_POST['enviar'])) {
-        $con = new Conexion();
-        $con = $con->conectar();
-
-        if ($con->connect_error) {
-            die('Conexion fallida: ' . $con->connect_error);
-        } else {
-            $select = "select correoElectronico, contrasenia from usuarioRegistrado 
+            if ($con->connect_error) {
+                die('Conexion fallida: ' . $con->connect_error);
+            } else {
+                $select = "select correoElectronico, contrasenia from usuarioRegistrado 
             where correoElectronico = '" . $_POST['correo'] . "' 
             and contrasenia = '" . $_POST['contrasenia'] . "'";
-            $rest = $con->query($select);
+                $rest = $con->query($select);
 
-            if ($rest->num_rows > 0) {
-                //Select para darle valor a la variable de sesion del id del cliente
-                $select = "select id from usuarioRegistrado 
+                if ($rest->num_rows > 0) {
+                    //Select para darle valor a la variable de sesion del id del cliente
+                    $select = "select id from usuarioRegistrado 
                 where correoElectronico = '" . $_POST['correo'] . "' 
                 and contrasenia = '" . $_POST['contrasenia'] . "'";
-                $restId = $con->query($select);
+                    $restId = $con->query($select);
 
-                // Se le asigna a la variable de sesión la id del cliente que ha iniciado sesión para que se muestre en todo 
-                // momento en el carrito sus productos y para que pueda usar la página en general
-                if ($restId->num_rows > 0) {
-                    while ($fila = $restId->fetch_assoc()) {
-                        foreach ($fila as $id) {
-                            $_SESSION['idCliente'] = $id;
+                    // Se le asigna a la variable de sesión la id del cliente que ha iniciado sesión para que se muestre en todo 
+                    // momento en el carrito sus productos y para que pueda usar la página en general
+                    if ($restId->num_rows > 0) {
+                        while ($fila = $restId->fetch_assoc()) {
+                            foreach ($fila as $id) {
+                                $_SESSION['idCliente'] = $id;
+                            }
                         }
+                        header('Location: tienda.php');
                     }
-                    header('Location: tienda.php');
+
+                    // Si no hay una cuenta con la contraseña y correo que el usuario a introducido muestra un mensaje
+                } else {
+                    echo "<div id = 'errorDiv'> <p id = 'error'>El correo o contraseña introducidos no están registrados</p></div>";
                 }
-
-                // Si no hay una cuenta con la contraseña y correo que el usuario a introducido muestra un mensaje
-            } else {
-                echo "<div id = 'errorDiv'> <p id = 'error'>El correo o contraseña introducidos no están registrados</p></div>";
             }
+            $con->close();
         }
-        $con->close();
-    }
-    ?>
-
+        ?>
+    </section>
     <script defer src="JS/header.js">
     </script>
 </body>

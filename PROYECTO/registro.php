@@ -70,83 +70,83 @@
 
   <div class='buscadorContainer'></div>
 
+  <section class="main">
+    <form action="#" method="POST" class="formulario" onsubmit="return validarContrasenia()">
+      <div class="flex-container">
+        <h2>Registro</h2>
 
-  <form action="#" method="POST" class="formulario" onsubmit="return validarContrasenia()">
-    <div class="flex-container">
-      <h2>Registro</h2>
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" required>
 
-      <label for="nombre">Nombre</label>
-      <input type="text" name="nombre" required>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" required>
 
-      <label for="apellidos">Apellidos</label>
-      <input type="text" name="apellidos" required>
+        <label for="email">Correo</label>
+        <input type="email" name="correo" required>
 
-      <label for="email">Correo</label>
-      <input type="email" name="correo" required>
+        <label for="contrasenia">Contraseña</label>
+        <input type="password" name="contrasenia" id='contrasenia' required>
 
-      <label for="contrasenia">Contraseña</label>
-      <input type="password" name="contrasenia" id='contrasenia' required>
+        <label for="domicilio">Domicilio</label>
+        <input type="text" name="domicilio">
 
-      <label for="domicilio">Domicilio</label>
-      <input type="text" name="domicilio">
+        <input type="submit" value="Enviar" name='enviar'>
 
-      <input type="submit" value="Enviar" name='enviar'>
-
-    </div>
-    <a href="iniciarSesion.php" target="_self" class='linkRegistroInicioSesion'>Ya tengo cuenta, iniciar sesión.</a>
-  </form>
-  <?php
-  /*
+      </div>
+      <a href="iniciarSesion.php" target="_self" class='linkRegistroInicioSesion'>Ya tengo cuenta, iniciar sesión.</a>
+    </form>
+    <?php
+    /*
     Si pulsas el botón de registrarse hacemos la conexion con la base de datos para insertar
     el nuevo usuario en la tabla de usuarioRegistrado 
     */
-  if (isset($_POST['enviar'])) {
-    $con = new Conexion();
-    $con = $con->conectar();
+    if (isset($_POST['enviar'])) {
+      $con = new Conexion();
+      $con = $con->conectar();
 
-    if ($con->connect_error) {
-      die('Conexion fallida: ' . $con->connect_error);
-    } else {
-
-      $select = "select correoElectronico from usuarioRegistrado 
-                where correoElectronico = '" . $_POST['correo'] . "'";
-      $restCuentaExiste = $con->query($select);
-
-      //Si el correo con el que queremos registrarnos existe, informamos al usuario que ya está registrado
-      if ($restCuentaExiste->num_rows > 0) {
-        echo "<div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>";
-
-        //Si el correo no existe, ejecutamos el insert
+      if ($con->connect_error) {
+        die('Conexion fallida: ' . $con->connect_error);
       } else {
-        $insert = "insert into usuarioRegistrado (nombre, apellidos, domicilio, correoElectronico, contrasenia) 
+
+        $select = "select correoElectronico from usuarioRegistrado 
+                where correoElectronico = '" . $_POST['correo'] . "'";
+        $restCuentaExiste = $con->query($select);
+
+        //Si el correo con el que queremos registrarnos existe, informamos al usuario que ya está registrado
+        if ($restCuentaExiste->num_rows > 0) {
+          echo "<div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>";
+
+          //Si el correo no existe, ejecutamos el insert
+        } else {
+          $insert = "insert into usuarioRegistrado (nombre, apellidos, domicilio, correoElectronico, contrasenia) 
           values ('" . $_POST['nombre'] . "', '" . $_POST['apellidos'] . "', '" . $_POST['domicilio'] . "', '" . $_POST['correo'] . "', '" . $_POST['contrasenia'] . "')";
 
-        $rest = $con->query($insert);
-        // Obtenemos el id del usuario que hemos registrado a través de un select
-        if ($rest === true) {
-          $select = "select id from usuarioRegistrado 
+          $rest = $con->query($insert);
+          // Obtenemos el id del usuario que hemos registrado a través de un select
+          if ($rest === true) {
+            $select = "select id from usuarioRegistrado 
                 where correoElectronico = '" . $_POST['correo'] . "' 
                 and contrasenia = '" . $_POST['contrasenia'] . "'";
-          $restId = $con->query($select);
+            $restId = $con->query($select);
 
-          // Si devuelve el resultado del select significa que el correo  y la contraseña y existen y vamos a recoger el id de ese usuario en una variable de sesión
-          // para usarla más adelante, como en tienda.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
-          if ($restId->num_rows > 0) {
-            while ($fila = $restId->fetch_assoc()) {
-              foreach ($fila as $id) {
-                echo $id;
-                $_SESSION['idCliente'] = $id;
+            // Si devuelve el resultado del select significa que el correo  y la contraseña y existen y vamos a recoger el id de ese usuario en una variable de sesión
+            // para usarla más adelante, como en tienda.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
+            if ($restId->num_rows > 0) {
+              while ($fila = $restId->fetch_assoc()) {
+                foreach ($fila as $id) {
+                  echo $id;
+                  $_SESSION['idCliente'] = $id;
+                }
               }
+              header('Location: tienda.php');
             }
-            header('Location: tienda.php');
           }
         }
       }
+      $con->close();
     }
-    $con->close();
-  }
-  ?>
-
+    ?>
+  </section>
   <script defer src="JS/header.js">
   </script>
 </body>

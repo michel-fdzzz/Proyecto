@@ -1,18 +1,24 @@
-let body = document.querySelector('body');
+        let body = document.querySelector('body');
         let lupaContainer = document.querySelector('.lupa');
         let lupaImagen = document.querySelector('.lupaImagen');
-        let menuTexto = document.querySelector('.menu');
-
         let busqueda = document.querySelector('.containerBusqueda');
         busqueda = null; //para que no se quede vacía como tal y no de error
+        let menuTexto = document.querySelector('.menu');
 
         lupaContainer.addEventListener('click', function() {
-            if (busqueda) {
-                busqueda.remove();
-                menuTexto.textContent = 'Menú';
-                busqueda = null;  //para que no se quede vacía como tal y no de error
-            } else {
-                let contenedor = document.querySelector('.buscadorContainer')
+            // Eliminar cualquier contenedor de búsqueda existente
+            let buscadoresAnteriores = document.querySelectorAll('.containerBusqueda');
+            buscadoresAnteriores.forEach(function(buscador) {
+                // Agregar clase para la transición de desaparición
+                buscador.classList.add('cerrarBusqueda');
+                // Eliminar el elemento después de la transición
+                setTimeout(function() {
+                    buscador.remove();
+                }, 200); // Tiempo de espera igual al tiempo de la transición
+            });
+        
+            if (!busqueda) {
+                let contenedor = document.querySelector('.buscadorContainer');
                 busqueda = document.createElement('div');
                 busqueda.setAttribute('class', 'containerBusqueda');
                 let input = document.createElement('input');
@@ -22,12 +28,22 @@ let body = document.querySelector('body');
                 input.setAttribute('placeholder', 'Buscar');
                 busqueda.appendChild(input);
                 contenedor.appendChild(busqueda);
-                 //Así lo inserta antes que el elemento que le especificamos
-                body.insertBefore(contenedor, document.querySelector('form'));
+                //Insertar el contenedor antes del formulario en el DOM
+                // Encontrar el elemento con la clase .main
+                let mainElement = document.querySelector('.main');
+                // Insertar el contenedor de búsqueda antes del elemento .main
+                mainElement.parentNode.insertBefore(contenedor, mainElement);
 
+            } else {
+                // Limpiar la referencia al contenedor de búsqueda existente
+                busqueda = null;
             }
         });
+        
 
+
+
+       
         function desplegable() {
             var desplegable = document.querySelector(".containerDesplegable");
 

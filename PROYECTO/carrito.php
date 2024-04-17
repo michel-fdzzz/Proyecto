@@ -7,10 +7,9 @@
     <title>Carrito</title>
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" href="CSS/carrito.css">
-    <script defer src="JS/carrito.js">
-    </script>
-    <script defer src="JS/menuDesplegable.js">
-    </script>
+    <script defer src="JS/carrito.js"></script>
+    <script defer src="JS/header.js"></script>
+    <script defer src="JS/menuDesplegable.js"></script>
 </head>
 
 <body>
@@ -60,42 +59,42 @@
     </section>
 
     <div class='buscadorContainer'></div>
+    <section class="main">
+        <h1 class="tituloCarrito">Su <br> Carrito</h1>
 
-    <h1 class="tituloCarrito">Su <br> Carrito</h1>
 
 
+        // PONERLO COMO LA CESTA DEL JD
+        <article class="productos-carrito-container">
+            <?php
+            // Si la variable de sesión tiene valor es que el usuario a iniciado sesion o se ha registrado y puede ver el carrito y comprar productos
+            if (isset($_SESSION['idCliente'])) {
+                $_SESSION['precioTodo'] = 0;
+                $con = new Conexion();
+                $con = $con->conectar();
 
-    // PONERLO COMO LA CESTA DEL JD
-    <article class="productos-carrito-container">
-        <?php
-        // Si la variable de sesión tiene valor es que el usuario a iniciado sesion o se ha registrado y puede ver el carrito y comprar productos
-        if (isset($_SESSION['idCliente'])) {
-            $_SESSION['precioTodo'] = 0;
-            $con = new Conexion();
-            $con = $con->conectar();
-
-            $select = "select distinct carrito.nombreProducto, carrito.modelo, carrito.cantidad, carrito.precio, carrito.idProducto , producto.imagen
+                $select = "select distinct carrito.nombreProducto, carrito.modelo, carrito.cantidad, carrito.precio, carrito.idProducto , producto.imagen
             from carrito
             inner join producto on producto.id = carrito.idProducto
             where carrito.idCliente = " . $_SESSION['idCliente'] . "";
-            $rest = $con->query($select);
-            $campos = $rest->fetch_all();
+                $rest = $con->query($select);
+                $campos = $rest->fetch_all();
 
-            if ($rest->num_rows > 0) {
-                echo '<div class="containerProductosCarrito">';
-                foreach ($campos as $campo) {
-                    $precioTotalPorProducto = $campo[2] * $campo[3];
-                    $_SESSION['precioTodo'] = $_SESSION['precioTodo'] + $precioTotalPorProducto;
+                if ($rest->num_rows > 0) {
+                    echo '<div class="containerProductosCarrito">';
+                    foreach ($campos as $campo) {
+                        $precioTotalPorProducto = $campo[2] * $campo[3];
+                        $_SESSION['precioTodo'] = $_SESSION['precioTodo'] + $precioTotalPorProducto;
 
-                    $nombreProducto = $campo[0];
-                    $modelo = $campo[1];
-                    $cantidad = $campo[2];
-                    $precio = $campo[3];
-                    $idProducto = $campo[4];
-                    $imagen = $campo[5];
+                        $nombreProducto = $campo[0];
+                        $modelo = $campo[1];
+                        $cantidad = $campo[2];
+                        $precio = $campo[3];
+                        $idProducto = $campo[4];
+                        $imagen = $campo[5];
 
-                    echo
-                    "<div class='producto'>
+                        echo
+                        "<div class='producto'>
                         <div class='info-producto-container'>
                             <div>
                                 <img src='" . $imagen . "' width='170em' height='250em'/>
@@ -116,27 +115,28 @@
                             <div class='menos'><p>-</p></div>
                         </div>
                     </div><br>";
-                }
-                echo '</div>';
-            } else {
-                echo '
+                    }
+                    echo '</div>';
+                } else {
+                    echo '
             <div class="mensajeProductosCarrito">
                 <p>No hay productos en el carrito</p>
                 <a class="linkMensaje" href="tienda.php" target="_self"><div class="botonVerProductos"><p>Ver productos</p></div></a>
             </div>';
-            }
-            $con->close();
-        } else {
-            echo  '
+                }
+                $con->close();
+            } else {
+                echo  '
             <div class="mensaje">
                 <p>No has iniciado sesión, registrate o inicia sesión para poder ver tus productos en el carrito.</p>
                 <a class="linkMensaje" href="inicioSesion.php" target="_self"><div class="boton"><p>Iniciar sesión/Registrarme</p></div></a>
             </div>';
-        }
-        ?>
+            }
+            ?>
 
 
-    </article>
+        </article>
+    </section>
 </body>
 
 </html>
