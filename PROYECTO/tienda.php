@@ -111,7 +111,7 @@
                 producto_container.classList.add('producto');
 
                 let img = document.createElement('img');
-                img.setAttribute('src', '' + producto[4] + '');
+                img.setAttribute('src', '' + producto[5] + '');
                 img.setAttribute('width', '200em');
                 img.setAttribute('height', '300em');
 
@@ -138,6 +138,15 @@
                 let stock = document.createElement('p');
                 stock.textContent = 'Quedan' + producto[6] + '';
                 stock.setAttribute('class', 'grey');
+
+
+                let button = document.createElement('button');
+                button.textContent = 'Añadir al carrito';
+
+                button.setAttribute('onclick',
+                    'añadirCarrito(' + producto[0] + ',' + <?php echo $_SESSION['idCliente']; ?> + ',"' + producto[1] + '","' + producto[2] + '" , document.getElementById(\'numProductos' + producto[0] + '\').value, "' + producto[4] + '" )');
+
+
                 producto_container.appendChild(img);
                 producto_container.appendChild(nombre);
                 producto_container.appendChild(marca);
@@ -146,6 +155,8 @@
                 producto_container.appendChild(inputCantidad);
                 producto_container.appendChild(caracteristicas);
                 producto_container.appendChild(stock);
+                producto_container.appendChild(button);
+
                 containerProductos.appendChild(producto_container);
             }
         }

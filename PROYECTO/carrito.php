@@ -62,9 +62,6 @@
     <section class="main">
         <h1 class="tituloCarrito">Su <br> Carrito</h1>
 
-
-
-        // PONERLO COMO LA CESTA DEL JD
         <article class="productos-carrito-container">
             <?php
             // Si la variable de sesión tiene valor es que el usuario a iniciado sesion o se ha registrado y puede ver el carrito y comprar productos
@@ -79,6 +76,7 @@
             where carrito.idCliente = " . $_SESSION['idCliente'] . "";
                 $rest = $con->query($select);
                 $campos = $rest->fetch_all();
+                $_SESSION['campos'] = $campos;
 
                 if ($rest->num_rows > 0) {
                     echo '<div class="containerProductosCarrito">';
@@ -99,6 +97,7 @@
                             <div>
                                 <img src='" . $imagen . "' width='170em' height='250em'/>
                                 <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ")\">Eliminar producto</button>
+                                <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
                             </div> 
                             <div class='informacionCarrito'>
                                 <div>
@@ -106,13 +105,13 @@
                                     <p>" . $modelo . "</p>
                                     <p>Precio unitario: " . $precio . "€</p>
                                 </div>
-                                <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
+                                <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "', document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\">Eliminar unidades</button>
                             </div>
                         </div>
                         <div class='mas-menos-container'>
-                            <div class='mas'><p>+</p></div>
-                            <p>$cantidad</p>
-                            <div class='menos'><p>-</p></div>
+                            <div class='mas$idProducto' id='mas'><p>+</p></div>
+                            <p class='unidades$idProducto'>$cantidad</p>
+                            <div class='menos$idProducto' id='menos'><p>-</p></div>
                         </div>
                     </div><br>";
                     }
@@ -133,10 +132,51 @@
             </div>';
             }
             ?>
-
-
         </article>
     </section>
+
+    <script>
+        <?php
+        foreach ($_SESSION['campos'] as $campo) {
+            $idProducto = $campo[4];
+        ?>
+            // Selecciona todos los elementos con la clase .mas y .menos
+            let botonesMas<?php echo $idProducto; ?> = document.querySelectorAll('.mas<?php echo $idProducto; ?>');
+            let botonesMenos<?php echo $idProducto; ?> = document.querySelectorAll('.menos<?php echo $idProducto; ?>');
+
+            // Itera sobre los botones .mas y agrega el evento click
+            botonesMas<?php echo $idProducto; ?>.forEach(function(botonMas) {
+                botonMas.addEventListener('click', function() {
+                    let cantidad = botonMas.parentNode.querySelector('.unidades<?php echo $idProducto; ?>');
+                    cantidad.innerHTML = parseInt(cantidad.innerHTML) + 1;
+                });
+            });
+
+            // Itera sobre los botones .menos y agrega el evento click
+            botonesMenos<?php echo $idProducto; ?>.forEach(function(botonMenos) {
+                botonMenos.addEventListener('click', function() {
+                    let cantidad = botonMenos.parentNode.querySelector('.unidades<?php echo $idProducto; ?>');
+                    if (parseInt(cantidad.innerHTML) > 0) {
+                        cantidad.innerHTML = parseInt(cantidad.innerHTML) - 1;
+                    }
+                });
+            });
+        <?php } ?>
+
+        function eliminarNumProducto(idProducto, idCliente, modelo, cantidad, numProductos) {
+            console.log(cantidad);
+            // Solicitud AJAX
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.href = "carrito.php";
+                }
+            };
+            xhttp.open("POST", "eliminarNumProducto.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&modelo=" + modelo + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
+        }
+    </script>
 </body>
 
 </html>

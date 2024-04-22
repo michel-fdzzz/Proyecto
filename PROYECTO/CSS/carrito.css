@@ -39,7 +39,7 @@
     align-items: center; /* Centra verticalmente los elementos */
 }
 
-.mas, .menos{
+#mas, #menos{
     background-color: #efefef;
     width: 1em; /* Aumenté un poco el ancho para dar espacio al símbolo "+" */
     height: 1em; /* Aumenté un poco la altura para dar espacio al símbolo "+" */
@@ -50,14 +50,14 @@
     font-size: xx-large;
     transition: background-color 0.2s;
 }
-.mas > p,
-.menos > p {
+#mas > p,
+#menos > p {
     text-align: center; /* Alinea el texto horizontalmente */
     margin: 0; /* Elimina el margen para evitar desplazamientos */
     line-height: 1em; /* Ajusta la altura de línea para centrar verticalmente */
 }
 
-.menos>p{
+#menos>p{
     margin-bottom: 8px;
 }
 .mas-menos-container > p{
@@ -70,7 +70,7 @@
     margin-right: 2em;
 }
 
-.mas:hover, .menos:hover{
+#mas:hover, #menos:hover{
     background-color: #bdbdbd;
 }
 
