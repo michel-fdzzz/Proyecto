@@ -70,7 +70,7 @@
                 $con = new Conexion();
                 $con = $con->conectar();
 
-                $select = "select distinct carrito.nombreProducto, carrito.modelo, carrito.cantidad, carrito.precio, carrito.idProducto , producto.imagen
+                $select = "select distinct carrito.nombreProducto, carrito.modelo, carrito.cantidad, carrito.precio, carrito.idProducto , producto.imagen, producto.stock
             from carrito
             inner join producto on producto.id = carrito.idProducto
             where carrito.idCliente = " . $_SESSION['idCliente'] . "";
@@ -90,6 +90,7 @@
                         $precio = $campo[3];
                         $idProducto = $campo[4];
                         $imagen = $campo[5];
+                        $stock = $campo[6];
 
                         echo
                         "<div class='producto'>
@@ -104,13 +105,18 @@
                                     <p>" . $nombreProducto . "</p>
                                     <p>" . $modelo . "</p>
                                     <p>Precio unitario: " . $precio . "€</p>
+                                    <p>Unidades: <span class='unidadesEnCarrito" . $idProducto . "'>" . $cantidad . "</span></p>
+                                    <p class='stock$idProducto' hidden>$stock</p>
                                 </div>
-                                <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "', document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\">Eliminar unidades</button>
+                                <div>
+                                    <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "', document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\">Añadir unidades</button>
+                                    <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "', document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\">Eliminar unidades</button>
+                                </div>
                             </div>
                         </div>
                         <div class='mas-menos-container'>
                             <div class='mas$idProducto' id='mas'><p>+</p></div>
-                            <p class='unidades$idProducto'>$cantidad</p>
+                            <p class='unidades$idProducto'>0</p>
                             <div class='menos$idProducto' id='menos'><p>-</p></div>
                         </div>
                     </div><br>";
@@ -128,7 +134,7 @@
                 echo  '
             <div class="mensaje">
                 <p>No has iniciado sesión, registrate o inicia sesión para poder ver tus productos en el carrito.</p>
-                <a class="linkMensaje" href="inicioSesion.php" target="_self"><div class="boton"><p>Iniciar sesión/Registrarme</p></div></a>
+                <a class="linkMensaje" href="iniciarSesion.php" target="_self"><div class="boton"><p>Iniciar sesión/Registrarme</p></div></a>
             </div>';
             }
             ?>
@@ -144,18 +150,23 @@
             let botonesMas<?php echo $idProducto; ?> = document.querySelectorAll('.mas<?php echo $idProducto; ?>');
             let botonesMenos<?php echo $idProducto; ?> = document.querySelectorAll('.menos<?php echo $idProducto; ?>');
 
-            // Itera sobre los botones .mas y agrega el evento click
+            //Hacemos un bucle que itere en todos los botones y haga su función en el botón que se pulse, 
+            //en este caso es decrementar la cantidad a añadir.
             botonesMas<?php echo $idProducto; ?>.forEach(function(botonMas) {
                 botonMas.addEventListener('click', function() {
-                    let cantidad = botonMas.parentNode.querySelector('.unidades<?php echo $idProducto; ?>');
-                    cantidad.innerHTML = parseInt(cantidad.innerHTML) + 1;
+                    let cantidad = document.querySelector('.unidades<?php echo $idProducto; ?>');
+                    let unidadesCarrito = document.querySelector('.unidadesEnCarrito<?php echo $idProducto; ?>');
+                    if (cantidad.innerHTML < unidadesCarrito.innerHTML){
+                        cantidad.innerHTML = parseInt(cantidad.innerHTML) + 1;
+                    }
                 });
             });
 
-            // Itera sobre los botones .menos y agrega el evento click
+            //Hacemos un bucle que itere en todos los botones y haga su función en el botón que se pulse, 
+            //en este caso es decrementar la cantidad a eliminar.
             botonesMenos<?php echo $idProducto; ?>.forEach(function(botonMenos) {
                 botonMenos.addEventListener('click', function() {
-                    let cantidad = botonMenos.parentNode.querySelector('.unidades<?php echo $idProducto; ?>');
+                    let cantidad = document.querySelector('.unidades<?php echo $idProducto; ?>');
                     if (parseInt(cantidad.innerHTML) > 0) {
                         cantidad.innerHTML = parseInt(cantidad.innerHTML) - 1;
                     }
@@ -164,7 +175,6 @@
         <?php } ?>
 
         function eliminarNumProducto(idProducto, idCliente, modelo, cantidad, numProductos) {
-            console.log(cantidad);
             // Solicitud AJAX
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -175,6 +185,31 @@
             xhttp.open("POST", "eliminarNumProducto.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&modelo=" + modelo + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
+        }
+
+        function anadirUnidades(idProducto, idCliente, modelo, cantidad, numProductos, stock) {
+            
+            let productosA_anadir = stock - cantidad;
+            console.log(productosA_anadir);
+            console.log(numProductos);
+
+            //Continuar creando anadirUnidades.php
+
+
+            var xhttp = new XMLHttpRequest();
+            if (numProductos <=  productosA_anadir){
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        window.location.href = "carrito.php";
+                    }
+                };
+                xhttp.open("POST", "anadirUnidades.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&modelo=" + modelo + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
+            } else {
+                //Poner un mensaje mas visible y decente
+                alert('En stock hay '+stock);
+            }
         }
     </script>
 </body>
