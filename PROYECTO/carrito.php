@@ -109,8 +109,8 @@
                                     <p class='stock$idProducto' hidden>$stock</p>
                                 </div>
                                 <div>
-                                    <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "', document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\">Añadir unidades</button>
-                                    <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "', document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\">Eliminar unidades</button>
+                                    <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\">Añadir unidades</button>
+                                    <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ", document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\">Eliminar unidades</button>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
         foreach ($_SESSION['campos'] as $campo) {
             $idProducto = $campo[4];
         ?>
-            // Selecciona todos los elementos con la clase .mas y .menos
+            //Seleccionamos todos los elementos con la clase .mas y .menos
             let botonesMas<?php echo $idProducto; ?> = document.querySelectorAll('.mas<?php echo $idProducto; ?>');
             let botonesMenos<?php echo $idProducto; ?> = document.querySelectorAll('.menos<?php echo $idProducto; ?>');
 
@@ -154,9 +154,14 @@
             //en este caso es decrementar la cantidad a añadir.
             botonesMas<?php echo $idProducto; ?>.forEach(function(botonMas) {
                 botonMas.addEventListener('click', function() {
+                    //Uds a eliminar/añadir
                     let cantidad = document.querySelector('.unidades<?php echo $idProducto; ?>');
+
+                    //UDS en el carrito
                     let unidadesCarrito = document.querySelector('.unidadesEnCarrito<?php echo $idProducto; ?>');
-                    if (cantidad.innerHTML < unidadesCarrito.innerHTML){
+                    
+                    let stock = document.querySelector('.stock<?php echo $idProducto; ?>');
+                    if (cantidad.innerHTML < stock.innerHTML){
                         cantidad.innerHTML = parseInt(cantidad.innerHTML) + 1;
                     }
                 });
@@ -174,7 +179,7 @@
             });
         <?php } ?>
 
-        function eliminarNumProducto(idProducto, idCliente, modelo, cantidad, numProductos) {
+        function eliminarNumProducto(idProducto, idCliente,  numProductos, cantidad) {
             // Solicitud AJAX
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -184,20 +189,15 @@
             };
             xhttp.open("POST", "eliminarNumProducto.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&modelo=" + modelo + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
+            xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
         }
 
-        function anadirUnidades(idProducto, idCliente, modelo, cantidad, numProductos, stock) {
-            
+        function anadirUnidades(idProducto, idCliente, numProductos, cantidad, stock) {
+            //Numero maximo que puedes añadir
             let productosA_anadir = stock - cantidad;
-            console.log(productosA_anadir);
-            console.log(numProductos);
-
-            //Continuar creando anadirUnidades.php
-
-
-            var xhttp = new XMLHttpRequest();
+            //si el nº de productos a añadir es menor o igual
             if (numProductos <=  productosA_anadir){
+                var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         window.location.href = "carrito.php";
@@ -205,7 +205,7 @@
                 };
                 xhttp.open("POST", "anadirUnidades.php", true);
                 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&modelo=" + modelo + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
+                xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&numProductos= " + numProductos);
             } else {
                 //Poner un mensaje mas visible y decente
                 alert('En stock hay '+stock);
