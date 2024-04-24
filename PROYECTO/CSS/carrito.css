@@ -1,66 +1,159 @@
-
-
-
-.tituloCarrito{
+.tituloCarrito {
     text-align: center;
 }
 
-.productos-carrito-container{
+.productos-carrito-container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 5%;
+    justify-content: space-between;
+    /*flex-wrap: wrap;*/
+    margin: 5% 0% 5% 5%;
     gap: 5%;
-    
 }
 
-.containerProductosCarrito{
-    width: 100%;
+.mensajeProductosCarrito {
+    width: 19em;
+    height: 7em;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
 }
 
-.info-producto-container{
+.linkMensaje {
+    display: inline-block;
+    text-decoration: none;
     display: flex;
 }
-.info-producto-container > div{
+
+.botonVerProductos {
+    background-color: #efefef;
+    height: 1.6em;
+    border-radius: 4px;
+    border: 2px white solid;
+    text-align: center;
+    color: black;
+    transition: background-color 0.2s;
+}
+
+.botonVerProductos>p {
+    margin: auto;
+}
+
+.botonVerProductos:hover {
+    background-color: #bdbdbd;
+    border: 2px solid #efefef;
+}
+
+.containerProductosCarrito {
+    width: 65%;
+}
+
+.container-comprar-todo-envio {
+    width: 30%;
+}
+
+.comprar-todo-container {
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 5px;
+    height: 17em;
+}
+
+.detalles-compra {
+    display: flex;
+    flex-direction: column;
+}
+
+.coste-envio,
+.valor-productos {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10% 0 10%;
+}
+
+.coste-IVA {
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10% 0 10%;
+}
+
+.linea-separadora {
+    height: 1px;
+    border: 1px solid #efefef;
+    width: 90%;
+}
+
+.tiempo-envio {
+    background-color: #efefef;
+    margin: 0;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.tiempo-envio>p {
+    margin: 0 1em 0 1em;
+    font-size: 0.9rem;
+}
+
+
+.info-producto-container {
+    display: flex;
+}
+
+.info-producto-container>div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.informacionCarrito{
+.informacionCarrito {
     margin-top: 10px;
 }
-.producto{
+
+.contenedorAnadirEliminar {
+    display: flex;
+    flex-direction: column;
+}
+
+.producto {
     display: flex;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     width: 100%;
     justify-content: space-between;
     border-radius: 5px;
-    align-items: center; /* Centra verticalmente los elementos */
+    align-items: center;
 }
 
-#mas, #menos{
+#mas,
+#menos {
     background-color: #efefef;
-    width: 1em; /* Aumenté un poco el ancho para dar espacio al símbolo "+" */
-    height: 1em; /* Aumenté un poco la altura para dar espacio al símbolo "+" */
+    width: 1em;
+    height: 1em;
     border-radius: 30%;
-    display: flex; /* Usamos flexbox para centrar el contenido */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    align-items: center; /* Centra verticalmente el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: xx-large;
     transition: background-color 0.2s;
 }
-#mas > p,
-#menos > p {
-    text-align: center; /* Alinea el texto horizontalmente */
-    margin: 0; /* Elimina el margen para evitar desplazamientos */
-    line-height: 1em; /* Ajusta la altura de línea para centrar verticalmente */
+
+#mas>p,
+#menos>p {
+    text-align: center;
+    margin: 0;
+    line-height: 1em;
 }
 
-#menos>p{
+#menos>p {
     margin-bottom: 8px;
 }
-.mas-menos-container > p{
+
+.mas-menos-container>p {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -70,7 +163,8 @@
     margin-right: 2em;
 }
 
-#mas:hover, #menos:hover{
+#mas:hover,
+#menos:hover {
     background-color: #bdbdbd;
 }
 
@@ -78,13 +172,13 @@
 
 
 
-.desconexion{
+.desconexion {
     margin: auto;
     font-size: 1rem;
     cursor: pointer;
 }
 
-.desconexion:hover{
+.desconexion:hover {
     text-decoration: underline;
 }
 
@@ -106,6 +200,7 @@ button {
 
 button:hover {
     background-color: #bdbdbd;
+    transform: translateY(-1px);
 }
 
 .comprar {

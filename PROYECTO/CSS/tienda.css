@@ -61,6 +61,7 @@ button {
 
 button:hover {
     background-color: #bdbdbd;
+    transform: translateY(-1px);
 }
 
 .grey {

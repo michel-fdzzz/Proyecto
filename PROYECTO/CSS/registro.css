@@ -1,5 +1,3 @@
-
-
 form.formulario {
     margin: 40px auto;
     padding: 20px;
@@ -53,14 +51,15 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #bdbdbd;
+    transform: translateY(-1px);
 }
 
-.linkRegistroInicioSesion{
+.linkRegistroInicioSesion {
     margin-top: 2em;
     text-decoration: none;
     color: black;
 }
 
-.linkRegistroInicioSesion:hover{
+.linkRegistroInicioSesion:hover {
     text-decoration: underline blue;
 }

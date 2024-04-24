@@ -108,7 +108,7 @@
                                     <p>Unidades: <span class='unidadesEnCarrito" . $idProducto . "'>" . $cantidad . "</span></p>
                                     <p class='stock$idProducto' hidden>$stock</p>
                                 </div>
-                                <div>
+                                <div class='contenedorAnadirEliminar'>
                                     <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\">Añadir unidades</button>
                                     <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ", document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\">Eliminar unidades</button>
                                 </div>
@@ -122,6 +122,32 @@
                     </div><br>";
                     }
                     echo '</div>';
+?>
+<div class='container-comprar-todo-envio'>
+                <div class='comprar-todo-container'>
+                    <div class='detalles-compra'>
+                        <div class="valor-productos">
+                            <p>Precio total sin IVA</p>
+                            <p>0€</p>
+                        </div>
+                        <div class="coste-envio">
+                            <p>Coste de envío</p>
+                            <p>0€</p>
+                        </div>
+                        <hr class='linea-separadora'>
+                        <div class="coste-IVA">
+                            <p>Precio total con IVA</p>
+                            <p>0€</p>
+                        </div>
+                        <button onclick='comprarTodo()'>Comprar todo</button>
+                    </div>
+                </div>
+
+                <div class='tiempo-envio'>
+                    <p>Entrega en 4 - 9 días laborables</p>
+                </div>
+            <div>
+<?php
                 } else {
                     echo '
             <div class="mensajeProductosCarrito">
@@ -138,6 +164,7 @@
             </div>';
             }
             ?>
+            
         </article>
     </section>
 
