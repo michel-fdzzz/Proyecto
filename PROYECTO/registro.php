@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrarse</title>
   <link href="CSS/registro.css" rel="stylesheet" type="text/css">
-  <link href="CSS/header.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <script>
     function validarContrasenia() {
       let contraseña = document.getElementById("contrasenia").value;
@@ -25,50 +26,9 @@
 </head>
 
 <body>
-  <?php include 'conexion.php';
-  session_start();
+  <?php include 'header.php';
   ?>
-  <section class="menuPrincipal">
-    <div class="desplegable">
-      <button onclick="desplegable()" class="botonDesplegar"><img src="imagenes/menuLineas.png" width="40em" height="30em" alt="Menu" />
-        <p class='menu'>Menú</p>
-      </button>
-      <div class="containerDesplegable">
-        <a href="#">Opción 1</a>
-        <a href="#">Opción 2</a>
-        <a href="#">Opción 3</a>
-      </div>
-    </div>
-    <!--<div class='containerMenuSecundario'>
-        <img src="imagenes/menuLineas.webp" width="40em" height="30em" alt="Menu" /><p class='menu'>Menú</p>
-    </div>-->
-    <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="100em" height="100em" alt="Logo" /></a>
-
-    <!--<div class='containerBuscador'>
-        <input type="text" name="buscador" id='buscador' placeholder="Buscar" />
-    </div>-->
-
-    <div class="containerIconos">
-
-      <div class="iconoInicioSesion">
-        <a href="inicioSesion.php" target="_self">
-          <img src="imagenes/perfil-removebg-preview (1).png" width="29em" height="29em" alt="Carrito" />
-        </a>
-      </div>
-
-      <div class="lupa">
-        <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
-      </div>
-
-      <div class="carrito">
-        <a href="carrito.php" target="_self">
-          <img src="imagenes/carrito.png" width="29em" height="29em" alt="Carrito" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <div class='buscadorContainer'></div>
+ 
 
   <section class="main">
     <form action="#" method="POST" class="formulario" onsubmit="return validarContrasenia()">

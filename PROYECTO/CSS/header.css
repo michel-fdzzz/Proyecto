@@ -3,22 +3,24 @@
 body {
     margin: 0;
     font-family: 'Oswald', sans-serif;
-    
+
 }
 
 * {
     box-sizing: border-box;
 }
+
 .menuPrincipal {
-   /* position: fixed;
+    /* position: fixed;
     top: 0; /* Lo fija en la parte superior de la ventana */
-  /*  left: 0; /* Lo fija en el borde izquierdo de la ventana */
-   /* width: 100%; /* Ancho completo de la ventana */
+    /*  left: 0; /* Lo fija en el borde izquierdo de la ventana */
+    /* width: 100%; /* Ancho completo de la ventana */
     display: flex;
     justify-content: space-between;
-    height: 6em;
+    height: 10%;
     background-color: #efefef;
-    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    z-index: 1000;
+    /* Asegura que esté encima de otros elementos */
 }
 
 .containerMenuSecundario {
@@ -63,9 +65,12 @@ body {
 
 #buscador {
     animation: busqueda 0.5s;
-    animation-name: mostrarDesdeArriba; /* Nombre de la animación */
-    animation-duration: 0.5s; /* Duración de la animación */
-    animation-timing-function: ease-out; /* Función de temporización */
+    animation-name: mostrarDesdeArriba;
+    /* Nombre de la animación */
+    animation-duration: 0.5s;
+    /* Duración de la animación */
+    animation-timing-function: ease-out;
+    /* Función de temporización */
     margin: auto;
     border: none;
     font-size: 1rem;
@@ -75,28 +80,37 @@ body {
     margin-bottom: 1em;
     font-family: 'Oswald', sans-serif;
 }
+
 /* Definimos la animación para ocultar de abajo hacia arriba */
 @keyframes ocultarHaciaArriba {
     from {
-      opacity: 1; /* Comienza visible */
-      transform: translateY(0); /* Comienza en su posición original */
+        opacity: 1;
+        /* Comienza visible */
+        transform: translateY(0);
+        /* Comienza en su posición original */
     }
+
     to {
-      opacity: 0; /* Termina invisible */
-      transform: translateY(-100%); /* Termina arriba de la pantalla */
+        opacity: 0;
+        /* Termina invisible */
+        transform: translateY(-100%);
+        /* Termina arriba de la pantalla */
     }
-  }
-  
-  /* Aplicamos la animación al contenedor de búsqueda cuando se cierra */
-  .cerrarBusqueda {
-    animation-name: ocultarHaciaArriba; /* Nombre de la animación */
-    animation-duration: 0.5s; /* Duración de la animación */
-    animation-timing-function: ease-out; /* Función de temporización */
-  }
+}
+
+/* Aplicamos la animación al contenedor de búsqueda cuando se cierra */
+.cerrarBusqueda {
+    animation-name: ocultarHaciaArriba;
+    /* Nombre de la animación */
+    animation-duration: 0.5s;
+    /* Duración de la animación */
+    animation-timing-function: ease-out;
+    /* Función de temporización */
+}
 
 
 
-#buscador:focus{
+#buscador:focus {
     outline: none;
 }
 
@@ -107,13 +121,18 @@ input {
 
 @keyframes busqueda {
     from {
-        opacity: 0; /* Comienza invisible */
-        transform: translateY(-100%); /* Comienza arriba de la pantalla */
-      }
-      to {
-        opacity: 1; /* Termina visible */
-        transform: translateY(0); /* Termina en su posición original */
-      }
+        opacity: 0;
+        /* Comienza invisible */
+        transform: translateY(-100%);
+        /* Comienza arriba de la pantalla */
+    }
+
+    to {
+        opacity: 1;
+        /* Termina visible */
+        transform: translateY(0);
+        /* Termina en su posición original */
+    }
 }
 
 /* Dropdown container */
@@ -149,18 +168,14 @@ input {
     transition: right 0.3s;
 }
 
-.containerDesplegable.mostrar {
-    transition: left 0.3s;
-    /* Desplazar el menú hacia la posición original (derecha) */
-}
 
 /* Links inside the dropdown */
 .containerDesplegable a {
-    margin-left: 2em;
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    margin-top: 10%;
 }
 
 /* Change color of dropdown links on hover */
@@ -171,4 +186,39 @@ input {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown.open .containerDesplegable {
     display: block;
+}
+
+
+
+.containerDesplegable {
+    position: fixed;
+    z-index: 99;
+    left: -200px;
+    /* Coloca el panel lateral fuera de la pantalla por defecto */
+    width: 200px;
+    top: 6em;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #efefef;
+    color: white;
+    transition: left 0.3s ease;
+    /* Agrega una transición suave para el movimiento lateral */
+}
+
+.containerDesplegable.activo {
+    left: 0;
+
+    /* Muestra el panel lateral cuando tiene la clase 'active' */
+}
+
+.desconexion {
+    margin: auto;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.desconexion:hover {
+    text-decoration: underline;
 }
