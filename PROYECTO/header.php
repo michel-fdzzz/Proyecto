@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <?php include 'conexion.php';
+  <?php 
   session_start();
   ?>
   <section class="menuPrincipal">

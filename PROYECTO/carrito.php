@@ -15,6 +15,8 @@
 
 <body>
     <?php include('header.php');
+     include 'conexion.php';
+     //La sesion se inicia en el header
     ?>
    
 
