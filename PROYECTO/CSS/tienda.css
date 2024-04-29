@@ -2,6 +2,15 @@
     text-align: center;
 }
 
+.main {
+    height: 90%;
+    margin-top: 8em;
+}
+
+.intro>h1 {
+    margin: 0;
+}
+
 .productos-container {
     display: flex;
     justify-content: center;

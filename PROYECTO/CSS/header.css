@@ -17,9 +17,12 @@ body {
     /* width: 100%; /* Ancho completo de la ventana */
     display: flex;
     justify-content: space-between;
-    height: 10%;
+    height: 5em;
     background-color: #efefef;
     z-index: 1000;
+    position: fixed;
+    width: 100%;
+    top: 0;
     /* Asegura que esté encima de otros elementos */
 }
 
@@ -32,6 +35,13 @@ body {
 .menu {
     margin: auto;
     font-family: 'Oswald', sans-serif;
+}
+
+.buscadorContainer {
+    position: fixed;
+    top: 4.7em;
+    width: 100%;
+    background-color: #efefef;
 }
 
 .containerBuscador {
@@ -59,7 +69,7 @@ body {
 .containerBusqueda {
     display: flex;
     margin: auto;
-    background-color: #efefef;
+
     animation: busqueda 0.5s;
 }
 
@@ -156,17 +166,7 @@ input {
     background-color: #f9f9f9;
 }
 
-/* Dropdown content (hidden by default) */
-.containerDesplegable {
-    /* Mantenemos el resto de estilos */
-    display: none;
-    position: absolute;
-    background-color: #efefef;
-    min-width: 10em;
-    /*box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);*/
-    z-index: 1;
-    transition: right 0.3s;
-}
+
 
 
 /* Links inside the dropdown */
@@ -189,20 +189,19 @@ input {
 }
 
 
-
 .containerDesplegable {
     position: fixed;
     z-index: 99;
-    left: -200px;
+    left: -150px;
     /* Coloca el panel lateral fuera de la pantalla por defecto */
-    width: 200px;
-    top: 6em;
+    width: 150px;
     height: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: #efefef;
     color: white;
+    top: 4.7em;
     transition: left 0.3s ease;
     /* Agrega una transición suave para el movimiento lateral */
 }

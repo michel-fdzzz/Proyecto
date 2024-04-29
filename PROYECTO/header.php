@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="100em" height="100em" alt="Logo" /></a>
+    <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="80em" height="80em" alt="Logo" /></a>
 
 
     <div class="containerIconos">
