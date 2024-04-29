@@ -11,6 +11,8 @@ $modelo = $_POST['modelo'];
 $cantidad = $_POST["cantidad"];
 
 $precioTotalPorProducto = $cantidad * $precio;
+$precio_envio = $precioTotalPorProducto * 0.01;
+$precioTotal = $precioTotalPorProducto + $precio_envio;
 $idPedido = 1;
 
 $con = new Conexion();
@@ -26,7 +28,7 @@ if ($restSelMax->num_rows > 0) {
 }
 
 $insert = "insert into pedido (id, idProducto, idCliente, nombreProducto, modelo ,cantidad, precio, fecha) 
-    values ($idPedido," . $idProducto . ", " . $idCliente . ", '" . $nombreProducto . "', '" . $modelo . "', " . $cantidad . "," . $precioTotalPorProducto . ", curdate())";
+    values ($idPedido," . $idProducto . ", " . $idCliente . ", '" . $nombreProducto . "', '" . $modelo . "', " . $cantidad . "," . $precioTotal . ", curdate())";
 $rest = $con->query($insert);
 
 // Si se ha insertado correctamente eliminamos el producto del carrito

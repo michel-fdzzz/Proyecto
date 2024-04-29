@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="CSS/carrito.css">
     <script defer src="JS/carrito.js"></script>
     <script defer src="JS/header.js"></script>
-    <script defer src="JS/menuDesplegable.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -16,6 +15,7 @@
 <body>
     <?php include('header.php');
      include 'conexion.php';
+     $precio_total = 0;
      //La sesion se inicia en el header
     ?>
    
@@ -54,6 +54,10 @@
                         $imagen = $campo[5];
                         $stock = $campo[6];
 
+                        $precio_total = $precio * $cantidad;
+                        $precio_total_producto = $precio * $cantidad;
+                        $coste_envio_producto = $precio_total_producto * 0.01;
+
                         echo
                         "<div class='producto'>
                         <div class='info-producto-container'>
@@ -69,6 +73,7 @@
                                     <p>Precio unitario: " . $precio . "€</p>
                                     <p>Unidades: <span class='unidadesEnCarrito" . $idProducto . "'>" . $cantidad . "</span></p>
                                     <p class='stock$idProducto' hidden>$stock</p>
+                                    <p>Gastos de envío: $coste_envio_producto € </p>
                                 </div>
                                 <div class='contenedorAnadirEliminar'>
                                     <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\">Añadir unidades</button>
@@ -84,24 +89,28 @@
                     </div><br>";
                     }
                     echo '</div>';
+
+                    //El 1% del precio del reloj
+                    $coste_envio = $precio_total * 0.01;
+                    $precio_total_envio =  $precio_total + $coste_envio;
 ?>
-<div class='container-comprar-todo-envio'>
+            <div class='container-comprar-todo-envio'>
                 <div class='comprar-todo-container'>
                     <div class='detalles-compra'>
                         <div class="valor-productos">
-                            <p>Precio total sin IVA</p>
-                            <p>0€</p>
+                            <p>Precio total</p>
+                            <p><?php echo "$precio_total €";?></p>
                         </div>
                         <div class="coste-envio">
                             <p>Coste de envío</p>
-                            <p>0€</p>
+                            <p><?php echo "$coste_envio €";?></p>
                         </div>
                         <hr class='linea-separadora'>
                         <div class="coste-IVA">
-                            <p>Precio total con IVA</p>
-                            <p>0€</p>
+                            <p>Precio total y envío</p>
+                            <p><?php echo "$precio_total_envio €";?></p>
                         </div>
-                        <button onclick='comprarTodo()'>Comprar todo</button>
+                        <button onclick='comprarTodo(<?PHP echo $_SESSION["idCliente"]?>)'>Comprar todo</button>
                     </div>
                 </div>
 
@@ -200,6 +209,20 @@
                 alert('En stock hay '+stock);
             }
         }
+
+        function comprarTodo(idCliente) {
+        // Solicitud AJAX
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                alert('Pedido realizado');
+                window.location.href = "carrito.php";
+            }
+        };
+        xhttp.open("POST", "comprarTodo.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("idCliente=" + idCliente);
+    }
     </script>
 </body>
 
