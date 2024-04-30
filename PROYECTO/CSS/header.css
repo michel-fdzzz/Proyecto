@@ -171,7 +171,6 @@ input {
     position: fixed;
     z-index: 99;
     left: -150px;
-    /* Coloca el panel lateral fuera de la pantalla por defecto */
     width: 150px;
     height: 90%;
     display: flex;
@@ -181,7 +180,6 @@ input {
     color: white;
     top: 4.7em;
     transition: left 0.3s ease;
-    /* Agrega una transición suave para el movimiento lateral */
 }
 
 .containerDesplegable.activo {
