@@ -23,7 +23,6 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
-    /* Asegura que esté encima de otros elementos */
 }
 
 .containerMenuSecundario {
@@ -76,11 +75,8 @@ body {
 #buscador {
     animation: busqueda 0.5s;
     animation-name: mostrarDesdeArriba;
-    /* Nombre de la animación */
     animation-duration: 0.5s;
-    /* Duración de la animación */
     animation-timing-function: ease-out;
-    /* Función de temporización */
     margin: auto;
     border: none;
     font-size: 1rem;
@@ -95,27 +91,20 @@ body {
 @keyframes ocultarHaciaArriba {
     from {
         opacity: 1;
-        /* Comienza visible */
         transform: translateY(0);
-        /* Comienza en su posición original */
     }
 
     to {
         opacity: 0;
-        /* Termina invisible */
         transform: translateY(-100%);
-        /* Termina arriba de la pantalla */
     }
 }
 
 /* Aplicamos la animación al contenedor de búsqueda cuando se cierra */
 .cerrarBusqueda {
     animation-name: ocultarHaciaArriba;
-    /* Nombre de la animación */
     animation-duration: 0.5s;
-    /* Duración de la animación */
     animation-timing-function: ease-out;
-    /* Función de temporización */
 }
 
 
@@ -132,27 +121,23 @@ input {
 @keyframes busqueda {
     from {
         opacity: 0;
-        /* Comienza invisible */
         transform: translateY(-100%);
-        /* Comienza arriba de la pantalla */
     }
 
     to {
         opacity: 1;
-        /* Termina visible */
         transform: translateY(0);
-        /* Termina en su posición original */
     }
 }
 
-/* Dropdown container */
+/* Contenedor del desplegable */
 .desplegable {
     margin: auto 0;
     margin-right: 1em;
     width: 6.5em;
 }
 
-/* Dropdown button */
+/* Botón del desplegable */
 .botonDesplegar {
     padding: 10px;
     font-size: 16px;
@@ -166,10 +151,6 @@ input {
     background-color: #f9f9f9;
 }
 
-
-
-
-/* Links inside the dropdown */
 .containerDesplegable a {
     color: black;
     padding: 12px 16px;
@@ -178,16 +159,13 @@ input {
     margin-top: 10%;
 }
 
-/* Change color of dropdown links on hover */
 .containerDesplegable a:hover {
     background-color: #f1f1f1;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown.open .containerDesplegable {
     display: block;
 }
-
 
 .containerDesplegable {
     position: fixed;
