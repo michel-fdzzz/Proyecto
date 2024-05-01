@@ -4,11 +4,11 @@
 
 .main {
     height: 90%;
-    margin-top: 8em;
+    margin-top: 7.7em;  /*PONER EN TODOS*/
 }
 
 .intro>h1 {
-    margin: 0;
+    padding-top: 0.68em;
 }
 
 .productos-container {

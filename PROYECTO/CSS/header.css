@@ -23,6 +23,7 @@ body {
     position: fixed;
     width: 100%;
     top: 0;
+    border-bottom: solid black 2px;
 }
 
 .containerMenuSecundario {
@@ -34,6 +35,18 @@ body {
 .menu {
     margin: auto;
     font-family: 'Oswald', sans-serif;
+}
+
+.buscadorContainer {
+    position: fixed;
+    top: 5em;
+    width: 100%;
+    background-color: #efefef;
+}
+
+.containerBuscador {
+    display: flex;
+    margin: auto;
 }
 
 .containerIconos {
@@ -53,22 +66,11 @@ body {
 }
 
 
-.buscadorContainer {
-    position: fixed;
-    top: 4.7em;
-    width: 100%;
-    background-color: #efefef;
-    animation: busqueda 0.5s;
-}
-
 .containerBusqueda {
     display: flex;
     margin: auto;
 
     animation: busqueda 0.5s;
-    animation-name: mostrarDesdeArriba;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
 }
 
 #buscador {
@@ -84,6 +86,7 @@ body {
     border-bottom: 2px solid black;
     margin-bottom: 1em;
     font-family: 'Oswald', sans-serif;
+    margin-top: 4px;
 }
 
 /* Definimos la animación para ocultar de abajo hacia arriba */
@@ -195,4 +198,10 @@ input {
 
 .desconexion:hover {
     text-decoration: underline;
+}
+
+.gris{
+    background-color: rgb(211,211,211,0.5);
+    transition: background-color 0.5s ease;
+    z-index: 200;
 }

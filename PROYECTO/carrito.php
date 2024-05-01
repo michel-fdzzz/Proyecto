@@ -24,42 +24,44 @@
     <section class="main">
         <h1 class="tituloCarrito">Su <br> Carrito</h1>
 
-        <article class="productos-carrito-container">
-            <?php
-            // Si la variable de sesión tiene valor es que el usuario a iniciado sesion o se ha registrado y puede ver el carrito y comprar productos
-            if (isset($_SESSION['idCliente'])) {
-                $_SESSION['precioTodo'] = 0;
-                $con = new Conexion();
-                $con = $con->conectar();
 
-                $select = "select distinct carrito.nombreProducto, carrito.modelo, carrito.cantidad, carrito.precio, carrito.idProducto , producto.imagen, producto.stock
+        <?php
+
+        // Si la variable de sesión tiene valor es que el usuario a iniciado sesion o se ha registrado y puede ver el carrito y comprar productos
+        if (isset($_SESSION['idCliente'])) {
+            $_SESSION['precioTodo'] = 0;
+            $con = new Conexion();
+            $con = $con->conectar();
+
+            $select = "select distinct carrito.nombreProducto, carrito.modelo, carrito.cantidad, carrito.precio, carrito.idProducto , producto.imagen, producto.stock
             from carrito
             inner join producto on producto.id = carrito.idProducto
             where carrito.idCliente = " . $_SESSION['idCliente'] . "";
-                $rest = $con->query($select);
-                $campos = $rest->fetch_all();
-                $_SESSION['campos'] = $campos;
+            $rest = $con->query($select);
+            $campos = $rest->fetch_all();
+            $_SESSION['campos'] = $campos;
 
-                if ($rest->num_rows > 0) {
-                    echo '<div class="containerProductosCarrito">';
-                    foreach ($campos as $campo) {
-                        $precioTotalPorProducto = $campo[2] * $campo[3];
-                        $_SESSION['precioTodo'] = $_SESSION['precioTodo'] + $precioTotalPorProducto;
+            if ($rest->num_rows > 0) {
+                echo ' <article class="productos-carrito-container">
+                    <div class="containerProductosCarrito">';
+                foreach ($campos as $campo) {
+                    $precioTotalPorProducto = $campo[2] * $campo[3];
+                    $_SESSION['precioTodo'] = $_SESSION['precioTodo'] + $precioTotalPorProducto;
 
-                        $nombreProducto = $campo[0];
-                        $modelo = $campo[1];
-                        $cantidad = $campo[2];
-                        $precio = $campo[3];
-                        $idProducto = $campo[4];
-                        $imagen = $campo[5];
-                        $stock = $campo[6];
+                    $nombreProducto = $campo[0];
+                    $modelo = $campo[1];
+                    $cantidad = $campo[2];
+                    $precio = $campo[3];
+                    $idProducto = $campo[4];
+                    $imagen = $campo[5];
+                    $stock = $campo[6];
 
-                        $precio_total = $precio * $cantidad;
-                        $precio_total_producto = $precio * $cantidad;
-                        $coste_envio_producto = $precio_total_producto * 0.01;
+                    $precio_total = $precio * $cantidad;
+                    $precio_total_producto = $precio * $cantidad;
+                    $coste_envio_producto = $precio_total_producto * 0.01;
 
-                        echo
-                        "<div class='producto'>
+                    echo
+                    "<div class='producto'>
                         <div class='info-producto-container'>
                             <div>
                                 <img src='" . $imagen . "' width='170em' height='250em'/>
@@ -87,56 +89,59 @@
                             <div class='menos$idProducto' id='menos'><p>-</p></div>
                         </div>
                     </div><br>";
-                    }
-                    echo '</div>';
-
-                    //El 1% del precio del reloj
-                    $coste_envio = $precio_total * 0.01;
-                    $precio_total_envio =  $precio_total + $coste_envio;
-            ?>
-                    <div class='container-comprar-todo-envio'>
-                        <div class='comprar-todo-container'>
-                            <div class='detalles-compra'>
-                                <div class="valor-productos">
-                                    <p>Precio total</p>
-                                    <p><?php echo "$precio_total €"; ?></p>
-                                </div>
-                                <div class="coste-envio">
-                                    <p>Coste de envío</p>
-                                    <p><?php echo "$coste_envio €"; ?></p>
-                                </div>
-                                <hr class='linea-separadora'>
-                                <div class="coste-IVA">
-                                    <p>Precio total y envío</p>
-                                    <p><?php echo "$precio_total_envio €"; ?></p>
-                                </div>
-                                <button onclick='comprarTodo(<?PHP echo $_SESSION["idCliente"] ?>)'>Comprar todo</button>
-                            </div>
-                        </div>
-
-                        <div class='tiempo-envio'>
-                            <p>Entrega en 4 - 9 días laborables</p>
-                        </div>
-                        <div>
-                    <?php
-                } else {
-                    echo '
-            <div class="mensajeProductosCarrito">
-                <p>No hay productos en el carrito</p>
-                <a class="linkMensaje" href="tienda.php" target="_self"><div class="botonVerProductos"><p>Ver productos</p></div></a>
-            </div>';
                 }
-                $con->close();
+                echo '</div>';
+
+                //El 1% del precio del reloj
+                $coste_envio = $precio_total * 0.01;
+                $precio_total_envio =  $precio_total + $coste_envio;
+        ?>
+                <div class='container-comprar-todo-envio'>
+                    <div class='comprar-todo-container'>
+                        <div class='detalles-compra'>
+                            <div class="valor-productos">
+                                <p>Precio total</p>
+                                <p><?php echo "$precio_total €"; ?></p>
+                            </div>
+                            <div class="coste-envio">
+                                <p>Coste de envío</p>
+                                <p><?php echo "$coste_envio €"; ?></p>
+                            </div>
+                            <hr class='linea-separadora'>
+                            <div class="coste-IVA">
+                                <p>Precio total y envío</p>
+                                <p><?php echo "$precio_total_envio €"; ?></p>
+                            </div>
+                            <button onclick='comprarTodo(<?PHP echo $_SESSION["idCliente"] ?>)'>Comprar todo</button>
+                        </div>
+                    </div>
+
+                    <div class='tiempo-envio'>
+                        <p>Entrega en 4 - 9 días laborables</p>
+                    </div>
+                    <div>
+                        </article>
+                <?php
             } else {
-                echo  '
+                echo '
+            <div class="container-mensaje-productos-carrito">
+                <div class="mensajeProductosCarrito">
+                    <p>No hay productos en el carrito</p>
+                    <a class="linkMensaje" href="tienda.php" target="_self"><div class="botonVerProductos"><p>Ver productos</p></div></a>
+                </div>
+            </div>    ';
+            }
+            $con->close();
+        } else {
+            echo  '
             <div class="mensaje">
                 <p>No has iniciado sesión, registrate o inicia sesión para poder ver tus productos en el carrito.</p>
                 <a class="linkMensaje" href="iniciarSesion.php" target="_self"><div class="boton"><p>Iniciar sesión/Registrarme</p></div></a>
             </div>';
-            }
-                    ?>
+        }
+                ?>
 
-        </article>
+
     </section>
 
     <?php

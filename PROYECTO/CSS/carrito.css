@@ -15,7 +15,14 @@
     gap: 5%;
 }
 
+.container-mensaje-productos-carrito{
+    display: flex;
+    justify-content: center;
+    /*flex-wrap: wrap;*/
+    margin: 5% 0% 5% 0%;
+}
 .mensajeProductosCarrito {
+    
     max-width: 19em;
    /* height: 7em;*/
     background-color: #ffffff;

@@ -4,18 +4,21 @@ let lupaImagen = document.querySelector('.lupaImagen');
 let busqueda = document.querySelector('.containerBusqueda');
 busqueda = null; //para que no se quede vacía como tal y no de error
 let menuTexto = document.querySelector('.menu');
+let main = document.querySelector('.main');
+
 
 lupaContainer.addEventListener('click', function () {
+    let main = document.querySelector('.main');
+    main.classList.add('gris');
     // Eliminar cualquier contenedor de búsqueda existente
     let buscadoresAnteriores = document.querySelectorAll('.containerBusqueda');
-    let bsucadorContainer = document.querySelectorAll('.buscadorContainer');
     buscadoresAnteriores.forEach(function (buscador) {
         // Agregar clase para la transición de desaparición
         buscador.classList.add('cerrarBusqueda');
-        bsucadorContainer.classList.add('cerrarBusqueda');
         // Eliminar el elemento después de la transición
         setTimeout(function () {
             buscador.remove();
+            main.classList.remove('gris');
         }, 200); // Tiempo de espera igual al tiempo de la transición
     });
 
