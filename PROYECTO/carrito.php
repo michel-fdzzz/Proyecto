@@ -14,11 +14,11 @@
 
 <body>
     <?php include('header.php');
-     include 'conexion.php';
-     $precio_total = 0;
-     //La sesion se inicia en el header
+    include 'conexion.php';
+    $precio_total = 0;
+    //La sesion se inicia en el header
     ?>
-   
+
 
     <div class='buscadorContainer'></div>
     <section class="main">
@@ -93,32 +93,32 @@
                     //El 1% del precio del reloj
                     $coste_envio = $precio_total * 0.01;
                     $precio_total_envio =  $precio_total + $coste_envio;
-?>
-            <div class='container-comprar-todo-envio'>
-                <div class='comprar-todo-container'>
-                    <div class='detalles-compra'>
-                        <div class="valor-productos">
-                            <p>Precio total</p>
-                            <p><?php echo "$precio_total €";?></p>
+            ?>
+                    <div class='container-comprar-todo-envio'>
+                        <div class='comprar-todo-container'>
+                            <div class='detalles-compra'>
+                                <div class="valor-productos">
+                                    <p>Precio total</p>
+                                    <p><?php echo "$precio_total €"; ?></p>
+                                </div>
+                                <div class="coste-envio">
+                                    <p>Coste de envío</p>
+                                    <p><?php echo "$coste_envio €"; ?></p>
+                                </div>
+                                <hr class='linea-separadora'>
+                                <div class="coste-IVA">
+                                    <p>Precio total y envío</p>
+                                    <p><?php echo "$precio_total_envio €"; ?></p>
+                                </div>
+                                <button onclick='comprarTodo(<?PHP echo $_SESSION["idCliente"] ?>)'>Comprar todo</button>
+                            </div>
                         </div>
-                        <div class="coste-envio">
-                            <p>Coste de envío</p>
-                            <p><?php echo "$coste_envio €";?></p>
-                        </div>
-                        <hr class='linea-separadora'>
-                        <div class="coste-IVA">
-                            <p>Precio total y envío</p>
-                            <p><?php echo "$precio_total_envio €";?></p>
-                        </div>
-                        <button onclick='comprarTodo(<?PHP echo $_SESSION["idCliente"]?>)'>Comprar todo</button>
-                    </div>
-                </div>
 
-                <div class='tiempo-envio'>
-                    <p>Entrega en 4 - 9 días laborables</p>
-                </div>
-            <div>
-<?php
+                        <div class='tiempo-envio'>
+                            <p>Entrega en 4 - 9 días laborables</p>
+                        </div>
+                        <div>
+                    <?php
                 } else {
                     echo '
             <div class="mensajeProductosCarrito">
@@ -134,10 +134,14 @@
                 <a class="linkMensaje" href="iniciarSesion.php" target="_self"><div class="boton"><p>Iniciar sesión/Registrarme</p></div></a>
             </div>';
             }
-            ?>
-            
+                    ?>
+
         </article>
     </section>
+
+    <?php
+    include 'footer.php';
+    ?>
 
     <script>
         <?php
@@ -157,9 +161,9 @@
 
                     //UDS en el carrito
                     let unidadesCarrito = document.querySelector('.unidadesEnCarrito<?php echo $idProducto; ?>');
-                    
+
                     let stock = document.querySelector('.stock<?php echo $idProducto; ?>');
-                    if (cantidad.innerHTML < stock.innerHTML){
+                    if (cantidad.innerHTML < stock.innerHTML) {
                         cantidad.innerHTML = parseInt(cantidad.innerHTML) + 1;
                     }
                 });
@@ -177,7 +181,7 @@
             });
         <?php } ?>
 
-        function eliminarNumProducto(idProducto, idCliente,  numProductos, cantidad) {
+        function eliminarNumProducto(idProducto, idCliente, numProductos, cantidad) {
             // Solicitud AJAX
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
@@ -194,7 +198,7 @@
             //Numero maximo que puedes añadir
             let productosA_anadir = stock - cantidad;
             //si el nº de productos a añadir es menor o igual
-            if (numProductos <=  productosA_anadir){
+            if (numProductos <= productosA_anadir) {
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
@@ -206,23 +210,23 @@
                 xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&numProductos= " + numProductos);
             } else {
                 //Poner un mensaje mas visible y decente
-                alert('En stock hay '+stock);
+                alert('En stock hay ' + stock);
             }
         }
 
         function comprarTodo(idCliente) {
-        // Solicitud AJAX
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                alert('Pedido realizado');
-                window.location.href = "carrito.php";
-            }
-        };
-        xhttp.open("POST", "comprarTodo.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("idCliente=" + idCliente);
-    }
+            // Solicitud AJAX
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert('Pedido realizado');
+                    window.location.href = "carrito.php";
+                }
+            };
+            xhttp.open("POST", "comprarTodo.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("idCliente=" + idCliente);
+        }
     </script>
 </body>
 

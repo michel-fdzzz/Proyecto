@@ -27,10 +27,10 @@
 
 <body>
   <?php include 'header.php';
-   include 'conexion.php';
-   //La sesion se inicia en el header
+  include 'conexion.php';
+  //La sesion se inicia en el header
   ?>
- 
+
 
   <section class="main">
     <form action="#" method="POST" class="formulario" onsubmit="return validarContrasenia()">
@@ -109,6 +109,9 @@
     }
     ?>
   </section>
+  <?php
+  include 'footer.php';
+  ?>
   <script defer src="JS/header.js">
   </script>
 </body>

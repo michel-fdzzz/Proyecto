@@ -16,8 +16,8 @@
 }
 
 .mensajeProductosCarrito {
-    width: 19em;
-    height: 7em;
+    max-width: 19em;
+   /* height: 7em;*/
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
@@ -26,19 +26,20 @@
 }
 
 .linkMensaje {
-    display: inline-block;
     text-decoration: none;
-    display: flex;
 }
 
 .botonVerProductos {
     background-color: #efefef;
-    height: 1.6em;
+    min-height: 2em;
+    width: 100%;
     border-radius: 4px;
     border: 2px white solid;
     text-align: center;
     color: black;
     transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
 }
 
 .botonVerProductos>p {
@@ -48,6 +49,7 @@
 .botonVerProductos:hover {
     background-color: #bdbdbd;
     border: 2px solid #efefef;
+    transform: translateY(-1px);
 }
 
 .containerProductosCarrito {
@@ -56,6 +58,8 @@
 
 .container-comprar-todo-envio {
     width: 30%;
+    position: fixed;
+    right: 0;
 }
 
 .comprar-todo-container {

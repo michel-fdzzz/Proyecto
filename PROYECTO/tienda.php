@@ -14,7 +14,7 @@
     include 'conexion.php';
     //La sesion se inicia en el header
     ?>
-    
+
 
     <section class="main">
         <article class="intro">
@@ -55,6 +55,9 @@
 
         </article>
     </section>
+    <?php
+    include 'footer.php';
+    ?>
     <script>
         // Muestra los productos según los resultados de la busqueda que optenemos mediante un select en busqueda.php
         function mostrarProductos(productos) {

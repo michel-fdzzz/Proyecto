@@ -74,6 +74,9 @@
         }
         ?>
     </section>
+    <?php
+    include 'footer.php';
+    ?>
     <script defer src="JS/header.js">
     </script>
 </body>

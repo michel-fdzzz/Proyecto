@@ -36,18 +36,6 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
-.buscadorContainer {
-    position: fixed;
-    top: 4.7em;
-    width: 100%;
-    background-color: #efefef;
-}
-
-.containerBuscador {
-    display: flex;
-    margin: auto;
-}
-
 .containerIconos {
     display: flex;
     gap: 1em;
@@ -65,11 +53,22 @@ body {
 }
 
 
+.buscadorContainer {
+    position: fixed;
+    top: 4.7em;
+    width: 100%;
+    background-color: #efefef;
+    animation: busqueda 0.5s;
+}
+
 .containerBusqueda {
     display: flex;
     margin: auto;
 
     animation: busqueda 0.5s;
+    animation-name: mostrarDesdeArriba;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
 }
 
 #buscador {

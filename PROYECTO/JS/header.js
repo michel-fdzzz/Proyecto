@@ -8,9 +8,11 @@ let menuTexto = document.querySelector('.menu');
 lupaContainer.addEventListener('click', function () {
     // Eliminar cualquier contenedor de búsqueda existente
     let buscadoresAnteriores = document.querySelectorAll('.containerBusqueda');
+    let bsucadorContainer = document.querySelectorAll('.buscadorContainer');
     buscadoresAnteriores.forEach(function (buscador) {
         // Agregar clase para la transición de desaparición
         buscador.classList.add('cerrarBusqueda');
+        bsucadorContainer.classList.add('cerrarBusqueda');
         // Eliminar el elemento después de la transición
         setTimeout(function () {
             buscador.remove();
@@ -109,3 +111,13 @@ $(document).ready(function () {
         $(this).siblings('.containerDesplegable').toggleClass('activo');
     });
 });
+
+/*
+--------------------- PRobar con jquery pa la busqueda --------------------------
+
+$(document).ready(function () {
+    $('.buscadorContainer').click(function () {
+        $(this).siblings('.buscadorContainer').toggleClass('activo');
+    });
+});
+*/
