@@ -107,7 +107,6 @@
                 button.setAttribute('onclick',
                     'añadirCarrito(' + producto[0] + ',' + <?php echo $_SESSION['idCliente']; ?> + ',"' + producto[1] + '","' + producto[2] + '" , document.getElementById(\'numProductos' + producto[0] + '\').value, "' + producto[4] + '" )');
 
-
                 producto_container.appendChild(img);
                 producto_container.appendChild(nombre);
                 producto_container.appendChild(marca);
@@ -117,10 +116,12 @@
                 producto_container.appendChild(caracteristicas);
                 producto_container.appendChild(stock);
                 producto_container.appendChild(button);
-
                 containerProductos.appendChild(producto_container);
             }
         }
+
+        //Controlar que no se pueda meter más del stock que hay manualmente
+        
     </script>
 </body>
 
