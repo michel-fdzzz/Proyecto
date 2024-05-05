@@ -38,7 +38,7 @@
                 <a href='producto.php'> <img src='" . $campo[5] . "' width='200em' height='300em'/></a>
                 <p>" . $campo[1] . "</p>
                 <p>" . intval($campo[4]) . " €</p>
-                Cantidad: Mirar pa quitarlo<input type='number' id='numProductos" . $campo[0] . "' max='3' min='1' /><br>
+                Cantidad: Mirar pa quitarlo<input type='number' id='numProductos" . $campo[0] . "' max='$campo[6]' min='0' /><br>
                 <p class='grey'>" . $campo[7] . "</p>
                 <p class='grey'>Quedan " . $campo[6] . "</p>";
 

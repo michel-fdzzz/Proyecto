@@ -42,6 +42,9 @@ if ($filas > 0) {
         if ($rest) {
             $delete = "delete from carrito where idProducto = '$idProducto' and idCliente = '$idCliente'";
             $rest = $con->query($delete);
+
+            $update = "update producto set stock = stock - $cantidad where id = $idProducto";
+            $rest = $con->query($update);
         }
     }
 }

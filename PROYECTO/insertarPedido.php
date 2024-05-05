@@ -35,4 +35,7 @@ $rest = $con->query($insert);
 if ($rest) {
     $delete = "delete from carrito where idProducto = '$idProducto' and modelo = '$modelo' and idCliente = '$idCliente'";
     $rest = $con->query($delete);
+
+    $update = "update producto set stock = stock - $cantidad where id = $idProducto";
+    $rest = $con->query($update);
 }
