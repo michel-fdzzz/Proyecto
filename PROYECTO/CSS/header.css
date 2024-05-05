@@ -42,30 +42,20 @@ body {
     z-index: 999;
     left: -100%;
     top: 5em;
-    /* Lo colocamos fuera de la vista inicialmente */
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: #efefef;
-    /* Transparente al inicio */
     color: white;
     transition: left 0.3s ease-in-out;
-    /* Transición de izquierda a derecha */
+    border-bottom: solid black 1px;
 }
 
 .buscadorContainer.activo {
     left: 0;
     top: 5em;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -99,10 +89,6 @@ body {
 }
 
 #buscador {
-    animation: busqueda 0.5s;
-    animation-name: mostrarDesdeArriba;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
     margin: auto;
     border: none;
     font-size: 1rem;
@@ -110,28 +96,7 @@ body {
     background-color: #efefef;
     border-bottom: 2px solid black;
     margin-bottom: 1em;
-    font-family: 'Oswald', sans-serif;
     margin-top: 4px;
-}
-
-/* Definimos la animación para ocultar de abajo hacia arriba */
-@keyframes ocultarHaciaArriba {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
-}
-
-/* Aplicamos la animación al contenedor de búsqueda cuando se cierra */
-.cerrarBusqueda {
-    animation-name: ocultarHaciaArriba;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
 }
 
 
@@ -205,7 +170,7 @@ input {
     flex-direction: column;
     background-color: #efefef;
     color: white;
-    top: 4.7em;
+    top: 5em;
     transition: left 0.3s ease;
 }
 
