@@ -39,10 +39,35 @@ body {
 
 .buscadorContainer {
     position: fixed;
+    z-index: 999;
+    left: -100%;
     top: 5em;
+    /* Lo colocamos fuera de la vista inicialmente */
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background-color: #efefef;
+    /* Transparente al inicio */
+    color: white;
+    transition: left 0.3s ease-in-out;
+    /* Transición de izquierda a derecha */
 }
+
+.buscadorContainer.activo {
+    left: 0;
+    top: 5em;
+}
+
+
+
+
+
+
+
+
+
+
 
 .containerBuscador {
     display: flex;
@@ -198,10 +223,4 @@ input {
 
 .desconexion:hover {
     text-decoration: underline;
-}
-
-.gris{
-    background-color: rgb(211,211,211,0.5);
-    transition: background-color 0.5s ease;
-    z-index: 200;
 }

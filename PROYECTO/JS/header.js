@@ -7,39 +7,11 @@ let menuTexto = document.querySelector('.menu');
 let main = document.querySelector('.main');
 
 
-lupaContainer.addEventListener('click', function () {
-    let main = document.querySelector('.main');
-    main.classList.add('gris');
-    // Eliminar cualquier contenedor de búsqueda existente
-    let buscadoresAnteriores = document.querySelectorAll('.containerBusqueda');
-    buscadoresAnteriores.forEach(function (buscador) {
-        // Agregar clase para la transición de desaparición
-        buscador.classList.add('cerrarBusqueda');
-        // Eliminar el elemento después de la transición
-        setTimeout(function () {
-            buscador.remove();
-            main.classList.remove('gris');
-        }, 200); // Tiempo de espera igual al tiempo de la transición
-    });
+//Funcion para abrir y cerrar el buscador
+$(document).ready(function () {
+    $('.lupa').click(function () {
 
-    if (busqueda) {
-        busqueda = null; //para que no se quede vacía como tal y no de error
-    } else {
-        let contenedor = document.querySelector('.buscadorContainer');
-        busqueda = document.createElement('div');
-        busqueda.setAttribute('class', 'containerBusqueda');
-        let input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        input.setAttribute('name', 'buscador');
-        input.setAttribute('id', 'buscador');
-        input.setAttribute('placeholder', 'Buscar');
-        busqueda.appendChild(input);
-        contenedor.appendChild(busqueda);
-        //Insertar el contenedor antes del formulario en el DOM
-        // Encontrar el elemento con la clase .main
-        let mainElement = document.querySelector('.main');
-        // Insertar el contenedor de búsqueda antes del elemento .main
-        mainElement.parentNode.insertBefore(contenedor, mainElement);
+        $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');
 
         function buscar(texto) {
             var xhttp = new XMLHttpRequest();
@@ -57,7 +29,7 @@ lupaContainer.addEventListener('click', function () {
                          div.appendChild(p);
                          body.appendChild(div);
                          let seg = 2.5;
-
+ 
                          function temp() {
                              if (seg <= 0) {
                                  clearInterval(tiempo);
@@ -84,9 +56,8 @@ lupaContainer.addEventListener('click', function () {
             let texto = document.querySelector('#buscador').value;
             buscar(texto);
         });
-    }
+    });
 });
-
 
 
 try {
@@ -115,12 +86,6 @@ $(document).ready(function () {
     });
 });
 
-/*
---------------------- PRobar con jquery pa la busqueda --------------------------
 
-$(document).ready(function () {
-    $('.buscadorContainer').click(function () {
-        $(this).siblings('.buscadorContainer').toggleClass('activo');
-    });
-});
-*/
+
+

@@ -46,8 +46,9 @@
 
             <div class="lupa">
                 <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
+               
             </div>
-
+            
 
             <div class="carrito">
                 <a href="carrito.php" target="_self">
@@ -55,9 +56,11 @@
                 </a>
             </div>
         </div>
+        <div class='buscadorContainer'>
+                  <input type="text" name="buscador" id="buscador" placeholder="Buscar">
+        </div>
   </section>
 
-  <div class='buscadorContainer'></div>
 
   </section>
   <script defer src="JS/header.js">
