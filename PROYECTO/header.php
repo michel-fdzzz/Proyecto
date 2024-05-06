@@ -43,7 +43,7 @@
                 if ($stmt->fetch()) {
                     // Comparar el tipo obtenido
                     if ($tipo == 1) {
-                        echo '<a href="#">Gestión de productos</a>';
+                        echo '<a href="gestion.php">Gestión de productos</a>';
                     }
                 }
                 // Cerrar la consulta preparada

@@ -5,31 +5,31 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
-footer{
+footer {
     position: absolute;
-    /*bottom: 0; ---- PORQUE SI LA PANTALLA OCUAP MAS DE LO DEBIDO SE QUEDA ARRIBA*/ 
+    /*bottom: 0; ---- PORQUE SI LA PANTALLA OCUAP MAS DE LO DEBIDO SE QUEDA ARRIBA*/
     background-color: #efefef;
     width: 100%;
     /*height: 30%;*/
     border-top: solid 2px black;
 }
 
-.contenedor-items-footer{
+.contenedor-items-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.contenedor-imagen{
+.contenedor-imagen {
     display: flex;
 }
 
-.imagen{
+.imagen {
     z-index: 1000;
     width: 5em;
 }
 
-.contenedor-info-footer{
+.contenedor-info-footer {
     display: flex;
     justify-content: space-between;
     width: 95%;
@@ -38,17 +38,37 @@ footer{
     align-items: center;
 }
 
-.contenedor-privacidad{
+.contenedor-privacidad {
     display: flex;
     flex-direction: column;
 }
 
-.contenedor-privacidad>p{
+.contenedor-privacidad>p {
     margin: 0.5em;
 }
 
-.contenedor-final-footer{
+.contenedor-final-footer {
     text-align: center;
     width: 100%;
     border-top: solid 2px black;
+}
+
+.contenedor-info-footer p {
+    position: relative;
+    display: inline;
+}
+
+.contenedor-info-footer p::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.contenedor-info-footer p:hover::after {
+    width: 100%;
 }
