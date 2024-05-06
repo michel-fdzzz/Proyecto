@@ -14,7 +14,6 @@
 
 <body>
     <?php include('header.php');
-    include 'conexion.php';
     $precio_total = 0;
     //La sesion se inicia en el header
     ?>

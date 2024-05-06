@@ -12,6 +12,7 @@
 <body>
   <?php 
   session_start();
+  include 'conexion.php';
   ?>
   <section class="menuPrincipal">
     <div class="desplegable">
@@ -22,6 +23,9 @@
         <a href="#">Opción 1</a>
         <a href="#">Opción 2</a>
         <a href="#">Opción 3</a>
+        <?php
+
+        ?>
       </div>
     </div>
 
