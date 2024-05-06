@@ -25,13 +25,15 @@ create table producto (
     descripcion varchar(200) not null
 );
 
-create table usuarioRegistrado (
+create table usuario (
     id int auto_increment primary key,
     nombre varchar(30) not null,
     apellidos varchar(50) not null,
     correoElectronico varchar(50) not null,
     contrasenia varchar(30) not null,
-    domicilio varchar (100) not null
+    domicilio varchar (100) not null,
+    -- false / 0 será un usuario normal y el admin true / 1
+    tipo boolean not null
 );
 
 
@@ -43,7 +45,7 @@ create table carrito (
     cantidad int not null,
     precio decimal(10, 2) not null,
     foreign key (idProducto) references producto(id),
-    foreign key (idCliente) references usuarioRegistrado(id)
+    foreign key (idCliente) references usuario(id)
 );
 
 create table pedido (
@@ -56,26 +58,18 @@ create table pedido (
     precio decimal(10, 2) not null,
     fecha date not null,
     foreign key (idProducto) references producto(id),
-    foreign key (idCliente) references usuarioRegistrado(id)
+    foreign key (idCliente) references usuario(id)
 );
 
 
-insert into producto values (null, 'Oyster Perpetual 41','Rolex', 'Oyster', 6600, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001',5, '41 mm, acero Oystersteel');
-insert into producto values (null, 'Dajejust 36', 'Rolex','Dajejust', 13350, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039',3, '36 mm, acero Oystersteel y oro amarillo');
+-- Insertar productos
+INSERT INTO producto (id, nombre, marca, modelo, precio, imagen, stock, descripcion)
+VALUES 
+  (null, 'Oyster Perpetual 41', 'Rolex', 'Oyster', 6600, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001', 5, '41 mm, acero Oystersteel'),
+  (null, 'Dajejust 36', 'Rolex', 'Dajejust', 13350, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039', 3, '36 mm, acero Oystersteel y oro amarillo');
 
--- Sin stock ni descripción
-/*
-insert into producto values (null, 'Oyster Perpetual 41', 'Oyster', 6600, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001');
-insert into producto values (null, 'Dajejust 36', 'Dajejust', 13350, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039');
-*//*
-insert into producto (nombre, marca, modelo, precio, imagen)
-values ('Oyster Perpetual 41', 'Rolex', 'Oyster', 6600.00, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001'),
-       ('Dajejust 36', 'Rolex', 'Dajejust', 13350.00, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039');
-*/
--- con stock y descripcion
-
-
-
-
-
-
+-- Insertar usuarios
+INSERT INTO usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo)
+VALUES 
+  ('Alex', 'Perez', '', 'a@gmail.com', 'abcdefG1#', 0),
+  ('Michel', 'Fernandez', '', 'admin@gmail.com', 'abcdefG1#', 1);

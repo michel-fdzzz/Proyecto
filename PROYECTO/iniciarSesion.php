@@ -42,14 +42,14 @@
             if ($con->connect_error) {
                 die('Conexion fallida: ' . $con->connect_error);
             } else {
-                $select = "select correoElectronico, contrasenia from usuarioRegistrado 
+                $select = "select correoElectronico, contrasenia from usuario 
             where correoElectronico = '" . $_POST['correo'] . "' 
             and contrasenia = '" . $_POST['contrasenia'] . "'";
                 $rest = $con->query($select);
 
                 if ($rest->num_rows > 0) {
                     //Select para darle valor a la variable de sesion del id del cliente
-                    $select = "select id from usuarioRegistrado 
+                    $select = "select id from usuario 
                 where correoElectronico = '" . $_POST['correo'] . "' 
                 and contrasenia = '" . $_POST['contrasenia'] . "'";
                     $restId = $con->query($select);

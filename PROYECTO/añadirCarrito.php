@@ -32,8 +32,8 @@ if ($con->connect_error) {
         // La idea es que no puedas añadir exactamente el mismo producto más de una vez, es decir, una zapatilla con una 
         // talla determinada es un producto diferente a esa misma zapatilla de diferente talla, pero si la talla es la misma 
         // y el producto es el mismo, no puedes incluirlo en el carrito.
-        $select = "select idProducto from carrito 
-        where idProducto = $idProducto";
+        $select = "select * from carrito 
+        where idProducto = $idProducto AND idCliente = $idCliente";
         $restSel = $con->query($select);
 
         if ($restSel->num_rows <= 0) {

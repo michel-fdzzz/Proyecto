@@ -60,7 +60,7 @@
     <?php
     /*
     Si pulsas el botón de registrarse hacemos la conexion con la base de datos para insertar
-    el nuevo usuario en la tabla de usuarioRegistrado 
+    el nuevo usuario en la tabla de usuario 
     */
     if (isset($_POST['enviar'])) {
       $con = new Conexion();
@@ -70,7 +70,7 @@
         die('Conexion fallida: ' . $con->connect_error);
       } else {
 
-        $select = "select correoElectronico from usuarioRegistrado 
+        $select = "select correoElectronico from usuario 
                 where correoElectronico = '" . $_POST['correo'] . "'";
         $restCuentaExiste = $con->query($select);
 
@@ -80,13 +80,12 @@
 
           //Si el correo no existe, ejecutamos el insert
         } else {
-          $insert = "insert into usuarioRegistrado (nombre, apellidos, domicilio, correoElectronico, contrasenia) 
-          values ('" . $_POST['nombre'] . "', '" . $_POST['apellidos'] . "', '" . $_POST['domicilio'] . "', '" . $_POST['correo'] . "', '" . $_POST['contrasenia'] . "')";
-
+          $insert = "insert into usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo) 
+          values ('" . $_POST['nombre'] . "', '" . $_POST['apellidos'] . "', '" . $_POST['domicilio'] . "', '" . $_POST['correo'] . "', '" . $_POST['contrasenia'] . "', 0)";
           $rest = $con->query($insert);
           // Obtenemos el id del usuario que hemos registrado a través de un select
           if ($rest === true) {
-            $select = "select id from usuarioRegistrado 
+            $select = "select id from usuario 
                 where correoElectronico = '" . $_POST['correo'] . "' 
                 and contrasenia = '" . $_POST['contrasenia'] . "'";
             $restId = $con->query($select);
@@ -96,11 +95,10 @@
             if ($restId->num_rows > 0) {
               while ($fila = $restId->fetch_assoc()) {
                 foreach ($fila as $id) {
-                  echo $id;
                   $_SESSION['idCliente'] = $id;
                 }
               }
-              header('Location: tienda.php');
+              //header('Location: tienda.php');
             }
           }
         }
