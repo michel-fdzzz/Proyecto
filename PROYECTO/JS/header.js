@@ -80,12 +80,26 @@ try {
 
 
 //Funcion para abrir el sidebar del header
+// Función para cambiar el texto del menú
+function cambiarTextoMenu() {
+    if (document.querySelector('.containerDesplegable').classList.contains('activo')) {
+        menuTexto.textContent = 'Cerrar';
+    } else {
+        menuTexto.textContent = 'Menú';
+    }
+}
+
+// Función que se ejecuta después de que el documento se ha cargado completamente
 $(document).ready(function () {
+    // Evento de clic en el botón de desplegar
     $('.botonDesplegar').click(function () {
         $(this).siblings('.containerDesplegable').toggleClass('activo');
+        // Llamar a la función para cambiar el texto del menú
+        cambiarTextoMenu();
     });
+
+    // Llamar a la función para cambiar el texto del menú al cargar la página
+    cambiarTextoMenu();
 });
-
-
 
 
