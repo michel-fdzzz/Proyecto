@@ -15,16 +15,17 @@
     gap: 5%;
 }
 
-.container-mensaje-productos-carrito{
+.container-mensaje-productos-carrito {
     display: flex;
     justify-content: center;
     /*flex-wrap: wrap;*/
     margin: 5% 0% 5% 0%;
 }
+
 .mensajeProductosCarrito {
-    
+
     max-width: 19em;
-   /* height: 7em;*/
+    /* height: 7em;*/
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
@@ -41,7 +42,6 @@
     min-height: 2em;
     width: 100%;
     border-radius: 4px;
-    border: 2px white solid;
     text-align: center;
     color: black;
     transition: background-color 0.2s;
@@ -55,7 +55,6 @@
 
 .botonVerProductos:hover {
     background-color: #bdbdbd;
-    border: 2px solid #efefef;
     transform: translateY(-1px);
 }
 

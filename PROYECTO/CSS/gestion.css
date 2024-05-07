@@ -1,23 +1,32 @@
 .main {
     height: 90%;
-    margin-top: 8em;
+    width: 100%;
+    margin-top: 7em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.main>h1 {
+    text-align: center;
+}
+
+
 
 .contenedor-opciones {
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    padding-right: 40%;
 }
 
 .opcion {
     position: relative;
     cursor: pointer;
     margin-bottom: 10px;
+    font-size: 1.25rem;
 }
 
-.opcion p {
-    position: relative;
-    display: inline;
-}
 
 .opcion p::after {
     content: '';
@@ -27,9 +36,18 @@
     width: 0;
     height: 2px;
     background-color: #000;
-    transition: width 0.3s ease;
+    transition: width 0.4s ease;
 }
 
 .opcion p:hover::after {
     width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+footer {
+    bottom: 0;
 }

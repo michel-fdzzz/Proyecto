@@ -10,7 +10,7 @@
     <footer>
         <section class="contenedor-items-footer">
             <article class="contenedor-imagen">
-                <img class="imagen" src="imagenes/logo.png" alt="">
+            <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="80em" height="80em" alt="Logo" /></a>
             </article>
 
             <article class="contenedor-info-footer">

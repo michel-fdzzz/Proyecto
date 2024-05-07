@@ -12,11 +12,13 @@
     ?>
 
     <section class="main">
+        <h1>Gestión</h1>
         <article class="contenedor-opciones">
             <ul class="lista-opciones">
-                <li class="opcion"><p>Agregar productos</p></li>
-                <li class="opcion"><p>Eliminar productos</p></li>
-                <li class="opcion"><p>4t</p></li>
+                <li class="opcion"><a href='agregar-productos-gestion.php'><p>Agregar productos</p></a></li>
+                <li class="opcion"><a href='eliminar-productos-gestion.php'><p>Eliminar productos</p></a></li>
+                <li class="opcion"><a href='permisos-usuario-gestion.php'><p>Permisos de usuario</p></a></li>
+                <li class="opcion"><a href='eliminar-usuarios-gestion.php'><p>Eliminar usuarios</p></a></li>
             </ul>
         </article>
     </section>

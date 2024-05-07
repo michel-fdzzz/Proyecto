@@ -67,7 +67,7 @@ body {
 .containerIconos {
     display: flex;
     gap: 1em;
-    margin-right: 1em;
+    margin-right: 0.5em;
 }
 
 .carrito,
@@ -123,11 +123,7 @@ input {
 }
 
 /* Contenedor del desplegable */
-.desplegable {
-    margin: auto 0;
-    margin-right: 1em;
-    width: 6.5em;
-}
+.desplegable {}
 
 /* Botón del desplegable */
 .botonDesplegar {
@@ -137,10 +133,35 @@ input {
     cursor: pointer;
     display: flex;
     background-color: #efefef;
+    margin: 1em;
 }
 
 .botonDesplegar:hover {
     background-color: #f9f9f9;
+    transform: translateY(-1px);
+}
+
+.containerDesplegable {
+    position: fixed;
+    z-index: 99;
+    left: -150px;
+    width: 150px;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #efefef;
+    color: white;
+    top: 5em;
+    transition: left 0.3s ease;
+    border-right: 2px solid black;
+    text-align: center;
+}
+
+.containerDesplegable.activo {
+    left: 0;
+
+    /* Muestra el panel lateral cuando tiene la clase 'active' */
 }
 
 .containerDesplegable a {
@@ -159,26 +180,7 @@ input {
     display: block;
 }
 
-.containerDesplegable {
-    position: fixed;
-    z-index: 99;
-    left: -150px;
-    width: 150px;
-    height: 90%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #efefef;
-    color: white;
-    top: 5em;
-    transition: left 0.3s ease;
-}
 
-.containerDesplegable.activo {
-    left: 0;
-
-    /* Muestra el panel lateral cuando tiene la clase 'active' */
-}
 
 .desconexion {
     margin: auto;
@@ -188,4 +190,8 @@ input {
 
 .desconexion:hover {
     text-decoration: underline;
+}
+
+.containerIconos>*:hover {
+    transform: translateY(-1px);
 }
