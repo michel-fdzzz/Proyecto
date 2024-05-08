@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="CSS/agregar-producto-gestion.css">
+    <link rel="stylesheet" href="CSS/eliminar-producto-gestion.css">
+    <script defer src='JS/eliminar-productos-gestion.js'></script>
 </head>
 <body>
     <?php
@@ -12,40 +13,63 @@
     ?>
 
     <section class="main">
-       
-    </section>
+    <article class="container-productos">
+            
+
+
     <?php
-    if (isset($_POST['agregar'])) {
-      $con = new Conexion();
-      $con = $con->conectar();
+    $con = new Conexion();
+    $con = $con->conectar();
+    // Preparar la consulta SQL
+    $select = "SELECT id, imagen, nombre 
+            FROM producto
+            ORDER BY nombre DESC";
+    $stmt = $con->prepare($select);
 
-      if ($con->connect_error) {
-        die('Conexion fallida: ' . $con->connect_error);
-      } else {
+    // Verificar si la consulta se preparó correctamente
+    if ($stmt) {
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        $insert = "INSERT INTO producto (nombre, marca, modelo, precio, imagen, stock, descripcion) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $con->prepare($insert);
+        if ($result->num_rows > 0) {
+            while ($fila = $result->fetch_assoc()) {
+                // Acceder a los valores de cada columna
+                $id = $fila['id'];
+                $imagen = $fila['imagen'];
+                $nombre = $fila['nombre'];
 
-        if ($stmt){
-            $stmt->bind_param('sssisis', $_POST['nombre'], $_POST['marca'], $_POST['modelo'], $_POST['precio'], $_POST['imagen'], $_POST['stock'], $_POST['descripcion']);
-            $stmt->execute();
+                // Haz lo que necesites hacer con los datos de cada fila
+                // Por ejemplo, puedes imprimirlos en pantalla
+                echo "
+                <div class='producto'>
+                <div class='info'>
+                    <img src='imagenes/$imagen'/>
+                    <p>$nombre</p>
+                </div>
+                <div class='boton'>
+                    <button onclick='eliminarProducto($id)'>Eliminar</button>
+                </div>
+            </div>";
+            }
         } else {
-            die('Error al preparar la consulta: '. $con->connect_error);
+            echo "No se encontraron resultados.";
         }
-        $stmt->close();
-      }
-      $con->close();
-      header('Location: gestion.php');
+    } else {
+        // Si la consulta no se preparó correctamente, muestra un mensaje de error
+        die('Error al preparar la consulta: ' . $con->error);
     }
+
+    $stmt->close();
+    $con->close();
     ?>
+
     
-
-
-
-
+    </article>
+</section>
+  
 <?php
     include 'footer.php';
 ?>
+
 </body>
 </html>

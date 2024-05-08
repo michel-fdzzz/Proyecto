@@ -34,7 +34,7 @@
                 foreach ($campos as $campo) {
                     echo
                     "<div class='producto'>
-                <a href='producto.php'> <img src='" . $campo[5] . "' width='200em' height='300em'/></a>
+                <a href='producto.php'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen'/></a>
                 <p>" . $campo[1] . "</p>
                 <p>" . intval($campo[4]) . " €</p>
                 Cantidad: Mirar pa quitarlo<input type='number' id='numProductos" . $campo[0] . "' max='$campo[6]' min='0' /><br>

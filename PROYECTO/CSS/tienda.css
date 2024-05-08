@@ -4,7 +4,8 @@
 
 .main {
     height: 90%;
-    margin-top: 7.7em;  /*PONER EN TODOS*/
+    margin-top: 7.7em;
+    /*PONER EN TODOS*/
 }
 
 .intro>h1 {
@@ -12,21 +13,33 @@
 }
 
 .productos-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
     justify-content: center;
-    flex-wrap: wrap;
-    margin: 5%;
-    gap: 5%;
+    margin: 5em;
+    grid-auto-rows: auto;
+    align-items: center;
 }
 
 .producto {
-    border-radius: 1em;
+    border-radius: 2px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     align-items: center;
     text-align: center;
-    min-width: 25em;
+    /*min-width: 25em;*/
     margin-bottom: 5%;
 }
+
+.producto-imagen {
+    width: 200px;
+    /* Ancho deseado para la imagen */
+    height: 300px;
+    /* Altura deseada para la imagen */
+    object-fit: cover;
+    /* La imagen se ajustará para cubrir el contenedor */
+}
+
 
 .slogan {
     font-style: italic;
