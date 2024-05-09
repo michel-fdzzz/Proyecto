@@ -72,4 +72,12 @@ VALUES
 INSERT INTO usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo)
 VALUES 
   ('Alex', 'Perez', '', 'a@gmail.com', 'abcdefG1#', 0),
-  ('Michel', 'Fernandez', '', 'admin@gmail.com', 'abcdefG1#', 1);
+  ('Michel', 'Fernandez', '', 'admin@gmail.com', 'abcdefG1#', 1),
+  ('Juan', 'González', '', 'juan.gonzalez@example.com', 'abcdefG1#', 0),
+  ('María', 'López', '', 'maria.lopez@example.com', 'abcdefG1#', 0),
+  ('Carlos', 'Martínez', '', 'carlos.martinez@example.com', 'abcdefG1#', 0),
+  ('Laura', 'Rodríguez', '', 'laura.rodriguez@example.com', 'abcdefG1#', 0),
+  ('Pedro', 'Sánchez', '', 'pedro.sanchez@example.com', 'abcdefG1#', 0),
+  ('Sofía', 'García', '', 'sofia.garcia@example.com', 'abcdefG1#', 0),
+  ('Ana', 'Pérez', '', 'ana.perez@example.com', 'abcdefG1#', 0),
+  ('Diego', 'Ramírez', '', 'diego.ramirez@example.com', 'abcdefG1#', 0);

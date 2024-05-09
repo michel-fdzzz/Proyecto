@@ -27,7 +27,6 @@ function cambiar_tipo_usuario(id, tipo) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            alert('id = ' + id + ' , tipo = ' + tipo)
             window.location.href = "eliminar-usuarios-gestion.php";
         }
     };
@@ -40,8 +39,8 @@ function cambiar_tipo_usuario(id, tipo) {
 document.addEventListener("DOMContentLoaded", function () {
     // Verificar si el cuerpo supera el 100% de la altura de la pantalla
     if (document.body.scrollHeight > window.innerHeight) {
-        // El cuerpo supera el 100% de la altura de la pantalla
-        // Aplicar estilo al footer
         document.querySelector('footer').style.bottom = "0";
+    } else {
+        document.querySelector('footer').style.bottom = ""; // Esto eliminará la propiedad bottom
     }
 });

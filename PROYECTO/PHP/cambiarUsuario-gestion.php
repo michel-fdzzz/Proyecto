@@ -1,7 +1,7 @@
 <?php
 include '../conexion.php';
 $id = $_POST['id'];
-$tipo = $_POST['tipo']
+$tipo = $_POST['tipo'];
 
 $con = new Conexion();
 $con = $con->conectar();

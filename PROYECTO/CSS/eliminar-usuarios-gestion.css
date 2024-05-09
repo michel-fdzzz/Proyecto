@@ -19,12 +19,13 @@ th {
 }
 
 table {
-    width: 90%;
+    width: 95%;
 }
 
 td {
     align-items: center;
     text-align: center;
+    width: 25%;
 }
 
 th {
@@ -32,7 +33,10 @@ th {
     padding: 4px;
 }
 
+footer {
+    bottom: 0;
 
+}
 
 
 button {
