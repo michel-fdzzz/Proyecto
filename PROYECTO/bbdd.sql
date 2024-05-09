@@ -65,8 +65,8 @@ create table pedido (
 -- Insertar productos
 INSERT INTO producto (id, nombre, marca, modelo, precio, imagen, stock, descripcion)
 VALUES 
-  (null, 'Oyster Perpetual 41', 'Rolex', 'Oyster', 6600, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-grid/c_limit,w_320/v1/catalogue/2023-06/upright-bba-with-shadow/m124300-0001', 5, '41 mm, acero Oystersteel'),
-  (null, 'Dajejust 36', 'Rolex', 'Dajejust', 13350, 'https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-main-configurator/c_limit,w_2440/v1/catalogue/2023-06/upright-c/m126233-0039', 3, '36 mm, acero Oystersteel y oro amarillo');
+  (null, 'Oyster Perpetual 41', 'Rolex', 'Oyster', 6600, 'oyster_perpetual_41.avif', 5, '41 mm, acero Oystersteel'),
+  (null, 'Dajejust 36', 'Rolex', 'Dajejust', 13350, 'dajejust_36.avif', 3, '36 mm, acero Oystersteel y oro amarillo');
 
 -- Insertar usuarios
 INSERT INTO usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo)

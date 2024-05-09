@@ -39,7 +39,7 @@ function cambiar_tipo_usuario(id, tipo) {
 
 document.addEventListener("DOMContentLoaded", function () {
     // Verificar si el cuerpo supera el 100% de la altura de la pantalla
-    if (document.body.scrollHeight < window.innerHeight) {
+    if (document.body.scrollHeight > window.innerHeight) {
         // El cuerpo supera el 100% de la altura de la pantalla
         // Aplicar estilo al footer
         document.querySelector('footer').style.bottom = "0";
