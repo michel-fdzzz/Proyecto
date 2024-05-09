@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS/eliminar-producto-gestion.css">
-    <script defer src='JS/eliminar-productos-gestion.js'></script>
+    <script defer src='JS/eliminar-gestion.js'></script>
 </head>
 <body>
     <?php

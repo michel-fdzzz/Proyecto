@@ -97,7 +97,7 @@
                   $_SESSION['idCliente'] = $id;
                 }
               }
-              //header('Location: tienda.php');
+              header('Location: tienda.php');
             }
           }
         }
