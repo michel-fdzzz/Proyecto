@@ -65,7 +65,7 @@ footer {
     bottom: -2px;
     width: 0;
     height: 2px;
-    background-color: #000;
+    background-color: red;
     transition: width 0.3s ease;
 }
 

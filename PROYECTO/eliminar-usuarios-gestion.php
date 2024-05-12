@@ -14,15 +14,13 @@
 
     <section class="main">
             
-
-
     <?php
     $con = new Conexion();
     $con = $con->conectar();
     // Preparar la consulta SQL
     $select = "SELECT correoElectronico, tipo, id 
             FROM usuario
-            ORDER BY tipo DESC";
+            ORDER BY correoElectronico ASC";
     $stmt = $con->prepare($select);
 
     // Verificar si la consulta se preparó correctamente

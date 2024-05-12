@@ -20,9 +20,9 @@
         <p class='menu'>Menú</p>
       </button>
       <div class="containerDesplegable">
-        <a href="#">Opción 1</a>
-        <a href="#">Opción 2</a>
-        <a href="#">Opción 3</a>
+        <a href="#" class='apartados-desplegable'>Rolex</a>
+        <a href="#" class='apartados-desplegable'>Patek</a>
+        <a href="#" class='apartados-desplegable'>Tissot</a>
         <?php
           if (isset($_SESSION['idCliente'])) {
             $con = new Conexion();
@@ -43,7 +43,7 @@
                 if ($stmt->fetch()) {
                     // Comparar el tipo obtenido
                     if ($tipo == 1) {
-                        echo '<a href="gestion.php">Gestión de productos</a>';
+                        echo '<a href="gestion.php" class="apartados-desplegable">Gestión de productos</a>';
                     }
                 }
                 // Cerrar la consulta preparada

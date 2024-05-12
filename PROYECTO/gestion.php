@@ -17,8 +17,7 @@
             <ul class="lista-opciones">
                 <li class="opcion"><a href='agregar-productos-gestion.php'><p>Agregar productos</p></a></li>
                 <li class="opcion"><a href='eliminar-productos-gestion.php'><p>Eliminar productos</p></a></li>
-                <li class="opcion"><a href='permisos-usuario-gestion.php'><p>Permisos de usuario</p></a></li>
-                <li class="opcion"><a href='eliminar-usuarios-gestion.php'><p>Eliminar usuarios</p></a></li>
+                <li class="opcion"><a href='eliminar-usuarios-gestion.php'><p>Gestión de usuarios</p></a></li>
             </ul>
         </article>
     </section>

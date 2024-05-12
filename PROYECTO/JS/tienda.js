@@ -22,3 +22,14 @@ function añadirSinUsuario() {
     alert('Debes iniciar sesion para añadir productos al carrito');
 }
 
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Calcula el 70% de la altura de la ventana del navegador
+    var seventyPercentHeight = window.innerHeight * 0.6;
+
+    // Comprueba si la altura del contenido de la página es al menos el 70% de la altura de la ventana
+    if (document.body.scrollHeight < seventyPercentHeight) {
+        document.querySelector('footer').style.bottom = "0";
+    }
+});

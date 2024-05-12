@@ -63,7 +63,7 @@
                     "<div class='producto'>
                         <div class='info-producto-container'>
                             <div>
-                                <img src='" . $imagen . "' width='170em' height='250em'/>
+                                <img src='imagenes/" . $imagen . "' width='170em' height='250em'/>
                                 <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ")\">Eliminar producto</button>
                                 <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
                             </div> 
