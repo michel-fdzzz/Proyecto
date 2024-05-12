@@ -19,7 +19,11 @@
         <article class="intro">
             <h1>Michel & CO</h1>
             <h2 class="slogan">"El tiempo nunca se detiene, encuentra tu estilo en cada segundo."</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos non perspiciatis, vero obcaecati amet itaque voluptatum consectetur iste enim voluptatem maiores. Numquam ratione, ducimus magnam sapiente accusantium veritatis cum. Corrupti.</p>
+            <p>En un mundo donde la elegancia y la precisión se fusionan en cada detalle, damos vida a una 
+                experiencia única. En nuestra empresa, nos dedicamos a capturar la esencia del tiempo, 
+                reflejando la sofisticación y la excelencia en cada creación proporcionando a nuestros clientes los mejores relojes. 
+                Bienvenidos a un universo donde la artesanía se encuentra con la innovación, donde cada reloj cuenta una historia de 
+                distinción y estilo..</p>
         </article>
         <article class="productos-container">
 
@@ -34,7 +38,7 @@
                 foreach ($campos as $campo) {
                     echo
                     "<div class='producto'>
-                <a href='producto.php'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen'/></a>
+                <a href='producto.php?idProducto=" . $campo[0] . "&idCliente=" . $_SESSION['idCliente'] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen'/></a>
                 <p>" . $campo[1] . "</p>
                 <p>" . intval($campo[4]) . " €</p>
                 Cantidad: Mirar pa quitarlo<input type='number' id='numProductos" . $campo[0] . "' max='$campo[6]' min='0' /><br>
