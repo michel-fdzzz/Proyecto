@@ -39,20 +39,51 @@
 
                 <div>
                     <h3>" . $nombreProducto . "</h3>
+                    <p class='grey'>" . $modelo . "</p>
                     <p class='grey'>" . $descripcion . "</p>
                     <p><b>" . intval($precio) . " €</b></p>
-                    Cantidad: Mirar pa quitarlo<input type='number' id='numProductos" . $idProducto . "' max='$stock' min='0' /><br>
-                    <p class='grey'>" . $modelo . "</p>
+                    
+                    <div class='mas-menos-container'>
+                            <div class='mas' id='mas'><p>+</p></div>
+                            <p class='unidades' id='numProductos" . $idProducto . "'>0</p>
+                            <div class='menos' id='menos'><p>-</p></div>
+                        </div>
+                    <p class='grey'>Quedan <span class='stock'>" . $stock . "<span></p>
                    ";
 
 
 
                     if (isset($_SESSION['idCliente'])) {
-                        echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $idCliente . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').value,'" . $precio . "')\">Añadir al carrito</button>";
+                        echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $idCliente . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
                     } else {
                         echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
                     }
-                    echo "</div></div>";
+                    echo "<hr class='linea-separadora'>
+                    <p class='texto-debajo-linea-separadora'>Más $modelo</p>
+                    
+                    
+                    
+                    <div class='mas-relojes'>";
+
+                    $con = new Conexion();
+                    $con = $con->conectar();
+                    $select = "select * from producto where marca = '$modelo' AND id <> $idProducto";
+                    $rest = $con->query($select);
+                    $campos = $rest->fetch_all();
+                    if ($rest->num_rows > 0) {
+                        foreach ($campos as $campo) {
+                            echo
+                            "<div class='contenedor-imagen-mas-relojes'>
+                        <a href='producto.php?idProducto=" . $campo[0] . "&idCliente=" . $_SESSION['idCliente'] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen-mas-relojes'/></a>
+                        </div>";
+
+                        }
+                    } else {
+                        echo '<p>No hay más productos de esta marca</p>';
+                    }
+                    
+                    echo "</div>
+                    </div></div>";
                
 
                    
@@ -66,6 +97,32 @@
     <?php
     include 'footer.php';
     ?>
+
+    <script>
+            //Seleccionamos todos los elementos con la clase .mas y .menos
+            let botonMas = document.querySelector('.mas');
+            let botonMenos = document.querySelector('.menos');
+
+            //Creo un evento en el boton más para incrementar, como máximo, el número de unidades a comprar
+            botonMas.addEventListener('click', function() {
+                let cantidad = document.querySelector('.unidades');
+                let stock = document.querySelector('.stock');
+                let cantidadActual = parseInt(cantidad.innerHTML);
+                let stockDisponible = parseInt(stock.innerHTML);
+                if (cantidadActual < stockDisponible) {
+                    cantidad.innerHTML = cantidadActual + 1;
+                }
+            });
+
+            botonMenos.addEventListener('click', function() {
+                let cantidad = document.querySelector('.unidades');
+                let cantidadActual = parseInt(cantidad.innerHTML);
+                if (cantidadActual > 0) {
+                    cantidad.innerHTML = cantidadActual - 1;
+                }
+            });
+
+    </script>
 </body>
 
 </html>

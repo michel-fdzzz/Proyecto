@@ -41,7 +41,7 @@
                 <a href='producto.php?idProducto=" . $campo[0] . "&idCliente=" . $_SESSION['idCliente'] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen'/></a>
                 <p>" . $campo[1] . "</p>
                 <p>" . intval($campo[4]) . " €</p>
-                Cantidad: Mirar pa quitarlo<input type='number' id='numProductos" . $campo[0] . "' max='$campo[6]' min='0' /><br>
+                Cantidad: <input type='number' id='numProductos" . $campo[0] . "' max='$campo[6]' min='0' /><br>
                 <p class='grey'>" . $campo[7] . "</p>
                 <p class='grey'>Quedan " . $campo[6] . "</p>";
 
