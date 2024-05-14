@@ -13,7 +13,6 @@
     <?php include 'header.php';
     //La sesion se inicia en el header y la conexion
     $idProducto = $_GET["idProducto"];
-    $idCliente = $_GET["idCliente"];
     $nombreProducto = $_GET["nombreProducto"];
     $modelo = $_GET['modelo'];
     $precio = $_GET["precio"];
@@ -54,7 +53,7 @@
 
 
                     if (isset($_SESSION['idCliente'])) {
-                        echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $idCliente . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
+                        echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
                     } else {
                         echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
                     }
@@ -74,7 +73,7 @@
                         foreach ($campos as $campo) {
                             echo
                             "<div class='contenedor-imagen-mas-relojes'>
-                        <a href='producto.php?idProducto=" . $campo[0] . "&idCliente=" . $_SESSION['idCliente'] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen-mas-relojes'/></a>
+                        <a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen-mas-relojes'/></a>
                         </div>";
 
                         }

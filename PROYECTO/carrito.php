@@ -62,8 +62,10 @@
                     echo
                     "<div class='producto'>
                         <div class='info-producto-container'>
-                            <div>
-                                <img src='imagenes/" . $imagen . "' width='170em' height='250em'/>
+                            <div class='container-foto-botones'>
+                                <div class='container-imagen'>
+                                <img src='imagenes/" . $imagen . "' class='imagen-producto'/>
+                                </div>
                                 <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ")\">Eliminar producto</button>
                                 <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
                             </div> 
