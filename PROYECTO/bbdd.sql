@@ -67,7 +67,7 @@ INSERT INTO producto (id, nombre, marca, modelo, precio, imagen, stock, descripc
 VALUES 
   (null, 'Oyster Perpetual 41', 'Rolex', 'Oyster', 6600, 'oyster_perpetual_41.avif', 5, '41 mm, acero Oystersteel'),
   (null, 'Dajejust 36', 'Rolex', 'Dajejust', 13350, 'dajejust_36.avif', 3, '36 mm, acero Oystersteel y oro amarillo'),
-  (null, 'Tissot t-touch connect sport', 'Tissot', 'T-touch connect sport', 13350, 'tissot_t-touch connect sport.avif', 7, '36 mm, cuarzo');
+  (null, 'T-touch connect sport', 'Tissot', 'T-touch connect sport', 13350, 'tissot_t-touch connect sport.avif', 7, '36 mm, cuarzo');
 
 -- Insertar usuarios
 INSERT INTO usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo)

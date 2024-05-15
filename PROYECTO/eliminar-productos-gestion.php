@@ -44,7 +44,7 @@
                 <div class='producto'>
                 <div class='info'>
                     <img src='imagenes/$imagen'/>
-                    <p>$nombre</p>
+                    <h4>$nombre</h4>
                 </div>
                 <div class='boton'>
                     <button onclick='eliminarProducto($id)'>Eliminar</button>

@@ -70,13 +70,12 @@
                                 <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
                             </div> 
                             <div class='informacionCarrito'>
-                                <div>
-                                    <p>" . $nombreProducto . "</p>
-                                    <p>" . $modelo . "</p>
-                                    <p>Precio unitario: " . $precio . "€</p>
-                                    <p>Unidades: <span class='unidadesEnCarrito" . $idProducto . "'>" . $cantidad . "</span></p>
+                                <div class='info'>
+                                    <h3>$modelo " . $nombreProducto . "</h3>
+                                    <p class='grey'>Precio unitario: " . $precio . "€</p>
+                                    <p class='grey'>Unidades: <span class='unidadesEnCarrito" . $idProducto . "'>" . $cantidad . "</span></p>
                                     <p class='stock$idProducto' hidden>$stock</p>
-                                    <p>Gastos de envío: $coste_envio_producto € </p>
+                                    <p class='grey'>Gastos de envío: $coste_envio_producto € </p>
                                 </div>
                                 <div class='contenedorAnadirEliminar'>
                                     <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\">Añadir unidades</button>
@@ -89,7 +88,7 @@
                             <p class='unidades$idProducto'>0</p>
                             <div class='menos$idProducto' id='menos'><p>-</p></div>
                         </div>
-                    </div><br>";
+                    </div>";
                 }
                 echo '</div>';
 

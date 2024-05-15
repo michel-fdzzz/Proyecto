@@ -64,12 +64,12 @@ input[type="submit"] {
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 4px;
-    transition: background-color 0.2s;
+    transition: transform 0.3s ease, background-color 0.5s;
 }
 
 input[type="submit"]:hover {
     background-color: #bdbdbd;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 textarea {
