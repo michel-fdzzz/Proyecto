@@ -113,11 +113,8 @@ button:hover {
     width: 20em;
     height: 7em;
     top: 40%;
-    /* Lo colocamos en el 50% del eje vertical */
     left: 50%;
-    /* Lo colocamos en el 50% del eje horizontal */
     transform: translate(-50%, -50%);
-    /* Lo movemos hacia arriba y hacia la izquierda en la mitad de su propio tamaño */
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
@@ -131,4 +128,90 @@ button:hover {
     font-size: 1.5rem;
     margin-bottom: 0;
     animation: mensajeB 0.3s;
+}
+
+
+
+.container-newsletter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #c5c5c5;
+    border-top: 2px solid black;
+}
+
+
+.newsletter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.newsletter>h1 {
+    font-size: 1.8rem;
+    margin-top: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+.newsletter>p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+
+form {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 1.1em;
+}
+
+.input-newsletter {
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+    border: transparent 2px solid;
+    transition: border 0.5s;
+    width: 30%;
+    font-size: 1.1rem;
+}
+
+.input-newsletter:hover,
+.input-newsletter:focus {
+    border: 2px solid red;
+    outline: red;
+}
+
+.input-newsletter::placeholder {
+    font-size: 1.3rem;
+    /* Cambia el tamaño del texto del placeholder */
+}
+
+.boton-newsletter {
+    cursor: pointer;
+    background-color: #efefef;
+    border: transparent 2px solid;
+    color: black;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-bottom: 1em;
+    margin: 1em;
+    font-family: 'Oswald', sans-serif;
+    transition: transform 0.3s ease, background-color 0.5s, color 0.3s;
+}
+
+.boton-newsletter:hover {
+    background-color: #000000;
+    /*border: 2px solid red;*/
+    color: white;
+    transform: translateY(-2px);
 }

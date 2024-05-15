@@ -23,7 +23,7 @@
                 experiencia única. En nuestra empresa, nos dedicamos a capturar la esencia del tiempo, 
                 reflejando la sofisticación y la excelencia en cada creación proporcionando a nuestros clientes los mejores relojes. 
                 Bienvenidos a un universo donde la artesanía se encuentra con la innovación, donde cada reloj cuenta una historia de 
-                distinción y estilo..</p>
+                distinción y estilo.</p>
         </article>
         <article class="productos-container">
 
@@ -52,11 +52,11 @@
 
         </article>
 
-        <h1>Nuestros productos más exclusivos</h1>
+      <!--  <h1>Nuestros productos más exclusivos</h1>
         <article class="productos-exclusivos-container">
 
             <?php
-
+/*
             $con = new Conexion();
             $con = $con->conectar();
             $select = "select * from producto order by precio desc limit 6";
@@ -74,14 +74,25 @@
                     </div>
                     </a>";
                 }
-            }
+            }*/
             ?>
 
 
 
         </article>
+        -->
 
- 
+        <section class="container-newsletter">
+        <article class="newsletter">
+            <h1>Únete a Michel & CO</h1>
+            <p>Recibe las últimas noticias y ofertas</p>
+            <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                    <input name="Email" id="Email" class="input-newsletter" type="email" placeholder='Correo electrónico' />
+                
+                <input  type="submit" value="Enviar" name="enviar" class='boton-newsletter'/>
+            </form>
+        </article>
+        </section>
     </section>
     <?php
     include 'footer.php';

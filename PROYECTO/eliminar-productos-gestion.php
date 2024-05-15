@@ -15,36 +15,32 @@
     <section class="main">
     <article class="container-productos">
             
-
-
     <?php
     $con = new Conexion();
     $con = $con->conectar();
-    // Preparar la consulta SQL
-    $select = "SELECT id, imagen, nombre 
+    
+    $select = "SELECT id, imagen, nombre, marca
             FROM producto
             ORDER BY nombre DESC";
     $stmt = $con->prepare($select);
 
-    // Verificar si la consulta se preparó correctamente
     if ($stmt) {
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
             while ($fila = $result->fetch_assoc()) {
-                // Acceder a los valores de cada columna
+                
                 $id = $fila['id'];
                 $imagen = $fila['imagen'];
                 $nombre = $fila['nombre'];
+                $marca = $fila['marca'];
 
-                // Haz lo que necesites hacer con los datos de cada fila
-                // Por ejemplo, puedes imprimirlos en pantalla
                 echo "
                 <div class='producto'>
                 <div class='info'>
                     <img src='imagenes/$imagen'/>
-                    <h4>$nombre</h4>
+                    <h4>$marca $nombre</h4>
                 </div>
                 <div class='boton'>
                     <button onclick='eliminarProducto($id)'>Eliminar</button>
@@ -55,7 +51,6 @@
             echo "No se encontraron resultados.";
         }
     } else {
-        // Si la consulta no se preparó correctamente, muestra un mensaje de error
         die('Error al preparar la consulta: ' . $con->error);
     }
 
