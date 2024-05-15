@@ -17,7 +17,8 @@ body {
     /* width: 100%; /* Ancho completo de la ventana */
     display: flex;
     justify-content: space-between;
-    height: 10%;
+    /*height: 10%;*/
+    height: 6em;
     background-color: #efefef;
     z-index: 1000;
     position: fixed;
@@ -42,7 +43,7 @@ body {
     position: fixed;
     z-index: 998;
     left: -100%;
-    top: 10%;
+    top: 6em;
     width: 100%;
     display: flex;
     align-items: center;
@@ -55,7 +56,7 @@ body {
 
 .buscadorContainer.activo {
     left: 0;
-    top: 10%;
+    top: 6em;
 }
 
 
@@ -85,7 +86,6 @@ body {
 .containerBusqueda {
     display: flex;
     margin: auto;
-    animation: busqueda 0.5s;
 }
 
 #buscador {
@@ -109,18 +109,6 @@ input {
     font-family: 'Oswald', sans-serif;
 }
 
-
-@keyframes busqueda {
-    from {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Contenedor del desplegable */
 .desplegable {
@@ -154,7 +142,7 @@ input {
     flex-direction: column;
     background-color: #efefef;
     color: white;
-    top: 10%;
+    top: 6em;
     transition: left 0.3s ease;
     border-right: 2px solid black;
     text-align: center;
