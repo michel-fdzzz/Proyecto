@@ -16,7 +16,7 @@ use tiendaRelojes;
 
 create table producto (
     id int auto_increment primary key,
-    nombre varchar(50) not null,
+    nombre varchar(50) unique not null,
     marca varchar(50) not null,
     modelo varchar(50) not null,
     precio decimal(10, 2) not null,
