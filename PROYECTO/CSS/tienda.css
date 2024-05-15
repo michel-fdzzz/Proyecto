@@ -22,22 +22,50 @@
     align-items: center;
 }
 
+.link-producto {
+    text-decoration: none;
+    color: black;
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.link-producto>div>h4,
+p,
+.grey {
+    margin: 1em;
+    transition: color 0.5s;
+}
+
+.link-producto:hover {
+    .producto-imagen {
+
+        transform: scale(1.1);
+    }
+
+    .grey {
+        color: red;
+    }
+
+    transform: background;
+    color: red;
+}
+
+
+
 .producto {
     border-radius: 2px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
     align-items: center;
     text-align: center;
+    height: 27em;
     /*min-width: 25em;*/
-    margin-bottom: 5%;
 }
 
 .producto-imagen {
     width: 200px;
-    /* Ancho deseado para la imagen */
     height: 300px;
-    /* Altura deseada para la imagen */
     object-fit: cover;
-    /* La imagen se ajustará para cubrir el contenedor */
+    transition: transform 0.3s ease;
 }
 
 
