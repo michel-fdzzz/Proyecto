@@ -51,15 +51,43 @@
             ?>
 
         </article>
+
+        <h1>Nuestros productos más exclusivos</h1>
+        <article class="productos-exclusivos-container">
+
+            <?php
+
+            $con = new Conexion();
+            $con = $con->conectar();
+            $select = "select * from producto order by precio desc limit 6";
+            $rest = $con->query($select);
+            $campos = $rest->fetch_all();
+            if ($rest->num_rows > 0) {
+                foreach ($campos as $campo) {
+                    echo
+                    "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'  target='_blank' class='link-producto'>
+                    <div class='producto'>
+                     <img src='imagenes/" . $campo[5] . "'  class='producto-imagen'/>
+                    <h4>" . $campo[1] . "</h4>
+                    <p class='grey'>" . $campo[7] . "</p>
+                    <p>" . $campo[4] . " €</p>
+                    </div>
+                    </a>";
+                }
+            }
+            ?>
+
+
+
+        </article>
+
+ 
     </section>
     <?php
     include 'footer.php';
     ?>
-    <script>
-        
-        // Muestra los productos según los resultados de la busqueda que optenemos mediante un select en busqueda.php
-       
 
+    <script>
         
     </script>
 </body>
