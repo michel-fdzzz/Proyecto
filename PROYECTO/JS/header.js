@@ -18,31 +18,39 @@ $(document).ready(function () {
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     // Se controla que si introduces mal el nombre, salga un mensaje de que no se ha encontrado el producto que buscas pero salen los productos similares.
-                    // try {
-                    console.log(this.responseText);
-                    mostrarProductos(JSON.parse(this.responseText));
-                    /* } catch {
-                         let body = document.querySelector('body');
-                         let div = document.createElement('div');
-                         div.setAttribute('class', 'mensajeBusqueda');
-                         let p = document.createElement('p');
-                         p.innerHTML = 'No se han encontrado resultados de tu busqueda: ' + texto;
-                         div.appendChild(p);
-                         body.appendChild(div);
-                         let seg = 2.5;
- 
-                         function temp() {
-                             if (seg <= 0) {
-                                 clearInterval(tiempo);
-                                 div.remove();
-                                 p.remove();
-                             } else {
-                                 seg--;
-                             }
-                         }
-                         temp();
-                         let tiempo = setInterval(temp, 1000);
-                     }*/
+                    try {
+                        console.log(this.responseText);
+                        mostrarProductos(JSON.parse(this.responseText));
+                    } catch {
+                        let main = document.querySelector('.main');
+                        let div = document.createElement('div');
+                        div.setAttribute('class', 'mensajeBusqueda');
+                        let p = document.createElement('p');
+                        p.innerHTML = 'No se han encontrado resultados';
+                        let gift = document.createElement('img');
+                        gift.setAttribute('class', 'gift');
+                        gift.setAttribute('src', 'imagenes/gif_resultados.gif');
+
+
+                        div.appendChild(p);
+                        div.appendChild(gift);
+                        main.appendChild(div);
+
+
+                        /*let seg = 2.5;
+
+                        function temp() {
+                            if (seg <= 0) {
+                                clearInterval(tiempo);
+                                div.remove();
+                                p.remove();
+                            } else {
+                                seg--;
+                            }
+                        }
+                        temp();
+                        let tiempo = setInterval(temp, 1000);*/
+                    }
                 }
             };
             xhttp.open("POST", "busqueda.php", true);

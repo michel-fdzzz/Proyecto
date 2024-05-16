@@ -41,6 +41,8 @@ footer {
 .contenedor-privacidad {
     display: flex;
     flex-direction: column;
+    width: 33%;
+    text-align: center;
 }
 
 .contenedor-privacidad>p {
@@ -56,6 +58,9 @@ footer {
 .contenedor-info-footer p {
     position: relative;
     display: inline;
+    width: 50%;
+    margin: 0.5em auto;
+    cursor: pointer;
 }
 
 .contenedor-info-footer p::after {

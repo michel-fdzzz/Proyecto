@@ -122,27 +122,29 @@ button:hover {
 
 .mensajeBusqueda {
     position: absolute;
-    background-color: #000000;
-    width: 20em;
-    height: 7em;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 50%;
+    left: 25%;
+    right: 25%;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
-    border: 2px solid rgb(69, 134, 255);
-    border-radius: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     animation: mensajeB 0.3s;
 }
 
 .mensajeBusqueda>p {
     font-size: 1.5rem;
     margin-bottom: 0;
-    animation: mensajeB 0.3s;
+    text-align: center;
 }
 
+.gift {
+    margin: auto;
+    width: 40%;
+    height: 40%;
+}
 
 
 .container-newsletter {
