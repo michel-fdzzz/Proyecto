@@ -72,3 +72,47 @@ footer {
 .contenedor-info-footer p:hover::after {
     width: 100%;
 }
+
+.leyes-contenedor,
+.info-contacto-contenedor {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.contenedor-cont-apratados-footer {
+    padding: 10px;
+}
+
+.contacto>div,
+.contacto>div>a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+.contacto>div>a:hover {
+    display: flex;
+    text-decoration: none;
+    color: rgb(209, 0, 0);
+}
+
+
+
+.cerrar,
+.cerrar-info-contacto {
+    position: absolute;
+    top: -21px;
+    right: 5px;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+.sin-margen {
+    margin: 0;
+}

@@ -16,8 +16,12 @@
 
 
     <section class="main">
+    <div class="container-imagen">
+        <img src='imagenes/fotoFondo2.jpg' class='imagenInicial'/>
+    </div>
+
         <article class="intro">
-            <h1>Michel & CO</h1>
+            <h1 class='h1-grande'>Michel & CO</h1>
             <h2 class="slogan">"El tiempo nunca se detiene, encuentra tu estilo en cada segundo."</h2>
             <p>En un mundo donde la elegancia y la precisión se fusionan en cada detalle, damos vida a una 
                 experiencia única. En nuestra empresa, nos dedicamos a capturar la esencia del tiempo, 
@@ -96,11 +100,13 @@
     </section>
     <?php
     include 'footer.php';
-    ?>
 
-    <script>
-        
-    </script>
+
+        if (isset($_POST['enviar'])) {
+        //Mensaje de que ya estas suscrito al newsletter royo ya formas parte de Michel & CO
+        }
+
+    ?>
 </body>
 
 </html>
