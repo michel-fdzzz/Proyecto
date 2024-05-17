@@ -1,3 +1,9 @@
+.main {
+    height: 90%;
+    margin-top: 6em;
+    /*PONER EN TODOS*/
+}
+
 form.formulario {
     margin: 8em auto 4em auto;
     padding: 20px;
@@ -64,7 +70,7 @@ input[type="submit"]:hover {
 .linkRegistroInicioSesion:hover {
     text-decoration: underline blue;
 }
-
+/*
 footer {
     bottom: 0;
-}
+}*/
