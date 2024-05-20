@@ -20,7 +20,7 @@
         <img src='imagenes/fotoFondo2.jpg' class='imagenInicial'/>
     </div>
 
-        <article class="intro">
+        <article class="intro" id="intro">
             <h1 class='h1-grande'>Michel & CO</h1>
             <h2 class="slogan">"El tiempo nunca se detiene, encuentra tu estilo en cada segundo."</h2>
             <p>En un mundo donde la elegancia y la precisión se fusionan en cada detalle, damos vida a una 
@@ -29,7 +29,7 @@
                 Bienvenidos a un universo donde la artesanía se encuentra con la innovación, donde cada reloj cuenta una historia de 
                 distinción y estilo.</p>
         </article>
-        <article class="productos-container">
+        <article class="productos-container" id="productos-container">
 
             <?php
 
@@ -64,13 +64,13 @@
             }
             ?>
     </article>
-
+    <div class="container-botones-paginacion">
         <?php
         if (isset($_GET['pag'])) { // Si existe el parámetro pag
             if ($_GET['pag'] > 1) { // Si pag es mayor que 1, pone un enlace al anterior
         ?>
 
-                <a href="tienda.php?pag=<?php echo $pagina - 1; ?>">
+                <a href="tienda.php?pag=<?php echo $pagina - 1; ?>#intro">
                 <button>Anterior</button></a>
 
                 <?php
@@ -92,7 +92,7 @@
         // Si el numero de registros actual es superior al maximo
         if ((($pagina) * $numElementos) < $totalProductos) {
         ?>
-        <a href="tienda.php?pag=<?php echo $pagina + 1; ?>">
+        <a href="tienda.php?pag=<?php echo $pagina + 1; ?>#intro">
         <button>Siguiente</button></a>
         <?php
         } else { // Sino deshabilita el botón
@@ -102,12 +102,12 @@
         }
         } else { // Si no existe, acaba de cargar la página y está en la 1, activa la página 2
         ?>
-        <a href="tienda.php?pag=2"><button>Siguiente</button></a>
+        <a href="tienda.php?pag=2#intro"><button>Siguiente</button></a>
         <?php
         }
         ?>
         </div>
-
+    </div>
 
         
 

@@ -30,7 +30,7 @@
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 20px;
     justify-content: center;
-    margin: 5em;
+    margin: 5em 5em 2em 5em;
     grid-auto-rows: auto;
     align-items: center;
 }
@@ -113,6 +113,11 @@ button {
 button:hover {
     background-color: #bdbdbd;
     transform: translateY(-2px);
+}
+
+.container-botones-paginacion {
+    text-align: center;
+    margin-bottom: 2em;
 }
 
 .grey {
