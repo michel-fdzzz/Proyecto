@@ -74,6 +74,8 @@ p,
     /*min-width: 25em;*/
 }
 
+
+
 .producto-imagen {
     width: 200px;
     height: 300px;
@@ -120,6 +122,12 @@ button:hover {
     margin-bottom: 2em;
 }
 
+
+.container-botones-paginacion>a {
+    text-decoration: none;
+}
+
+
 .grey {
     font-weight: 200;
     color: grey;
@@ -154,6 +162,67 @@ button:hover {
 }
 
 
+.productos-exclusivos {
+    position: relative;
+    width: 100%;
+    margin: 0 auto 2em auto;
+}
+
+.h1-productos-exclusivos {
+    text-align: center;
+}
+
+.productos-exclusivos-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    width: 70%;
+    margin: auto;
+
+}
+
+.producto-exclusivo {
+    border-radius: 2px;
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
+    align-items: center;
+    text-align: center;
+    height: 27em;
+    width: 16em;
+    /*min-width: 25em;*/
+}
+
+
+
+/* Estilos para la parte del track (fondo) de la barra de desplazamiento */
+.productos-exclusivos-container::-webkit-scrollbar-track {
+    background: #efefef;
+    border-radius: 5px;
+    /* Color de fondo del track */
+}
+
+/* Estilos para el thumb (manija) de la barra de desplazamiento */
+.productos-exclusivos-container::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 5px;
+}
+
+
+.productos-exclusivos-container::-webkit-scrollbar {
+    width: 0px !important;
+}
+
+.productos-exclusivos-container::-webkit-scrollbar-thumb {
+    height: 0px !important;
+}
+
+
+
+
+
+
+
+/* NEWSLETTER */
 .container-newsletter {
     width: 100%;
     display: flex;

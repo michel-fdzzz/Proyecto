@@ -35,7 +35,7 @@
 
             $con = new Conexion();
             $con = $con->conectar();
-            $numElementos = 3;
+            $numElementos = 4;
            
             $totalProductos = $con->query("SELECT COUNT(*) FROM producto")->fetch_row()[0];
             $totalPaginas = ceil($totalProductos / $numElementos);
@@ -65,57 +65,37 @@
             ?>
     </article>
     <div class="container-botones-paginacion">
-        <?php
-        if (isset($_GET['pag'])) { // Si existe el parámetro pag
-            if ($_GET['pag'] > 1) { // Si pag es mayor que 1, pone un enlace al anterior
-        ?>
-
+            <?php if ($pagina > 1): ?>
                 <a href="tienda.php?pag=<?php echo $pagina - 1; ?>#intro">
-                <button>Anterior</button></a>
+                    <button>Anterior</button>
+                </a>
+            <?php else: ?>
+                <button disabled>Anterior</button>
+            <?php endif; ?>
 
-                <?php
-                } else { // Sino deshabilita el botón
-                ?>
-                <a href="#"><button disabled>Anterior</button></a>
-                <?php
-            }
+            <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
 
-        } else { // Sino deshabilita el botón
-        ?>
-        <a href="#"><button disabled>Anterior</button></a>
-        <?php
-        }
-        ?>
-
-        <?php
-        if (isset($_GET['pag'])) { // Si existe la paginacion
-        // Si el numero de registros actual es superior al maximo
-        if ((($pagina) * $numElementos) < $totalProductos) {
-        ?>
-        <a href="tienda.php?pag=<?php echo $pagina + 1; ?>#intro">
-        <button>Siguiente</button></a>
-        <?php
-        } else { // Sino deshabilita el botón
-        ?>
-        <a href="#"><button disabled>Siguiente</button></a>
-        <?php
-        }
-        } else { // Si no existe, acaba de cargar la página y está en la 1, activa la página 2
-        ?>
-        <a href="tienda.php?pag=2#intro"><button>Siguiente</button></a>
-        <?php
-        }
-        ?>
+            <?php if ($pagina < $totalPaginas): ?>
+                <a href="tienda.php?pag=<?php echo $pagina + 1; ?>#intro">
+                    <button>Siguiente</button>
+                </a>
+            <?php else: ?>
+                <button disabled>Siguiente</button>
+            <?php endif; ?>
         </div>
-    </div>
 
         
 
-      <!--  <h1>Nuestros productos más exclusivos</h1>
-        <article class="productos-exclusivos-container">
+      <h1 class='h1-productos-exclusivos'>Nuestros productos más exclusivos</h1>
 
+      <div class="productos-exclusivos">
+        <article class="productos-exclusivos-container">
+            <!--<section class="contenedor-botones-scroll">
+                <div class="boton-izquierda">izq</div>
+                <div class="boton-derecha">der</div>
+            </section>-->
             <?php
-/*
+
             $con = new Conexion();
             $con = $con->conectar();
             $select = "select * from producto order by precio desc limit 6";
@@ -125,7 +105,7 @@
                 foreach ($campos as $campo) {
                     echo
                     "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'  target='_blank' class='link-producto'>
-                    <div class='producto'>
+                    <div class='producto-exclusivo'>
                      <img src='imagenes/" . $campo[5] . "'  class='producto-imagen'/>
                     <h4>" . $campo[1] . "</h4>
                     <p class='grey'>" . $campo[7] . "</p>
@@ -133,13 +113,11 @@
                     </div>
                     </a>";
                 }
-            }*/
+            }
             ?>
 
-
-
         </article>
-        -->
+        </div>
 
         <section class="container-newsletter">
         <article class="newsletter">
@@ -162,6 +140,7 @@
         }
 
     ?>
+    
 </body>
 
 </html>

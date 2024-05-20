@@ -53,31 +53,9 @@ $(document).ready(function () {
     });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad, precio) {
     // Solicitud AJAX
-    var xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             alert('idProducto, idCliente, nombreProducto, modelo, cantidad, precio');
@@ -101,11 +79,12 @@ function añadirSinUsuario() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Calcula el 70% de la altura de la ventana del navegador
-    var seventyPercentHeight = window.innerHeight * 0.6;
+    // Calcula el 60% de la altura de la ventana del navegador
+    let porcentaje_altura_pagina = window.innerHeight * 0.6;
 
-    // Comprueba si la altura del contenido de la página es al menos el 70% de la altura de la ventana
-    if (document.body.scrollHeight < seventyPercentHeight) {
+    // Comprueba si la altura del contenido de la página es al menos el 60% de la altura de la ventana
+    if (document.body.scrollHeight < porcentaje_altura_pagina) {
         document.querySelector('footer').style.bottom = "0";
     }
 });
+

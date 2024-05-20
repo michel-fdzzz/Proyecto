@@ -69,7 +69,8 @@ VALUES
   (null, 'Dajejust 36', 'Rolex', 'Dajejust', 13350, 'dajejust_36.avif', 3, '36 mm, acero Oystersteel y oro amarillo'),
   (null, 'T-touch connect sport', 'Tissot', 'T-touch connect sport', 13350, 'tissot_t-touch connect sport.avif', 7, '36 mm, cuarzo'),
   (null, 'Stand Alone', 'Tissot', 'Stand Alone', 445, 'tissot_stand_alone.avif', 7, '49.6 mm, cuarzo suizo'),
-  (null, 'Le Locle Powermatic 80 20th anniversary', 'Tissot', 'Powermatic 80 20th anniversary', 775, 'T006.407.11.033.03_R_1.avif', 7, '39.3 mm, brazalete intercambiable, cristral de zafiro');
+  (null, 'Le Locle Powermatic 80 20th anniversary', 'Tissot', 'Powermatic 80 20th anniversary', 775, 'T006.407.11.033.03_R_1.avif', 7, '39.3 mm, brazalete intercambiable, cristral de zafiro'),
+  (null, 'Oyster Perpetual 36', 'Rolex', 'Oyster', 6300, 'oyster_perpetual_36.webp', 1, '36 mm, acero Oystersteel');
 
 -- Insertar usuarios
 INSERT INTO usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo)
