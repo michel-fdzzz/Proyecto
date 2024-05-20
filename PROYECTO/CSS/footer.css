@@ -78,6 +78,8 @@ footer {
     width: 100%;
 }
 
+
+
 .leyes-contenedor,
 .info-contacto-contenedor {
     position: fixed;
@@ -88,7 +90,17 @@ footer {
     border: 1px solid black;
     padding: 20px;
     z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in;
 }
+
+.leyes-contenedor.mostrar,
+.info-contacto-contenedor.mostrar {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 
 .contenedor-cont-apratados-footer {
     padding: 10px;

@@ -1,4 +1,80 @@
 
+
+
+//Funcion para abrir y cerrar el buscador
+$(document).ready(function () {
+    $('.lupa').click(function () {
+
+        $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');
+
+        function buscar(texto) {
+            let xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Se controla que si introduces mal el nombre, salga un mensaje de que no se ha encontrado el producto que buscas pero salen los productos similares.
+                    try {
+                        console.log(this.responseText);
+                        mostrarProductos(JSON.parse(this.responseText));
+                    } catch {
+                        let main = document.querySelector('.main');
+                        let div = document.createElement('div');
+                        div.setAttribute('class', 'mensajeBusqueda');
+
+                        let spanCerrar = document.createElement("span");
+                        spanCerrar.textContent = "\u00D7";
+                        spanCerrar.classList.add("cerrar");
+
+
+                        let p = document.createElement('p');
+                        p.innerHTML = 'No se han encontrado resultados';
+                        let gift = document.createElement('img');
+                        gift.setAttribute('class', 'gift');
+                        gift.setAttribute('src', 'imagenes/gif_resultados.gif');
+
+                        div.appendChild(spanCerrar)
+                        div.appendChild(p);
+                        div.appendChild(gift);
+                        main.appendChild(div);
+                    }
+                }
+            };
+            xhttp.open("POST", "busqueda.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("input=" + texto);
+            return false;
+        }
+
+        // Según se escribe en el buscador se va recibiendo su valor
+        let buscador = document.getElementById('buscador');
+        buscador.addEventListener('input', function () {
+            let texto = document.querySelector('#buscador').value;
+            buscar(texto);
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad, precio) {
     // Solicitud AJAX
     var xhttp = new XMLHttpRequest();

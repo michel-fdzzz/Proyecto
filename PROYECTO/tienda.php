@@ -35,7 +35,18 @@
 
             $con = new Conexion();
             $con = $con->conectar();
-            $select = "select * from producto";
+            $numElementos = 3;
+           
+            $totalProductos = $con->query("SELECT COUNT(*) FROM producto")->fetch_row()[0];
+            $totalPaginas = ceil($totalProductos / $numElementos);
+
+            
+            if (isset($_GET['pag'])){
+                $pagina = $_GET['pag'];
+            } else {
+                $pagina = 1;
+            }
+            $select = "select * from producto  LIMIT ". (($pagina - 1) * $numElementos). "," . $numElementos;
             $rest = $con->query($select);
             $campos = $rest->fetch_all();
             if ($rest->num_rows > 0) {
@@ -51,10 +62,54 @@
                     </a>";
                 }
             }
-
             ?>
+    </article>
 
-        </article>
+        <?php
+        if (isset($_GET['pag'])) { // Si existe el parámetro pag
+            if ($_GET['pag'] > 1) { // Si pag es mayor que 1, pone un enlace al anterior
+        ?>
+
+                <a href="tienda.php?pag=<?php echo $pagina - 1; ?>">
+                <button>Anterior</button></a>
+
+                <?php
+                } else { // Sino deshabilita el botón
+                ?>
+                <a href="#"><button disabled>Anterior</button></a>
+                <?php
+            }
+
+        } else { // Sino deshabilita el botón
+        ?>
+        <a href="#"><button disabled>Anterior</button></a>
+        <?php
+        }
+        ?>
+
+        <?php
+        if (isset($_GET['pag'])) { // Si existe la paginacion
+        // Si el numero de registros actual es superior al maximo
+        if ((($pagina) * $numElementos) < $totalProductos) {
+        ?>
+        <a href="tienda.php?pag=<?php echo $pagina + 1; ?>">
+        <button>Siguiente</button></a>
+        <?php
+        } else { // Sino deshabilita el botón
+        ?>
+        <a href="#"><button disabled>Siguiente</button></a>
+        <?php
+        }
+        } else { // Si no existe, acaba de cargar la página y está en la 1, activa la página 2
+        ?>
+        <a href="tienda.php?pag=2"><button>Siguiente</button></a>
+        <?php
+        }
+        ?>
+        </div>
+
+
+        
 
       <!--  <h1>Nuestros productos más exclusivos</h1>
         <article class="productos-exclusivos-container">

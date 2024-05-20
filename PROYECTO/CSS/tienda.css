@@ -121,17 +121,19 @@ button:hover {
 }
 
 .mensajeBusqueda {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    top: 50%;
+    top: 25%;
     left: 25%;
     right: 25%;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
     animation: mensajeB 0.3s;
+    border-radius: 4px;
+    border: 1px solid black;
 }
 
 .mensajeBusqueda>p {

@@ -1,5 +1,12 @@
 
 
+//Funcion para abrir y cerrar el buscador
+$(document).ready(function () {
+    $('.lupa').click(function () {
+        $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');
+    });
+});
+
 
 
 
