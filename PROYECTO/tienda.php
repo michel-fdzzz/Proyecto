@@ -98,7 +98,7 @@
 
             $con = new Conexion();
             $con = $con->conectar();
-            $select = "select * from producto order by precio desc limit 6";
+            $select = "select * from producto order by precio desc limit 10";
             $rest = $con->query($select);
             $campos = $rest->fetch_all();
             if ($rest->num_rows > 0) {
@@ -136,7 +136,15 @@
 
 
         if (isset($_POST['enviar'])) {
-        //Mensaje de que ya estas suscrito al newsletter royo ya formas parte de Michel & CO
+            $correo = 'michel.fdzzz04@gmail.com';
+            $titulo = 'Suscripción al newsletter';
+            $mensaje = '';
+            if (mail($correo, $titulo, $mensaje)) {
+                echo "<p>Mensaje enviado correctamente.</p>";
+            } else {
+                echo "<p>Error al enviar el mensaje.</p>";
+            }
+    
         }
 
     ?>
