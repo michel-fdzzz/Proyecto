@@ -58,38 +58,36 @@
                         echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
                     }
                     echo "<hr class='linea-separadora'>
-                    <p class='texto-debajo-linea-separadora'>Más $modelo</p>
+                    <p class='texto-debajo-linea-separadora'>Más $modelo</p>";
+                    ?>
                     
                     
-                    
-                    <div class='mas-relojes'>";
+                    <div class='mas-relojes-container'>
+                      <div class="scroll-horizontal">
+                        <div class='mas-relojes'>
+                            <?php
+                            $con = new Conexion();
+                            $con = $con->conectar();
+                            $select = "select * from producto where marca = '$modelo' AND id <> $idProducto";
+                            $rest = $con->query($select);
+                            $campos = $rest->fetch_all();
+                            if ($rest->num_rows > 0) {
+                                foreach ($campos as $campo) {
+                                    echo "
+                                    <div class='contenedor-imagen-mas-relojes'>
+                                        <a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'>
+                                            <img src='imagenes/" . $campo[5] . "' class='producto-imagen-mas-relojes'/>
+                                        </a>
+                                    </div>";
+                                }
+                            } else {
+                                echo '<p>No hay más productos de esta marca</p>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
 
-                    $con = new Conexion();
-                    $con = $con->conectar();
-                    $select = "select * from producto where marca = '$modelo' AND id <> $idProducto";
-                    $rest = $con->query($select);
-                    $campos = $rest->fetch_all();
-                    if ($rest->num_rows > 0) {
-                        foreach ($campos as $campo) {
-                            echo
-                            "<div class='contenedor-imagen-mas-relojes'>
-                        <a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'> <img src='imagenes/" . $campo[5] . "' class='producto-imagen-mas-relojes'/></a>
-                        </div>";
-
-                        }
-                    } else {
-                        echo '<p>No hay más productos de esta marca</p>';
-                    }
-                    
-                    echo "</div>
-                    </div></div>";
-               
-
-                   
-                
-            
-
-            ?>
 
         </article>
     </section>

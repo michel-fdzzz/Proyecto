@@ -175,7 +175,6 @@ button:hover {
 .productos-exclusivos-container {
     display: flex;
     overflow-x: auto;
-    scroll-behavior: smooth;
     white-space: nowrap;
     width: 70%;
     margin: auto;
