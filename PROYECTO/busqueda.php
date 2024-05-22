@@ -1,21 +1,45 @@
 <?php
 include('conexion.php');
-$input = $_POST['input'];
+$input = isset($_POST['input']) ? $_POST['input'] : '';
+$pagina = isset($_POST['pag']) ? intval($_POST['pag']) : 1;
+$numElementos = 4;
+
 $con = new Conexion();
 $con = $con->conectar();
 if ($con->connect_error) {
     die('Conexión fallida: ' . $con->connect_error);
 } else {
-    // Busca los productos que empiezan por $input y si devuelve algo lo 
-    // guardamos en $fila en forma de array y lo enviamos como respuesta para 
-    // que la función mostrarProductos() muestre los productos devueltos en el select
-    $select = "select id,nombre, marca, modelo, precio, imagen, stock, descripcion from producto where nombre like '$input%' or marca like '$input%'";
+
+    // Contar el total de productos que coinciden con la búsqueda
+    $select = "SELECT COUNT(*) FROM producto WHERE nombre LIKE '$input%' OR marca LIKE '$input%'";
+    
+    $result = $con->query($select);
+    $row = $result->fetch_row();
+    $totalProductos = $row[0];
+    //Estas tres líneas quivalen a esto:
+    //$totalProductos = $con->query($select)->fetch_row()[0];
+
+    $totalPaginas = ceil($totalProductos / $numElementos);
+
+    //Obtenemos mediante el select los productos por página
+    $num_productos_por_pagina = ($pagina - 1) * $numElementos;
+    $select = "SELECT id, nombre, marca, modelo, precio, imagen, stock, descripcion FROM producto WHERE nombre LIKE '$input%' OR marca LIKE '$input%' LIMIT $num_productos_por_pagina, $numElementos";
     $rest = $con->query($select);
+
     if ($rest->num_rows > 0) {
-        $fila = $rest->fetch_all();
-        echo json_encode($fila);
+        $productos = $rest->fetch_all(MYSQLI_ASSOC);
+        echo json_encode([
+            'productos' => $productos,
+            'paginaActual' => $pagina,
+            'totalPaginas' => $totalPaginas
+        ]);
     } else {
-        return json_encode(array());
+        echo json_encode([
+            'productos' => [],
+            'paginaActual' => $pagina,
+            'totalPaginas' => $totalPaginas
+        ]);
     }
 }
 $con->close();
+?>

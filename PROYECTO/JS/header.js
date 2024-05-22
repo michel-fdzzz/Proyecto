@@ -46,48 +46,6 @@ $(document).ready(function () {
 });
 
 
-function mostrarProductos(productos) {
-    console.log(productos);
-    let containerProductos = document.querySelector('.productos-container');
-    containerProductos.innerHTML = '';
-
-    // Se muestran todos los productos de forma dinámica
-    for (let producto of productos) {
-
-        let producto_container = document.createElement('div');
-        producto_container.classList.add('producto');
-
-        let link_producto = document.createElement('a');
-        link_producto.href = 'producto.php?idProducto=' + producto[0] + '&nombreProducto=' + producto[1] + '&modelo=' + producto[2] + '&precio=' + producto[4] + '&imagen=' + producto[5] + '&descripcion=' + producto[7] + '&stock=' + producto[6];
-        link_producto.target = '_blank';
-        link_producto.className = 'link-producto';
-
-        let img = document.createElement('img');
-        img.setAttribute('src', 'imagenes/' + producto[5] + '');
-        img.setAttribute('width', '200em');
-        img.setAttribute('height', '300em');
-        img.setAttribute('class', 'producto-imagen');
-
-        let nombre = document.createElement('h4');
-        nombre.textContent = producto[2] + ' ' + producto[1];
-
-
-        let caracteristicas = document.createElement('p');
-        caracteristicas.textContent = '' + producto[7] + '';
-        caracteristicas.setAttribute('class', 'grey');
-
-        let precio = document.createElement('p');
-        precio.textContent = producto[4] + ' €';
-
-
-        link_producto.appendChild(producto_container);
-        producto_container.appendChild(img);
-        producto_container.appendChild(nombre);
-        producto_container.appendChild(caracteristicas);
-        producto_container.appendChild(precio);
-        containerProductos.appendChild(link_producto);
-    }
-}
 
 document.addEventListener('click', function (event) {
     //Si he hecho click en un elemnto con clase .cerrar se hace un bucle de todos los mensajeBusqueda y se eliminan

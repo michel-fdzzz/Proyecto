@@ -7,15 +7,22 @@ $(document).ready(function () {
 
         $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');
 
-        function buscar(texto) {
+        function buscar(texto, pagina = 1) {
             let xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    // Se controla que si introduces mal el nombre, salga un mensaje de que no se ha encontrado el producto que buscas pero salen los productos similares.
-                    try {
-                        console.log(this.responseText);
-                        mostrarProductos(JSON.parse(this.responseText));
-                    } catch {
+
+                    let response = JSON.parse(this.responseText);
+                    console.log(response);
+                    /**
+                     * Dividimos la respuesta en 3 partes de las cuales ya está compuesta. 
+                     * productos: array con la informacion del producto
+                     * paginaActual: valor de la página en la que estmaos, siempre será la primera, es decir, el 1
+                     * totalPaginas: el numero de páginas totales
+                     */
+                    mostrarProductos(response.productos, response.paginaActual, response.totalPaginas);
+
+                    if (response.productos.length == 0) {
                         let main = document.querySelector('.main');
                         let div = document.createElement('div');
                         div.setAttribute('class', 'mensajeBusqueda');
@@ -24,14 +31,13 @@ $(document).ready(function () {
                         spanCerrar.textContent = "\u00D7";
                         spanCerrar.classList.add("cerrar");
 
-
                         let p = document.createElement('p');
                         p.innerHTML = 'No se han encontrado resultados';
                         let gift = document.createElement('img');
                         gift.setAttribute('class', 'gift');
                         gift.setAttribute('src', 'imagenes/gif_resultados.gif');
 
-                        div.appendChild(spanCerrar)
+                        div.appendChild(spanCerrar);
                         div.appendChild(p);
                         div.appendChild(gift);
                         main.appendChild(div);
@@ -40,7 +46,7 @@ $(document).ready(function () {
             };
             xhttp.open("POST", "busqueda.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("input=" + texto);
+            xhttp.send("input=" + texto + "&pag=" + pagina);
             return false;
         }
 
@@ -50,6 +56,7 @@ $(document).ready(function () {
             let texto = document.querySelector('#buscador').value;
             buscar(texto);
         });
+
     });
 });
 
@@ -88,3 +95,88 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function mostrarProductos(productos, paginaActual, totalPaginas) {
+    let containerProductos = document.querySelector('.productos-container');
+    containerProductos.innerHTML = '';
+
+    // Se muestran todos los productos de forma dinámica
+    for (let producto of productos) {
+        let producto_container = document.createElement('div');
+        producto_container.classList.add('producto');
+
+        let link_producto = document.createElement('a');
+        link_producto.href = 'producto.php?idProducto=' + producto.id + '&nombreProducto=' + producto.nombre + '&modelo=' + producto.modelo + '&precio=' + producto.precio + '&imagen=' + producto.imagen + '&descripcion=' + producto.descripcion + '&stock=' + producto.stock;
+        link_producto.target = '_blank';
+        link_producto.className = 'link-producto';
+
+        let img = document.createElement('img');
+        img.setAttribute('src', 'imagenes/' + producto.imagen);
+        img.setAttribute('width', '200em');
+        img.setAttribute('height', '300em');
+        img.setAttribute('class', 'producto-imagen');
+
+        let nombre = document.createElement('h4');
+        nombre.textContent = producto.modelo + ' ' + producto.nombre;
+
+        let caracteristicas = document.createElement('p');
+        caracteristicas.textContent = producto.descripcion;
+        caracteristicas.setAttribute('class', 'grey');
+
+        let precio = document.createElement('p');
+        precio.textContent = producto.precio + ' €';
+
+        producto_container.appendChild(img);
+        producto_container.appendChild(nombre);
+        producto_container.appendChild(caracteristicas);
+        producto_container.appendChild(precio);
+        link_producto.appendChild(producto_container);
+        containerProductos.appendChild(link_producto);
+    }
+
+    // Crear los botones de paginación
+    let paginacionContainer = document.querySelector('.container-botones-paginacion');
+    paginacionContainer.innerHTML = '';
+
+    // Botón anterior
+    if (paginaActual > 1) {
+        let btnAnterior = document.createElement('a');
+        let anteriorPagina = paginaActual - 1;
+        btnAnterior.href = 'tienda.php?pag=' + anteriorPagina + '#intro';
+        let btnAnteriorTexto = document.createElement('button');
+        btnAnteriorTexto.textContent = 'Anterior';
+        btnAnteriorTexto.onclick = function () {
+            buscar(document.querySelector('#buscador').value, paginaActual - 1);
+        };
+        btnAnterior.appendChild(btnAnteriorTexto);
+        paginacionContainer.appendChild(btnAnterior);
+    } else {
+        let btnAnterior = document.createElement('button');
+        btnAnterior.textContent = 'Anterior';
+        btnAnterior.disabled = true;
+        paginacionContainer.appendChild(btnAnterior);
+    }
+
+    // Información de la página actual
+    let spanPagina = document.createElement('span');
+    spanPagina.textContent = 'Página ' + paginaActual + ' de ' + totalPaginas;
+    paginacionContainer.appendChild(spanPagina);
+
+    // Botón siguiente
+    if (paginaActual < totalPaginas) {
+        let btnSiguiente = document.createElement('a');
+        let siguientePagina = paginaActual + 1;
+        btnSiguiente.href = 'tienda.php?pag=' + siguientePagina + '#intro';
+        let btnSiguienteTexto = document.createElement('button');
+        btnSiguienteTexto.textContent = 'Siguiente';
+        btnSiguienteTexto.onclick = function () {
+            buscar(document.querySelector('#buscador').value, paginaActual + 1);
+        };
+        btnSiguiente.appendChild(btnSiguienteTexto);
+        paginacionContainer.appendChild(btnSiguiente);
+    } else {
+        let btnSiguiente = document.createElement('button');
+        btnSiguiente.textContent = 'Siguiente';
+        btnSiguiente.disabled = true;
+        paginacionContainer.appendChild(btnSiguiente);
+    }
+}

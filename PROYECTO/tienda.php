@@ -82,7 +82,7 @@
             <?php else: ?>
                 <button disabled>Siguiente</button>
             <?php endif; ?>
-        </div>
+    </div>
 
         
 
