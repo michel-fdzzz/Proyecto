@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +15,12 @@
       let tieneNumero = /[0-9]/.test(contraseña); // Comprueba si uno o varios números
 
       if (!tieneMayuscula || !tieneSimbolo || !tieneNumero || contraseña.length < 8) {
-        alert("La contraseña debe tener al menos 8 caracteres y contener al menos una mayúscula, un símbolo y un número.");
+        let flex_container = document.querySelector('.flex-container');
+        let mensaje = document.createElement('p');
+        mensaje.textContent = 'La contraseña debe tener al menos 8 caracteres y contener al menos una mayúscula, un símbolo y un número.';
+        mensaje.style.color = 'red';
         document.getElementById("contrasenia").value = "";
+        flex_container.appendChild(mensaje);
         return false;
       }
       return true;
@@ -97,7 +100,7 @@
                   $_SESSION['idCliente'] = $id;
                 }
               }
-              header('Location: tienda.php');
+              echo "<script>window.location='tienda.php';</script>";
             }
           }
         }
