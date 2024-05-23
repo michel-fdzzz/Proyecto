@@ -17,8 +17,8 @@ body {
     /* width: 100%; /* Ancho completo de la ventana */
     display: flex;
     justify-content: space-between;
-    /*height: 10%;*/
-    height: 6em;
+    height: 10%;
+    /*height: 6em;*/
     background-color: #efefef;
     z-index: 1000;
     position: fixed;
@@ -56,7 +56,7 @@ body {
 
 .buscadorContainer.activo {
     left: 0;
-    top: 6em;
+    top: 10%;
 }
 
 
@@ -117,17 +117,16 @@ input {
 
 /* Botón del desplegable */
 .botonDesplegar {
-    padding: 10px;
+    /*padding: 10px;*/
     font-size: 16px;
     border: none;
     cursor: pointer;
     display: flex;
-    background-color: #efefef;
     margin: 0;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .botonDesplegar:hover {
-    background-color: #f9f9f9;
     transform: translateY(-1px);
 }
 
@@ -142,7 +141,7 @@ input {
     flex-direction: column;
     background-color: #efefef;
     color: white;
-    top: 6em;
+    top: 10%;
     transition: left 0.3s ease;
     border-right: 2px solid black;
     text-align: center;

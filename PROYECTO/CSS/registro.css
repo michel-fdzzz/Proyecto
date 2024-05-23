@@ -1,5 +1,12 @@
+.main {
+    height: 90%;
+    margin-top: 15vh;
+    margin-bottom: 5%;
+    /*PONER EN TODOS*/
+}
+
 form.formulario {
-    margin: 8em auto 4em auto;
+    margin: 0 auto 0 auto;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 8px;

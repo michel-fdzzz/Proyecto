@@ -7,7 +7,8 @@
     <title>Registrarse</title>
     <link href="CSS/iniciarSesion.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script defer src="JS/header.js"></script>
+    <script defer src="JS/inicioSesion.js"></script>
 </head>
 
 <body>
@@ -76,8 +77,7 @@
     <?php
     include 'footer.php';
     ?>
-    <script defer src="JS/header.js">
-    </script>
+   
 </body>
 
 </html>
