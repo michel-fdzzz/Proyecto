@@ -1,6 +1,6 @@
 .main {
     height: 90%;
-    margin-top: 8em;
+    margin-top: 11vh;
 }
 
 .tituloCarrito {
@@ -265,4 +265,58 @@ button:hover {
 .grey {
     font-weight: 350;
     color: grey;
+}
+
+
+
+
+@media (max-width: 920px) {
+    .productos-carrito-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 2em;
+        gap: 2em;
+    }
+
+    .containerProductosCarrito {
+        width: 100%;
+    }
+
+    .container-comprar-todo-envio {
+        width: 80%;
+        position: relative;
+    }
+}
+
+
+@media (max-width: 610px) {
+
+    .producto {
+        font-size: 0.95rem;
+    }
+
+    .info-producto-container {
+        flex-direction: column;
+    }
+
+    .container-foto-botones {
+        width: 100%;
+    }
+
+    .informacionCarrito {
+        min-width: 100%;
+        margin-top: 0.5em;
+        text-align: center;
+    }
+
+    .mas-menos-container {
+        margin-left: 2em;
+    }
+}
+
+@media (max-width: 420px) {
+    .mas-menos-container {
+        margin-right: 2em;
+        margin-left: 1em;
+    }
 }

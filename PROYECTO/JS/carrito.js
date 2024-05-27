@@ -55,7 +55,7 @@ function eliminarProducto(idProducto, idCliente) {
 }
 
 
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
 
     // Calcula el 70% de la altura de la ventana del navegador
@@ -66,3 +66,4 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('footer').style.bottom = "0";
     }
 });
+*/
