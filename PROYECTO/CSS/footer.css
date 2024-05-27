@@ -81,9 +81,11 @@ footer {
 }
 
 
-
 .leyes-contenedor,
-.info-contacto-contenedor {
+.info-contacto-contenedor,
+.quienes-somos-contenedor {
+    display: none;
+    /* Inicialmente oculto */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -92,19 +94,10 @@ footer {
     border: 1px solid black;
     padding: 20px;
     z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease-in;
-}
-
-.leyes-contenedor.mostrar,
-.info-contacto-contenedor.mostrar {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 
-.contenedor-cont-apratados-footer {
+.contenedor-cont-apartados-footer {
     padding: 5px;
 }
 
@@ -121,16 +114,16 @@ footer {
     color: rgb(209, 0, 0);
 }
 
-
-
 .cerrar,
-.cerrar-info-contacto {
+.cerrar-info-contacto,
+.cerrar-quienes-somos {
     position: absolute;
     top: -21px;
     right: 5px;
     font-size: 3rem;
     cursor: pointer;
 }
+
 
 .sin-margen {
     margin: 0;
@@ -139,12 +132,5 @@ footer {
 @media screen and (max-width: 900px) {
     .contenedor-info-footer {
         flex-direction: column;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .leyes-contenedor.mostrar {
-        top: 50vh;
-
     }
 }
