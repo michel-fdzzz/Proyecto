@@ -45,6 +45,10 @@
                     if ($tipo == 1) {
                         echo '<a href="gestion.php" class="apartados-desplegable">Gestión de productos</a>';
                     }
+
+                    if ($tipo == 1 || $tipo == 0){
+                      echo '<a href="pedidos.php" class="apartados-desplegable">Pedidos</a>';
+                    }
                 }
                 // Cerrar la consulta preparada
                 $stmt->close();
@@ -66,7 +70,6 @@
     <div class="containerIconos">
             <?php
             if (isset($_SESSION['idCliente'])) {
-                //Ponerle en el hover el subrayado que tenog en el 3 en raya
                 echo '
                 <img class="desconexion" src="imagenes/salida-de-incendios.png" width="25em" height="25em" alt="Carrito" />';
             } else {

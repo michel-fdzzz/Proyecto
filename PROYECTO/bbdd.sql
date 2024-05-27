@@ -44,8 +44,8 @@ create table carrito (
     modelo varchar (50) not null,
     cantidad int not null,
     precio decimal(10, 2) not null,
-    foreign key (idProducto) references producto(id),
-    foreign key (idCliente) references usuario(id)
+    foreign key (idProducto) references producto(id) on delete cascade,
+    foreign key (idCliente) references usuario(id) on delete cascade
 );
 
 create table pedido (
@@ -57,8 +57,8 @@ create table pedido (
     cantidad int not null,
     precio decimal(10, 2) not null,
     fecha date not null,
-    foreign key (idProducto) references producto(id),
-    foreign key (idCliente) references usuario(id)
+    foreign key (idProducto) references producto(id) on delete cascade,
+    foreign key (idCliente) references usuario(id) on delete cascade
 );
 
 

@@ -1,0 +1,109 @@
+.main {
+    height: 90%;
+    margin-top: 8em;
+}
+
+
+.tituloPedidos {
+    text-align: center;
+}
+
+
+.pedidos-container {
+    display: grid;
+    grid-template-columns: 22% 22% 22% 22%;
+    gap: 20px;
+    justify-content: center;
+    margin: 5em 5em 2em 5em;
+    grid-auto-rows: auto;
+    align-items: center;
+}
+
+.pedido {
+    border-radius: 2px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    text-align: center;
+    /*min-width: 25em;*/
+}
+
+
+.pedido-imagen {
+    width: 150px;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+
+.container-mensaje-pedidos {
+    display: flex;
+    justify-content: center;
+    /*flex-wrap: wrap;*/
+    margin: 5% 0% 5% 0%;
+}
+
+.mensajePredidos {
+
+    max-width: 19em;
+    /* height: 7em;*/
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
+}
+
+.linkMensaje {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.botonVerProductos {
+    background-color: #efefef;
+    min-height: 2em;
+    width: 100%;
+    border-radius: 4px;
+    text-align: center;
+    color: black;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+}
+
+.botonVerProductos>p {
+    margin: auto;
+}
+
+.botonVerProductos:hover {
+    background-color: #bdbdbd;
+    transform: translateY(-2px);
+}
+
+
+
+@media (max-width: 1500px) {
+    .pedidos-container {
+        grid-template-columns: 31% 31% 31%;
+        margin: 2em;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 980px) {
+    .pedidos-container {
+        grid-template-columns: 45% 45%;
+        margin: 2em;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .pedidos-container {
+        grid-template-columns: 80%;
+        margin: 2em;
+        gap: 20px;
+    }
+}
