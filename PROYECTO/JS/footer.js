@@ -26,34 +26,62 @@
     });
 });*/
 $(document).ready(function () {
-    // Mostrar el contenedor de la ley al hacer clic en el elemento con clase "leyes"
+
+    //Ley de proteccion de datos
+
     $(".leyes").click(function () {
         $(".leyes-contenedor").fadeIn();
     });
 
-    // Cerrar el contenedor de la ley al hacer clic en el botón de cierre
     $(".cerrar").click(function () {
         $(".leyes-contenedor").fadeOut();
     });
 
-    // Mostrar el contenedor de información de contacto al hacer clic en el elemento con clase "info-contacto"
+    //Informacion de contacto (Atención al cliente)
+
     $(".info-contacto").click(function () {
         $(".info-contacto-contenedor").fadeIn();
     });
 
-    // Cerrar el contenedor de información de contacto al hacer clic en el botón de cierre
     $(".cerrar-info-contacto").click(function () {
         $(".info-contacto-contenedor").fadeOut();
     });
 
-    // Mostrar el contenedor "Quiénes somos" al hacer clic en el elemento con clase "quienes-somos"
+    //Quienes somos
+
     $(".quienes-somos").click(function () {
-        alert('ds')
         $(".quienes-somos-contenedor").fadeIn();
     });
 
-    // Cerrar el contenedor "Quiénes somos" al hacer clic en el botón de cierre
     $(".cerrar-quienes-somos").click(function () {
         $(".quienes-somos-contenedor").fadeOut();
+    });
+
+    //Ubicación
+
+    $(".ubicacion").click(function () {
+        $(".ubicacion-contenedor").fadeIn();
+    });
+
+    $(".cerrar-ubicacion").click(function () {
+        $(".ubicacion-contenedor").fadeOut();
+    });
+
+    //Preguntas frecuentes
+
+    $(".preguntas-frecuentes").click(function () {
+        $(".preguntas-frecuentes-contenedor").fadeIn();
+    });
+
+    $(".cerrar-preguntas-frecuentes").click(function () {
+        $(".preguntas-frecuentes-contenedor").fadeOut();
+    });
+
+    $('.pregunta-frecuente').on('click', function () {
+        $(this).next('.respuesta').slideToggle();
+    });
+
+    $('.cerrar-preguntas-frecuentes').on('click', function () {
+        $('.preguntas-frecuentes-contenedor').slideUp();
     });
 });
