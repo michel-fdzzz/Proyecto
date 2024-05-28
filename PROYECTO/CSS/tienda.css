@@ -305,3 +305,15 @@ form {
     color: white;
     transform: translateY(-2px);
 }
+
+@media screen and (max-width: 1077px) {
+    .productos-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .productos-container {
+        grid-template-columns: 1fr;
+    }
+}
