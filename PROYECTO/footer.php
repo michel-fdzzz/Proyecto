@@ -41,7 +41,7 @@
 
 
            <!-- Agregamos un contenedor para la ventana emergente -->
-    <div class="leyes-contenedor">
+    <div class="leyes-contenedor" id='leyes-contenedor-container'>
         <div class="contenedor-cont-apartados-footer">
             <!-- Agregamos el botón de cierre -->
             <span class="cerrar">&times;</span>
@@ -51,7 +51,7 @@
         </div>
     </div>
     
-    <div class="info-contacto-contenedor">
+    <div class="info-contacto-contenedor" id='info-contacto-container'>
         <div class="contenedor-cont-apartados-footer">
             <!-- Agregamos el botón de cierre -->
             <span class="cerrar-info-contacto">&times;</span>
@@ -64,7 +64,7 @@
         </div>
     </div>
     
-    <div class="quienes-somos-contenedor">
+    <div class="quienes-somos-contenedor" id='quienes-somos-container'>
         <div class="contenedor-cont-apartados-footer">
             <!-- Agregamos el botón de cierre -->
             <span class="cerrar-quienes-somos">&times;</span>
@@ -91,11 +91,13 @@
         <div class="contenedor-cont-apartados-footer">
             <span class="cerrar-ubicacion">&times;</span>
             <h1>Ubicacion</h1>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12171.661392135189!2d-3.73335475!3d40.2998385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4220974ada7367%3A0x142fa4db2280e6e7!2sIES%20Matem%C3%A1tico%20Puig%20Adam!5e0!3m2!1ses!2ses!4v1716906338274!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class='iframe-container'>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12171.661392135189!2d-3.73335475!3d40.2998385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4220974ada7367%3A0x142fa4db2280e6e7!2sIES%20Matem%C3%A1tico%20Puig%20Adam!5e0!3m2!1ses!2ses!4v1716906338274!5m2!1ses!2ses" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
     </div>
 
-    <div class="preguntas-frecuentes-contenedor">
+    <div class="preguntas-frecuentes-contenedor" id='preguntas-frecuentes-container'>
         <div class="contenedor-cont-apartados-footer">
             <span class="cerrar-preguntas-frecuentes">&times;</span>
             <div class="pregunta-contenedor">
@@ -106,60 +108,55 @@
             </div>
             
             <div class="pregunta-contenedor">
-                <h3 class="pregunta-frecuente">¿Cómo puedo contactar con el servicio de soporte?</h3>
+                <h3 class="pregunta-frecuente">¿Cómo puedo contactar con vosotros si tengo un problema?</h3>
                 <div class="respuesta">
-                    <p>Puedes contactar con el servicio de soporte a través del correo soporte@ejemplo.com.</p>
+                    <p>Puedes contactar con nosotros a través del correo Michel&CO@gmail.com o llamando al 678574678.</p>
                 </div>
             </div>
 
             <div class="pregunta-contenedor">
                 <h3 class="pregunta-frecuente">¿Cuál es la política de devoluciones?</h3>
                 <div class="respuesta">
-                    <p>Ofrecemos devoluciones dentro de los 30 días posteriores a la compra.</p>
+                    <p>Las devoluciones estan comprendidas en un plazo de 15 días desde que recibes el reloj.</p>
                 </div>
             </div>
 
             <div class="pregunta-contenedor">
-                <h3 class="pregunta-frecuente">¿Ofrecen envío internacional?</h3>
+                <h3 class="pregunta-frecuente">¿Los envío son solo nacionales?</h3>
                 <div class="respuesta">
-                    <p>Sí, realizamos envíos a nivel mundial con tarifas adicionales.</p>
+                    <p>No, también realizamos envíos internacionales con un coste de envío adicional.</p>
                 </div>
             </div>
 
             <div class="pregunta-contenedor">
                 <h3 class="pregunta-frecuente">¿Puedo rastrear mi pedido?</h3>
                 <div class="respuesta">
-                    <p>Sí, proporcionamos un número de seguimiento una vez que el pedido ha sido enviado.</p>
+                    <p>No directamente, pero puedes contactar con nosostros a través de nuestro número de teléfono dando el número de pedido.</p>
                 </div>
             </div>
 
             <div class="pregunta-contenedor">
                 <h3 class="pregunta-frecuente">¿Qué métodos de pago aceptan?</h3>
                 <div class="respuesta">
-                    <p>Aceptamos tarjetas de crédito, débito, PayPal y transferencias bancarias.</p>
-                </div>
-            </div>
-
-            <div class="pregunta-contenedor">
-                <h3 class="pregunta-frecuente">¿Cómo puedo cancelar mi suscripción?</h3>
-                <div class="respuesta">
-                    <p>Puedes cancelar tu suscripción a través de tu cuenta en nuestro sitio web o contactando con soporte.</p>
+                    <p>Aceptamos tarjetas de crédito, débito, PayPal y transferencias bancarias. Proximamente se podrá pagar a través de bizum.</p>
                 </div>
             </div>
 
             <div class="pregunta-contenedor">
                 <h3 class="pregunta-frecuente">¿Ofrecen descuentos para estudiantes?</h3>
                 <div class="respuesta">
-                    <p>Sí, ofrecemos descuentos para estudiantes con una identificación válida.</p>
+                    <p>No, todos los relojes tendrán el mismo coste para todos nuestros clientes.</p>
                 </div>
             </div>
-            
+
+            <!--
             <div class="pregunta-contenedor">
                 <h3 class="pregunta-frecuente">¿Cómo puedo actualizar mi información de cuenta?</h3>
                 <div class="respuesta">
                     <p>Puedes actualizar tu información de cuenta en la sección "Mi cuenta" en nuestro sitio web.</p>
                 </div>
             </div>
+            -->
         </div>
     </div>
 </footer>
