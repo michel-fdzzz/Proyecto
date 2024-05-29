@@ -20,7 +20,7 @@
         <p class='menu'>Menú</p>
       </button>
       <div class="containerDesplegable">
-        <a href="#" class='apartados-desplegable'>Rolex</a>
+        <a href="rolex.php" class='apartados-desplegable'>Rolex</a>
         <a href="#" class='apartados-desplegable'>Patek</a>
         <a href="#" class='apartados-desplegable'>Tissot</a>
         <?php
