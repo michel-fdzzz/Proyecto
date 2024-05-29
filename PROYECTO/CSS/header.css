@@ -11,14 +11,10 @@ body {
 }
 
 .menuPrincipal {
-    /* position: fixed;
-    top: 0; /* Lo fija en la parte superior de la ventana */
-    /*  left: 0; /* Lo fija en el borde izquierdo de la ventana */
-    /* width: 100%; /* Ancho completo de la ventana */
     display: flex;
     justify-content: space-between;
     height: 10%;
-    /*height: 6em;*/
+
     background-color: #efefef;
     z-index: 1000;
     position: fixed;
@@ -37,6 +33,26 @@ body {
 .menu {
     margin: auto;
     font-family: 'Oswald', sans-serif;
+}
+
+.container-logo {
+    text-align: center;
+}
+
+.contenedor-logo>a {
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor-logo>a>img {
+    width: 30vw;
+    /* Ocupará el 10% del ancho de la ventana */
+    height: 10vh;
+    /* Tamaño máximo */
+    /* Tamaño máximo */
+    object-fit: contain;
+    /* Asegura que la imagen mantenga su proporción */
+
 }
 
 .buscadorContainer {
@@ -71,6 +87,7 @@ body {
     gap: 1em;
     margin-right: 0.5em;
 }
+
 
 .carrito,
 .iconoInicioSesion,
@@ -117,18 +134,21 @@ input {
 
 /* Botón del desplegable */
 .botonDesplegar {
-    /*padding: 10px;*/
+    padding-left: 5%;
     font-size: 16px;
     border: none;
     cursor: pointer;
     display: flex;
     margin: 0;
-    transition: background-color 0.3s, transform 0.3s;
+    background-color: transparent;
+    transition: transform 0.3s;
 }
 
 .botonDesplegar:hover {
     transform: translateY(-1px);
+    background-color: transparent;
 }
+
 
 .containerDesplegable {
     position: fixed;
@@ -211,4 +231,24 @@ input {
 
 .apartados-desplegable:hover::after {
     width: 100%;
+}
+
+@media screen and (max-width: 320px) {
+
+
+    .desplegable {
+        width: 33%;
+    }
+
+    .contenedor-logo {
+        width: 33%;
+        text-align: center;
+    }
+
+    .containerIconos {
+        width: 33%;
+        gap: 0.2em;
+    }
+
+
 }
