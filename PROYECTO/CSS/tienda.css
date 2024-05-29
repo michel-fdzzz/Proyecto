@@ -84,6 +84,7 @@ p,
     height: 300px;
     object-fit: cover;
     transition: transform 0.3s ease;
+
 }
 
 
@@ -200,6 +201,7 @@ button:hover {
     height: 300px;
     object-fit: cover;
     transition: transform 0.3s ease;
+    margin-top: 1em;
 }
 
 
