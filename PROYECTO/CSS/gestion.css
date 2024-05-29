@@ -1,10 +1,9 @@
 .main {
-    height: 90%;
+    height: 60%;
     width: 100%;
     margin-top: 10vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .main>h1 {
@@ -49,5 +48,6 @@ a {
 }
 
 footer {
+    position: absolute;
     bottom: 0;
 }
