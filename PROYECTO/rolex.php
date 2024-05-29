@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link href="CSS/tienda.css" rel="stylesheet" type="text/css">
+    <link href="CSS/rolex.css" rel="stylesheet" type="text/css">
     <script defer src='JS/rolex.js'></script>
 </head>
 
@@ -17,11 +17,10 @@
 
     <section class="main">
     <div class="container-imagen">
-        <img src='imagenes/fotoFondo2.jpg' class='imagenInicial'/>
+        <img src='imagenes/rolex-logo.png' class='imagenInicial'/>
     </div>
 
         <article class="intro" id="intro">
-            <h1 class='h1-grande'>Rolex</h1>
             <h2 class="slogan">"Una Corona Por Cada Logro"</h2>
             
         </article>
