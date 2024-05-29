@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producto</title>
     <link href="CSS/producto.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script defer src='JS/producto.js'></script>
 </head>
 
@@ -95,6 +96,14 @@
 
         </article>
     </section>
+
+    <div id="modal">
+    <div id="modal-content">
+      <span class="close">&times;</span>
+      <p>Debes iniciar sesión para añadir productos al carrito</p>
+      <button id="login-button">Iniciar Sesión</button>
+    </div>
+  </div>
     <?php
     include 'footer.php';
     ?>

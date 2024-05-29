@@ -24,11 +24,28 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
 }
 
 
-// Poner que salte un mensaje de iniciar sesión o registrarte
+
+
+// Función para mostrar la ventana modal
 function añadirSinUsuario() {
-    let contenedor = document.createElement('div');
-    let mensajeIniciarSesion = document.createElement('p');
-    let link = document.createElement('button');
-    alert('Debes iniciar sesion para añadir productos al carrito');
+    $('#modal').fadeIn();
 }
 
+//Cerrar la ventana al hacer click en la X
+$(document).ready(function () {
+    $('.close').click(function () {
+        $('#modal').fadeOut();
+    });
+
+    //Cerrar la ventana si se hace click fuera de la ventana
+    $(window).click(function (event) {
+        if ($(event.target).is('#modal')) {
+            $('#modal').fadeOut();
+        }
+    });
+
+    //Evento para redirigir al inicio de sesion
+    $('#login-button').click(function () {
+        window.location.href = 'iniciarSesion.php';
+    });
+});
