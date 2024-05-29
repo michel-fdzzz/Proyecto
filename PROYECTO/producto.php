@@ -53,7 +53,11 @@
 
 
                     if (isset($_SESSION['idCliente'])) {
-                        echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
+                        if ($stock > 0){
+                            echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
+                        } else {
+                            echo "<button>Agotado</button>";
+                        }
                     } else {
                         echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
                     }
