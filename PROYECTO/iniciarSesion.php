@@ -28,7 +28,9 @@
                 <label for="contrasenia">Contraseña</label>
                 <input type="password" name="contrasenia" id='contrasenia' required>
 
-                <input type="submit" value="Enviar" name='enviar'>
+                <input type="submit" value="Enviar" name='enviar' id='enviar'>
+
+                <div id = 'errorDiv'> <p id = 'error'>El correo o contraseña introducidos no están registrados</p></div>
 
             </div>
             <a href="registro.php" target="_self" class='linkRegistroInicioSesion'>No tengo cuenta, registrarme.</a>
@@ -66,9 +68,12 @@
                     }
 
                     // Si no hay una cuenta con la contraseña y correo que el usuario a introducido muestra un mensaje
-                } else {
-                    echo "<div id = 'errorDiv'> <p id = 'error'>El correo o contraseña introducidos no están registrados</p></div>";
-                }
+                } else {   ?>
+                   <script>
+                        document.getElementById('errorDiv').style.display = 'block';
+                        document.getElementById('enviar').style.marginBottom = '0';
+                   </script>
+    <?php       }
             }
             $con->close();
         }

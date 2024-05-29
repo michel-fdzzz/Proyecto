@@ -76,3 +76,12 @@ input[type="submit"]:hover {
 footer {
     bottom: 0;
 }*/
+
+#errorDiv {
+    display: none;
+}
+
+#error {
+    color: red;
+    margin: 0 auto 1em auto;
+}
