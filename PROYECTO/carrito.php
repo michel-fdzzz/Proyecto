@@ -28,7 +28,6 @@
 
         // Si la variable de sesión tiene valor es que el usuario a iniciado sesion o se ha registrado y puede ver el carrito y comprar productos
         if (isset($_SESSION['idCliente'])) {
-            $_SESSION['precioTodo'] = 0;
             $con = new Conexion();
             $con = $con->conectar();
 
@@ -43,9 +42,8 @@
             if ($rest->num_rows > 0) {
                 echo ' <article class="productos-carrito-container">
                     <div class="containerProductosCarrito">';
+                    $precio_total = 0;
                 foreach ($campos as $campo) {
-                    $precioTotalPorProducto = $campo[2] * $campo[3];
-                    $_SESSION['precioTodo'] = $_SESSION['precioTodo'] + $precioTotalPorProducto;
 
                     $nombreProducto = $campo[0];
                     $modelo = $campo[1];
@@ -55,8 +53,11 @@
                     $imagen = $campo[5];
                     $stock = $campo[6];
 
-                    $precio_total = $precio * $cantidad;
+                    //Precio de un producto del carrito según sus respectivas unidades
                     $precio_total_producto = $precio * $cantidad;
+                    //Acumulamos los precios de todos los productos en una sola variable
+                    $precio_total += $precio_total_producto;
+                   //El coste del envío es un 1%
                     $coste_envio_producto = $precio_total_producto * 0.01;
 
                     echo

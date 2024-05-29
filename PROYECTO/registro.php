@@ -52,7 +52,7 @@
         <input type="password" name="contrasenia" id='contrasenia' required>
 
         <label for="domicilio">Domicilio</label>
-        <input type="text" name="domicilio">
+        <input type="text" name="domicilio" required>
 
         <input type="submit" value="Enviar" name='enviar'>
 
