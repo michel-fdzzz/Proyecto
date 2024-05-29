@@ -29,10 +29,11 @@
 
 
 .pedido-imagen {
-    width: 150px;
+    width: 170px;
     height: 250px;
     object-fit: cover;
     transition: transform 0.3s ease;
+    margin-top: 1em;
 }
 
 
