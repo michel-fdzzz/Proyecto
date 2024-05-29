@@ -90,10 +90,6 @@
 
       <div class="productos-exclusivos">
         <article class="productos-exclusivos-container">
-            <!--<section class="contenedor-botones-scroll">
-                <div class="boton-izquierda">izq</div>
-                <div class="boton-derecha">der</div>
-            </section>-->
             <?php
 
             $con = new Conexion();
@@ -106,9 +102,9 @@
                     echo
                     "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'  target='_blank' class='link-producto'>
                     <div class='producto-exclusivo'>
-                     <img src='imagenes/" . $campo[5] . "'  class='producto-imagen'/>
+                     <img src='imagenes/" . $campo[5] . "'  class='producto-imagen-exclusivo'/>
                     <h4>" . $campo[1] . "</h4>
-                    <p class='grey'>" . $campo[7] . "</p>
+                    
                     <p>" . $campo[4] . " €</p>
                     </div>
                     </a>";
@@ -117,7 +113,7 @@
             ?>
 
         </article>
-        </div>
+      </div>
 
         <section class="container-newsletter">
         <article class="newsletter">

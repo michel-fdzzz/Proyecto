@@ -22,7 +22,7 @@ create table producto (
     precio decimal(10, 2) not null,
     imagen varchar(500) not null, 
     stock int not null,
-    descripcion varchar(200) not null
+    descripcion varchar(400) not null
 );
 
 create table usuario (
@@ -70,7 +70,12 @@ VALUES
   (null, 'T-touch connect sport', 'Tissot', 'T-touch connect sport', 13350, 'tissot_t-touch connect sport.avif', 7, '36 mm, cuarzo'),
   (null, 'Stand Alone', 'Tissot', 'Stand Alone', 445, 'tissot_stand_alone.avif', 7, '49.6 mm, cuarzo suizo'),
   (null, 'Le Locle Powermatic 80 20th anniversary', 'Tissot', 'Powermatic 80 20th anniversary', 775, 'T006.407.11.033.03_R_1.avif', 7, '39.3 mm, brazalete intercambiable, cristral de zafiro'),
-  (null, 'Oyster Perpetual 36', 'Rolex', 'Oyster', 6300, 'oyster_perpetual_36.webp', 1, '36 mm, acero Oystersteel');
+  (null, 'Oyster Perpetual 36', 'Rolex', 'Oyster', 6300, 'oyster_perpetual_36.webp', 1, '36 mm, acero Oystersteel'),
+  (null, 'Nautilus acero', 'Patek Philippe', 'Nautilus', 32170, 'nautilus.png', 1, 'Brazalete de acero. Cierre desplegable Nautilus. Movimineto mecánico de cuerda. Opalina azul  índices y cifras aplicados de oro, con revestimiento luminiscente.'),
+  (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 415920, 'nautilus_oro_blanco.png', 1, 'Brazalete de oro blanco, engastado en diamantes. Cierre desplegable Nautilus. Movimineto mecánico de cuerda. Engastado en un total de 2364 diamantes.'),
+  (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 535510, 'nautilus_oro_blanco_diamantes_verdes.png', 1, 'Brazalete de oro blanco, engastado en diamantes y esmeraldas. Cierre desplegable  patentado engastado con diamantes. Movimineto mecánico de carga automática. Engastado en 1500 diamantes y 876 esmeraldas.');
+
+
 
 -- Insertar usuarios
 INSERT INTO usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo)

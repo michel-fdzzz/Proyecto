@@ -85,7 +85,7 @@ button:hover {
 
 .mas-relojes-container {
     width: 100%;
-    height: 8em;
+    height: 9em;
     align-items: center;
     display: flex;
 }
@@ -110,19 +110,33 @@ button:hover {
 }
 
 .contenedor-imagen-mas-relojes {
-    width: 5em;
-    height: 5em;
-    /* Espacio entre cada elemento */
-    background-color: #bdbdbd;
+    width: 6.5em;
+    height: 6.5em;
+    background-color: #dadada;
     border-radius: 50%;
     margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease;
 }
 
-.producto-imagen-mas-relojes {
+.contenedor-imagen-mas-relojes>a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
+
+.producto-imagen-mas-relojes {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 
 .contenedor-imagen-mas-relojes:hover {
     transform: translateY(-3px);

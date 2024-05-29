@@ -28,7 +28,6 @@
 .productos-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 20px;
     justify-content: center;
     margin: 5em 5em 2em 5em;
     grid-auto-rows: auto;
@@ -55,6 +54,10 @@ p,
         transform: scale(1.1);
     }
 
+    .producto-imagen-exclusivo {
+        transform: scale(1.1);
+    }
+
     .grey {
         color: red;
     }
@@ -70,7 +73,7 @@ p,
     /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
     align-items: center;
     text-align: center;
-    height: 27em;
+    height: auto;
     /*min-width: 25em;*/
 }
 
@@ -189,6 +192,14 @@ button:hover {
     height: 27em;
     width: 16em;
     /*min-width: 25em;*/
+}
+
+
+.producto-imagen-exclusivo {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 
