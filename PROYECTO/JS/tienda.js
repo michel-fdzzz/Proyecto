@@ -50,7 +50,7 @@ $(document).ready(function () {
             return false;
         }
 
-        // Según se escribe en el buscador se va recibiendo su valor
+        //Según se escribe en el buscador se va recibiendo su valor
         let buscador = document.getElementById('buscador');
         buscador.addEventListener('input', function () {
             let texto = document.querySelector('#buscador').value;
@@ -75,7 +75,7 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
 }
 
 
-// Poner que salte un mensaje de iniciar sesión o registrarte
+// Poner que salte un mensaje de iniciar sesión o registrarte (Ponerlo con jquery)
 function añadirSinUsuario() {
     let contenedor = document.createElement('div');
     let mensajeIniciarSesion = document.createElement('p');
@@ -83,23 +83,11 @@ function añadirSinUsuario() {
     alert('Debes iniciar sesion para añadir productos al carrito');
 }
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Calcula el 60% de la altura de la ventana del navegador
-    let porcentaje_altura_pagina = window.innerHeight * 0.6;
-
-    // Comprueba si la altura del contenido de la página es al menos el 60% de la altura de la ventana
-    if (document.body.scrollHeight < porcentaje_altura_pagina) {
-        document.querySelector('footer').style.bottom = "0";
-    }
-});
-
 function mostrarProductos(productos, paginaActual, totalPaginas) {
     let containerProductos = document.querySelector('.productos-container');
     containerProductos.innerHTML = '';
 
-    // Se muestran todos los productos de forma dinámica
+    //Se muestran todos los productos de forma dinámica
     for (let producto of productos) {
         let producto_container = document.createElement('div');
         producto_container.classList.add('producto');
@@ -133,11 +121,11 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
         containerProductos.appendChild(link_producto);
     }
 
-    // Crear los botones de paginación
+
     let paginacionContainer = document.querySelector('.container-botones-paginacion');
     paginacionContainer.innerHTML = '';
 
-    // Botón anterior
+    //Botón anterior
     if (paginaActual > 1) {
         let btnAnterior = document.createElement('a');
         let anteriorPagina = paginaActual - 1;
@@ -156,12 +144,12 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
         paginacionContainer.appendChild(btnAnterior);
     }
 
-    // Información de la página actual
+    //Información de las páginas 
     let spanPagina = document.createElement('span');
     spanPagina.textContent = 'Página ' + paginaActual + ' de ' + totalPaginas;
     paginacionContainer.appendChild(spanPagina);
 
-    // Botón siguiente
+    //Botón siguiente
     if (paginaActual < totalPaginas) {
         let btnSiguiente = document.createElement('a');
         let siguientePagina = paginaActual + 1;
@@ -180,3 +168,52 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
         paginacionContainer.appendChild(btnSiguiente);
     }
 }
+
+
+let container = document.querySelector('.productos-exclusivos-container');
+let pixeles_desplazamiento = 0;
+let movimientoScroll = 16 * 16; //16 em que mide mi contenedor por 16px que corresponde a cada em, es una conversión
+let segundos = 5000; //5 segundos
+
+
+function scrollAutomatico() {
+    pixeles_desplazamiento += movimientoScroll;
+
+    /**
+     * Si llega al final. Ya que la resta
+     * container.scrollWidth: contenido total del contenedor
+     * container.clientWidth: contenido total del contenedor visible, lo que los usuarios ven
+     */
+    //alert('Desplazamiento: ' + pixeles_desplazamiento + ' -- Cliente: ' + container.clientWidth + ' -- Total: ' + container.scrollWidth)
+    if (pixeles_desplazamiento >= container.scrollWidth - container.clientWidth) {
+        pixeles_desplazamiento = 0;
+    }
+
+    //El scroll lo hace a la izquierda con una transicion (smooth)
+    container.scrollTo({
+        left: pixeles_desplazamiento,
+        behavior: 'smooth'
+    });
+}
+
+setInterval(scrollAutomatico, segundos);
+
+
+
+
+
+
+
+
+
+/*
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Calcula el 60% de la altura de la ventana del navegador
+    let porcentaje_altura_pagina = window.innerHeight * 0.6;
+
+    // Comprueba si la altura del contenido de la página es al menos el 60% de la altura de la ventana
+    if (document.body.scrollHeight < porcentaje_altura_pagina) {
+        document.querySelector('footer').style.bottom = "0";
+    }
+});*/
