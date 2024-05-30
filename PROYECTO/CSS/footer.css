@@ -216,3 +216,22 @@ iframe {
         top: 15%;
     }
 }
+
+@media screen and (max-height: 816px) {
+    #quienes-somos-container {
+        bottom: 10%;
+    }
+
+}
+
+@media screen and (max-height: 700px) {
+    .iframe-container {
+        padding-bottom: 35%;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .preguntas-frecuentes-contenedor {
+        bottom: 9%;
+    }
+}

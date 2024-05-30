@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    <div class="ubicacion-contenedor">
+    <div class="ubicacion-contenedor" id='ubicacion-container'>
         <div class="contenedor-cont-apartados-footer">
             <span class="cerrar-ubicacion">&times;</span>
             <h1>Ubicacion</h1>
