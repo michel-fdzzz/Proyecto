@@ -20,6 +20,7 @@ form.formulario {
     flex-wrap: wrap;
     gap: 20px;
     flex-direction: column;
+    transition: gap 0.3s ease;
 }
 
 label {
@@ -84,4 +85,15 @@ footer {
 #error {
     color: red;
     margin: 0 auto 1em auto;
+}
+
+@media screen and (max-height: 400px) {
+
+
+    .flex-container {
+        gap: 0.5em;
+        transition: gap 0.3s ease;
+    }
+
+
 }

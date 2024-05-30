@@ -232,6 +232,54 @@ input {
     width: 100%;
 }
 
+
+
+@media screen and (max-height: 450px) {
+
+
+    .botonDesplegar {
+        font-size: 0.9rem;
+    }
+
+    .botonDesplegar>img {
+        width: 34px;
+        height: 25px;
+    }
+
+    .iconoInicioSesion>a>img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .lupaImagen {
+        width: 22px;
+        height: 22px;
+    }
+
+    .carrito>a>img {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media screen and (max-height: 400px) {
+
+    .iconoInicioSesion>a>img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .lupaImagen {
+        width: 19px;
+        height: 19px;
+    }
+
+    .carrito>a>img {
+        width: 23px;
+        height: 23px;
+    }
+}
+
 @media screen and (max-width: 320px) {
 
 
