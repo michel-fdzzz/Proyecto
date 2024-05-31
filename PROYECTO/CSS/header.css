@@ -34,6 +34,10 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
+.botonDesplegar>img {
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
 .container-logo {
     text-align: center;
 }
@@ -45,13 +49,10 @@ body {
 
 .contenedor-logo>a>img {
     width: 30vw;
-    /* Ocupará el 10% del ancho de la ventana */
     height: 10vh;
-    /* Tamaño máximo */
-    /* Tamaño máximo */
     object-fit: contain;
-    /* Asegura que la imagen mantenga su proporción */
-
+    /*Mantienne la proporcion de la imagen*/
+    margin-bottom: -5%;
 }
 
 .buscadorContainer {
@@ -129,6 +130,7 @@ input {
 /* Contenedor del desplegable */
 .desplegable {
     width: 7.6em;
+    transition: width 0.3s ease;
 }
 
 /* Botón del desplegable */
@@ -233,8 +235,25 @@ input {
 }
 
 
+.iconoInicioSesion>a>img {
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.lupaImagen {
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.carrito>a>img {
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
 
 @media screen and (max-height: 450px) {
+
+    .desplegable {
+        width: 7em;
+        transition: width 0.3s ease;
+    }
 
 
     .botonDesplegar {
@@ -244,39 +263,51 @@ input {
     .botonDesplegar>img {
         width: 34px;
         height: 25px;
+        transition: width 0.3s ease, height 0.3s ease;
     }
 
     .iconoInicioSesion>a>img {
         width: 25px;
         height: 25px;
+        transition: width 0.3s ease, height 0.3s ease;
     }
 
     .lupaImagen {
         width: 22px;
         height: 22px;
+        transition: width 0.3s ease, height 0.3s ease;
     }
 
     .carrito>a>img {
         width: 26px;
         height: 26px;
+        transition: width 0.3s ease, height 0.3s ease;
     }
 }
 
 @media screen and (max-height: 400px) {
 
+    .desplegable {
+        width: 6.4em;
+        transition: width 0.3s ease;
+    }
+
     .iconoInicioSesion>a>img {
         width: 22px;
         height: 22px;
+        transition: width 0.3s ease, height 0.3s ease;
     }
 
     .lupaImagen {
         width: 19px;
         height: 19px;
+        transition: width 0.3s ease, height 0.3s ease;
     }
 
     .carrito>a>img {
         width: 23px;
         height: 23px;
+        transition: width 0.3s ease, height 0.3s ease;
     }
 }
 
@@ -285,6 +316,7 @@ input {
 
     .desplegable {
         width: 33%;
+
     }
 
     .contenedor-logo {
