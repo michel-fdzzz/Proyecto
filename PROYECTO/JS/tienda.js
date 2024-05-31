@@ -104,7 +104,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
         img.setAttribute('class', 'producto-imagen');
 
         let nombre = document.createElement('h4');
-        nombre.textContent = producto.modelo + ' ' + producto.nombre;
+        nombre.textContent = producto.nombre;
 
         let caracteristicas = document.createElement('p');
         caracteristicas.textContent = producto.descripcion;

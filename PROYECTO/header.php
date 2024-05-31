@@ -22,7 +22,7 @@
       <div class="containerDesplegable">
         <a href="rolex.php" class='apartados-desplegable'>Rolex</a>
         <a href="patek.php" class='apartados-desplegable'>Patek</a>
-        <a href="#" class='apartados-desplegable'>Tissot</a>
+        <a href="tissot.php" class='apartados-desplegable'>Tissot</a>
         <?php
           if (isset($_SESSION['idCliente'])) {
             $con = new Conexion();
