@@ -44,7 +44,7 @@ $(document).ready(function () {
                     }
                 }
             };
-            xhttp.open("POST", "PHP/busquedaRolex.php", true);
+            xhttp.open("POST", "PHP/busquedaPatek.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("input=" + texto + "&pag=" + pagina);
             return false;

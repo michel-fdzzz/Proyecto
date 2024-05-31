@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link href="CSS/rolex.css" rel="stylesheet" type="text/css">
-    <script defer src='JS/rolex.js'></script>
+    <link href="CSS/patek.css" rel="stylesheet" type="text/css">
+    <script defer src='JS/patek.js'></script>
     <script defer src='JS/paginasMarcas.js'></script>
 </head>
 
@@ -18,11 +18,11 @@
 
     <section class="main">
     <div class="container-imagen">
-        <img src='imagenes/rolex-logo.png' class='imagenInicial'/>
+        <img src='imagenes/patek-logo.svg' class='imagenInicial'/>
     </div>
 
         <article class="intro" id="intro">
-            <h2 class="slogan">"Una Corona Por Cada Logro"</h2>
+            <h2 class="slogan">"Nunca un Patek Philippe es del todo suyo. Suyo es el placer de custodiarlo hasta la siguiente generación"</h2>
             
         </article>
         <article class="productos-container" id="productos-container">
@@ -33,7 +33,7 @@
             $con = $con->conectar();
             $numElementos = 4;
            
-            $totalProductos = $con->query("SELECT COUNT(*) FROM producto WHERE marca = 'Rolex'")->fetch_row()[0];
+            $totalProductos = $con->query("SELECT COUNT(*) FROM producto WHERE marca = 'Patek Philippe'")->fetch_row()[0];
             $totalPaginas = ceil($totalProductos / $numElementos);
 
             
@@ -42,7 +42,7 @@
             } else {
                 $pagina = 1;
             }
-            $select = "select * from producto where marca = 'Rolex' LIMIT ". (($pagina - 1) * $numElementos). "," . $numElementos;
+            $select = "select * from producto where marca = 'Patek Philippe' LIMIT ". (($pagina - 1) * $numElementos). "," . $numElementos;
             $rest = $con->query($select);
             $campos = $rest->fetch_all();
             if ($rest->num_rows > 0) {
@@ -62,7 +62,7 @@
     </article>
     <div class="container-botones-paginacion">
             <?php if ($pagina > 1): ?>
-                <a href="rolex.php?pag=<?php echo $pagina - 1; ?>#intro">
+                <a href="patek.php?pag=<?php echo $pagina - 1; ?>#intro">
                     <button>Anterior</button>
                 </a>
             <?php else: ?>
@@ -72,7 +72,7 @@
             <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
 
             <?php if ($pagina < $totalPaginas): ?>
-                <a href="rolex.php?pag=<?php echo $pagina + 1; ?>#intro">
+                <a href="patek.php?pag=<?php echo $pagina + 1; ?>#intro">
                     <button>Siguiente</button>
                 </a>
             <?php else: ?>
