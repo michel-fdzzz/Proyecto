@@ -125,19 +125,21 @@
                 <?php
             } else {
                 echo '
-            <div class="container-mensaje-productos-carrito">
+            <div class="container-mensajes">
                 <div class="mensajeProductosCarrito">
                     <p>No hay productos en el carrito</p>
-                    <a class="linkMensaje" href="tienda.php" target="_self"><div class="botonVerProductos"><p>Ver productos</p></div></a>
+                    <a class="linkMensaje" href="tienda.php" target="_self"><div class="boton-mensaje"><p>Ver productos</p></div></a>
                 </div>
             </div>    ';
             }
             $con->close();
         } else {
             echo  '
+            <div class="container-mensajes">
             <div class="mensaje">
                 <p>No has iniciado sesión, registrate o inicia sesión para poder ver tus productos en el carrito.</p>
-                <a class="linkMensaje" href="iniciarSesion.php" target="_self"><div class="boton"><p>Iniciar sesión/Registrarme</p></div></a>
+                <a class="linkMensaje" href="iniciarSesion.php" target="_self"><div class="boton-mensaje"><p>Iniciar sesión/Registrarme</p></div></a>
+            </div>
             </div>';
         }
                 ?>

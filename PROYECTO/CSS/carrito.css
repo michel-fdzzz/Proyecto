@@ -27,7 +27,7 @@
 }
 
 
-.botonVerProductos {
+.boton-mensaje {
     background-color: #efefef;
     min-height: 2em;
     width: 100%;
@@ -39,11 +39,11 @@
     justify-content: center;
 }
 
-.botonVerProductos>p {
+.boton-mensaje>p {
     margin: auto;
 }
 
-.botonVerProductos:hover {
+.boton-mensaje:hover {
     background-color: #bdbdbd;
     transform: translateY(-1px);
 }
@@ -240,7 +240,7 @@ button:hover {
     margin-bottom: -1;
 }
 
-.container-mensaje-productos-carrito {
+.container-mensajes {
     display: flex;
     justify-content: center;
     /*flex-wrap: wrap;*/
@@ -267,7 +267,15 @@ button:hover {
     color: grey;
 }
 
-
+.mensaje {
+    max-width: 19em;
+    /* height: 7em;*/
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 1em;
+}
 
 
 @media (max-width: 920px) {
