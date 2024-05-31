@@ -57,6 +57,7 @@
         <input type="submit" value="Enviar" name='enviar'>
 
       </div>
+      <div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>
       <a href="iniciarSesion.php" target="_self" class='linkRegistroInicioSesion'>Ya tengo cuenta, iniciar sesión.</a>
     </form>
     <?php
@@ -78,7 +79,11 @@
 
         //Si el correo con el que queremos registrarnos existe, informamos al usuario que ya está registrado
         if ($restCuentaExiste->num_rows > 0) {
-          echo "<div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>";
+          echo "
+          <script>
+            document.getElementById('errorDiv').style.display = 'block';
+            document.getElementById('errorDiv').style.color = 'red';
+          </script>";
 
           //Si el correo no existe, ejecutamos el insert
         } else {
