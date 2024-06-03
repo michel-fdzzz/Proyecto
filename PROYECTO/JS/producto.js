@@ -34,9 +34,12 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-
-            mensajeAnadirCarrito();
-            document.getElementById('numProductos' + idProducto).value = '';
+            var response = JSON.parse(this.responseText);
+            if (response.success) {
+                mensajeAnadirCarrito();
+            } else {
+                mensajeNoAnadirCarrito();
+            }
         }
     };
     xhttp.open("POST", "añadirCarrito.php", true);
@@ -66,5 +69,21 @@ function mensajeAnadirCarrito() {
         }, 500, function () {
             $(this).hide(); // Oculta el mansaje  después de la animación
         });
-    }, 3000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+}
+
+function mensajeNoAnadirCarrito() {
+    $('.container-mensajeNoAnadidoCarrito').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeNoAnadidoCarrito').show().animate({
+        right: '0' // Mueve el mansaje  hacia la izquierda
+    }, 500); // Duración de la animación en milisegundos
+
+    // Oculta el mansaje  después de 3 segundos
+    setTimeout(function () {
+        $('.container-mensajeNoAnadidoCarrito').animate({
+            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+        }, 500, function () {
+            $(this).hide(); // Oculta el mansaje  después de la animación
+        });
+    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
 }

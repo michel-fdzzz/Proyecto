@@ -278,6 +278,39 @@ button:hover {
 }
 
 
+.container-mensajeStock {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #e00000;
+    padding: 0.2em 1em 0.2em 1em;
+    border: 1px solid #000000;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeStock {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding-right: 5px;
+}
+
+.mensajeStock>p {
+    margin: 2px;
+    color: white;
+}
+
+.mensajeStock>img {
+    margin-top: 2px;
+}
+
+
 @media (max-width: 920px) {
     .productos-carrito-container {
         flex-direction: column;

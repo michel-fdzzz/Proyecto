@@ -30,6 +30,11 @@
         </div>
     </div>
 
+    <div class="container-mensajeNoAnadidoCarrito">
+        <div class="mensajeNoAnadidoCarrito">
+            <p>Ya tienes este producto en el carrito</p>
+        </div>
+    </div>
     
         
         <article class="producto-container">

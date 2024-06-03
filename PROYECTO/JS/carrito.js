@@ -66,6 +66,7 @@ function anadirUnidades(idProducto, idCliente, numProductos, cantidad, stock) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+
                 window.location.href = "carrito.php";
             }
         };
@@ -73,8 +74,7 @@ function anadirUnidades(idProducto, idCliente, numProductos, cantidad, stock) {
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&numProductos= " + numProductos);
     } else {
-        //Poner un mensaje mas visible y decente
-        alert('En stock hay ' + stock);
+        mensajeStock();
     }
 }
 
@@ -90,6 +90,24 @@ function comprarTodo(idCliente) {
     xhttp.open("POST", "comprarTodo.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("idCliente=" + idCliente);
+}
+
+
+// Función para mostrar la ventana modal
+function mensajeStock() {
+    $('.container-mensajeStock').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeStock').show().animate({
+        right: '0' // Mueve el mansaje  hacia la izquierda
+    }, 500); // Duración de la animación en milisegundos
+
+    // Oculta el mansaje  después de 3 segundos
+    setTimeout(function () {
+        $('.container-mensajeStock').animate({
+            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+        }, 500, function () {
+            $(this).hide(); // Oculta el mansaje  después de la animación
+        });
+    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
 }
 
 /*

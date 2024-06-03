@@ -21,6 +21,12 @@
 
     <div class='buscadorContainer'></div>
     <section class="main">
+        <div class="container-mensajeStock">
+            <div class="mensajeStock">
+                <p>No puedes añadir más productos</p><img src='imagenes/X.svg' alt='X' />
+            </div>
+        </div>
+
         <h1 class="tituloCarrito">Su <br> Carrito</h1>
 
 
