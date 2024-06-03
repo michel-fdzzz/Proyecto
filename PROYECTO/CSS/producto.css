@@ -223,14 +223,13 @@ button:hover {
     }
 }
 
-/* Estilos para la parte del track (fondo) de la barra de desplazamiento */
+/* Estilos para la parte del fondo de la barra*/
 .scroll-horizontal::-webkit-scrollbar-track {
     background: #efefef;
     border-radius: 5px;
-    /* Color de fondo del track */
 }
 
-/* Estilos para el thumb (manija) de la barra de desplazamiento */
+/* Estilos para la barra en la que haces click*/
 .scroll-horizontal::-webkit-scrollbar-thumb {
     background: #bdbdbd;
     border-radius: 5px;
@@ -244,16 +243,6 @@ button:hover {
 .scroll-horizontal::-webkit-scrollbar-thumb {
     height: 0px !important;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -291,4 +280,23 @@ button:hover {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.container-mensajeAnadidoCarrito {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #84ff80;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeAnadidoCarrito {
+    display: flex;
+    align-items: center;
+    margin: 0;
 }

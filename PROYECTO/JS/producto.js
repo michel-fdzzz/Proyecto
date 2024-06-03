@@ -3,6 +3,27 @@ $(document).ready(function () {
     $('.lupa').click(function () {
         $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');
     });
+
+
+    //Cerrar la ventana modal que sale indicando que inicies sesion
+    $('.close').click(function () {
+        $('#modal').fadeOut();
+    });
+
+    //Cerrar la ventana si se hace click fuera de la ventana
+    $(window).click(function (event) {
+        if ($(event.target).is('#modal')) {
+            $('#modal').fadeOut();
+        }
+    });
+
+    //Evento para redirigir al inicio de sesion
+    $('#login-button').click(function () {
+        window.location.href = 'iniciarSesion.php';
+    });
+
+
+
 });
 
 
@@ -13,8 +34,8 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            alert(idProducto + ', ' + idCliente + ', ' + nombreProducto + ', ' + modelo + ', ' + cantidad + ', ' + precio);
 
+            mensajeAnadirCarrito();
             document.getElementById('numProductos' + idProducto).value = '';
         }
     };
@@ -31,21 +52,19 @@ function añadirSinUsuario() {
     $('#modal').fadeIn();
 }
 
-//Cerrar la ventana al hacer click en la X
-$(document).ready(function () {
-    $('.close').click(function () {
-        $('#modal').fadeOut();
-    });
+// Función para mostrar la ventana modal
+function mensajeAnadirCarrito() {
+    $('.container-mensajeAnadidoCarrito').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeAnadidoCarrito').show().animate({
+        right: '0' // Mueve el mansaje  hacia la izquierda
+    }, 500); // Duración de la animación en milisegundos
 
-    //Cerrar la ventana si se hace click fuera de la ventana
-    $(window).click(function (event) {
-        if ($(event.target).is('#modal')) {
-            $('#modal').fadeOut();
-        }
-    });
-
-    //Evento para redirigir al inicio de sesion
-    $('#login-button').click(function () {
-        window.location.href = 'iniciarSesion.php';
-    });
-});
+    // Oculta el mansaje  después de 3 segundos
+    setTimeout(function () {
+        $('.container-mensajeAnadidoCarrito').animate({
+            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+        }, 500, function () {
+            $(this).hide(); // Oculta el mansaje  después de la animación
+        });
+    }, 3000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+}

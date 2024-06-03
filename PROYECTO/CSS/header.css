@@ -196,7 +196,7 @@ input {
     margin: auto;
     font-size: 1rem;
     cursor: pointer;
-    transition: width 0.3s ease, height 0.3s ease;
+    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
 }
 
 .desconexion:hover {
@@ -288,7 +288,7 @@ input {
     .desconexion {
         width: 23px;
         height: 23px;
-        transition: width 0.3s ease, height 0.3s ease;
+        transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
     }
 }
 
@@ -320,7 +320,7 @@ input {
     .desconexion {
         width: 20px;
         height: 20px;
-        transition: width 0.3s ease, height 0.3s ease;
+        transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
     }
 }
 

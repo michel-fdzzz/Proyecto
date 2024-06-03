@@ -24,6 +24,13 @@
 
 
     <section class="main">
+    <div class="container-mensajeAnadidoCarrito">
+        <div class="mensajeAnadidoCarrito">
+            <p>El producto se ha añadido al carrito correctamente</p><img src='imagenes/check.svg' alt='check'/>
+        </div>
+    </div>
+
+    
         
         <article class="producto-container">
 
