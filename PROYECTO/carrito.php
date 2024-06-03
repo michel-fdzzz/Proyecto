@@ -189,52 +189,7 @@
             });
         <?php } ?>
 
-        function eliminarNumProducto(idProducto, idCliente, numProductos, cantidad) {
-            // Solicitud AJAX
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    window.location.href = "carrito.php";
-                }
-            };
-            xhttp.open("POST", "eliminarNumProducto.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
-        }
-
-        function anadirUnidades(idProducto, idCliente, numProductos, cantidad, stock) {
-            //Numero maximo que puedes añadir
-            let productosA_anadir = stock - cantidad;
-            //si el nº de productos a añadir es menor o igual
-            if (numProductos <= productosA_anadir) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        window.location.href = "carrito.php";
-                    }
-                };
-                xhttp.open("POST", "anadirUnidades.php", true);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&numProductos= " + numProductos);
-            } else {
-                //Poner un mensaje mas visible y decente
-                alert('En stock hay ' + stock);
-            }
-        }
-
-        function comprarTodo(idCliente) {
-            // Solicitud AJAX
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    alert('Pedido realizado');
-                    window.location.href = "carrito.php";
-                }
-            };
-            xhttp.open("POST", "comprarTodo.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("idCliente=" + idCliente);
-        }
+      
     </script>
 </body>
 
