@@ -23,11 +23,12 @@ if ($con->connect_error) {
     $totalPaginas = ceil($totalProductos / $numElementos);
 
     //Obtenemos mediante el select los productos por página
-    $num_productos_por_pagina = ($pagina - 1) * $numElementos;
+    //En está variable obtenemos el número de fila desde el que empezamos a mostrar los productos
+    $num_fila_aPartir_muestra = ($pagina - 1) * $numElementos;
     $select_productos = "SELECT id, nombre, marca, modelo, precio, imagen, stock, descripcion 
     FROM producto WHERE nombre LIKE ? OR marca LIKE ? LIMIT ?, ?";
     $stmt_productos = $con->prepare($select_productos);
-    $stmt_productos->bind_param("ssii", $input, $input, $num_productos_por_pagina, $numElementos);
+    $stmt_productos->bind_param("ssii", $input, $input, $num_fila_aPartir_muestra, $numElementos);
     $stmt_productos->execute();
     $rest = $stmt_productos->get_result();
 
