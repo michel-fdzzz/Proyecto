@@ -128,7 +128,6 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     //Botón anterior
     if (paginaActual > 1) {
         let btnAnterior = document.createElement('a');
-        let anteriorPagina = paginaActual - 1;
         btnAnterior.href = '#intro';
         let btnAnteriorTexto = document.createElement('button');
         btnAnteriorTexto.textContent = 'Anterior';
@@ -152,7 +151,6 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     //Botón siguiente
     if (paginaActual < totalPaginas) {
         let btnSiguiente = document.createElement('a');
-        let siguientePagina = paginaActual + 1;
         btnSiguiente.href = '#intro';
         let btnSiguienteTexto = document.createElement('button');
         btnSiguienteTexto.textContent = 'Siguiente';
