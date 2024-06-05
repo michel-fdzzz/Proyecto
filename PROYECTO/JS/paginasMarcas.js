@@ -80,7 +80,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     if (paginaActual > 1) {
         let btnAnterior = document.createElement('a');
         let anteriorPagina = paginaActual - 1;
-        btnAnterior.href = 'tienda.php?pag=' + anteriorPagina + '#intro';
+        btnAnterior.href = '#intro';
         let btnAnteriorTexto = document.createElement('button');
         btnAnteriorTexto.textContent = 'Anterior';
         btnAnteriorTexto.onclick = function () {
@@ -104,7 +104,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     if (paginaActual < totalPaginas) {
         let btnSiguiente = document.createElement('a');
         let siguientePagina = paginaActual + 1;
-        btnSiguiente.href = 'tienda.php?pag=' + siguientePagina + '#intro';
+        btnSiguiente.href = '#intro';
         let btnSiguienteTexto = document.createElement('button');
         btnSiguienteTexto.textContent = 'Siguiente';
         btnSiguienteTexto.onclick = function () {
