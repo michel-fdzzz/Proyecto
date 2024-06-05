@@ -12,7 +12,7 @@
     <footer>
         <section class="contenedor-items-footer">
             <article class="contenedor-imagen">
-            <a href='tienda.php' target="_self"><img src="imagenes/logo.png" width="80em" height="80em" alt="Logo" /></a>
+            <a href='index.php' target="_self"><img src="imagenes/logo.png" width="80em" height="80em" alt="Logo" /></a>
             </article>
 
             <article class="contenedor-info-footer">

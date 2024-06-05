@@ -7,7 +7,7 @@ try {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 console.log('Conexion hecha')
-                window.location.href = "tienda.php";
+                window.location.href = "index.php";
             }
         };
         xhttp.open("POST", "desconectarse.php", true);

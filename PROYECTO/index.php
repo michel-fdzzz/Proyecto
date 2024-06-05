@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link href="CSS/tienda.css" rel="stylesheet" type="text/css">
-    <script defer src='JS/tienda.js'></script>
+    <link href="CSS/index.css" rel="stylesheet" type="text/css">
+    <script defer src='JS/index.js'></script>
 </head>
 
 <body>
@@ -66,7 +66,7 @@
     </article>
     <div class="container-botones-paginacion">
             <?php if ($pagina > 1): ?>
-                <a href="tienda.php?pag=<?php echo $pagina - 1; ?>#intro">
+                <a href="index.php?pag=<?php echo $pagina - 1; ?>#intro">
                     <button>Anterior</button>
                 </a>
             <?php else: ?>
@@ -76,7 +76,7 @@
             <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
 
             <?php if ($pagina < $totalPaginas): ?>
-                <a href="tienda.php?pag=<?php echo $pagina + 1; ?>#intro">
+                <a href="index.php?pag=<?php echo $pagina + 1; ?>#intro">
                     <button>Siguiente</button>
                 </a>
             <?php else: ?>

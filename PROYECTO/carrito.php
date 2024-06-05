@@ -134,7 +134,7 @@
             <div class="container-mensajes">
                 <div class="mensajeProductosCarrito">
                     <p>No hay productos en el carrito</p>
-                    <a class="linkMensaje" href="tienda.php" target="_self"><div class="boton-mensaje"><p>Ver productos</p></div></a>
+                    <a class="linkMensaje" href="index.php" target="_self"><div class="boton-mensaje"><p>Ver productos</p></div></a>
                 </div>
             </div>    ';
             }

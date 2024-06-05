@@ -98,14 +98,14 @@
             $restId = $con->query($select);
 
             // Si devuelve el resultado del select significa que el correo  y la contraseña y existen y vamos a recoger el id de ese usuario en una variable de sesión
-            // para usarla más adelante, como en tienda.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
+            // para usarla más adelante, como en index.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
             if ($restId->num_rows > 0) {
               while ($fila = $restId->fetch_assoc()) {
                 foreach ($fila as $id) {
                   $_SESSION['idCliente'] = $id;
                 }
               }
-              echo "<script>window.location='tienda.php';</script>";
+              echo "<script>window.location='index.php';</script>";
             }
           }
         }

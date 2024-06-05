@@ -54,7 +54,7 @@
                         <div class="container-mensaje-pedidos">
                             <div class="mensajePredidos">
                                 <p>No has hecho ningún pedido</p>
-                                <a class="linkMensaje" href="tienda.php" target="_self"><div class="botonVerProductos"><p>Ver productos</p></div></a>
+                                <a class="linkMensaje" href="index.php" target="_self"><div class="botonVerProductos"><p>Ver productos</p></div></a>
                             </div>
                         </div>';
                     }

@@ -64,7 +64,7 @@
                                 $_SESSION['idCliente'] = $id;
                             }
                         }
-                        header('Location: tienda.php');
+                        header('Location: index.php');
                     }
 
                     // Si no hay una cuenta con la contraseña y correo que el usuario a introducido muestra un mensaje
