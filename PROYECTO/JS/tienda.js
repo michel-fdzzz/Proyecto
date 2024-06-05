@@ -1,54 +1,54 @@
 
+function buscar(texto, pagina = 1) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            let response = JSON.parse(this.responseText);
+            console.log(response);
+            /**
+             * Dividimos la respuesta en 3 partes de las cuales ya está compuesta. 
+             * productos: array con la informacion del producto
+             * paginaActual: valor de la página en la que estmaos, siempre será la primera, es decir, el 1
+             * totalPaginas: el numero de páginas totales
+             */
+            mostrarProductos(response.productos, response.paginaActual, response.totalPaginas);
+
+            if (response.productos.length == 0) {
+                let main = document.querySelector('.main');
+                let div = document.createElement('div');
+                div.setAttribute('class', 'mensajeBusqueda');
+
+                let spanCerrar = document.createElement("span");
+                spanCerrar.textContent = "\u00D7";
+                spanCerrar.classList.add("cerrar");
+
+                let p = document.createElement('p');
+                p.innerHTML = 'No se han encontrado resultados';
+                let gift = document.createElement('img');
+                gift.setAttribute('class', 'gift');
+                gift.setAttribute('src', 'imagenes/gif_resultados.gif');
+
+                div.appendChild(spanCerrar);
+                div.appendChild(p);
+                div.appendChild(gift);
+                main.appendChild(div);
+            }
+        }
+    };
+    xhttp.open("POST", "busqueda.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("input=" + texto + "&pag=" + pagina);
+    return false;
+}
 
 
 //Funcion para abrir y cerrar el buscador
 $(document).ready(function () {
+
     $('.lupa').click(function () {
 
         $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');
-
-        function buscar(texto, pagina = 1) {
-            let xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-
-                    let response = JSON.parse(this.responseText);
-                    console.log(response);
-                    /**
-                     * Dividimos la respuesta en 3 partes de las cuales ya está compuesta. 
-                     * productos: array con la informacion del producto
-                     * paginaActual: valor de la página en la que estmaos, siempre será la primera, es decir, el 1
-                     * totalPaginas: el numero de páginas totales
-                     */
-                    mostrarProductos(response.productos, response.paginaActual, response.totalPaginas);
-
-                    if (response.productos.length == 0) {
-                        let main = document.querySelector('.main');
-                        let div = document.createElement('div');
-                        div.setAttribute('class', 'mensajeBusqueda');
-
-                        let spanCerrar = document.createElement("span");
-                        spanCerrar.textContent = "\u00D7";
-                        spanCerrar.classList.add("cerrar");
-
-                        let p = document.createElement('p');
-                        p.innerHTML = 'No se han encontrado resultados';
-                        let gift = document.createElement('img');
-                        gift.setAttribute('class', 'gift');
-                        gift.setAttribute('src', 'imagenes/gif_resultados.gif');
-
-                        div.appendChild(spanCerrar);
-                        div.appendChild(p);
-                        div.appendChild(gift);
-                        main.appendChild(div);
-                    }
-                }
-            };
-            xhttp.open("POST", "busqueda.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("input=" + texto + "&pag=" + pagina);
-            return false;
-        }
 
         //Según se escribe en el buscador se va recibiendo su valor
         let buscador = document.getElementById('buscador');
@@ -129,7 +129,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     if (paginaActual > 1) {
         let btnAnterior = document.createElement('a');
         let anteriorPagina = paginaActual - 1;
-        btnAnterior.href = 'tienda.php?pag=' + anteriorPagina + '#intro';
+        btnAnterior.href = '#intro';
         let btnAnteriorTexto = document.createElement('button');
         btnAnteriorTexto.textContent = 'Anterior';
         btnAnteriorTexto.onclick = function () {
@@ -153,7 +153,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     if (paginaActual < totalPaginas) {
         let btnSiguiente = document.createElement('a');
         let siguientePagina = paginaActual + 1;
-        btnSiguiente.href = 'tienda.php?pag=' + siguientePagina + '#intro';
+        btnSiguiente.href = '#intro';
         let btnSiguienteTexto = document.createElement('button');
         btnSiguienteTexto.textContent = 'Siguiente';
         btnSiguienteTexto.onclick = function () {
@@ -174,46 +174,36 @@ let container = document.querySelector('.productos-exclusivos-container');
 let pixeles_desplazamiento = 0;
 let movimientoScroll = 16 * 16; //16 em que mide mi contenedor por 16px que corresponde a cada em, es una conversión
 let segundos = 5000; //5 segundos
-
+let scrollAutomaticoActivado = true;
 
 function scrollAutomatico() {
-    pixeles_desplazamiento += movimientoScroll;
+    if (scrollAutomaticoActivado) {
+        pixeles_desplazamiento += movimientoScroll;
+        /**
+         * Si llega al final. Ya que la resta
+         * container.scrollWidth: contenido total del contenedor
+         * container.clientWidth: contenido total del contenedor visible, lo que los usuarios ven
+         */
+        if (pixeles_desplazamiento >= container.scrollWidth - container.clientWidth) {
+            pixeles_desplazamiento = 0;
+        }
 
-    /**
-     * Si llega al final. Ya que la resta
-     * container.scrollWidth: contenido total del contenedor
-     * container.clientWidth: contenido total del contenedor visible, lo que los usuarios ven
-     */
-    //alert('Desplazamiento: ' + pixeles_desplazamiento + ' -- Cliente: ' + container.clientWidth + ' -- Total: ' + container.scrollWidth)
-    if (pixeles_desplazamiento >= container.scrollWidth - container.clientWidth) {
-        pixeles_desplazamiento = 0;
+        // El scroll lo hace a la izquierda con una transición (smooth)
+        container.scrollTo({
+            left: pixeles_desplazamiento,
+            behavior: 'smooth'
+        });
     }
-
-    //El scroll lo hace a la izquierda con una transicion (smooth)
-    container.scrollTo({
-        left: pixeles_desplazamiento,
-        behavior: 'smooth'
-    });
 }
 
-setInterval(scrollAutomatico, segundos);
+// Cada 5 segundos ejecutamos el scroll
+let scrollInterval = setInterval(scrollAutomatico, segundos);
 
-
-
-
-
-
-
-
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Calcula el 60% de la altura de la ventana del navegador
-    let porcentaje_altura_pagina = window.innerHeight * 0.6;
-
-    // Comprueba si la altura del contenido de la página es al menos el 60% de la altura de la ventana
-    if (document.body.scrollHeight < porcentaje_altura_pagina) {
-        document.querySelector('footer').style.bottom = "0";
-    }
-});*/
+//Si se interactúa con la barra de scroll, el scroll automático se desactiva mientras este pulsando la barra
+container.addEventListener('mousedown', function () {
+    scrollAutomaticoActivado = false;
+});
+//Si se suelta la barra de scroll se vuelve a activar el scroll automático continuando por donde lo había dejado
+container.addEventListener('mouseup', function () {
+    scrollAutomaticoActivado = true;
+});
