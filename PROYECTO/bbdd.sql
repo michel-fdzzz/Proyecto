@@ -70,11 +70,16 @@ VALUES
   (null, 'T-touch connect sport', 'Tissot', 'T-touch connect sport', 13350, 'tissot_t-touch connect sport.avif', 7, '36 mm, cuarzo'),
   (null, 'Stand Alone', 'Tissot', 'Stand Alone', 445, 'tissot_stand_alone.avif', 7, '49.6 mm, cuarzo suizo'),
   (null, 'Le Locle Powermatic 80 20th anniversary', 'Tissot', 'Powermatic 80 20th anniversary', 775, 'T006.407.11.033.03_R_1.avif', 7, '39.3 mm, brazalete intercambiable, cristral de zafiro'),
-  (null, 'Oyster Perpetual 36', 'Rolex', 'Oyster', 6300, 'oyster_perpetual_36.webp', 1, '36 mm, acero Oystersteel'),
+  (null, 'Oyster Perpetual 36', 'Rolex', 'Oyster', 6300, 'oyster_perpetual_36.avif', 1, '36 mm, acero Oystersteel'),
   (null, 'Nautilus acero', 'Patek Philippe', 'Nautilus', 32170, 'nautilus.png', 1, 'Brazalete de acero. Cierre desplegable Nautilus. Movimineto mecánico de cuerda. Opalina azul  índices y cifras aplicados de oro, con revestimiento luminiscente.'),
   (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 415920, 'nautilus_oro_blanco.png', 1, 'Brazalete de oro blanco, engastado en diamantes. Cierre desplegable Nautilus. Movimineto mecánico de cuerda. Engastado en un total de 2364 diamantes.'),
   (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 535510, 'nautilus_oro_blanco_diamantes_verdes.png', 1, 'Brazalete de oro blanco, engastado en diamantes y esmeraldas. Cierre desplegable  patentado engastado con diamantes. Movimineto mecánico de carga automática. Engastado en 1500 diamantes y 876 esmeraldas.'),
-  (null, 'RM 66', 'Richard Mille', 'RM', 1095000, 'RM66.webp', 5, 'Mano de oro rojo 5N. Barrilete de rotación rápida. Cuerda manual. Edicion limitada de 50 piezas.');
+  (null, 'RM 66', 'Richard Mille', 'RM', 1095000, 'RM66.webp', 5, 'Mano de oro rojo 5N. Barrilete de rotación rápida. Cuerda manual. Edicion limitada de 50 piezas.'),
+  (null, 'Day-Date 36', 'Rolex', 'Oyster', 41000, 'oyster_perpetual_day-date36.avif', 5, '36 mm, oro amarillo.'),
+  (null, 'GMT-Master II', 'Rolex', 'GMT', 46250, 'gmt_masterII.avif', 5, '40 mm, oro blanco.'),
+    (null, 'Deepsea', 'Rolex', 'Submariner', 56300, 'submariner_deepsea.avif', 5, '44 mm, oro amarillo.'),
+    (null, 'Air-King', 'Rolex', 'Air king', 7700, 'air_king.avif', 5, '40 mm, acero Oystersteel.'),
+(null, 'Cosmograph Daytona', 'Rolex', 'Daytona', 121450, 'cosmograph_daytona.avif', 5, '40 mm, oro amarillo y diamantes.');
 
 
 -- Insertar usuarios
