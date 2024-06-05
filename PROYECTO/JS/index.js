@@ -18,21 +18,25 @@ function buscar(texto, pagina = 1) {
                 let main = document.querySelector('.main');
                 let div = document.createElement('div');
                 div.setAttribute('class', 'mensajeBusqueda');
-
                 let spanCerrar = document.createElement("span");
                 spanCerrar.textContent = "\u00D7";
                 spanCerrar.classList.add("cerrar");
-
                 let p = document.createElement('p');
                 p.innerHTML = 'No se han encontrado resultados';
                 let gift = document.createElement('img');
                 gift.setAttribute('class', 'gift');
                 gift.setAttribute('src', 'imagenes/gif_resultados.gif');
-
                 div.appendChild(spanCerrar);
                 div.appendChild(p);
                 div.appendChild(gift);
                 main.appendChild(div);
+
+                //Si se pulsa fuera del contenedor, se borra
+                $(document).on('click', function (event) {
+                    if (!$(event.target).closest('.mensajeBusqueda').length) {
+                        $(div).remove();
+                    }
+                });
             }
         }
     };
