@@ -51,3 +51,15 @@ footer {
     position: absolute;
     bottom: 0;
 }
+
+@media screen and (max-height:635px) {
+    footer {
+        position: relative;
+    }
+
+    .contenedor-opciones {
+        margin-bottom: 5%;
+        transition: margin 0.3s ease;
+    }
+
+}

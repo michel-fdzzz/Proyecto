@@ -6,7 +6,7 @@ body {
 }
 
 footer {
-    position: absolute;
+    /*position: absolute;*/
     /*bottom: 0; ---- PORQUE SI LA PANTALLA OCUAP MAS DE LO DEBIDO SE QUEDA ARRIBA*/
     background-color: #efefef;
     width: 100%;

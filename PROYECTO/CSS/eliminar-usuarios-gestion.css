@@ -23,6 +23,7 @@ table {
     width: 95%;
     height: 100%;
     margin-bottom: 1em;
+    transition: font-size 0.3s ease, width 0.3s ease;
 }
 
 td {
@@ -49,10 +50,42 @@ button {
     margin-bottom: 1em;
     margin: 1em;
     font-family: 'Oswald', sans-serif;
-    transition: transform 0.3s ease, background-color 0.5s;
+    transition: transform 0.3s ease, background-color 0.5s, font-size 0.3s ease, padding 0.3s ease;
 }
 
 button:hover {
     background-color: #bdbdbd;
     transform: translateY(-2px);
+}
+
+@media screen and (max-width:565px) {
+    table {
+        font-size: 0.9rem;
+        width: 80%;
+        transition: font-size 0.3s ease, width 0.3s ease;
+
+    }
+
+
+    button {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        margin: 0.5em 0.2em;
+        transition: font-size 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+    }
+}
+
+
+@media screen and (max-width:457px) {
+    table {
+        font-size: 0.75rem;
+        transition: font-size 0.3s ease;
+
+    }
+
+
+    button {
+        font-size: 0.75rem;
+        transition: font-size 0.3s ease;
+    }
 }

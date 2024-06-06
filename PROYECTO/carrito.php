@@ -63,8 +63,8 @@
                     $precio_total_producto = $precio * $cantidad;
                     //Acumulamos los precios de todos los productos en una sola variable
                     $precio_total += $precio_total_producto;
-                   //El coste del envío es un 1%
-                    $coste_envio_producto = $precio_total_producto * 0.01;
+                   //El coste del envío es un 0.01%
+                    $coste_envio_producto = $precio_total_producto * 0.001;
 
                     echo
                     "<div class='producto'>
