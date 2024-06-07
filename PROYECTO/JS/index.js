@@ -62,7 +62,30 @@ $(document).ready(function () {
         });
 
     });
+    /* //Cerrar la ventana modal que sale indicando que inicies sesion
+     $('.close').click(function () {
+         $('#modal').fadeOut();
+     });
+ 
+     //Cerrar la ventana si se hace click fuera de la ventana
+     $(window).click(function (event) {
+         if ($(event.target).is('#modal')) {
+             $('#modal').fadeOut();
+         }
+     });
+ 
+     //Evento para redirigir al inicio de sesion
+     $('#login-button').click(function () {
+         window.location.href = 'iniciarSesion.php';
+     });
+ */
 });
+
+// Función para mostrar la ventana modal
+/*function modal_inicioSesion() {
+    $('#modal').fadeIn();
+    alert('d')
+}*/
 
 function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad, precio) {
     // Solicitud AJAX

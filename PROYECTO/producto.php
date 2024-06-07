@@ -24,25 +24,25 @@
 
 
     <section class="main">
-    <div class="container-mensajeAnadidoCarrito">
-        <div class="mensajeAnadidoCarrito">
-            <p>El producto se ha añadido al carrito correctamente</p><img src='imagenes/check.svg' alt='check'/>
+        <div class="container-mensajeAnadidoCarrito">
+            <div class="mensajeAnadidoCarrito">
+                <p>El producto se ha añadido al carrito correctamente</p><img src='imagenes/check.svg' alt='check' />
+            </div>
         </div>
-    </div>
 
-    <div class="container-mensajeNoAnadidoCarrito">
-        <div class="mensajeNoAnadidoCarrito">
-            <p>Ya tienes este producto en el carrito</p>
+        <div class="container-mensajeNoAnadidoCarrito">
+            <div class="mensajeNoAnadidoCarrito">
+                <p>Ya tienes este producto en el carrito</p>
+            </div>
         </div>
-    </div>
-    
-        
+
+
         <article class="producto-container">
 
             <?php
 
-           
-                    echo
+
+            echo
                 "<div class='imagen-producto-container'>
                     <img src='imagenes/" . $imagen . "' class='producto-imagen'/>
                 </div>
@@ -65,84 +65,84 @@
 
 
 
-                    if (isset($_SESSION['idCliente'])) {
-                        if ($stock > 0){
-                            echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
-                        } else {
-                            echo "<button>Agotado</button>";
-                        }
-                    } else {
-                        echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
-                    }
-                    echo "<hr class='linea-separadora'>
+            if (isset($_SESSION['idCliente'])) {
+                if ($stock > 0) {
+                    echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
+                } else {
+                    echo "<button>Agotado</button>";
+                }
+            } else {
+                echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
+            }
+            echo "<hr class='linea-separadora'>
                     <p class='texto-debajo-linea-separadora'>Más $modelo</p>";
-                    ?>
-                    
-                    
-                    <div class='mas-relojes-container'>
-                      <div class="scroll-horizontal">
-                        <div class='mas-relojes'>
-                            <?php
-                            $con = new Conexion();
-                            $con = $con->conectar();
-                            $select = "select * from producto where marca = '$modelo' AND id <> $idProducto";
-                            $rest = $con->query($select);
-                            $campos = $rest->fetch_all();
-                            if ($rest->num_rows > 0) {
-                                foreach ($campos as $campo) {
-                                    echo "
+            ?>
+
+
+            <div class='mas-relojes-container'>
+                <div class="scroll-horizontal">
+                    <div class='mas-relojes'>
+                        <?php
+                        $con = new Conexion();
+                        $con = $con->conectar();
+                        $select = "select * from producto where marca = '$modelo' AND id <> $idProducto";
+                        $rest = $con->query($select);
+                        $campos = $rest->fetch_all();
+                        if ($rest->num_rows > 0) {
+                            foreach ($campos as $campo) {
+                                echo "
                                     <div class='contenedor-imagen-mas-relojes'>
                                         <a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'>
                                             <img src='imagenes/" . $campo[5] . "' class='producto-imagen-mas-relojes'/>
                                         </a>
                                     </div>";
-                                }
-                            } else {
-                                echo '<p>No hay más productos de esta marca</p>';
                             }
-                            ?>
-                        </div>
+                        } else {
+                            echo '<p>No hay más productos de esta marca</p>';
+                        }
+                        ?>
                     </div>
                 </div>
+            </div>
 
 
         </article>
     </section>
 
     <div id="modal">
-    <div id="modal-content">
-      <span class="close">&times;</span>
-      <p>Debes iniciar sesión para añadir productos al carrito</p>
-      <button id="login-button">Iniciar Sesión</button>
+        <div id="modal-content">
+            <span class="close">&times;</span>
+            <p>Debes iniciar sesión para añadir productos al carrito</p>
+            <button id="login-button">Iniciar Sesión</button>
+        </div>
     </div>
-  </div>
     <?php
     include 'footer.php';
     ?>
 
     <script>
-            //Seleccionamos todos los elementos con la clase .mas y .menos
-            let botonMas = document.querySelector('.mas');
-            let botonMenos = document.querySelector('.menos');
+        //Seleccionamos todos los elementos con la clase .mas y .menos
+        let botonMas = document.querySelector('.mas');
+        let botonMenos = document.querySelector('.menos');
 
-            //Creo un evento en el boton más para incrementar, como máximo, el número de unidades a comprar
-            botonMas.addEventListener('click', function() {
-                let cantidad = document.querySelector('.unidades');
-                let stock = document.querySelector('.stock');
-                let cantidadActual = parseInt(cantidad.innerHTML);
-                let stockDisponible = parseInt(stock.innerHTML);
-                if (cantidadActual < stockDisponible) {
-                    cantidad.innerHTML = cantidadActual + 1;
-                }
-            });
+        //Creo un evento en el boton más para incrementar, como máximo, el número de unidades a comprar
+        botonMas.addEventListener('click', function () {
+            let cantidad = document.querySelector('.unidades');
+            let stock = document.querySelector('.stock');
+            let cantidadActual = parseInt(cantidad.innerHTML);
+            let stockDisponible = parseInt(stock.innerHTML);
+            if (cantidadActual < stockDisponible) {
+                cantidad.innerHTML = cantidadActual + 1;
+            }
+        });
 
-            botonMenos.addEventListener('click', function() {
-                let cantidad = document.querySelector('.unidades');
-                let cantidadActual = parseInt(cantidad.innerHTML);
-                if (cantidadActual > 0) {
-                    cantidad.innerHTML = cantidadActual - 1;
-                }
-            });
+        botonMenos.addEventListener('click', function () {
+            let cantidad = document.querySelector('.unidades');
+            let cantidadActual = parseInt(cantidad.innerHTML);
+            if (cantidadActual > 0) {
+                cantidad.innerHTML = cantidadActual - 1;
+            }
+        });
 
     </script>
 </body>

@@ -1,15 +1,4 @@
 
-/*
-create table producto (
-    id int auto_increment primary key,
-    nombre varchar(50) not null,
-    marca varchar(50) not null,
-    modelo varchar(50) not null,
-    precio decimal(10, 2) not null,
-    imagen varchar(500) not null
-);*/
-
-
 drop database if exists tiendaRelojes;
 create database if not exists tiendaRelojes;
 use tiendaRelojes;
@@ -29,7 +18,7 @@ create table usuario (
     id int auto_increment primary key,
     nombre varchar(30) not null,
     apellidos varchar(50) not null,
-    correoElectronico varchar(50) not null,
+    correoElectronico varchar(50) not null unique,
     contrasenia varchar(30) not null,
     domicilio varchar (100) not null,
     -- false / 0 será un usuario normal y el admin true / 1
@@ -61,6 +50,11 @@ create table pedido (
     foreign key (idCliente) references usuario(id) on delete cascade
 );
 
+create table usuarios_newsletter (
+    id int auto_increment primary key,
+    correoElectronico varchar(50) not null,
+    foreign key (correoElectronico) references usuario(correoElectronico) on delete cascade
+);
 
 -- Insertar productos
 INSERT INTO producto (id, nombre, marca, modelo, precio, imagen, stock, descripcion)
