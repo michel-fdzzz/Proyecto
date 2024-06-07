@@ -121,89 +121,30 @@
             <article class="newsletter">
                 <h1>Únete a Michel & CO</h1>
                 <p>Recibe las últimas noticias y ofertas</p>
-                <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+                <div class="form">
                     <input name="Email" id="Email" class="input-newsletter" type="email"
                         placeholder='Correo electrónico' />
-
                     <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' />
-                </form>
+                </div>
             </article>
         </section>
     </section>
+
+    <div class="container-mensajeAnadidoNewsletter">
+        <div class="mensajeAnadidoNewsletter">
+            <p>El producto se ha añadido al carrito correctamente</p><img src='imagenes/check.svg' alt='check' />
+        </div>
+    </div>
+
+
+    <div class="container-mensajeNoAnadidoNewsletter">
+        <div class="mensajeNoAnadidoNewsletter">
+            <p>Has introducido un correo vacío o ya registrado en newsletter.</p>
+        </div>
+    </div>
+
     <?php
     include 'footer.php';
-
-
-    if (isset($_POST['enviar'])) {
-        $con = new Conexion();
-        $con = $con->conectar();
-
-        if ($con->connect_error) {
-            die('Conexión fallida: ' . $con->connect_error);
-        } else {
-            $select = 'SELECT correoElectronico FROM usuario where correoElectronico = ?';
-            $stmt1 = $con->prepare($select);
-
-            if ($stmt1) {
-                $stmt1->bind_param('s', $_POST['Email']);
-                $stmt1->execute();
-                $rest = $stmt1->get_result();
-
-                if ($rest->num_rows <= 0) {
-                    $insert = 'INSERT INTO usuarios_newsletter VALUES (null, ?)';
-                    $stmt2 = $con->prepare($insert);
-
-                    if ($stmt2) {
-                        $stmt2->bind_param('s', $_POST['Email']);
-                        $stmt2->execute();
-                        ?>
-                        <script>
-                            let boton_newsletter = document.querySelector('.boton-newsletter').addEventListener('click', function () {
-                                alert('Subscrito al newsletter.');
-                                //modal_inicioSesion();
-                            })
-                        </script>
-                        <?php
-                    }
-                } else {
-                    ?>
-                    <div id="modal">
-                        <div id="modal-content">
-                            <span class="close">&times;</span>
-                            <p>Debes iniciar sesión para añadir productos al carrito</p>
-                            <button id="login-button">Iniciar Sesión</button>
-                        </div>
-                    </div>
-
-                    <script>
-                        let boton_newsletter = document.querySelector('.boton-newsletter').addEventListener('click', function () {
-                            alert('Debes iniciar sesión o registrarte para subscribirte al newsletter.');
-                            //modal_inicioSesion();
-                        })
-                    </script>
-                    <?php
-                }
-
-            }
-
-
-        }
-
-
-        /*
-                $correo = 'michel.fdzzz04@gmail.com';
-                $titulo = 'Suscripción al newsletter';
-                $mensaje = '';
-                if (mail($correo, $titulo, $mensaje)) {
-                    echo "<p>Mensaje enviado correctamente.</p>";
-                } else {
-                    echo "<p>Error al enviar el mensaje.</p>";
-                }
-        */
-
-
-    }
-
     ?>
 
 </body>
