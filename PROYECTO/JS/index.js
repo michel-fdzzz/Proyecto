@@ -78,9 +78,9 @@ let boton_newsletter = document.querySelector('.boton-newsletter').addEventListe
             document.getElementById('Email').value = '';
 
             if (insertado) {
-                mensajeAnadirCarrito();
+                mensajeAnadirNewsletter();
             } else {
-                mensajeNoAnadirCarrito();
+                mensajeNoAnadirNewsletter();
             }
         }
     };
@@ -92,7 +92,7 @@ let boton_newsletter = document.querySelector('.boton-newsletter').addEventListe
 
 
 // Función para mostrar la ventana modal
-function mensajeAnadirCarrito() {
+function mensajeAnadirNewsletter() {
     alert('a')
     $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
     $('.container-mensajeNoAnadidoNewsletter').show().animate({
@@ -110,7 +110,7 @@ function mensajeAnadirCarrito() {
 }
 
 
-function mensajeNoAnadirCarrito() {
+function mensajeNoAnadirNewsletter() {
     $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
     $('.container-mensajeNoAnadidoNewsletter').show().animate({
         right: '0' // Mueve el mansaje  hacia la izquierda
