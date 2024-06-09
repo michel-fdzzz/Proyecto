@@ -93,15 +93,14 @@ let boton_newsletter = document.querySelector('.boton-newsletter').addEventListe
 
 // Función para mostrar la ventana modal
 function mensajeAnadirNewsletter() {
-    alert('a')
-    $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
-    $('.container-mensajeNoAnadidoNewsletter').show().animate({
+    $('.container-mensajeAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeAnadidoNewsletter').show().animate({
         right: '0' // Mueve el mansaje  hacia la izquierda
     }, 500); // Duración de la animación en milisegundos
 
     // Oculta el mansaje  después de 3 segundos
     setTimeout(function () {
-        $('.container-mensajeNoAnadidoNewsletter').animate({
+        $('.container-mensajeAnadidoNewsletter').animate({
             right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
         }, 500, function () {
             $(this).hide(); // Oculta el mansaje  después de la animación
