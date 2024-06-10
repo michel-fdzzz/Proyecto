@@ -21,11 +21,7 @@
 
     <div class='buscadorContainer'></div>
     <section class="main">
-        <div class="container-mensajeStock">
-            <div class="mensajeStock">
-                <p>No puedes añadir más productos</p><img src='imagenes/X.svg' alt='X' />
-            </div>
-        </div>
+       
 
         <h1 class="tituloCarrito">Su <br> Carrito</h1>
 
@@ -152,6 +148,25 @@
 
 
     </section>
+
+    <div class="container-mensajeProcesandoPedido">
+        <div class="mensajeProcesandoPedido">
+            <p>El pedido realizado</p><img src='imagenes/check.svg' alt='check' />
+        </div>
+    </div>
+
+
+    <div class="container-mensajeEliminandoProducto">
+        <div class="mensajeEliminandoProducto">
+            <p>Eliminando producto...</p>
+        </div>
+    </div>
+
+    <div class="container-mensajeStock">
+            <div class="mensajeStock">
+                <p>No puedes añadir más productos</p><img src='imagenes/X.svg' alt='X' />
+            </div>
+        </div>
 
     <?php
     include 'footer.php';

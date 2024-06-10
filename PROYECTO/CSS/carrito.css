@@ -312,6 +312,71 @@ button:hover {
 }
 
 
+
+/*
+Mensaje de que se ha añadido bien el producto al carrito
+*/
+.container-mensajeProcesandoPedido {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #84ff80;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeProcesandoPedido {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding-right: 12px;
+}
+
+.mensajeProcesandoPedido>p {
+    margin: 2px;
+}
+
+
+/*
+Mensaje de que ya tienes le producto en el carrito
+*/
+.container-mensajeEliminandoProducto {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #efefef;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeEliminandoProducto {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding-right: 12px;
+}
+
+.mensajeEliminandoProducto>p {
+    margin: 2px;
+}
+
+
+
+
 @media (max-width: 920px) {
     .productos-carrito-container {
         flex-direction: column;

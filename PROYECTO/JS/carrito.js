@@ -23,8 +23,10 @@ function insertarPedido(idProducto, idCliente, modelo, cantidad, nombreProducto,
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            alert('Pedido realizado');
-            window.location.href = "carrito.php";
+            mensajeProcesandoPedido();
+            setTimeout(function () {
+                window.location.href = "carrito.php";
+            }, 2000);
         }
     };
     xhttp.open("POST", "insertarPedido.php", true);
@@ -37,7 +39,10 @@ function eliminarProducto(idProducto, idCliente) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            window.location.href = "carrito.php";
+            mensajeEliminandoProducto();
+            setTimeout(function () {
+                window.location.href = "carrito.php";
+            }, 3000);
         }
     };
     xhttp.open("POST", "eliminarProducto.php", true);
@@ -66,7 +71,6 @@ function anadirUnidades(idProducto, idCliente, numProductos, cantidad, stock) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-
                 window.location.href = "carrito.php";
             }
         };
@@ -83,8 +87,10 @@ function comprarTodo(idCliente) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            alert('Pedido realizado');
-            window.location.href = "carrito.php";
+            mensajeProcesandoPedido();
+            setTimeout(function () {
+                window.location.href = "carrito.php";
+            }, 2000);
         }
     };
     xhttp.open("POST", "comprarTodo.php", true);
@@ -110,15 +116,20 @@ function mensajeStock() {
     }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
 }
 
-/*
-document.addEventListener("DOMContentLoaded", function () {
 
-    // Calcula el 70% de la altura de la ventana del navegador
-    var seventyPercentHeight = window.innerHeight * 0.6;
+// Función para mostrar la ventana modal
+function mensajeProcesandoPedido() {
+    $('.container-mensajeProcesandoPedido').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeProcesandoPedido').show().animate({
+        right: '0' // Mueve el mansaje  hacia la izquierda
+    }, 300); // Duración de la animación en milisegundos
+}
 
-    // Comprueba si la altura del contenido de la página es al menos el 70% de la altura de la ventana
-    if (document.body.scrollHeight < seventyPercentHeight) {
-        document.querySelector('footer').style.bottom = "0";
-    }
-});
-*/
+
+function mensajeEliminandoProducto() {
+    $('.container-mensajeEliminandoProducto').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeEliminandoProducto').show().animate({
+        right: '0' // Mueve el mansaje  hacia la izquierda
+    }, 300); // Duración de la animación en milisegundos
+}
+
