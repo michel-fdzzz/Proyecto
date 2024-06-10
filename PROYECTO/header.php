@@ -10,13 +10,13 @@
 </head>
 
 <body>
-  <?php 
+  <?php
   session_start();
   include 'conexion.php';
   ?>
   <section class="menuPrincipal">
     <div class="desplegable">
-      <button  class="botonDesplegar"><img src="imagenes/menuLineas.png" width="40em" height="30em" alt="Menu" />
+      <button class="botonDesplegar"><img src="imagenes/menuLineas.png" width="40em" height="30em" alt="Menu" />
         <p class='menu'>Menú</p>
       </button>
       <div class="containerDesplegable">
@@ -24,42 +24,45 @@
         <a href="patek.php" class='apartados-desplegable'>Patek</a>
         <a href="tissot.php" class='apartados-desplegable'>Tissot</a>
         <?php
-          if (isset($_SESSION['idCliente'])) {
-            $con = new Conexion();
-            $con = $con->conectar();
-            
-            // Preparar la consulta
-            $select = "SELECT tipo FROM usuario WHERE id = ?";
-            $stmt = $con->prepare($select);
-        
-            if ($stmt) {
-                // Vincular parámetros e ID del cliente
-                $stmt->bind_param("i", $_SESSION['idCliente']);
-                // Ejecutar la consulta
-                $stmt->execute();
-                // Obtener resultado
-                $stmt->bind_result($tipo);
-                // Verificar si se encontró el tipo
-                if ($stmt->fetch()) {
-                    // Comparar el tipo obtenido
-                    if ($tipo == 1) {
-                        echo '<a href="gestion.php" class="apartados-desplegable">Gestión de productos</a>';
-                    }
+        if (isset($_SESSION['idCliente'])) {
+          $con = new Conexion();
+          $con = $con->conectar();
 
-                    if ($tipo == 1 || $tipo == 0){
-                      echo '<a href="pedidos.php" class="apartados-desplegable">Pedidos</a>';
-                    }
-                }
-                // Cerrar la consulta preparada
-                $stmt->close();
-            } else {
-                // Manejar error si la preparación de la consulta falla
-                die('Error en la preparación de la consulta: ' . $con->error);
-            }
-            // Cerrar conexión
-            $con->close();
-        }
+          // Preparar la consulta
+          $select = "SELECT tipo FROM usuario WHERE id = ?";
+          $stmt = $con->prepare($select);
+
+          if ($stmt) {
+            // Vincular parámetros e ID del cliente
+            $stmt->bind_param("i", $_SESSION['idCliente']);
+            // Ejecutar la consulta
+            $stmt->execute();
+            // Obtener resultado
+            $stmt->bind_result($tipo);
+            // Verificar si se encontró el tipo
+            if ($stmt->fetch()) {
+              // Comparar el tipo obtenido
         
+              if ($tipo == 1 || $tipo == 0) {
+                echo '<a href="pedidos.php" class="apartados-desplegable">Pedidos</a>';
+              }
+
+              if ($tipo == 1) {
+                echo '<a href="gestion.php" class="apartados-desplegable">Gestión de productos</a>';
+              }
+
+
+            }
+            // Cerrar la consulta preparada
+            $stmt->close();
+          } else {
+            // Manejar error si la preparación de la consulta falla
+            die('Error en la preparación de la consulta: ' . $con->error);
+          }
+          // Cerrar conexión
+          $con->close();
+        }
+
         ?>
       </div>
     </div>
@@ -68,35 +71,35 @@
     </div>
 
     <div class="containerIconos">
-            <?php
-            if (isset($_SESSION['idCliente'])) {
-                echo '
+      <?php
+      if (isset($_SESSION['idCliente'])) {
+        echo '
                 <img class="desconexion" src="imagenes/salida-de-incendios.png" width="25em" height="25em" alt="Carrito" />';
-            } else {
-                echo
-                '<div class="iconoInicioSesion">
+      } else {
+        echo
+          '<div class="iconoInicioSesion">
                     <a href="iniciarSesion.php" target="_self">
                         <img src="imagenes/perfil-removebg-preview (1).png" width="29em" height="29em" alt="Carrito" />
                     </a>
                 </div>';
-            }
-            ?>
+      }
+      ?>
 
-            <div class="lupa">
-                <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
-               
-            </div>
-            
+      <div class="lupa">
+        <img class='lupaImagen' src="imagenes/lupa.png" width="25em" height="25em" alt="Carrito" />
 
-            <div class="carrito">
-                <a href="carrito.php" target="_self">
-                    <img src="imagenes/carrito.png" width="29em" height="29em" alt="Carrito" />
-                </a>
-            </div>
-        </div>
-        <div class='buscadorContainer'>
-                  <input type="text" name="buscador" id="buscador" placeholder="Buscar">
-        </div>
+      </div>
+
+
+      <div class="carrito">
+        <a href="carrito.php" target="_self">
+          <img src="imagenes/carrito.png" width="29em" height="29em" alt="Carrito" />
+        </a>
+      </div>
+    </div>
+    <div class='buscadorContainer'>
+      <input type="text" name="buscador" id="buscador" placeholder="Buscar">
+    </div>
   </section>
 
   <script defer src="JS/header.js">
