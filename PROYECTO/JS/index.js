@@ -56,6 +56,7 @@ $(document).ready(function () {
 
         //Según se escribe en el buscador se va recibiendo su valor
         let buscador = document.getElementById('buscador');
+        buscador.setAttribute('tabindex', '13');
         buscador.addEventListener('input', function () {
             let texto = document.querySelector('#buscador').value;
             buscar(texto);

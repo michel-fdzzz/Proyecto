@@ -42,6 +42,10 @@
             $totalProductos = $con->query("SELECT COUNT(*) FROM producto")->fetch_row()[0];
             $totalPaginas = ceil($totalProductos / $numElementos);
 
+            //Empieza siendo 14 ya que las cosas del header llegan a ser hasta 13
+            $tabindex = 14;
+
+
 
             if (isset($_GET['pag'])) {
                 $pagina = $_GET['pag'];
@@ -56,19 +60,20 @@
                     echo
                         "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
                     <div class='producto'>
-                     <img src='imagenes/" . $campo[5] . "'  class='producto-imagen'/>
-                    <h4>" . $campo[1] . "</h4>
+                     <img src='imagenes/" . $campo[5] . "' alt='$campo[5]'  class='producto-imagen'/>
+                    <h4 tabindex='$tabindex'>" . $campo[1] . "</h4>
                     <p class='grey'>" . $campo[7] . "</p>
                     <p>" . $campo[4] . " €</p>
                     </div>
                     </a>";
+                    $tabindex++;
                 }
             }
             ?>
         </article>
         <div class="container-botones-paginacion">
             <?php if ($pagina > 1): ?>
-                <a href="index.php?pag=<?php echo $pagina - 1; ?>#intro">
+                <a href="index.php?pag=<?php echo $pagina - 1; ?>#intro" tabindex="18">
                     <button>Anterior</button>
                 </a>
             <?php else: ?>
@@ -78,7 +83,7 @@
             <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
 
             <?php if ($pagina < $totalPaginas): ?>
-                <a href="index.php?pag=<?php echo $pagina + 1; ?>#intro">
+                <a href="index.php?pag=<?php echo $pagina + 1; ?>#intro" tabindex="19">
                     <button>Siguiente</button>
                 </a>
             <?php else: ?>
@@ -88,11 +93,12 @@
 
 
 
-        <h1 class='h1-productos-exclusivos'>Nuestros productos más exclusivos</h1>
+        <h1 class='h1-productos-exclusivos' tabindex="20">Nuestros productos más exclusivos</h1>
 
         <div class="productos-exclusivos">
             <article class="productos-exclusivos-container">
                 <?php
+                $tabindexExclusivo = 21;
 
                 $con = new Conexion();
                 $con = $con->conectar();
@@ -104,12 +110,13 @@
                         echo
                             "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
                     <div class='producto-exclusivo'>
-                     <img src='imagenes/" . $campo[5] . "'  class='producto-imagen-exclusivo'/>
-                    <h4>" . $campo[1] . "</h4>
+                     <img src='imagenes/" . $campo[5] . "' alt='$campo[5]' class='producto-imagen-exclusivo'/>
+                    <h4 tabindex='$tabindexExclusivo'>" . $campo[1] . "</h4>
                     
                     <p>" . $campo[4] . " €</p>
                     </div>
                     </a>";
+                        $tabindexExclusivo++;
                     }
                 }
                 ?>
@@ -119,12 +126,13 @@
 
         <section class="container-newsletter">
             <article class="newsletter">
-                <h1>Únete a Michel & CO</h1>
-                <p>Recibe las últimas noticias y ofertas</p>
+                <h1 tabindex="31">Únete a Michel & CO</h1>
+                <p tabindex="32">Recibe las últimas noticias y ofertas</p>
                 <div class="form">
                     <input name="Email" id="Email" class="input-newsletter" type="email"
-                        placeholder='Correo electrónico' />
-                    <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' />
+                        placeholder='Correo electrónico' tabindex="33"
+                        aria-label="Introduce tu email para suscribirte al newsletter" />
+                    <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' tabindex="34" />
                 </div>
             </article>
         </section>
