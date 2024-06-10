@@ -11,7 +11,6 @@
 .productos-carrito-container {
     display: flex;
     justify-content: space-between;
-    /*flex-wrap: wrap;*/
     margin: 1em 0% 5% 5%;
     gap: 5%;
 }
@@ -123,8 +122,13 @@
     /*width: 70%;*/
     width: 22em;
     justify-content: center;
+
 }
 
+.container-foto-botones>button,
+.contenedorAnadirEliminar>button {
+    transition: margin 0.3s ease;
+}
 
 .informacionCarrito {
     margin-top: 3em;
@@ -443,24 +447,30 @@ Mensaje de que ya tienes le producto en el carrito
         top: 20%;
     }
 
-    .container-comprar-todo-envio > * > * > *> p {
+    .container-comprar-todo-envio>*>*>*>p {
         margin: 0;
         font-size: 0.9rem;
         transition: font-size 0.3s ease;
     }
 
-    .valor-productos{
+    .valor-productos {
         margin-top: 10px;
     }
 
-    .detalles-compra > button{
+    .detalles-compra>button {
         padding: 8px 13px;
         transition: padding 0.3s ease;
     }
 
-    .tiempo-envio{
+    .tiempo-envio {
         height: 2em;
     }
+
+    .container-foto-botones>button,
+    .contenedorAnadirEliminar>button {
+        margin: 0.5em;
+    }
+
 }
 
 @media (max-height: 613px) {
@@ -468,8 +478,35 @@ Mensaje de que ya tienes le producto en el carrito
         top: 15%;
     }
 
-    
-    .detalles-compra > button{
+    .detalles-compra>button {
         padding: 6px 11px;
+    }
+}
+
+@media (max-height: 580px) and (min-width: 920px) {
+    .productos-carrito-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 2em;
+        gap: 2em;
+    }
+
+    .containerProductosCarrito {
+        width: 100%;
+    }
+
+    .containerProductosCarrito {
+        width: 90%;
+    }
+
+    .container-comprar-todo-envio {
+        width: 80%;
+        position: relative;
+    }
+
+    .container-comprar-todo-envio>*>*>*>p {
+        margin: 0.5em;
+        font-size: 0.9rem;
+        transition: font-size 0.3s ease;
     }
 }

@@ -54,7 +54,7 @@
             if ($rest->num_rows > 0) {
                 foreach ($campos as $campo) {
                     echo
-                    "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'  target='_blank' class='link-producto'>
+                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
                     <div class='producto'>
                      <img src='imagenes/" . $campo[5] . "'  class='producto-imagen'/>
                     <h4>" . $campo[1] . "</h4>
@@ -67,21 +67,21 @@
             ?>
         </article>
         <div class="container-botones-paginacion">
-            <?php if ($pagina > 1) : ?>
+            <?php if ($pagina > 1): ?>
                 <a href="index.php?pag=<?php echo $pagina - 1; ?>#intro">
                     <button>Anterior</button>
                 </a>
-            <?php else : ?>
+            <?php else: ?>
                 <button disabled>Anterior</button>
             <?php endif; ?>
 
             <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
 
-            <?php if ($pagina < $totalPaginas) : ?>
+            <?php if ($pagina < $totalPaginas): ?>
                 <a href="index.php?pag=<?php echo $pagina + 1; ?>#intro">
                     <button>Siguiente</button>
                 </a>
-            <?php else : ?>
+            <?php else: ?>
                 <button disabled>Siguiente</button>
             <?php endif; ?>
         </div>
@@ -102,7 +102,7 @@
                 if ($rest->num_rows > 0) {
                     foreach ($campos as $campo) {
                         echo
-                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'  target='_blank' class='link-producto'>
+                            "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
                     <div class='producto-exclusivo'>
                      <img src='imagenes/" . $campo[5] . "'  class='producto-imagen-exclusivo'/>
                     <h4>" . $campo[1] . "</h4>
@@ -122,7 +122,8 @@
                 <h1>Únete a Michel & CO</h1>
                 <p>Recibe las últimas noticias y ofertas</p>
                 <div class="form">
-                    <input name="Email" id="Email" class="input-newsletter" type="email" placeholder='Correo electrónico' />
+                    <input name="Email" id="Email" class="input-newsletter" type="email"
+                        placeholder='Correo electrónico' />
                     <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' />
                 </div>
             </article>

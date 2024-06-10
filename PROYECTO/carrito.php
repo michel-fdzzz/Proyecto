@@ -59,8 +59,8 @@
                     $precio_total_producto = $precio * $cantidad;
                     //Acumulamos los precios de todos los productos en una sola variable
                     $precio_total += $precio_total_producto;
-                   //El coste del envío es un 0.001%
-                    $coste_envio_producto = $precio_total_producto * 0.001;
+                   //El coste del envío es un 0.01%
+                    $coste_envio_producto = $precio_total_producto * 0.01;
 
                     echo
                     "<div class='producto'>
@@ -95,8 +95,8 @@
                 }
                 echo '</div>';
 
-                //El 0,001% del precio del reloj
-                $coste_envio = $precio_total * 0.001;
+                //El 0,01% del precio del reloj
+                $coste_envio = $precio_total * 0.01;
                 $precio_total_envio =  $precio_total + $coste_envio;
         ?>
                 <div class='container-comprar-todo-envio'>

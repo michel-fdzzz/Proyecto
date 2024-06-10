@@ -48,7 +48,7 @@
             if ($rest->num_rows > 0) {
                 foreach ($campos as $campo) {
                     echo
-                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'  target='_blank' class='link-producto'>
+                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
                     <div class='producto'>
                      <img src='imagenes/" . $campo[5] . "' alt=" . $campo[5] . " class='producto-imagen'/>
                     <h4>" . $campo[1] . "</h4>
