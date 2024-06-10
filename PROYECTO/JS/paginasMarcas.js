@@ -119,3 +119,64 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
         paginacionContainer.appendChild(btnSiguiente);
     }
 }
+
+
+let boton_newsletter = document.querySelector('.boton-newsletter').addEventListener('click', function () {
+    let correo = document.getElementById('Email').value;
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let responseText = this.responseText.trim(); // Eliminar espacios en blanco
+
+            let insertado = JSON.parse(responseText); // Convertir la cadena JSON en booleano
+            document.getElementById('Email').value = '';
+
+            if (insertado) {
+                mensajeAnadirNewsletter();
+            } else {
+                mensajeNoAnadirNewsletter();
+            }
+        }
+    };
+    xhttp.open("POST", "PHP/añadirNewsletter.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("correo=" + correo);
+});
+
+
+
+// Función para mostrar la ventana modal
+function mensajeAnadirNewsletter() {
+    $('.container-mensajeAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeAnadidoNewsletter').show().animate({
+        right: '0' // Mueve el mansaje  hacia la izquierda
+    }, 500); // Duración de la animación en milisegundos
+
+    // Oculta el mansaje  después de 3 segundos
+    setTimeout(function () {
+        $('.container-mensajeAnadidoNewsletter').animate({
+            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+        }, 500, function () {
+            $(this).hide(); // Oculta el mansaje  después de la animación
+        });
+    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+}
+
+
+function mensajeNoAnadirNewsletter() {
+    $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeNoAnadidoNewsletter').show().animate({
+        right: '0' // Mueve el mansaje  hacia la izquierda
+    }, 500); // Duración de la animación en milisegundos
+
+    // Oculta el mansaje  después de 3 segundos
+    setTimeout(function () {
+        $('.container-mensajeNoAnadidoNewsletter').animate({
+            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+        }, 500, function () {
+            $(this).hide(); // Oculta el mansaje  después de la animación
+        });
+    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+}
+
