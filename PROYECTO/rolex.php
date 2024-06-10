@@ -36,6 +36,8 @@
             $totalProductos = $con->query("SELECT COUNT(*) FROM producto WHERE marca = 'Rolex'")->fetch_row()[0];
             $totalPaginas = ceil($totalProductos / $numElementos);
 
+            //Empieza siendo 14 ya que las cosas del header llegan a ser hasta 13
+            $tabindex = 14;
 
             if (isset($_GET['pag'])) {
                 $pagina = $_GET['pag'];
@@ -48,21 +50,23 @@
             if ($rest->num_rows > 0) {
                 foreach ($campos as $campo) {
                     echo
-                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
+                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "' tabindex='$tabindex'  class='link-producto'>
                     <div class='producto'>
                      <img src='imagenes/" . $campo[5] . "' alt=" . $campo[5] . " class='producto-imagen'/>
-                    <h4>" . $campo[1] . "</h4>
+                    <h4 >" . $campo[1] . "</h4>
                     <p class='grey'>" . $campo[7] . "</p>
                     <p>" . $campo[4] . " €</p>
                     </div>
                     </a>";
+                    $tabindex++;
                 }
             }
             ?>
         </article>
         <div class="container-botones-paginacion">
             <?php if ($pagina > 1): ?>
-                <a href="rolex.php?pag=<?php echo $pagina - 1; ?>#intro">
+                <a href="rolex.php?pag=<?php echo $pagina - 1; ?>#intro" tabindex="<?php echo $tabindex;
+                     $tabindex++; ?>">
                     <button>Anterior</button>
                 </a>
             <?php else: ?>
@@ -72,7 +76,8 @@
             <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
 
             <?php if ($pagina < $totalPaginas): ?>
-                <a href="rolex.php?pag=<?php echo $pagina + 1; ?>#intro">
+                <a href="rolex.php?pag=<?php echo $pagina + 1; ?>#intro" tabindex="<?php echo $tabindex;
+                     $tabindex++; ?>">
                     <button>Siguiente</button>
                 </a>
             <?php else: ?>
@@ -83,12 +88,17 @@
 
         <section class="container-newsletter">
             <article class="newsletter">
-                <h1>Únete a Michel & CO</h1>
-                <p>Recibe las últimas noticias y ofertas</p>
+                <h1 tabindex="<?php echo $tabindex;
+                $tabindex++; ?>">Únete a Michel & CO</h1>
+                <p tabindex="<?php echo $tabindex;
+                $tabindex++; ?>">Recibe las últimas noticias y ofertas</p>
                 <div class="form">
                     <input name="Email" id="Email" class="input-newsletter" type="email"
-                        placeholder='Correo electrónico' />
-                    <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' />
+                        placeholder='Correo electrónico' aria-label="Introduce tu email para suscribirte al newsletter"
+                        tabindex="<?php echo $tabindex;
+                        $tabindex++; ?>" />
+                    <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' tabindex="<?php echo $tabindex;
+                    $tabindex++; ?>" />
                 </div>
             </article>
         </section>

@@ -160,7 +160,7 @@ function mensajeAnadirNewsletter() {
         }, 500, function () {
             $(this).hide(); // Oculta el mansaje  después de la animación
         });
-    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
 }
 
 
@@ -177,6 +177,6 @@ function mensajeNoAnadirNewsletter() {
         }, 500, function () {
             $(this).hide(); // Oculta el mansaje  después de la animación
         });
-    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
 }
 

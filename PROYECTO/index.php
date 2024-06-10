@@ -58,10 +58,10 @@
             if ($rest->num_rows > 0) {
                 foreach ($campos as $campo) {
                     echo
-                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
+                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "' tabindex='$tabindex'  class='link-producto'>
                     <div class='producto'>
                      <img src='imagenes/" . $campo[5] . "' alt='$campo[5]'  class='producto-imagen'/>
-                    <h4 tabindex='$tabindex'>" . $campo[1] . "</h4>
+                    <h4>" . $campo[1] . "</h4>
                     <p class='grey'>" . $campo[7] . "</p>
                     <p>" . $campo[4] . " €</p>
                     </div>
@@ -73,7 +73,8 @@
         </article>
         <div class="container-botones-paginacion">
             <?php if ($pagina > 1): ?>
-                <a href="index.php?pag=<?php echo $pagina - 1; ?>#intro" tabindex="18">
+                <a href="index.php?pag=<?php echo $pagina - 1; ?>#intro" tabindex="<?php echo $tabindex;
+                     $tabindex++; ?>">
                     <button>Anterior</button>
                 </a>
             <?php else: ?>
@@ -83,7 +84,8 @@
             <span>Página <?php echo $pagina; ?> de <?php echo $totalPaginas; ?></span>
 
             <?php if ($pagina < $totalPaginas): ?>
-                <a href="index.php?pag=<?php echo $pagina + 1; ?>#intro" tabindex="19">
+                <a href="index.php?pag=<?php echo $pagina + 1; ?>#intro" tabindex="<?php echo $tabindex;
+                     $tabindex++; ?>">
                     <button>Siguiente</button>
                 </a>
             <?php else: ?>
@@ -93,12 +95,12 @@
 
 
 
-        <h1 class='h1-productos-exclusivos' tabindex="20">Nuestros productos más exclusivos</h1>
+        <h1 class='h1-productos-exclusivos' tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Nuestros productos más exclusivos</h1>
 
         <div class="productos-exclusivos">
             <article class="productos-exclusivos-container">
                 <?php
-                $tabindexExclusivo = 21;
 
                 $con = new Conexion();
                 $con = $con->conectar();
@@ -108,15 +110,15 @@
                 if ($rest->num_rows > 0) {
                     foreach ($campos as $campo) {
                         echo
-                            "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'   class='link-producto'>
+                            "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "' tabindex='$tabindex'   class='link-producto'>
                     <div class='producto-exclusivo'>
                      <img src='imagenes/" . $campo[5] . "' alt='$campo[5]' class='producto-imagen-exclusivo'/>
-                    <h4 tabindex='$tabindexExclusivo'>" . $campo[1] . "</h4>
+                    <h4 >" . $campo[1] . "</h4>
                     
                     <p>" . $campo[4] . " €</p>
                     </div>
                     </a>";
-                        $tabindexExclusivo++;
+                        $tabindex++;
                     }
                 }
                 ?>
@@ -126,13 +128,16 @@
 
         <section class="container-newsletter">
             <article class="newsletter">
-                <h1 tabindex="31">Únete a Michel & CO</h1>
-                <p tabindex="32">Recibe las últimas noticias y ofertas</p>
+                <h1 tabindex="<?php echo $tabindex;
+                $tabindex++; ?>">Únete a Michel & CO</h1>
+                <p tabindex="<?php echo $tabindex;
+                $tabindex++; ?>">Recibe las últimas noticias y ofertas</p>
                 <div class="form">
                     <input name="Email" id="Email" class="input-newsletter" type="email"
-                        placeholder='Correo electrónico' tabindex="33"
-                        aria-label="Introduce tu email para suscribirte al newsletter" />
-                    <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' tabindex="34" />
+                        placeholder='Correo electrónico' tabindex="<?php echo $tabindex;
+                        $tabindex++; ?>" aria-label="Introduce tu email para suscribirte al newsletter" />
+                    <input type="submit" value="Enviar" name="enviar" class='boton-newsletter' tabindex="<?php echo $tabindex;
+                    $tabindex++; ?>" />
                 </div>
             </article>
         </section>

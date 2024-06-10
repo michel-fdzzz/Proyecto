@@ -250,6 +250,68 @@ form {
     transform: translateY(-2px);
 }
 
+/*
+Mensaje de que se ha añadido bien el producto al carrito
+*/
+.container-mensajeAnadidoNewsletter {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #84ff80;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeAnadidoNewsletter {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding-right: 12px;
+}
+
+.mensajeAnadidoNewsletter>p {
+    margin: 2px;
+}
+
+
+
+/*
+Mensaje de que ya tienes le producto en el carrito
+*/
+.container-mensajeNoAnadidoNewsletter {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #efefef;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeNoAnadidoNewsletter {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding-right: 12px;
+}
+
+.mensajeNoAnadidoNewsletter>p {
+    margin: 2px;
+}
+
 @media screen and (max-width: 1077px) {
     .productos-container {
         grid-template-columns: 1fr 1fr;
