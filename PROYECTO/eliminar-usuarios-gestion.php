@@ -114,25 +114,41 @@
     ?>
 
     <script>
-        let contadorUsuarios = <?php echo $contUsuarios; ?>;
+        function ajustarFooter() {
+            let contadorUsuarios = <?php echo $contUsuarios; ?>;
+            let footer = document.querySelector('footer');
 
-        if (window.innerHeight > 730 && window.innerWidth >= 400) {
-            if (contadorUsuarios < 7) {
-                let footer = document.querySelector('footer');
+            if (window.innerHeight > 786 && window.innerWidth >= 400) {
+                if (contadorUsuarios < 6) {
+                    console.log('a');
+                    console.log(contadorUsuarios);
+                    footer.style.position = 'absolute';
+                    footer.style.bottom = '0';
+                }
+            } else if (window.innerHeight <= 786) {
 
-                // Aplicar estilos usando style
-                footer.style.position = 'absolute';
-                footer.style.bottom = '0';
+                if (window.innerWidth > 846 && window.innerHeight >= 723) {
+                    if (contadorUsuarios < 4) {
+                        console.log('b');
+                        footer.style.position = 'absolute';
+                        footer.style.bottom = '0';
+                    }
+                } else {
+                    if (contadorUsuarios < 4) {
+                        console.log('c');
+                        footer.style.position = 'relative';
+                    }
+                }
             }
-        } else {
-            if (contadorUsuarios < 4) {
-                let footer = document.querySelector('footer');
 
-                // Aplicar estilos usando style
-                footer.style.position = 'absolute';
-                footer.style.bottom = '0';
+            if (window.innerWidth <= 400) {
+                console.log('d');
+                footer.style.position = 'relative';
             }
         }
+
+        window.addEventListener('resize', ajustarFooter);
+        window.addEventListener('load', ajustarFooter);
     </script>
 
 </body>
