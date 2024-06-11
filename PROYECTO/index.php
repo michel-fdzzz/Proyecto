@@ -58,9 +58,9 @@
             if ($rest->num_rows > 0) {
                 foreach ($campos as $campo) {
                     echo
-                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "' tabindex='$tabindex' target='_blank' class='link-producto'>
+                        "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "' tabindex='$tabindex' target='_blank' class='link-producto' aria-label='Acceder a $campo[1]' >
                     <div class='producto'>
-                     <img src='imagenes/" . $campo[5] . "' alt='$campo[5]'  class='producto-imagen'/>
+                     <img src='imagenes/" . $campo[5] . "' alt='$campo[2] $campo[1]'  class='producto-imagen'/>
                     <h4>" . $campo[1] . "</h4>
                     <p class='grey'>" . $campo[7] . "</p>
                     <p>" . $campo[4] . " €</p>
@@ -112,7 +112,7 @@
                         echo
                             "<a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "' tabindex='$tabindex'   class='link-producto'>
                     <div class='producto-exclusivo'>
-                     <img src='imagenes/" . $campo[5] . "' alt='$campo[5]' class='producto-imagen-exclusivo'/>
+                     <img src='imagenes/" . $campo[5] . "'  alt='$campo[2] $campo[1]' class='producto-imagen-exclusivo'/>
                     <h4 >" . $campo[1] . "</h4>
                     
                     <p>" . $campo[4] . " €</p>
