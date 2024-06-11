@@ -12,6 +12,7 @@
 <body>
     <?php
     include 'header.php';
+    $tabindex = 13;
     ?>
 
     <section class="main">
@@ -45,9 +46,10 @@
                     <h4>$marca $nombre</h4>
                 </div>
                 <div class='boton'>
-                    <button onclick='eliminarProducto($id)'>Eliminar</button>
+                    <button onclick='eliminarProducto($id)' tabindex='$tabindex' aria-label='Eliminar $marca $nombre'>Eliminar</button>
                 </div>
             </div>";
+                        $tabindex++;
                     }
                 } else {
                     echo "No se encontraron resultados.";

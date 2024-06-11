@@ -52,12 +52,12 @@ if (isset($_FILES['imagen'])) {
                         }
                         $stmt2->close();
                     } else {
-                        die('Error al preparar la consulta: ' . $con->connect_error);
+                        die('Error al preparar la consulta: ' . $con->error);
                     }
                 }
                 $stmt1->close();
             } else {
-                die('Error al preparar la consulta: ' . $con->connect_error);
+                die('Error al preparar la consulta: ' . $con->error);
             }
             $con->close();
         }

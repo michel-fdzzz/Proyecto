@@ -11,6 +11,7 @@
 <body>
     <?php
     include 'header.php';
+    $tabindex = 13;
     ?>
 
     <!DOCTYPE html>
@@ -30,27 +31,34 @@
                 <div class="formulario">
                     <div class="flex-container">
                         <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" tabindex="2" aria-label="Nombre" required>
+                        <input type="text" id="nombre" tabindex="2" aria-label="Nombre del reloj" tabindex="<?php echo $tabindex;
+                        $tabindex++; ?>" required>
 
                         <label for="marca">Marca</label>
-                        <input type="text" id="marca" tabindex="3" aria-label="Marca" required>
+                        <input type="text" id="marca" tabindex="3" aria-label="Marca" tabindex="<?php echo $tabindex;
+                        $tabindex++; ?>" required>
 
                         <label for="modelo">Modelo</label>
-                        <input type="text" id="modelo" tabindex="4" aria-label="Modelo" required>
+                        <input type="text" id="modelo" tabindex="4" aria-label="Modelo" tabindex="<?php echo $tabindex;
+                        $tabindex++; ?>" required>
 
                         <label for="precio">Precio</label>
-                        <input type="number" id="precio" tabindex="5" id='precio' aria-label="Precio" required>
+                        <input type="number" id="precio" tabindex="5" id='precio' aria-label="Precio" tabindex="<?php echo $tabindex;
+                        $tabindex++; ?>" required>
 
                         <label for="stock">Stock</label>
                         <input type="number" id="stock" tabindex="6" id='stock' aria-label="Stock del producto"
-                            required>
+                            tabindex="<?php echo $tabindex;
+                            $tabindex++; ?>" required>
 
                         <label for="descripcion">Descripción</label>
-                        <textarea id="descripcion" rows="1" cols="40" tabindex="7" aria-label="Descripción"
-                            required></textarea>
+                        <textarea id="descripcion" rows="1" cols="40" tabindex="7" aria-label="Descripción del reloj"
+                            tabindex="<?php echo $tabindex;
+                            $tabindex++; ?>" required></textarea>
 
                         <label for="imagen">Imagen</label>
-                        <input type="file" id="imagen" tabindex="8" aria-label="Selecciona la foto del reloj">
+                        <input type="file" id="imagen" tabindex="8" aria-label="Selecciona la foto del reloj" tabindex="<?php echo $tabindex;
+                        $tabindex++; ?>">
 
                         <input type="submit" value="Agregar" tabindex="9" aria-label="Boton agregar" id="btn-agregar">
 

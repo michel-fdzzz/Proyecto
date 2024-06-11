@@ -13,6 +13,7 @@
     <?php
     include 'header.php';
     $contUsuarios = 0;
+    $tabindex = 13;
     ?>
 
     <section class="main">
@@ -52,10 +53,14 @@
                             <td>$correo</td>
                             <td>" . tipo_usuario($tipo) . "</td>
                             <td>
-                                <button onclick='eliminarUsuario($id)'>Eliminar</button>
-                            </td>
+                                <button onclick='eliminarUsuario($id)' tabindex='$tabindex' aria-label='Eliminar a $correo' >Eliminar</button>
+                            </td>";
+
+                    $tabindex++;
+
+                    echo "
                             <td>
-                                <button onclick='cambiar_tipo_usuario($id, $tipo)'>Cambiar a " . tipo_usuario_aCambiar($tipo) . "</button>
+                                <button onclick='cambiar_tipo_usuario($id, $tipo)' tabindex='$tabindex' aria-label='Cambiar a $correo a " . tipo_usuario_aCambiar($tipo) . "' >Cambiar a " . tipo_usuario_aCambiar($tipo) . "</button>
                             </td>
                         </tr>
                     
