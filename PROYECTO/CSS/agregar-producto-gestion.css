@@ -17,7 +17,7 @@ a {
 }
 
 /* FORMULARIO PARA AGREGAR UN RELOJ*/
-form.formulario {
+.formulario {
     margin: 1em auto 3em auto;
     padding: 20px;
     background-color: #ffffff;
@@ -101,6 +101,70 @@ input[type="file"]::file-selector-button {
 
 input[type="file"]::file-selector-button:hover {
     background-color: #bdbdbd;
+}
+
+
+/*
+Mensaje de que se ha añadido bien el producto a la base de datos
+*/
+.container-mensajeAnadidoBaseDatos {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #84ff80;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeAnadidoBaseDatos {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding-right: 12px;
+}
+
+.mensajeAnadidoBaseDatos>p {
+    margin: 2px;
+}
+
+
+
+
+/*
+Mensaje de que ya tienes en la base de datos
+*/
+.container-mensajeNoAnadidoBaseDatos {
+    display: none;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    transform: translateX(1%);
+    background-color: #efefef;
+    padding: 0.5em;
+    border: 1px solid #000000;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.mensajeNoAnadidoBaseDatos {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0;
+    padding-right: 12px;
+}
+
+.mensajeNoAnadidoBaseDatos>p {
+    margin: 2px;
 }
 
 

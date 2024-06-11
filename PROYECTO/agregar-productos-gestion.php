@@ -27,97 +27,142 @@
         <section class="main">
             <h1 tabindex="1">Agrega un reloj</h1>
             <article class="contenedor-formulario">
-                <form action="#" method="POST" class="formulario" enctype="multipart/form-data">
+                <div class="formulario">
                     <div class="flex-container">
                         <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" tabindex="2" aria-label="Nombre" required>
+                        <input type="text" id="nombre" tabindex="2" aria-label="Nombre" required>
 
                         <label for="marca">Marca</label>
-                        <input type="text" name="marca" tabindex="3" aria-label="Marca" required>
+                        <input type="text" id="marca" tabindex="3" aria-label="Marca" required>
 
                         <label for="modelo">Modelo</label>
-                        <input type="text" name="modelo" tabindex="4" aria-label="Modelo" required>
+                        <input type="text" id="modelo" tabindex="4" aria-label="Modelo" required>
 
                         <label for="precio">Precio</label>
-                        <input type="number" name="precio" tabindex="5" id='precio' aria-label="Precio" required>
+                        <input type="number" id="precio" tabindex="5" id='precio' aria-label="Precio" required>
 
                         <label for="stock">Stock</label>
-                        <input type="number" name="stock" tabindex="6" id='stock' aria-label="Stock del producto"
+                        <input type="number" id="stock" tabindex="6" id='stock' aria-label="Stock del producto"
                             required>
 
                         <label for="descripcion">Descripción</label>
-                        <textarea name="descripcion" rows="1" cols="40" tabindex="7" aria-label="Descripción"
+                        <textarea id="descripcion" rows="1" cols="40" tabindex="7" aria-label="Descripción"
                             required></textarea>
 
                         <label for="imagen">Imagen</label>
-                        <input type="file" name="imagen" tabindex="8" aria-label="Selecciona la foto del reloj">
+                        <input type="file" id="imagen" tabindex="8" aria-label="Selecciona la foto del reloj">
 
-                        <input type="submit" value="Agregar" name='agregar' tabindex="9" aria-label="Boton agregar">
+                        <input type="submit" value="Agregar" tabindex="9" aria-label="Boton agregar" id="btn-agregar">
 
                     </div>
-                </form>
+                </div>
             </article>
         </section>
 
+        <div class="container-mensajeAnadidoBaseDatos">
+            <div class="mensajeAnadidoBaseDatos">
+                <p>El reloj se ha añadido correctamente a la base de datos</p><img src='imagenes/check.svg'
+                    alt='check' />
+            </div>
+        </div>
+
+        <div class="container-mensajeNoAnadidoBaseDatos">
+            <div class="mensajeNoAnadidoBaseDatos">
+                <p>Ya tienes este producto en la base de datos</p>
+            </div>
+        </div>
+
+
+        <script>
+            let btn = document.getElementById('btn-agregar');
+
+            btn.addEventListener('click', function () {
+                // Solicitud AJAX
+                var xhttp = new XMLHttpRequest();
+                let nombre = document.getElementById('nombre');
+                let marca = document.getElementById('marca');
+                let modelo = document.getElementById('modelo');
+                let precio = document.getElementById('precio');
+                let stock = document.getElementById('stock');
+                let descripcion = document.getElementById('descripcion');
+                let imagen = document.getElementById('imagen');
+
+                var arrayDatos = new FormData();
+                arrayDatos.append('nombre', nombre.value);
+                arrayDatos.append('marca', marca.value);
+                arrayDatos.append('modelo', modelo.value);
+                arrayDatos.append('precio', precio.value);
+                arrayDatos.append('stock', stock.value);
+                arrayDatos.append('descripcion', descripcion.value);
+                arrayDatos.append('imagen', imagen.files[0]);
+
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                        let response = JSON.parse(this.responseText);
+                        if (response) {
+                            mensajeAnadirBaseDatos();
+                            // Limpiar los valores de los inputs
+                            nombre.value = '';
+                            marca.value = '';
+                            modelo.value = '';
+                            precio.value = '';
+                            stock.value = '';
+                            descripcion.value = '';
+                            imagen.value = '';
+                        } else {
+                            mensajeNoAnadirBaseDatos();
+                            nombre.value = '';
+                            marca.value = '';
+                            modelo.value = '';
+                            precio.value = '';
+                            stock.value = '';
+                            descripcion.value = '';
+                            imagen.value = '';
+                        }
+                    }
+                };
+                xhttp.open("POST", "PHP/agregarReloj.php", true);
+                xhttp.send(arrayDatos);
+            });
+
+            // Función para mostrar la ventana modal
+            function mensajeAnadirBaseDatos() {
+                $('.container-mensajeAnadidoBaseDatos').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+                $('.container-mensajeAnadidoBaseDatos').show().animate({
+                    right: '0' // Mueve el mansaje  hacia la izquierda
+                }, 500); // Duración de la animación en milisegundos
+
+                // Oculta el mansaje  después de 3 segundos
+                setTimeout(function () {
+                    $('.container-mensajeAnadidoBaseDatos').animate({
+                        right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+                    }, 500, function () {
+                        $(this).hide(); // Oculta el mansaje  después de la animación
+                    });
+                }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+            }
+
+
+            function mensajeNoAnadirBaseDatos() {
+                $('.container-mensajeNoAnadidoBaseDatos').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+                $('.container-mensajeNoAnadidoBaseDatos').show().animate({
+                    right: '0' // Mueve el mansaje  hacia la izquierda
+                }, 500); // Duración de la animación en milisegundos
+
+                // Oculta el mansaje  después de 3 segundos
+                setTimeout(function () {
+                    $('.container-mensajeNoAnadidoBaseDatos').animate({
+                        right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+                    }, 500, function () {
+                        $(this).hide(); // Oculta el mansaje  después de la animación
+                    });
+                }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+            }
+
+        </script>
 
         <?php
-
-        if (isset($_POST['agregar'])) {
-            // Si la foto se ha recogido bien guardamos en una variable su nombre
-            // para usarlo más adelante en la inserción.
-            if (isset($_FILES['imagen'])) {
-                $nombre_imagen = $_FILES['imagen']['name'];
-                $ruta = 'imagenes/' . $nombre_imagen;
-
-                // Si mueve la imagen a la carpeta donde guardo las imagen se procede a insertar en la bbdd, ya que si la foto no está 
-                // en las carpeta imagenes, no se mostrará por mucho que esté en la bbdd
-                if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta)) {
-
-                    $con = new Conexion();
-                    $con = $con->conectar();
-
-                    if ($con->connect_error) {
-                        die('Conexion fallida: ' . $con->connect_error);
-                    } else {
-
-                        //Comprobamos si existe el producto
-                        $select = "select nombre from producto where nombre = ?";
-                        $stmt1 = $con->prepare($select);
-
-                        if ($stmt1) {
-                            $stmt1->bind_param('s', $_POST['nombre']);
-                            $stmt1->execute();
-                            $rest = $stmt1->get_result();
-
-                            if ($rest->num_rows > 0) {
-                                echo '<p>El producto ya existe</p>';
-
-                                //Si no existe se inserta
-                            } else {
-                                $insert = "INSERT INTO producto (nombre, marca, modelo, precio, imagen, stock, descripcion) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?)";
-                                $stmt2 = $con->prepare($insert);
-
-                                if ($stmt2) {
-                                    $stmt2->bind_param('sssisis', $_POST['nombre'], $_POST['marca'], $_POST['modelo'], $_POST['precio'], $nombre_imagen, $_POST['stock'], $_POST['descripcion']);
-                                    $stmt2->execute();
-                                    echo '<p>El producto ha sido insertado con éxito</p>';
-                                } else {
-                                    die('Error al preparar la consulta: ' . $con->connect_error);
-                                }
-                                $stmt2->close();
-                            }
-
-                        } else {
-                            die('Error al preparar la consulta: ' . $con->connect_error);
-                        }
-                        $stmt1->close();
-                    }
-                    $con->close();
-                }
-            }
-        }
-
         include 'footer.php';
         ?>
     </body>

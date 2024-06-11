@@ -11,8 +11,9 @@
 .productos-carrito-container {
     display: flex;
     justify-content: space-between;
-    margin: 1em 0% 5em 5%;
+    margin: 1em 0% 10em 5%;
     gap: 5%;
+    transition: margin 0.3s ease;
 }
 
 
@@ -434,6 +435,11 @@ Mensaje de que ya tienes le producto en el carrito
 @media (max-height: 820px) {
     .container-comprar-todo-envio {
         top: 15%;
+    }
+
+
+    .productos-carrito-container {
+        margin: 1em 0% 5em 5%;
     }
 }
 
