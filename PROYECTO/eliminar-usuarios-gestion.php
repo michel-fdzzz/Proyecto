@@ -107,9 +107,22 @@
 
     </section>
 
+
+
     <?php
     include 'footer.php';
     ?>
+
+    <script>
+        let contadorUsuarios = <?php echo $contUsuarios; ?>;
+        if (contadorUsuarios < 7) {
+            let footer = document.querySelector('footer');
+
+            // Aplicar estilos usando style
+            footer.style.position = 'absolute';
+            footer.style.bottom = '0';
+        }
+    </script>
 
 </body>
 
