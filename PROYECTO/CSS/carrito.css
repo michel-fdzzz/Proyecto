@@ -125,11 +125,6 @@
 
 }
 
-.container-foto-botones>button,
-.contenedorAnadirEliminar>button {
-    transition: margin 0.3s ease;
-}
-
 .informacionCarrito {
     margin-top: 3em;
     display: flex;

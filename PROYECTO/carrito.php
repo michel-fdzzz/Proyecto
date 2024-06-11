@@ -164,7 +164,7 @@
 
     <div class="container-mensajeStock">
             <div class="mensajeStock">
-                <p>No puedes añadir más productos</p><img src='imagenes/X.svg' alt='X' />
+                <p>No puedes añadir más unidades</p><img src='imagenes/X.svg' alt='X' />
             </div>
         </div>
 
