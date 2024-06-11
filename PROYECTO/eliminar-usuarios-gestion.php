@@ -115,12 +115,23 @@
 
     <script>
         let contadorUsuarios = <?php echo $contUsuarios; ?>;
-        if (contadorUsuarios < 7) {
-            let footer = document.querySelector('footer');
 
-            // Aplicar estilos usando style
-            footer.style.position = 'absolute';
-            footer.style.bottom = '0';
+        if (window.innerHeight > 730 && window.innerWidth >= 400) {
+            if (contadorUsuarios < 7) {
+                let footer = document.querySelector('footer');
+
+                // Aplicar estilos usando style
+                footer.style.position = 'absolute';
+                footer.style.bottom = '0';
+            }
+        } else {
+            if (contadorUsuarios < 4) {
+                let footer = document.querySelector('footer');
+
+                // Aplicar estilos usando style
+                footer.style.position = 'absolute';
+                footer.style.bottom = '0';
+            }
         }
     </script>
 
