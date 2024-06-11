@@ -42,8 +42,8 @@
             $totalProductos = $con->query("SELECT COUNT(*) FROM producto")->fetch_row()[0];
             $totalPaginas = ceil($totalProductos / $numElementos);
 
-            //Empieza siendo 14 ya que las cosas del header llegan a ser hasta 13
-            $tabindex = 14;
+            //Empieza siendo 13 ya que las cosas del header llegan a ser hasta 12
+            $tabindex = 13;
 
 
 

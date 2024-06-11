@@ -20,6 +20,9 @@
     $imagen = $_GET['imagen'];
     $descripcion = $_GET['descripcion'];
     $stock = $_GET['stock'];
+
+    //Empieza siendo 13 ya que las cosas del header llegan a ser hasta 12
+    $tabindex = 13;
     ?>
 
 
@@ -44,38 +47,57 @@
 
             echo
                 "<div class='imagen-producto-container'>
-                    <img src='imagenes/" . $imagen . "' class='producto-imagen'/>
+                    <img src='imagenes/" . $imagen . "' alt='$modelo $nombreProducto' class='producto-imagen'/>
                 </div>
 
                 <div  class='info-container'>
 
                 <div>
-                    <h3>" . $nombreProducto . "</h3>
-                    <p class='grey'>" . $modelo . "</p>
-                    <p class='grey'>" . $descripcion . "</p>
-                    <p><b>" . intval($precio) . " €</b></p>
+                    <h3 tabindex='$tabindex'>";
+            $tabindex++;
+            echo $nombreProducto . "</h3>
+
+                    <p class='grey' tabindex='$tabindex'>";
+            $tabindex++;
+            echo $modelo . "</p>
+
+                    <p class='grey' tabindex='$tabindex'>";
+            $tabindex++;
+            echo $descripcion . "</p>
+
+                    <p tabindex='$tabindex'>";
+            $tabindex++;
+            echo "<b>" . intval($precio) . " €</b></p>
                     
                     <div class='mas-menos-container'>
-                            <div class='mas' id='mas'><p>+</p></div>
-                            <p class='unidades' id='numProductos" . $idProducto . "'>0</p>
-                            <div class='menos' id='menos'><p>-</p></div>
-                        </div>
-                    <p class='grey'>Quedan <span class='stock'>" . $stock . "<span></p>
-                   ";
+                            <div class='mas' id='mas' tabindex='$tabindex' aria-label='Añadir unidad'>";
+            $tabindex++;
+            echo "<p>+</p></div>
+                            <p class='unidades' id='numProductos" . $idProducto . "' tabindex='$tabindex'>0</p>";
+            $tabindex++;
 
+            echo "<div class='menos' id='menos' tabindex='$tabindex' aria-label='Quitar unidad'>";
+            $tabindex++;
+            echo "<p>-</p></div>
+                        </div>
+                    <p class='grey' tabindex='$tabindex'>Quedan <span class='stock'>" . $stock . "<span></p>
+                   ";
+            $tabindex++;
 
 
             if (isset($_SESSION['idCliente'])) {
                 if ($stock > 0) {
-                    echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\">Añadir al carrito</button>";
+                    echo "<button onclick=\"añadirCarrito(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $nombreProducto . "','" . $modelo . "', document.getElementById('numProductos" . $idProducto . "').textContent,'" . $precio . "')\" tabindex='$tabindex'>Añadir al carrito</button>";
                 } else {
-                    echo "<button>Agotado</button>";
+                    echo "<button tabindex='$tabindex'>Agotado</button>";
                 }
             } else {
-                echo "<button onclick=\"añadirSinUsuario()\">Añadir al carrito</button>";
+                echo "<button onclick=\"añadirSinUsuario()\" tabindex='$tabindex'>Añadir al carrito</button>";
             }
+            $tabindex++;
+
             echo "<hr class='linea-separadora'>
-                    <p class='texto-debajo-linea-separadora'>Más $modelo</p>";
+                    <p class='texto-debajo-linea-separadora' tabindex='$tabindex'>Más $modelo</p>";
             ?>
 
 
@@ -92,8 +114,8 @@
                             foreach ($campos as $campo) {
                                 echo "
                                     <div class='contenedor-imagen-mas-relojes'>
-                                        <a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "'>
-                                            <img src='imagenes/" . $campo[5] . "' class='producto-imagen-mas-relojes'/>
+                                        <a href='producto.php?idProducto=" . $campo[0] . "&nombreProducto=" . $campo[1] . "&modelo=" . $campo[2] . "&precio=" . $campo[4] . "&imagen=" . $campo[5] . "&descripcion=" . $campo[7] . "&stock=" . $campo[6] . "' tabindex='$tabindex' aria-label='$campo[2] $campo[1]'>
+                                            <img src='imagenes/" . $campo[5] . "' alt='$campo[2] $campo[1]' class='producto-imagen-mas-relojes'/>
                                         </a>
                                     </div>";
                             }

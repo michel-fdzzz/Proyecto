@@ -31,23 +31,25 @@ $(document).ready(function () {
 
 function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad, precio) {
     // Solicitud AJAX
-    var xhttp = new XMLHttpRequest();
-    let numProductos = document.getElementById('numProductos' + idProducto);
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var response = JSON.parse(this.responseText);
-            if (response.success) {
-                mensajeAnadirCarrito();
-                numProductos.textContent = 0;
-            } else {
-                mensajeNoAnadirCarrito();
-                numProductos.textContent = 0;
+    if (cantidad > 0) {
+        var xhttp = new XMLHttpRequest();
+        let numProductos = document.getElementById('numProductos' + idProducto);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                if (response.success) {
+                    mensajeAnadirCarrito();
+                    numProductos.textContent = 0;
+                } else {
+                    mensajeNoAnadirCarrito();
+                    numProductos.textContent = 0;
+                }
             }
-        }
-    };
-    xhttp.open("POST", "añadirCarrito.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&nombreProducto=" + nombreProducto + "&modelo=" + modelo + "&cantidad=" + cantidad + "&precio=" + precio);
+        };
+        xhttp.open("POST", "añadirCarrito.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&nombreProducto=" + nombreProducto + "&modelo=" + modelo + "&cantidad=" + cantidad + "&precio=" + precio);
+    }
 }
 
 
