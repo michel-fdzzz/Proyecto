@@ -11,7 +11,7 @@
 .productos-carrito-container {
     display: flex;
     justify-content: space-between;
-    margin: 1em 0% 5% 5%;
+    margin: 1em 0% 5em 5%;
     gap: 5%;
 }
 
