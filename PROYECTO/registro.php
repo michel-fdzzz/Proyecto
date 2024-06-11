@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,10 +55,12 @@
         <label for="domicilio">Domicilio</label>
         <input type="text" name="domicilio" required>
 
-        <input type="submit" value="Enviar" name='enviar'>
+        <input type="submit" value="Registrarme" name='enviar'>
 
       </div>
-      <div id = 'errorDiv'><p id = 'error'>Este correo ya está registrado</p></div>
+      <div id='errorDiv'>
+        <p id='error'>Este correo ya está registrado</p>
+      </div>
       <a href="iniciarSesion.php" target="_self" class='linkRegistroInicioSesion'>Ya tengo cuenta, iniciar sesión.</a>
     </form>
     <?php
