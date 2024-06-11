@@ -49,7 +49,7 @@
               }
 
               if ($tipo == 1) {
-                echo '<a href="gestion.php" class="apartados-desplegable" tabindex="6">Gestión de productos</a>';
+                echo '<a href="gestion.php" class="apartados-desplegable" tabindex="6">Gestión</a>';
               }
 
 

@@ -52,8 +52,7 @@
                         <label for="imagen">Imagen</label>
                         <input type="file" name="imagen" tabindex="8" aria-label="Selecciona la foto del reloj">
 
-                        <input type="submit" value="Agregar a la base de datos" name='agregar' tabindex="9"
-                            aria-label="Boton agregar">
+                        <input type="submit" value="Agregar" name='agregar' tabindex="9" aria-label="Boton agregar">
 
                     </div>
                 </form>
