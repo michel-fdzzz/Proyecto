@@ -113,7 +113,8 @@
 
     <div class="container-mensajeNoAnadidoNewsletter">
         <div class="mensajeNoAnadidoNewsletter">
-            <p>Has introducido un correo vacío o ya registrado en newsletter.</p>
+            <p>Has introducido un correo vacío, que no existe en nuestra base de datos o uno ya registrado en
+                newsletter.</p>
         </div>
     </div>
     <?php
