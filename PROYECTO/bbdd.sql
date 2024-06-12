@@ -73,7 +73,8 @@ VALUES
   (null, 'GMT-Master II', 'Rolex', 'GMT', 46250, 'gmt_masterII.avif', 5, '40 mm, oro blanco.'),
     (null, 'Deepsea', 'Rolex', 'Submariner', 56300, 'submariner_deepsea.avif', 5, '44 mm, oro amarillo.'),
     (null, 'Air-King', 'Rolex', 'Air king', 7700, 'air_king.avif', 5, '40 mm, acero Oystersteel.'),
-(null, 'Cosmograph Daytona', 'Rolex', 'Daytona', 121450, 'cosmograph_daytona.avif', 5, '40 mm, oro amarillo y diamantes.');
+(null, 'Cosmograph Daytona', 'Rolex', 'Daytona', 121450, 'cosmograph_daytona.avif', 5, '40 mm, oro amarillo y diamantes.'),
+(null, 'Seastar 1000 Powermatic 80', 'Tissot', 'Seastar 1000', 875, 'tissot_Seastar_1000_powermatic80_40mm.png', 15, '40 mm, brazalete intercambiable. Hasta 80 de reserva de marcha.');
 
 
 -- Insertar usuarios
