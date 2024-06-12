@@ -139,9 +139,13 @@
                         footer.style.bottom = '0';
                     }
                 } else {
-                    if (contadorUsuarios < 4) {
+                    if (contadorUsuarios < 4 && contadorUsuarios > 2) {
                         console.log('c');
                         footer.style.position = 'relative';
+                    } else if (contadorUsuarios < 3) {
+                        console.log('cee');
+                        footer.style.position = 'absolute';
+                        footer.style.bottom = '0';
                     }
                 }
             }
