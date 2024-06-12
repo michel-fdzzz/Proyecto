@@ -15,7 +15,8 @@
 <body>
     <?php include('header.php');
     $precio_total = 0;
-    //La sesion se inicia en el header
+      //La sesion se inicia en el header y el archivo conexion.php se incluye también en el header
+      $tabindex = 13;
     ?>
 
 
@@ -23,7 +24,8 @@
     <section class="main">
        
 
-        <h1 class="tituloCarrito">Su <br> Carrito</h1>
+        <h1 class="tituloCarrito" tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Su <br> Carrito</h1>
 
 
         <?php
@@ -67,31 +69,53 @@
                         <div class='info-producto-container'>
                             <div class='container-foto-botones'>
                                 <div class='container-imagen'>
-                                <img src='imagenes/" . $imagen . "' class='imagen-producto'/>
+                                <img src='imagenes/" . $imagen . "' alt='$modelo $nombreProducto' class='imagen-producto' tabindex='$tabindex'/>";
+                                $tabindex++;
+
+                                echo "
                                 </div>
-                                <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ")\">Eliminar producto</button>
-                                <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\">Comprar</button>
-                            </div> 
+                                <button onclick=\"eliminarProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ")\" tabindex='$tabindex' aria-label='Botón eliminar el $modelo $nombreProducto'>Eliminar producto</button>";
+                                $tabindex++;
+                                echo "
+                                <button class='comprar' onclick=\"insertarPedido(" . $idProducto . "," . $_SESSION['idCliente'] . ",'" . $modelo . "'," . $cantidad . ", '" . $nombreProducto . "',$precio)\" tabindex='$tabindex' aria-label='Botón comprar el $modelo $nombreProducto'>Comprar</button>
+                            </div>";
+                            $tabindex++;
+                            echo "
                             <div class='informacionCarrito'>
                                 <div class='info'>
-                                    <h3>$modelo " . $nombreProducto . "</h3>
-                                    <p class='grey'>Precio unitario: " . $precio . "€</p>
-                                    <p class='grey'>Unidades: <span class='unidadesEnCarrito" . $idProducto . "'>" . $cantidad . "</span></p>
+                                    <h3 tabindex='$tabindex'>$modelo " . $nombreProducto . "</h3>";
+                                $tabindex++;
+                                echo "
+                                    <p class='grey' tabindex='$tabindex'>Precio unitario: " . $precio . "€</p>";
+                                $tabindex++;
+                                echo "
+                                    <p class='grey' tabindex='$tabindex'>Unidades: <span class='unidadesEnCarrito" . $idProducto . "'>" . $cantidad . "</span></p>";
+                                $tabindex++;
+                                echo "
                                     <p class='stock$idProducto' hidden>$stock</p>
-                                    <p class='grey'>Gastos de envío: $coste_envio_producto € </p>
+                                    <p class='grey' tabindex='$tabindex'>Gastos de envío: $coste_envio_producto € </p>";
+                                $tabindex++;
+                                echo "
                                 </div>
                                 <div class='contenedorAnadirEliminar'>
-                                    <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\">Añadir unidades</button>
-                                    <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ", document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\">Eliminar unidades</button>
+                                    <button onclick=\"anadirUnidades(" . $idProducto . "," . $_SESSION['idCliente'] . ",document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad, $stock)\" tabindex='$tabindex' aria-label='Botón para añadir las unidades sumadas en los botones de incremento y decremento de $modelo $nombreProducto'>Añadir unidades</button>";
+                                $tabindex++;
+                                echo "
+                                    <button onclick=\"eliminarNumProducto(" . $idProducto . "," . $_SESSION['idCliente'] . ", document.querySelector('.unidades" . $idProducto . "').innerHTML, $cantidad)\" tabindex='$tabindex' aria-label='Botón para Eliminar las unidades sumadas en los botones de incremento y decremento de $modelo $nombreProducto'>Eliminar unidades</button>";
+                                $tabindex++;
+                                echo "
                                 </div>
                             </div>
                         </div>
                         <div class='mas-menos-container'>
-                            <div class='mas$idProducto' id='mas'><p>+</p></div>
+                            <div class='mas$idProducto' id='mas' tabindex='$tabindex' aria-label='Botón para incrementar las unidades a eliminar de $modelo $nombreProducto'><p>+</p></div>";
+                                $tabindex++;
+                                echo "
                             <p class='unidades$idProducto'>0</p>
-                            <div class='menos$idProducto' id='menos'><p>-</p></div>
+                            <div class='menos$idProducto' id='menos' tabindex='$tabindex' aria-label='Botón para decrementar las unidades a eliminar de $modelo $nombreProducto'><p>-</p></div>
                         </div>
                     </div>";
+                    $tabindex++;
                 }
                 echo '</div>';
 
@@ -103,24 +127,37 @@
                     <div class='comprar-todo-container'>
                         <div class='detalles-compra'>
                             <div class="valor-productos">
-                                <p>Precio total</p>
-                                <p><?php echo "$precio_total €"; ?></p>
+                                <p tabindex="<?php echo $tabindex;
+        $tabindex++; ?>" aria-label="Precio total de todo el carrito">Precio total</p>
+
+                                <p tabindex="<?php echo $tabindex;
+        $tabindex++; ?>"><?php echo "$precio_total €"; ?></p>
+
                             </div>
                             <div class="coste-envio">
-                                <p>Coste de envío</p>
-                                <p><?php echo "$coste_envio €"; ?></p>
+                                <p tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Coste de envío</p>
+                                <p tabindex="<?php echo $tabindex;
+        $tabindex++; ?>"><?php echo "$coste_envio €"; ?></p>
+
                             </div>
                             <hr class='linea-separadora'>
                             <div class="coste-IVA">
-                                <p>Precio total y envío</p>
-                                <p><?php echo "$precio_total_envio €"; ?></p>
+                                <p tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Precio total y envío</p>
+
+                                <p tabindex="<?php echo $tabindex;
+        $tabindex++; ?>"><?php echo "$precio_total_envio €"; ?></p>
+
                             </div>
-                            <button onclick='comprarTodo(<?PHP echo $_SESSION["idCliente"] ?>)'>Comprar todo</button>
+                            <button onclick='comprarTodo(<?PHP echo $_SESSION["idCliente"] ?>)' tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Comprar todo</button>
                         </div>
                     </div>
 
                     <div class='tiempo-envio'>
-                        <p>Entrega en 4 - 9 días laborables</p>
+                        <p tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Entrega en 4 - 9 días laborables</p>
                     </div>
                     <div>
                         </article>
@@ -129,8 +166,10 @@
                 echo '
             <div class="container-mensajes">
                 <div class="mensajeProductosCarrito">
-                    <p>No hay productos en el carrito</p>
-                    <a class="linkMensaje" href="index.php" target="_self"><div class="boton-mensaje"><p>Ver productos</p></div></a>
+                    <p tabindex="'.$tabindex.'">No hay productos en el carrito</p>';
+                    $tabindex++;
+                    echo '
+                    <a class="linkMensaje" href="index.php" target="_self"  tabindex="'.$tabindex.'" aria-label="Botón para ver los productos"><div class="boton-mensaje"><p>Ver productos</p></div></a>
                 </div>
             </div>    ';
             }
@@ -139,8 +178,10 @@
             echo  '
             <div class="container-mensajes">
             <div class="mensaje">
-                <p>No has iniciado sesión, registrate o inicia sesión para poder ver tus productos en el carrito.</p>
-                <a class="linkMensaje" href="iniciarSesion.php" target="_self"><div class="boton-mensaje"><p>Iniciar sesión/Registrarme</p></div></a>
+                <p tabindex="'.$tabindex.'">No has iniciado sesión, registrate o inicia sesión para poder ver tus productos en el carrito.</p>';
+                    $tabindex++;
+                    echo '
+                <a class="linkMensaje" href="iniciarSesion.php" target="_self" tabindex="'.$tabindex.'" aria-label="Botón para iniciar sesión o registrarte"><div class="boton-mensaje"><p>Iniciar sesión/Registrarme</p></div></a>
             </div>
             </div>';
         }
@@ -151,7 +192,7 @@
 
     <div class="container-mensajeProcesandoPedido">
         <div class="mensajeProcesandoPedido">
-            <p>El pedido realizado</p><img src='imagenes/check.svg' alt='check' />
+            <p>Pedido realizado</p><img src='imagenes/check.svg' alt='check' />
         </div>
     </div>
 

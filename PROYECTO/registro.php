@@ -31,7 +31,7 @@
 
 <body>
   <?php include 'header.php';
-  //La sesion se inicia en el header y la conexion
+  //La sesion se inicia en el header y el archivo conexion.php se incluye también en el header
   $tabindex = 13;
   ?>
 
