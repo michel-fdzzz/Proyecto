@@ -131,8 +131,8 @@
         </article>
     </section>
 
-    <div id="modal">
-        <div id="modal-content">
+    <div id="container-mensajeIniciarSesion">
+        <div id="mensajeIniciarSesion">
             <span class="close">&times;</span>
             <p>Debes iniciar sesión para añadir productos al carrito</p>
             <button id="login-button">Iniciar Sesión</button>

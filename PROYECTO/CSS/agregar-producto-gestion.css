@@ -119,7 +119,7 @@ Mensaje de que se ha añadido bien el producto a la base de datos
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
+    z-index: 1000;
 }
 
 .mensajeAnadidoBaseDatos {
@@ -152,7 +152,7 @@ Mensaje de que ya tienes en la base de datos
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
+    z-index: 1000;
 }
 
 .mensajeNoAnadidoBaseDatos {

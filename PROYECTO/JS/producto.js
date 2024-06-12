@@ -7,13 +7,13 @@ $(document).ready(function () {
 
     //Cerrar la ventana modal que sale indicando que inicies sesion
     $('.close').click(function () {
-        $('#modal').fadeOut();
+        $('#container-mensajeIniciarSesion').fadeOut();
     });
 
     //Cerrar la ventana si se hace click fuera de la ventana
     $(window).click(function (event) {
-        if ($(event.target).is('#modal')) {
-            $('#modal').fadeOut();
+        if ($(event.target).is('#container-mensajeIniciarSesion')) {
+            $('#container-mensajeIniciarSesion').fadeOut();
         }
     });
 
@@ -57,7 +57,7 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
 
 // Función para mostrar la ventana modal
 function añadirSinUsuario() {
-    $('#modal').fadeIn();
+    $('#container-mensajeIniciarSesion').fadeIn();
 }
 
 // Función para mostrar la ventana modal
