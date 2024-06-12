@@ -64,6 +64,7 @@
             ?>
         </article>
         <div class="container-botones-paginacion">
+
             <?php if ($pagina > 1): ?>
                 <a href="tissot.php?pag=<?php echo $pagina - 1; ?>#intro" tabindex="<?php echo $tabindex;
                      $tabindex++; ?>">
@@ -77,8 +78,8 @@
 
             <?php if ($pagina < $totalPaginas): ?>
                 <a href="tissot.php?pag=<?php echo $pagina + 1; ?>#intro" tabindex="<?php echo $tabindex;
-                     $tabindex++; ?>"></a>
-                <button>Siguiente</button>
+                     $tabindex++; ?>">
+                    <button>Siguiente</button>
                 </a>
             <?php else: ?>
                 <button disabled>Siguiente</button>
