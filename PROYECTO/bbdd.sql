@@ -59,12 +59,15 @@ create table usuarios_newsletter (
 -- Insertar productos
 INSERT INTO producto (id, nombre, marca, modelo, precio, imagen, stock, descripcion)
 VALUES 
-  (null, 'Oyster Perpetual 41', 'Rolex', 'Oyster', 6600, 'oyster_perpetual_41.avif', 5, '41 mm, acero Oystersteel'),
+(null, 'Hamilton ventura', 'Hamilton', 'Ventura', 1863, 'hamiltonVentura.png', 3, 'Ha aparecido en mas de 500 peliculas.'),
+(null, 'Black Venom', 'Rolex', 'Dajejust', 14900, 'Datejust-II-Venum.png', 3, 'Edicion limitada.'),
+(null, 'T-race cycling vuelta 2023', 'Tissot', 'T-race', 1456, 't-race.png', 5, '45 mm, caja de carbono. Cristal de zafiro.'),
+(null, 'Le locle', 'Tissot', 'Le Locle', 2856, 'leLocle.png', 5, '39.3 mm, caja acero inoxidable. Cristal de zafiro.'),
   (null, 'Dajejust 36', 'Rolex', 'Dajejust', 13350, 'dajejust_36.avif', 3, '36 mm, acero Oystersteel y oro amarillo'),
   (null, 'Oyster Perpetual 36', 'Rolex', 'Oyster', 6300, 'oyster_perpetual_36.avif', 1, '36 mm, acero Oystersteel'),
-  (null, 'Nautilus acero', 'Patek Philippe', 'Nautilus', 32170, 'nautilus.png', 1, 'Brazalete de acero. Cierre desplegable Nautilus. Movimineto mecánico de cuerda. Opalina azul  índices y cifras aplicados de oro, con revestimiento luminiscente.'),
-  (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 415920, 'nautilus_oro_blanco.png', 1, 'Brazalete de oro blanco, engastado en diamantes. Cierre desplegable Nautilus. Movimineto mecánico de cuerda. Engastado en un total de 2364 diamantes.'),
-  (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 535510, 'nautilus_oro_blanco_diamantes_verdes.png', 1, 'Brazalete de oro blanco, engastado en diamantes y esmeraldas. Cierre desplegable  patentado engastado con diamantes. Movimineto mecánico de carga automática. Engastado en 1500 diamantes y 876 esmeraldas.'),
+  (null, 'Nautilus acero', 'Patek Philippe', 'Nautilus', 32170, 'nautilus.png', 1, 'Brazalete de acero. Cierre desplegable Nautilus. '),
+  (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 415920, 'nautilus_oro_blanco.png', 1, 'Brazalete de oro blanco, engastado en diamantes. Engastado en un total de 2364 diamantes.'),
+  (null, 'Nautilus oro blanco', 'Patek Philippe', 'Nautilus', 535510, 'nautilus_oro_blanco_diamantes_verdes.png', 1, 'Brazalete de oro blanco, engastado en diamantes y esmeraldas. Cierre desplegable patentado engastado con diamantes.'),
   (null, 'RM 66', 'Richard Mille', 'RM', 1095000, 'RM66.webp', 5, 'Mano de oro rojo 5N. Barrilete de rotación rápida. Cuerda manual. Edicion limitada de 50 piezas.'),
   (null, 'Day-Date 36', 'Rolex', 'Oyster', 41000, 'oyster_perpetual_day-date36.avif', 5, '36 mm, oro amarillo.'),
   (null, 'GMT-Master II', 'Rolex', 'GMT', 46250, 'gmt_masterII.avif', 5, '40 mm, oro blanco.'),
@@ -76,18 +79,14 @@ VALUES
 (null, 'Rainbow', 'Patek Philippe', 'Rainbow', 750000, 'patekDiamonds.png', 3, '46 mm, 500 diamantes de colores incrustados. Oro blanco.'),
 (null, 'Grandes complicaciones', 'Patek Philippe', 'Complicaciones', 351120, 'patekCueroRojo.png', 3, '43 mm, 80 rubíes buguette.'),
 (null, 'Aquanaut Loce', 'Patek Philippe', 'Aquanaut', 49370, 'patek_Aquanaut_luce.png', 3, '42.2 mm, oro blanco.'),
-(null, 'Com', 'Patek Philippe', 'Aquanaut', 54140, 'patek_aquanutOro.png', 15, '38.8 mm, oro rosa. Fondo de cristal de zafiro.'),
+(null, 'Complicación', 'Patek Philippe', 'Aquanaut', 54140, 'patek_aquanutOro.png', 15, '38.8 mm, oro rosa. Fondo de cristal de zafiro.'),
 (null, 'World time', 'Patek Philippe', 'Complicaciones', 109220, 'patek_complicaciones.png', 5, '39.8 mm, platino. Fondo de cristal de zafiro.'),
 (null, 'PRX', 'Tissot', 'PRX', 4119, 'tissot_PRX.png', 4, '42 mm, movimiento de cuarzo suizo. Caja de acero inoxidable.'),
 (null, 'PRX powermatic', 'Tissot', 'PRX', 3822, 'tissot_prx_powermatic.png', 5, '42 mm, movimiento de cuarzo suizo. Resistente al agua.'),
 (null, 'Race chronograph', 'Tissot', 'Race', 3334, 'tissot_raceChronograph.png', 5, '45 mm, brazalete de acero.'),
 (null, 'PRX 35mm', 'Tissot', 'PRX', 2615, 't_prx35mm.png', 5, '35 mm, brazalete de acero.'),
 (null, 'Classic dream', 'Tissot', 'Dream', 1949, 't_classicDream.png', 5, '42 mm, brazalete de acero.'),
-(null, 'PRX automatic', 'Tissot', 'PRX', 6545, 't_prxAutomatic.png', 3, '41 mm, brazalete de acero inoxidable. Cristal de zafiro'),
-(null, 'Hamilton ventura', 'Hamilton', 'Ventura', 1863, 'hamiltonVentura.png', 3, 'Ha aparecido en mas de 500 peliculas.'),
-(null, 'Black Venom', 'Rolex', 'Dajejust', 14900, 'Datejust-II-Venum.png', 3, 'Edicion limitada.'),
-(null, 'T-race cycling vuelta 2023', 'Tissot', 'T-race', 1456, 't-race.png', 5, '45 mm, caja de carbono. Cristal de zafiro.'),
-(null, 'Le locle', 'Tissot', 'Le Locle', 2856, 'leLocle.png', 5, '39.3 mm, caja acero inoxidable. Cristal de zafiro.');
+(null, 'PRX automatic', 'Tissot', 'PRX', 6545, 't_prxAutomatic.png', 3, '41 mm, brazalete de acero inoxidable. Cristal de zafiro');
 
 
 
