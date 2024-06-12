@@ -87,6 +87,10 @@ footer {
     margin: 0 auto 1em auto;
 }
 
+.flex-container>h2 {
+    transition: margin-bottom 0.3s ease, margin-top 0.3s ease;
+}
+
 @media screen and (max-height: 520px) {
 
     .flex-container>h2 {
@@ -101,7 +105,6 @@ footer {
 
     .flex-container input {
         padding: 4px 6px;
-        transition: padding 0.3s ease;
     }
 
 
