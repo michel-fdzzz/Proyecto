@@ -74,7 +74,11 @@ VALUES
     (null, 'Deepsea', 'Rolex', 'Submariner', 56300, 'submariner_deepsea.avif', 5, '44 mm, oro amarillo.'),
     (null, 'Air-King', 'Rolex', 'Air king', 7700, 'air_king.avif', 5, '40 mm, acero Oystersteel.'),
 (null, 'Cosmograph Daytona', 'Rolex', 'Daytona', 121450, 'cosmograph_daytona.avif', 5, '40 mm, oro amarillo y diamantes.'),
-(null, 'Seastar 1000 Powermatic 80', 'Tissot', 'Seastar 1000', 875, 'tissot_Seastar_1000_powermatic80_40mm.png', 15, '40 mm, brazalete intercambiable. Hasta 80 de reserva de marcha.');
+(null, 'Seastar 1000 Powermatic 80', 'Tissot', 'Seastar 1000', 875, 'tissot_Seastar_1000_powermatic80_40mm.png', 15, '40 mm, brazalete intercambiable. Hasta 80 de reserva de marcha.'),
+(null, 'Supersport chrono', 'Tissot', 'Supersport', 575, 'tissot_supersportChrono.png', 15, '45.5 mm, brazalete intercambiable. Caja de acero inoxidable con revestimiento de oro amarillo.'),
+(null, 'Chrono XL clasic', 'Tissot', 'Classic', 575, 'tissot-chronoXLclasic.avif', 15, '45 mm, movimiento de cuarzo suizo. Caja de acero inoxidable 316L.'),
+(null, 'Seastar 2000 professional porwermatic 80', 'Tissot', 'Seastar', 1175, 'tissot_seastar2000.avif', 3, '46 mm, hasta 80 horas de reserva de marcha. Caja de acero inoxidable 316L.');
+
 
 
 -- Insertar usuarios
