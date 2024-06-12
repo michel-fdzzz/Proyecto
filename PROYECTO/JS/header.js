@@ -13,7 +13,6 @@ try {
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log('Conexion hecha')
                 window.location.href = "index.php";
             }
         };
@@ -27,7 +26,7 @@ try {
 
 
 
-// Función para cambiar el texto del menú
+//Función para cambiar el texto del menú
 function cambiarTextoMenu() {
     if (document.querySelector('.containerDesplegable').classList.contains('activo')) {
         menuTexto.textContent = 'Cerrar';
@@ -36,7 +35,7 @@ function cambiarTextoMenu() {
     }
 }
 
-// Función que se ejecuta después de que el documento se ha cargado completamente
+//Función que se ejecuta después de que el documento se ha cargado completamente
 $(document).ready(function () {
     $('.botonDesplegar').click(function () {
         $(this).siblings('.containerDesplegable').toggleClass('activo');

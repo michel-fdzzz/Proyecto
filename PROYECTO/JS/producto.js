@@ -1,16 +1,18 @@
-//Funcion para abrir y cerrar el buscador
+
 $(document).ready(function () {
+
+    //Para que al darle a la lupa se muestre el buscador
     $('.lupa').click(function () {
         $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');
     });
 
 
-    //Cerrar la ventana modal que sale indicando que inicies sesion
+    //Cerrar el mensaje modal que sale indicando que inicies sesion
     $('.close').click(function () {
         $('#container-mensajeIniciarSesion').fadeOut();
     });
 
-    //Cerrar la ventana si se hace click fuera de la ventana
+    //Cerrar el mensaje si se hace click fuera de el
     $(window).click(function (event) {
         if ($(event.target).is('#container-mensajeIniciarSesion')) {
             $('#container-mensajeIniciarSesion').fadeOut();
@@ -37,6 +39,7 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 var response = JSON.parse(this.responseText);
+                //Si devuelve true
                 if (response.success) {
                     mensajeAnadirCarrito();
                     numProductos.textContent = 0;
@@ -55,40 +58,40 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
 
 
 
-// Función para mostrar la ventana modal
+// Función para mostrar el mensaje modal
 function añadirSinUsuario() {
     $('#container-mensajeIniciarSesion').fadeIn();
 }
 
-// Función para mostrar la ventana modal
+// Función para mostrar el mensaje
 function mensajeAnadirCarrito() {
-    $('.container-mensajeAnadidoCarrito').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeAnadidoCarrito').css('right', '-100%');
     $('.container-mensajeAnadidoCarrito').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 500); // Duración de la animación en milisegundos
+        right: '0'
+    }, 500);
 
-    // Oculta el mansaje  después de 3 segundos
+    // Oculta el mansaje  después de 5 segundos
     setTimeout(function () {
         $('.container-mensajeAnadidoCarrito').animate({
-            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+            right: '-100%'
         }, 500, function () {
-            $(this).hide(); // Oculta el mansaje  después de la animación
+            $(this).hide();
         });
-    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 5000);
 }
 
 function mensajeNoAnadirCarrito() {
-    $('.container-mensajeNoAnadidoCarrito').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeNoAnadidoCarrito').css('right', '-100%');
     $('.container-mensajeNoAnadidoCarrito').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 500); // Duración de la animación en milisegundos
+        right: '0'
+    }, 500);
 
-    // Oculta el mansaje  después de 3 segundos
+    //Oculta el mansaje  después de 5 segundos
     setTimeout(function () {
         $('.container-mensajeNoAnadidoCarrito').animate({
-            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+            right: '-100%'
         }, 500, function () {
-            $(this).hide(); // Oculta el mansaje  después de la animación
+            $(this).hide();
         });
-    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 5000);
 }

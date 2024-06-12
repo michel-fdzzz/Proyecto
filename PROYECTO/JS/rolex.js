@@ -42,8 +42,9 @@ function buscar(texto, pagina = 1) {
 }
 
 
-//Funcion para abrir y cerrar el buscador
 $(document).ready(function () {
+
+    //Funcion para abrir y cerrar el buscador y evento en bsucador para recoger su valor
     $('.lupa').click(function () {
 
         $(this).closest('.menuPrincipal').find('.buscadorContainer').toggleClass('activo');

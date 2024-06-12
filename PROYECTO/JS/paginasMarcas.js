@@ -1,39 +1,4 @@
 
-function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad, precio) {
-    // Solicitud AJAX
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            alert('idProducto, idCliente, nombreProducto, modelo, cantidad, precio');
-            document.getElementById('numProductos' + idProducto).value = '';
-        }
-    };
-    xhttp.open("POST", "PHP/añadirCarrito.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&nombreProducto=" + nombreProducto + "&modelo=" + modelo + "&cantidad=" + cantidad + "&precio=" + precio);
-}
-
-
-// Poner que salte un mensaje de iniciar sesión o registrarte
-function añadirSinUsuario() {
-    let contenedor = document.createElement('div');
-    let mensajeIniciarSesion = document.createElement('p');
-    let link = document.createElement('button');
-    alert('Debes iniciar sesion para añadir productos al carrito');
-}
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Calcula el 60% de la altura de la ventana del navegador
-    let porcentaje_altura_pagina = window.innerHeight * 0.6;
-
-    // Comprueba si la altura del contenido de la página es al menos el 60% de la altura de la ventana
-    if (document.body.scrollHeight < porcentaje_altura_pagina) {
-        document.querySelector('footer').style.bottom = "0";
-    }
-});
-
 function mostrarProductos(productos, paginaActual, totalPaginas) {
     let containerProductos = document.querySelector('.productos-container');
     containerProductos.innerHTML = '';
@@ -79,7 +44,6 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     // Botón anterior
     if (paginaActual > 1) {
         let btnAnterior = document.createElement('a');
-        //let anteriorPagina = paginaActual - 1;
         btnAnterior.href = '#intro';
         let btnAnteriorTexto = document.createElement('button');
         btnAnteriorTexto.textContent = 'Anterior';
@@ -95,7 +59,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
         paginacionContainer.appendChild(btnAnterior);
     }
 
-    // Información de la página actual
+    //muestra la info de las páginas 
     let spanPagina = document.createElement('span');
     spanPagina.textContent = 'Página ' + paginaActual + ' de ' + totalPaginas;
     paginacionContainer.appendChild(spanPagina);
@@ -103,7 +67,6 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
     // Botón siguiente
     if (paginaActual < totalPaginas) {
         let btnSiguiente = document.createElement('a');
-        //let siguientePagina = paginaActual + 1;
         btnSiguiente.href = '#intro';
         let btnSiguienteTexto = document.createElement('button');
         btnSiguienteTexto.textContent = 'Siguiente';
@@ -127,9 +90,9 @@ let boton_newsletter = document.querySelector('.boton-newsletter').addEventListe
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let responseText = this.responseText.trim(); // Eliminar espacios en blanco
+            let responseText = this.responseText.trim();
 
-            let insertado = JSON.parse(responseText); // Convertir la cadena JSON en booleano
+            let insertado = JSON.parse(responseText);
             document.getElementById('Email').value = '';
 
             if (insertado) {
@@ -146,37 +109,37 @@ let boton_newsletter = document.querySelector('.boton-newsletter').addEventListe
 
 
 
-// Función para mostrar la ventana modal
+// Función para mostrar el mensaje
 function mensajeAnadirNewsletter() {
-    $('.container-mensajeAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeAnadidoNewsletter').css('right', '-100%'); //coloca el mansaje fuera de la pantalla
     $('.container-mensajeAnadidoNewsletter').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 500); // Duración de la animación en milisegundos
+        right: '0' //Mueve el mensaje hasta ponerlo a right 0;
+    }, 500);
 
-    // Oculta el mansaje  después de 3 segundos
+    // Oculta el mansaje  después de 4 segundos
     setTimeout(function () {
         $('.container-mensajeAnadidoNewsletter').animate({
-            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+            right: '-100%'
         }, 500, function () {
-            $(this).hide(); // Oculta el mansaje  después de la animación
+            $(this).hide();
         });
-    }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 4000);
 }
 
 
 function mensajeNoAnadirNewsletter() {
-    $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%');
     $('.container-mensajeNoAnadidoNewsletter').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 500); // Duración de la animación en milisegundos
+        right: '0'
+    }, 500);
 
-    // Oculta el mansaje  después de 3 segundos
+    // Oculta el mansaje  después de 4 segundos
     setTimeout(function () {
         $('.container-mensajeNoAnadidoNewsletter').animate({
-            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+            right: '-100%'
         }, 500, function () {
-            $(this).hide(); // Oculta el mansaje  después de la animación
+            $(this).hide();
         });
-    }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 4000);
 }
 

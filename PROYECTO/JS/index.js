@@ -9,7 +9,7 @@ function buscar(texto, pagina = 1) {
             /**
              * Dividimos la respuesta en 3 partes de las cuales ya está compuesta. 
              * productos: array con la informacion del producto
-             * paginaActual: valor de la página en la que estmaos, siempre será la primera, es decir, el 1
+             * paginaActual: valor de la página en la que estmaos
              * totalPaginas: el numero de páginas totales
              */
             mostrarProductos(response.productos, response.paginaActual, response.totalPaginas);
@@ -66,16 +66,16 @@ $(document).ready(function () {
 
 });
 
-
+//Evento para añadir el correo recogido del campo email al newsletter
 let boton_newsletter = document.querySelector('.boton-newsletter').addEventListener('click', function () {
     let correo = document.getElementById('Email').value;
 
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let responseText = this.responseText.trim(); // Eliminar espacios en blanco
+            let responseText = this.responseText.trim();
 
-            let insertado = JSON.parse(responseText); // Convertir la cadena JSON en booleano
+            let insertado = JSON.parse(responseText);
             document.getElementById('Email').value = '';
 
             if (insertado) {
@@ -92,63 +92,41 @@ let boton_newsletter = document.querySelector('.boton-newsletter').addEventListe
 
 
 
-// Función para mostrar la ventana modal
+//Función para mostrar el mensaje
 function mensajeAnadirNewsletter() {
-    $('.container-mensajeAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeAnadidoNewsletter').css('right', '-100%');
     $('.container-mensajeAnadidoNewsletter').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 500); // Duración de la animación en milisegundos
+        right: '0'
+    }, 500);
 
-    // Oculta el mansaje  después de 3 segundos
+    //Oculta el mansaje  después de 4 segundos
     setTimeout(function () {
         $('.container-mensajeAnadidoNewsletter').animate({
-            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+            right: '-100%' //Mueve el mansaje a la derecha para ocultarlo
         }, 500, function () {
-            $(this).hide(); // Oculta el mansaje  después de la animación
+            $(this).hide();
         });
-    }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 4000);
 }
 
 
 function mensajeNoAnadirNewsletter() {
-    $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeNoAnadidoNewsletter').css('right', '-100%');
     $('.container-mensajeNoAnadidoNewsletter').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 500); // Duración de la animación en milisegundos
+        right: '0'
+    }, 500);
 
-    // Oculta el mansaje  después de 3 segundos
+    //Oculta el mansaje  después de 4 segundos
     setTimeout(function () {
         $('.container-mensajeNoAnadidoNewsletter').animate({
-            right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
+            right: '-100%'
         }, 500, function () {
-            $(this).hide(); // Oculta el mansaje  después de la animación
+            $(this).hide();
         });
-    }, 4000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 4000);
 }
 
 
-function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad, precio) {
-    // Solicitud AJAX
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            alert('idProducto, idCliente, nombreProducto, modelo, cantidad, precio');
-            document.getElementById('numProductos' + idProducto).value = '';
-        }
-    };
-    xhttp.open("POST", "PHP/añadirCarrito.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&nombreProducto=" + nombreProducto + "&modelo=" + modelo + "&cantidad=" + cantidad + "&precio=" + precio);
-}
-
-
-// Poner que salte un mensaje de iniciar sesión o registrarte (Ponerlo con jquery)
-function añadirSinUsuario() {
-    let contenedor = document.createElement('div');
-    let mensajeIniciarSesion = document.createElement('p');
-    let link = document.createElement('button');
-    alert('Debes iniciar sesion para añadir productos al carrito');
-}
 
 function mostrarProductos(productos, paginaActual, totalPaginas) {
     let containerProductos = document.querySelector('.productos-container');
@@ -210,7 +188,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
         paginacionContainer.appendChild(btnAnterior);
     }
 
-    //Información de las páginas 
+    //muestra la info de las páginas 
     let spanPagina = document.createElement('span');
     spanPagina.textContent = 'Página ' + paginaActual + ' de ' + totalPaginas;
     paginacionContainer.appendChild(spanPagina);
@@ -238,7 +216,7 @@ function mostrarProductos(productos, paginaActual, totalPaginas) {
 let container = document.querySelector('.productos-exclusivos-container');
 let pixeles_desplazamiento = 0;
 let movimientoScroll = 16 * 16; //16 em que mide mi contenedor por 16px que corresponde a cada em, es una conversión
-let segundos = 5000; //5 segundos
+let segundos = 5000;
 let scrollAutomaticoActivado = true;
 
 function scrollAutomatico() {
@@ -253,7 +231,7 @@ function scrollAutomatico() {
             pixeles_desplazamiento = 0;
         }
 
-        // El scroll lo hace a la izquierda con una transición (smooth)
+        //El scroll lo hacia a la izquierda con una transición (smooth)
         container.scrollTo({
             left: pixeles_desplazamiento,
             behavior: 'smooth'
@@ -261,7 +239,7 @@ function scrollAutomatico() {
     }
 }
 
-// Cada 5 segundos ejecutamos el scroll
+//Cada 5 segundos ejecutamos el scroll
 let scrollInterval = setInterval(scrollAutomatico, segundos);
 
 //Si se interactúa con la barra de scroll, el scroll automático se desactiva mientras este pulsando la barra

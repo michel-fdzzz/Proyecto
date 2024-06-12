@@ -1,12 +1,11 @@
 
 
-
+//Desconectarse de la sesión 'log out'
 try {
     document.querySelector('.desconexion').addEventListener('click', function () {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log('Conexion hecha')
                 window.location.href = "index.php";
             }
         };
@@ -66,7 +65,6 @@ function eliminarNumProducto(idProducto, idCliente, numProductos, cantidad) {
 function anadirUnidades(idProducto, idCliente, numProductos, cantidad, stock) {
     //Numero maximo que puedes añadir
     let productosA_anadir = stock - cantidad;
-    //si el nº de productos a añadir es menor o igual
     if (numProductos <= productosA_anadir) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -99,37 +97,37 @@ function comprarTodo(idCliente) {
 }
 
 
-// Función para mostrar la ventana modal
+// Función para mostrar el mensaje
 function mensajeStock() {
-    $('.container-mensajeStock').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeStock').css('right', '-100%');
     $('.container-mensajeStock').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 500); // Duración de la animación en milisegundos
+        right: '0' //Mueve el mansaje  hacia la izquierda para que se quede pegado a la derecha
+    }, 500);
 
-    // Oculta el mansaje  después de 3 segundos
+    // Oculta el mansaje  después de 5 segundos
     setTimeout(function () {
         $('.container-mensajeStock').animate({
             right: '-100%' // Mueve el mansaje  hacia la derecha para ocultarla
         }, 500, function () {
-            $(this).hide(); // Oculta el mansaje  después de la animación
+            $(this).hide();
         });
-    }, 5000); // Tiempo de espera en milisegundos antes de ocultar el mansaje 
+    }, 5000);
 }
 
 
-// Función para mostrar la ventana modal
+// Función para mostrar el mensaje
 function mensajeProcesandoPedido() {
-    $('.container-mensajeProcesandoPedido').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeProcesandoPedido').css('right', '-100%');
     $('.container-mensajeProcesandoPedido').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 300); // Duración de la animación en milisegundos
+        right: '0' //Mueve el mansaje  hacia la izquierda para que se quede pegado a la derecha
+    }, 300);
 }
 
 
 function mensajeEliminandoProducto() {
-    $('.container-mensajeEliminandoProducto').css('right', '-100%'); // Coloca el mansaje  fuera de la pantalla
+    $('.container-mensajeEliminandoProducto').css('right', '-100%');
     $('.container-mensajeEliminandoProducto').show().animate({
-        right: '0' // Mueve el mansaje  hacia la izquierda
-    }, 300); // Duración de la animación en milisegundos
+        right: '0' //Mueve el mansaje  hacia la izquierda para que se quede pegado a la derecha
+    }, 300);
 }
 
