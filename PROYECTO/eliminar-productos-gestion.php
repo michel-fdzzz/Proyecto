@@ -24,7 +24,7 @@
 
             $select = "SELECT id, imagen, nombre, marca
             FROM producto
-            ORDER BY marca DESC";
+            ORDER BY marca ASC";
             $stmt = $con->prepare($select);
 
             if ($stmt) {
