@@ -83,7 +83,13 @@ VALUES
 (null, 'Race chronograph', 'Tissot', 'Race', 3334, 'tissot_raceChronograph.png', 5, '45 mm, brazalete de acero.'),
 (null, 'PRX 35mm', 'Tissot', 'PRX', 2615, 't_prx35mm.png', 5, '35 mm, brazalete de acero.'),
 (null, 'Classic dream', 'Tissot', 'Dream', 1949, 't_classicDream.png', 5, '42 mm, brazalete de acero.'),
-(null, 'PRX automatic', 'Tissot', 'PRX', 6545, 't_prxAutomatic.png', 3, '41 mm, brazalete de acero inoxidable. Cristal de zafiro');
+(null, 'PRX automatic', 'Tissot', 'PRX', 6545, 't_prxAutomatic.png', 3, '41 mm, brazalete de acero inoxidable. Cristal de zafiro'),
+(null, 'Hamilton ventura', 'Hamilton', 'Ventura', 1863, 'hamiltonVentura.png', 3, 'Ha aparecido en mas de 500 peliculas.'),
+(null, 'Black Venom', 'Rolex', 'Dajejust', 14900, 'Datejust-II-Venum.png', 3, 'Edicion limitada.');
+
+
+
+
 
 
 
