@@ -56,7 +56,7 @@ body {
 .buscadorContainer {
     position: fixed;
     z-index: 998;
-    left: -100%;
+    left: -110%;
     top: 10%;
     width: 100%;
     display: flex;

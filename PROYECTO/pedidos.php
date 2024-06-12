@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'header.php';
+    $tabindex = 13;
+    ?>
     <section class="main">
         <h1 class="tituloPedidos">Sus <br> pedidos</h1>
 
@@ -39,17 +41,28 @@
                     foreach ($rows as $row) {
                         echo '
                         <div class="pedido">
-                            <img class="pedido-imagen" src="imagenes/' . $row['imagen'] . '" alt="Imagen del producto">
+                            <img class="pedido-imagen" src="imagenes/' . $row['imagen'] . '" alt="' . $row['modelo'] . ' ' . $row['nombreProducto'] . '" tabindex="' . $tabindex . '">';
+                        $tabindex++;
+                        echo ' <hr>
+                            <p tabindex="' . $tabindex . '"><b>Código de pedido: ' . $row['id'] . '</b></p>';
+                        $tabindex++;
+                        echo '
                             <hr>
-                            <p><b>Código de pedido: ' . $row['id'] . '</b></p>
+                            <p tabindex="' . $tabindex . '">' . $row['modelo'] . ' ' . $row['nombreProducto'] . '</p>';
+                        $tabindex++;
+                        echo '
                             <hr>
-                            <p>' . $row['modelo'] . ' ' . $row['nombreProducto'] . '</p>
+                            <p tabindex="' . $tabindex . '">Cantidad: ' . $row['cantidad'] . '</p>';
+                        $tabindex++;
+                        echo '
                             <hr>
-                            <p>Cantidad: ' . $row['cantidad'] . '</p>
+                            <p tabindex="' . $tabindex . '">' . $row['precio'] . ' €</p>';
+                        $tabindex++;
+                        echo '
                             <hr>
-                            <p>' . $row['precio'] . ' €</p>
-                            <hr>
-                            <p>Pedido realizado: ' . $row['fecha'] . '</p>
+                            <p tabindex="' . $tabindex . '">Pedido realizado: ' . $row['fecha'] . '</p>';
+                        $tabindex++;
+                        echo '
                         </div>';
                     }
                     echo '</article>';
@@ -57,8 +70,10 @@
                     echo '
                         <div class="container-mensaje-pedidos">
                             <div class="mensajePredidos">
-                                <p>No has hecho ningún pedido</p>
-                                <a class="linkMensaje" href="index.php" target="_self"><div class="botonVerProductos"><p>Ver productos</p></div></a>
+                                <p tabindex="' . $tabindex . '">No has hecho ningún pedido</p>';
+                    $tabindex++;
+                    echo '
+                                <a class="linkMensaje" href="index.php" target="_self" tabindex="' . $tabindex . '" aria-label="Ver productos"><div class="botonVerProductos"><p>Ver productos</p></div></a>
                             </div>
                         </div>';
                 }
