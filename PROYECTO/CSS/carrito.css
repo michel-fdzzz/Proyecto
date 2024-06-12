@@ -120,7 +120,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*width: 70%;*/
     width: 22em;
     justify-content: center;
 
@@ -140,9 +139,7 @@
 
 .container-imagen {
     width: 80%;
-    /* Ajusta el ancho del contenedor */
     height: 80%;
-    /* Establece una altura fija o relativa */
     margin: auto;
 }
 
@@ -246,13 +243,11 @@ button:hover {
 .container-mensajes {
     display: flex;
     justify-content: center;
-    /*flex-wrap: wrap;*/
     margin: 5% 0% 27vh 0%;
 }
 
 .mensaje {
     max-width: 19em;
-    /* height: 7em;*/
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
@@ -262,7 +257,6 @@ button:hover {
 
 .mensajeProductosCarrito {
     max-width: 19em;
-    /* height: 7em;*/
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
@@ -379,7 +373,7 @@ Mensaje de que ya tienes le producto en el carrito
     margin: 2px;
 }
 
-
+/*RESPONSIVE*/
 
 
 @media (max-width: 920px) {

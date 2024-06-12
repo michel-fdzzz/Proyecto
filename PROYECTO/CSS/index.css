@@ -5,7 +5,6 @@
 .main {
     height: 60%;
     margin-top: 10vh;
-    /*PONER EN TODOS*/
 }
 
 .container-imagen {
@@ -70,11 +69,9 @@ p,
 
 .producto {
     border-radius: 2px;
-    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
     align-items: center;
     text-align: center;
     height: auto;
-    /*min-width: 25em;*/
 }
 
 
@@ -187,12 +184,10 @@ button:hover {
 
 .producto-exclusivo {
     border-radius: 2px;
-    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
     align-items: center;
     text-align: center;
     height: 27em;
     width: 16em;
-    /*min-width: 25em;*/
 }
 
 
@@ -206,14 +201,14 @@ button:hover {
 
 
 
-/* Estilos para la parte del track (fondo) de la barra de desplazamiento */
+/* Estilos para el fondo del contenedor de la barra */
 .productos-exclusivos-container::-webkit-scrollbar-track {
     background: #efefef;
     border-radius: 5px;
     /* Color de fondo del track */
 }
 
-/* Estilos para el thumb (manija) de la barra de desplazamiento */
+/* Estilos para la barra */
 .productos-exclusivos-container::-webkit-scrollbar-thumb {
     background: #bdbdbd;
     border-radius: 5px;
@@ -295,7 +290,6 @@ button:hover {
 
 .input-newsletter::placeholder {
     font-size: 1.3rem;
-    /* Cambia el tamaño del texto del placeholder */
 }
 
 .boton-newsletter {
@@ -314,14 +308,13 @@ button:hover {
 
 .boton-newsletter:hover {
     background-color: #000000;
-    /*border: 2px solid red;*/
     color: white;
     transform: translateY(-2px);
 }
 
 
 /*
-Mensaje de que se ha añadido bien el producto al carrito
+Mensaje de que se ha añadido bien el correo a la newsletter
 */
 .container-mensajeAnadidoNewsletter {
     display: none;
@@ -353,7 +346,7 @@ Mensaje de que se ha añadido bien el producto al carrito
 
 
 /*
-Mensaje de que ya tienes le producto en el carrito
+Mensaje de que ya estaba el correo en la newsletter
 */
 .container-mensajeNoAnadidoNewsletter {
     display: none;
@@ -381,6 +374,8 @@ Mensaje de que ya tienes le producto en el carrito
 .mensajeNoAnadidoNewsletter>p {
     margin: 2px;
 }
+
+/* Responsive  */
 
 @media screen and (max-width: 1077px) {
     .productos-container {

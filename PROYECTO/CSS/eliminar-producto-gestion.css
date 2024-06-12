@@ -28,23 +28,17 @@
 .producto {
     display: flex;
     flex-direction: column;
-    /* Agregar display flex */
     border-radius: 2px;
     align-items: center;
     justify-content: center;
-    /* Alineación horizontal */
     text-align: center;
-    /*width: 15em;*/
     margin-bottom: 5%;
 }
 
 .producto .info img {
     width: 200px;
-    /* Ancho deseado para la imagen */
     height: 300px;
-    /* Altura deseada para la imagen */
     object-fit: cover;
-    /* La imagen se ajustará para cubrir el contenedor */
 }
 
 

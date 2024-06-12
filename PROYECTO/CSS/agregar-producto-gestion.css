@@ -51,16 +51,6 @@ select {
     transition: padding 0.3s ease;
 }
 
-/*
-            QUITAR  
-*/
-input[type="date"] {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
-}
 
 input[type="submit"] {
     cursor: pointer;
@@ -167,6 +157,7 @@ Mensaje de que ya tienes en la base de datos
     margin: 2px;
 }
 
+/* RESPONSIVE */
 
 @media screen and (max-height: 840px) {
 

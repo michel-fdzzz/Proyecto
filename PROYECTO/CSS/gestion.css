@@ -55,6 +55,8 @@ footer {
     transition: position 0.3s ease;
 }
 
+/* Responsive */
+
 @media screen and (max-height:635px) {
     footer {
         position: relative;
