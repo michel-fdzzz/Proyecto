@@ -44,7 +44,7 @@ function cambiar_tipo_usuario(id, tipo) {
     xhttp.send("id=" + id + '&tipo=' + tipo);
 }
 
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
 
     // Calcula el 70% de la altura de la ventana del navegador
@@ -55,3 +55,4 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('footer').style.bottom = "0";
     }
 });
+*/
