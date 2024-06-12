@@ -462,7 +462,6 @@ Mensaje de que ya tienes le producto en el carrito
 
     .detalles-compra>button {
         padding: 8px 13px;
-        transition: padding 0.3s ease;
     }
 
     .tiempo-envio {
