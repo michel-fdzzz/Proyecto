@@ -1,5 +1,5 @@
 <?php
-include('conexion.php');
+include ('conexion.php');
 $idProducto = $_POST["idProducto"];
 $idCliente = $_POST["idCliente"];
 $cantidad = $_POST["cantidad"];//Las unidades que hay
@@ -11,7 +11,7 @@ if ($con->connect_error) {
     die('Conexión fallida: ' . $con->connect_error);
 } else {
 
-        $update = "update carrito set cantidad = cantidad + $numProductos where idProducto = '$idProducto' and idCliente = '$idCliente'";
-        $rest = $con->query($update);
+    $update = "update carrito set cantidad = cantidad + $numProductos where idProducto = '$idProducto' and idCliente = '$idCliente'";
+    $rest = $con->query($update);
 }
 $con->close();

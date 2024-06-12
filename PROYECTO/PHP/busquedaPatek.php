@@ -11,7 +11,7 @@ if ($con->connect_error) {
     die('Conexión fallida: ' . $con->connect_error);
 } else {
 
-    // Contar el total de productos que coinciden con la búsqueda
+    //Contar el total de productos que coinciden con la búsqueda
     $select_num_productos = "SELECT COUNT(*) FROM producto WHERE(nombre LIKE ? OR marca LIKE ?) AND marca = ?";
     $stmt_num_productos = $con->prepare($select_num_productos);
     $input = "$input%";
@@ -23,7 +23,8 @@ if ($con->connect_error) {
 
     $totalPaginas = ceil($totalProductos / $numElementos);
 
-    //Obtenemos mediante el select los productos por página
+    //Obtenemos mediante el select los productos de la página en la que se va buscar
+    //En está variable obtenemos el número de fila desde el que empezamos a mostrar los productos
     $num_productos_por_pagina = ($pagina - 1) * $numElementos;
     $select_productos = "SELECT id, nombre, marca, modelo, precio, imagen, stock, descripcion 
     FROM producto WHERE (nombre LIKE ? OR marca LIKE ?) AND marca = ? LIMIT ?, ?";

@@ -31,7 +31,7 @@ $insert = "insert into pedido (id, idProducto, idCliente, nombreProducto, modelo
     values ($idPedido," . $idProducto . ", " . $idCliente . ", '" . $nombreProducto . "', '" . $modelo . "', " . $cantidad . "," . $precioTotal . ", curdate())";
 $rest = $con->query($insert);
 
-// Si se ha insertado correctamente eliminamos el producto del carrito
+// Si se ha insertado correctamente eliminamos el producto del carrito y hacemos un update al stock ya que al venderse productos, el stock cambia
 if ($rest) {
     $delete = "delete from carrito where idProducto = '$idProducto' and modelo = '$modelo' and idCliente = '$idCliente'";
     $rest = $con->query($delete);

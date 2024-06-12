@@ -12,6 +12,7 @@ $precio = $_POST['precio'];
 $stock = $_POST['stock'];
 $descripcion = $_POST['descripcion'];
 
+//Todo lo que se hace con $_Files es para que inserte en la carpeta donde cuerdo las imagenes, la imagen.
 if (isset($_FILES['imagen'])) {
     $nombre_imagen = $_FILES['imagen']['name'];
     $ruta = '../imagenes/' . $nombre_imagen;
