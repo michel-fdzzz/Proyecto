@@ -5,7 +5,6 @@
 .main {
     height: 60%;
     margin-top: 10vh;
-    /*PONER EN TODOS*/
 }
 
 .container-imagen {
@@ -69,11 +68,9 @@ p,
 
 .producto {
     border-radius: 2px;
-    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);*/
     align-items: center;
     text-align: center;
     height: auto;
-    /*min-width: 25em;*/
 }
 
 
@@ -227,7 +224,6 @@ form {
 
 .input-newsletter::placeholder {
     font-size: 1.3rem;
-    /* Cambia el tamaño del texto del placeholder */
 }
 
 .boton-newsletter {
@@ -246,13 +242,12 @@ form {
 
 .boton-newsletter:hover {
     background-color: #000000;
-    /*border: 2px solid red;*/
     color: white;
     transform: translateY(-2px);
 }
 
 /*
-Mensaje de que se ha añadido bien el producto al carrito
+Mensaje de que se ha añadido bien al newsletter
 */
 .container-mensajeAnadidoNewsletter {
     display: none;
@@ -285,7 +280,7 @@ Mensaje de que se ha añadido bien el producto al carrito
 
 
 /*
-Mensaje de que ya tienes le producto en el carrito
+Mensaje de que ya estaba registrado en el newsletter
 */
 .container-mensajeNoAnadidoNewsletter {
     display: none;

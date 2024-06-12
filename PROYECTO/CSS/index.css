@@ -205,7 +205,6 @@ button:hover {
 .productos-exclusivos-container::-webkit-scrollbar-track {
     background: #efefef;
     border-radius: 5px;
-    /* Color de fondo del track */
 }
 
 /* Estilos para la barra */

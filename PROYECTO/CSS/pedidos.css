@@ -24,7 +24,6 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     align-items: center;
     text-align: center;
-    /*min-width: 25em;*/
 }
 
 
@@ -40,14 +39,12 @@
 .container-mensaje-pedidos {
     display: flex;
     justify-content: center;
-    /*flex-wrap: wrap;*/
     margin: 5em 0% 17em 0%;
 }
 
 .mensajePredidos {
 
     max-width: 19em;
-    /* height: 7em;*/
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     padding: 20px;
@@ -83,7 +80,7 @@
     transform: translateY(-2px);
 }
 
-
+/* Responsive*/
 
 @media (max-width: 1500px) {
     .pedidos-container {

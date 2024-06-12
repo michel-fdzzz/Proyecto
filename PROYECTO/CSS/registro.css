@@ -2,7 +2,6 @@
     height: 90%;
     margin-top: 15vh;
     margin-bottom: 5%;
-    /*PONER EN TODOS*/
 }
 
 form.formulario {
@@ -73,6 +72,8 @@ input[type="submit"]:hover {
 .linkRegistroInicioSesion:hover {
     text-decoration: underline blue;
 }
+
+/* Responsive*/
 
 @media screen and (max-height: 840px) {
 

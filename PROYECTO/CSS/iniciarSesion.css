@@ -2,7 +2,6 @@
     height: 90%;
     margin-top: 15vh;
     margin-bottom: 5%;
-    /*PONER EN TODOS*/
 }
 
 form.formulario {
@@ -35,16 +34,6 @@ label {
     transition: padding 0.3s ease;
 }
 
-/*
-            QUITAR  
-*/
-input[type="date"] {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    outline: none;
-}
 
 input[type="submit"] {
     cursor: pointer;
@@ -72,11 +61,6 @@ input[type="submit"]:hover {
 .linkRegistroInicioSesion:hover {
     text-decoration: underline blue;
 }
-
-/*
-footer {
-    bottom: 0;
-}*/
 
 #errorDiv {
     display: none;

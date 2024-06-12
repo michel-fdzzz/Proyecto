@@ -1,7 +1,6 @@
 .main {
     height: 90%;
     margin-top: 12vh;
-    /*PONER EN TODOS*/
 }
 
 .producto-container {
@@ -24,8 +23,8 @@
 
 
 .producto-imagen {
+    /*Así la imagen cubre el espacio del contenedor*/
     object-fit: cover;
-    /* La imagen se ajustará para cubrir el contenedor */
     width: 70%;
 
 }
@@ -92,12 +91,8 @@ button:hover {
 
 .scroll-horizontal {
     overflow-x: auto;
-    /* Habilitar el scroll horizontal */
     white-space: nowrap;
-    /* Evitar el salto de línea */
-    /* Restar el ancho del scroll vertical */
     margin: 0 auto;
-    /* Centrar el contenedor */
     height: 100%;
     display: flex;
     align-items: center;
@@ -106,7 +101,6 @@ button:hover {
 .mas-relojes {
     display: inline-flex;
     gap: 1em;
-    /* Mostrar los elementos uno al lado del otro */
 }
 
 .contenedor-imagen-mas-relojes {
@@ -190,46 +184,13 @@ button:hover {
 
 
 
-
-
-
-
-@media screen and (max-width: 980px) {
-    .producto-container {
-        flex-direction: column;
-        /* Tamaño de fuente más pequeño para pantallas pequeñas */
-    }
-
-    .producto-imagen {
-        width: 100%;
-
-    }
-
-    .imagen-producto-container {
-        width: 100%;
-    }
-
-    .info-container {
-        width: 100%;
-        margin-top: 0;
-    }
-}
-
-
-@media screen and (max-width: 900px) {
-    .info-container>div {
-        font-size: 0.8 rem;
-        /* Tamaño de fuente más pequeño para pantallas pequeñas */
-    }
-}
-
 /* Estilos para la parte del fondo de la barra*/
 .scroll-horizontal::-webkit-scrollbar-track {
     background: #efefef;
     border-radius: 5px;
 }
 
-/* Estilos para la barra en la que haces click*/
+/* Estilos para la barra en si*/
 .scroll-horizontal::-webkit-scrollbar-thumb {
     background: #bdbdbd;
     border-radius: 5px;
@@ -344,4 +305,34 @@ Mensaje de que ya tienes le producto en el carrito
 
 .mensajeNoAnadidoCarrito>p {
     margin: 2px;
+}
+
+
+/*Responsive*/
+
+@media screen and (max-width: 980px) {
+    .producto-container {
+        flex-direction: column;
+    }
+
+    .producto-imagen {
+        width: 100%;
+
+    }
+
+    .imagen-producto-container {
+        width: 100%;
+    }
+
+    .info-container {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .info-container>div {
+        font-size: 0.8 rem;
+    }
 }
