@@ -157,7 +157,7 @@
                 cantidad.innerHTML = cantidadActual + 1;
             }
         });
-
+        //Evento en el boton menos para que no baje de 1
         botonMenos.addEventListener('click', function () {
             let cantidad = document.querySelector('.unidades');
             let cantidadActual = parseInt(cantidad.innerHTML);

@@ -29,21 +29,15 @@
           $con = new Conexion();
           $con = $con->conectar();
 
-          // Preparar la consulta
           $select = "SELECT tipo FROM usuario WHERE id = ?";
           $stmt = $con->prepare($select);
 
           if ($stmt) {
-            // Vincular parámetros e ID del cliente
             $stmt->bind_param("i", $_SESSION['idCliente']);
-            // Ejecutar la consulta
             $stmt->execute();
-            // Obtener resultado
             $stmt->bind_result($tipo);
-            // Verificar si se encontró el tipo
             if ($stmt->fetch()) {
-              // Comparar el tipo obtenido
-        
+
               if ($tipo == 1 || $tipo == 0) {
                 echo '<a href="pedidos.php" class="apartados-desplegable" tabindex="5">Pedidos</a>';
               }
@@ -51,16 +45,11 @@
               if ($tipo == 1) {
                 echo '<a href="gestion.php" class="apartados-desplegable" tabindex="6">Gestión</a>';
               }
-
-
             }
-            // Cerrar la consulta preparada
             $stmt->close();
           } else {
-            // Manejar error si la preparación de la consulta falla
             die('Error en la preparación de la consulta: ' . $con->error);
           }
-          // Cerrar conexión
           $con->close();
         }
 

@@ -49,12 +49,9 @@
         </section>
 
 
-        <!-- Agregamos un contenedor para la ventana emergente -->
         <div class="leyes-contenedor" id='leyes-contenedor-container'>
             <div class="contenedor-cont-apartados-footer">
-                <!-- Agregamos el botón de cierre -->
                 <span class="cerrar">&times;</span>
-                <!-- Aquí se mostrará la información de la ley -->
                 <h1>Ley de proteccion de datos digitales</h1>
                 <p class='sin-margen'>La Ley de Protección de Datos Digitales de 2024 tiene como objetivo salvaguardar
                     la privacidad y los derechos de los ciudadanos en el ámbito digital. Establece principios
@@ -69,9 +66,7 @@
 
         <div class="info-contacto-contenedor" id='info-contacto-container'>
             <div class="contenedor-cont-apartados-footer">
-                <!-- Agregamos el botón de cierre -->
                 <span class="cerrar-info-contacto">&times;</span>
-                <!-- Aquí se mostrará la información de la ley -->
                 <h1>Informacion de contacto</h1>
                 <div class='contacto'>
                     <div class="email">Correo: <a href="mailto:Michel&CO@gmail.com">Michel&CO@gmail.com</a></div>
@@ -82,9 +77,7 @@
 
         <div class="quienes-somos-contenedor" id='quienes-somos-container'>
             <div class="contenedor-cont-apartados-footer">
-                <!-- Agregamos el botón de cierre -->
                 <span class="cerrar-quienes-somos">&times;</span>
-                <!-- Aquí se mostrará la información de la ley -->
                 <h1>Quienes somos</h1>
                 <p class='sin-margen'>
 
@@ -190,14 +183,6 @@
                     </div>
                 </div>
 
-                <!--
-            <div class="pregunta-contenedor">
-                <h3 class="pregunta-frecuente">¿Cómo puedo actualizar mi información de cuenta?</h3>
-                <div class="respuesta">
-                    <p>Puedes actualizar tu información de cuenta en la sección "Mi cuenta" en nuestro sitio web.</p>
-                </div>
-            </div>
-            -->
             </div>
         </div>
     </footer>
