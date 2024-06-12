@@ -1,6 +1,6 @@
 <?php
 
-include('conexion.php');
+include ('conexion.php');
 session_start();
 
 $idProducto = $_POST["idProducto"];

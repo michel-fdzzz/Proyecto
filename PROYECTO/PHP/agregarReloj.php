@@ -1,5 +1,5 @@
 <?php
-include ("../conexion.php");
+include ("conexion.php");
 //Sin esto no funciona la recogida porque recibimos los datos JSON y esto es lo que se lo hace saber PHP
 header('Content-Type: application/json');
 

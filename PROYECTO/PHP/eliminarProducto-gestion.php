@@ -1,5 +1,5 @@
 <?php
-include '../conexion.php';
+include 'conexion.php';
 $id = $_POST['id'];
 
 $con = new Conexion();
@@ -11,7 +11,7 @@ if ($con->connect_error) {
     $delete = "delete from producto where id = ?";
     $stmt = $con->prepare($delete);
     $stmt->bind_param("i", $id);
-    
+
     if ($stmt->execute()) {
         echo "Registro eliminado correctamente.";
     } else {
@@ -21,4 +21,3 @@ if ($con->connect_error) {
 }
 
 ?>
-

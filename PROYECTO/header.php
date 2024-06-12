@@ -12,7 +12,7 @@
 <body>
   <?php
   session_start();
-  include 'conexion.php';
+  include 'PHP/conexion.php';
   ?>
   <section class="menuPrincipal">
     <div class="desplegable">

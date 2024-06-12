@@ -1,5 +1,5 @@
 <?php
-include('conexion.php');
+include ('conexion.php');
 $input = isset($_POST['input']) ? $_POST['input'] : '';
 $pagina = isset($_POST['pag']) ? intval($_POST['pag']) : 1;
 $numElementos = 4;

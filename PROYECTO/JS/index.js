@@ -40,7 +40,7 @@ function buscar(texto, pagina = 1) {
             }
         }
     };
-    xhttp.open("POST", "busqueda.php", true);
+    xhttp.open("POST", "PHP/busqueda.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("input=" + texto + "&pag=" + pagina);
     return false;
@@ -136,7 +136,7 @@ function añadirCarrito(idProducto, idCliente, nombreProducto, modelo, cantidad,
             document.getElementById('numProductos' + idProducto).value = '';
         }
     };
-    xhttp.open("POST", "añadirCarrito.php", true);
+    xhttp.open("POST", "PHP/añadirCarrito.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&nombreProducto=" + nombreProducto + "&modelo=" + modelo + "&cantidad=" + cantidad + "&precio=" + precio);
 }

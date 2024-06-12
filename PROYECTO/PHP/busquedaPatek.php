@@ -1,5 +1,5 @@
 <?php
-include('../conexion.php');
+include ('conexion.php');
 $input = isset($_POST['input']) ? $_POST['input'] : '';
 $pagina = isset($_POST['pag']) ? intval($_POST['pag']) : 1;
 $numElementos = 4;
@@ -28,7 +28,7 @@ if ($con->connect_error) {
     $select_productos = "SELECT id, nombre, marca, modelo, precio, imagen, stock, descripcion 
     FROM producto WHERE (nombre LIKE ? OR marca LIKE ?) AND marca = ? LIMIT ?, ?";
     $stmt_productos = $con->prepare($select_productos);
-    $stmt_productos->bind_param("sssii", $input, $input,$marca, $num_productos_por_pagina, $numElementos);
+    $stmt_productos->bind_param("sssii", $input, $input, $marca, $num_productos_por_pagina, $numElementos);
     $stmt_productos->execute();
     $rest = $stmt_productos->get_result();
 

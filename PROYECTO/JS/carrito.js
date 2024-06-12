@@ -10,7 +10,7 @@ try {
                 window.location.href = "index.php";
             }
         };
-        xhttp.open("POST", "desconectarse.php", true);
+        xhttp.open("POST", "PHP/desconectarse.php", true);
         xhttp.send();
     });
 } catch {
@@ -29,7 +29,7 @@ function insertarPedido(idProducto, idCliente, modelo, cantidad, nombreProducto,
             }, 2000);
         }
     };
-    xhttp.open("POST", "insertarPedido.php", true);
+    xhttp.open("POST", "PHP/insertarPedido.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&modelo=" + modelo + "&cantidad=" + cantidad + '&nombreProducto=' + nombreProducto + ' &precio=' + precio);
 }
@@ -45,7 +45,7 @@ function eliminarProducto(idProducto, idCliente) {
             }, 3000);
         }
     };
-    xhttp.open("POST", "eliminarProducto.php", true);
+    xhttp.open("POST", "PHP/eliminarProducto.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente);
 }
@@ -58,7 +58,7 @@ function eliminarNumProducto(idProducto, idCliente, numProductos, cantidad) {
             window.location.href = "carrito.php";
         }
     };
-    xhttp.open("POST", "eliminarNumProducto.php", true);
+    xhttp.open("POST", "PHP/eliminarNumProducto.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&cantidad=" + cantidad + "&numProductos= " + numProductos);
 }
@@ -74,7 +74,7 @@ function anadirUnidades(idProducto, idCliente, numProductos, cantidad, stock) {
                 window.location.href = "carrito.php";
             }
         };
-        xhttp.open("POST", "anadirUnidades.php", true);
+        xhttp.open("POST", "PHP/anadirUnidades.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("idProducto=" + idProducto + "&idCliente=" + idCliente + "&numProductos= " + numProductos);
     } else {
@@ -93,7 +93,7 @@ function comprarTodo(idCliente) {
             }, 2000);
         }
     };
-    xhttp.open("POST", "comprarTodo.php", true);
+    xhttp.open("POST", "PHP/comprarTodo.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("idCliente=" + idCliente);
 }

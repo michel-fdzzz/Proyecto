@@ -17,7 +17,7 @@ try {
                 window.location.href = "index.php";
             }
         };
-        xhttp.open("POST", "desconectarse.php", true);
+        xhttp.open("POST", "PHP/desconectarse.php", true);
         xhttp.send();
     });
 } catch {
