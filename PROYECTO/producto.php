@@ -107,7 +107,7 @@
                         <?php
                         $con = new Conexion();
                         $con = $con->conectar();
-                        $select = "select * from producto where marca = '$modelo' AND id <> $idProducto";
+                        $select = "select * from producto where marca = '$modelo' AND id <> $idProducto LIMIT 10";
                         $rest = $con->query($select);
                         $campos = $rest->fetch_all();
                         if ($rest->num_rows > 0) {
