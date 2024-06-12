@@ -14,28 +14,35 @@
 <body>
     <?php
     include 'header.php';
-    //La sesion se inicia en el header y la conexion
+    //La sesion se inicia en el header, y la conexion también
+    $tabindex = 13;
     ?>
 
     <section class="main">
         <form action="#" method="POST" class="formulario">
             <div class="flex-container">
-                <h2>Inicio de sesión</h2>
+                <h2 tabindex="<?php echo $tabindex;
+                $tabindex++; ?>">Inicio de sesión</h2>
 
                 <label for="email">Correo</label>
-                <input type="email" name="correo" required>
+                <input type="email" name="correo" aria-label="Escribe tu correo" tabindex="<?php echo $tabindex;
+                $tabindex++; ?>" required>
 
                 <label for="contrasenia">Contraseña</label>
-                <input type="password" name="contrasenia" id='contrasenia' required>
+                <input type="password" name="contrasenia" id='contrasenia' aria-label="Escribe tu contraseña" tabindex="<?php echo $tabindex;
+                $tabindex++; ?>" required>
 
-                <input type="submit" value="Iniciar sesión" name='enviar' id='enviar'>
+                <input type="submit" value="Iniciar sesión" name='enviar' id='enviar' tabindex="<?php echo $tabindex;
+                $tabindex++; ?>">
 
                 <div id='errorDiv'>
-                    <p id='error'>El correo o contraseña introducidos no están registrados</p>
+                    <p id='error' tabindex="<?php echo $tabindex;
+                    $tabindex++; ?>">El correo o contraseña introducidos no están registrados</p>
                 </div>
 
             </div>
-            <a href="registro.php" target="_self" class='linkRegistroInicioSesion'>No tengo cuenta, registrarme.</a>
+            <a href="registro.php" target="_self" class='linkRegistroInicioSesion' tabindex="<?php echo $tabindex;
+            $tabindex++; ?>">No tengo cuenta, registrarme.</a>
         </form>
         <?php
         // Si inicias sesión comprobamos mediante un select que la cuenta esté registrada en la base de datos

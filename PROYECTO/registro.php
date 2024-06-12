@@ -32,36 +32,49 @@
 <body>
   <?php include 'header.php';
   //La sesion se inicia en el header y la conexion
+  $tabindex = 13;
   ?>
 
 
   <section class="main">
     <form action="#" method="POST" class="formulario" onsubmit="return validarContrasenia()">
       <div class="flex-container">
-        <h2>Registro</h2>
+        <h2 tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Registro</h2>
 
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" required>
+        <input type="text" name="nombre" aria-label="Escribe tu nombre" tabindex="<?php echo $tabindex;
+        $tabindex++; ?>" required>
 
         <label for="apellidos">Apellidos</label>
-        <input type="text" name="apellidos" required>
+        <input type="text" name="apellidos" aria-label="Escribe tu apellido" tabindex="<?php echo $tabindex;
+        $tabindex++; ?>" required>
 
         <label for="email">Correo</label>
-        <input type="email" name="correo" required>
+        <input type="email" name="correo" aria-label="Escribe tu correo" tabindex="<?php echo $tabindex;
+        $tabindex++; ?>" required>
 
         <label for="contrasenia">Contraseña</label>
-        <input type="password" name="contrasenia" id='contrasenia' required>
+        <input type="password" name="contrasenia" id='contrasenia'
+          aria-label="Escribe tu contraseña, debe tener como mínimo 8 caracteres, 1 número, una letra mayuscula y un símbolo"
+          tabindex="<?php echo $tabindex;
+          $tabindex++; ?>" required>
 
         <label for="domicilio">Domicilio</label>
-        <input type="text" name="domicilio" required>
+        <input type="text" name="domicilio" aria-label="Escribe tu domicilio para las entregas de los productos"
+          tabindex="<?php echo $tabindex;
+          $tabindex++; ?>" required>
 
-        <input type="submit" value="Registrarme" name='enviar'>
+        <input type="submit" value="Registrarme" name='enviar' tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">
 
       </div>
       <div id='errorDiv'>
-        <p id='error'>Este correo ya está registrado</p>
+        <p id='error' tabindex="<?php echo $tabindex;
+        $tabindex++; ?>">Este correo ya está registrado</p>
       </div>
-      <a href="iniciarSesion.php" target="_self" class='linkRegistroInicioSesion'>Ya tengo cuenta, iniciar sesión.</a>
+      <a href="iniciarSesion.php" target="_self" class='linkRegistroInicioSesion' tabindex="<?php echo $tabindex;
+      $tabindex++; ?>">Ya tengo cuenta, iniciar sesión.</a>
     </form>
     <?php
     /*
@@ -100,7 +113,7 @@
                 and contrasenia = '" . $_POST['contrasenia'] . "'";
             $restId = $con->query($select);
 
-            // Si devuelve el resultado del select significa que el correo  y la contraseña y existen y vamos a recoger el id de ese usuario en una variable de sesión
+            // Si devuelve el resultado del select significa que el correo  y la contraseña existen y vamos a recoger el id de ese usuario en una variable de sesión
             // para usarla más adelante, como en index.php o carrito.php o a la hora de insertar pedidos y mostrar los productos del carrito
             if ($restId->num_rows > 0) {
               while ($fila = $restId->fetch_assoc()) {
