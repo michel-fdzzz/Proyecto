@@ -103,8 +103,8 @@
 
           //Si el correo no existe, ejecutamos el insert
         } else {
-          $insert = "insert into usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo) 
-          values ('" . $_POST['nombre'] . "', '" . $_POST['apellidos'] . "', '" . $_POST['domicilio'] . "', '" . $_POST['correo'] . "', '" . $_POST['contrasenia'] . "', 0)";
+          $insert = "insert into usuario (nombre, apellidos, domicilio, correoElectronico, contrasenia, tipo, newsletter) 
+          values ('" . $_POST['nombre'] . "', '" . $_POST['apellidos'] . "', '" . $_POST['domicilio'] . "', '" . $_POST['correo'] . "', '" . $_POST['contrasenia'] . "', 0, 0)";
           $rest = $con->query($insert);
           // Obtenemos el id del usuario que hemos registrado a través de un select
           if ($rest === true) {

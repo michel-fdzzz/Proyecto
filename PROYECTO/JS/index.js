@@ -76,6 +76,7 @@ let boton_newsletter = document.querySelector('.boton-newsletter').addEventListe
             let responseText = this.responseText.trim();
 
             let insertado = JSON.parse(responseText);
+            console.log(insertado)
             document.getElementById('Email').value = '';
 
             if (insertado) {

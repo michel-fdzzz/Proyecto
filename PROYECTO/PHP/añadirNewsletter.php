@@ -4,7 +4,6 @@ $con = new Conexion();
 $con = $con->conectar();
 
 $correo = $_POST['correo'];
-
 $response = false;
 
 if ($con->connect_error) {
@@ -20,8 +19,8 @@ if ($con->connect_error) {
         $rest = $stmt1->get_result();
 
         if ($rest->num_rows > 0) {
-            // Comprobar si el correo electrónico ya está en la tabla usuarios_newsletter
-            $select = 'SELECT correoElectronico FROM usuarios_newsletter WHERE correoElectronico = ?';
+            // Comprobar si el correo electrónico existe
+            $select = 'SELECT correoElectronico FROM usuario WHERE correoElectronico = ?';
             $stmt2 = $con->prepare($select);
 
             if ($stmt2) {
@@ -29,13 +28,14 @@ if ($con->connect_error) {
                 $stmt2->execute();
                 $rest = $stmt2->get_result();
 
-                if ($rest->num_rows <= 0) {
-                    // Insertar el correo electrónico en la tabla usuarios_newsletter
-                    $insert = 'INSERT INTO usuarios_newsletter (correoElectronico) VALUES (?)';
+                if ($rest->num_rows > 0) {
+                    // Actualizar el newsletter a true
+                    $insert = 'UPDATE usuario set newsletter = ? WHERE correoElectronico = ?';
                     $stmt3 = $con->prepare($insert);
 
                     if ($stmt3) {
-                        $stmt3->bind_param('s', $correo);
+                        $newsletter_true = 1;
+                        $stmt3->bind_param('is', $newsletter_true, $correo);
                         if ($stmt3->execute()) {
                             $response = true;
                         }
@@ -49,6 +49,5 @@ if ($con->connect_error) {
     }
     $con->close();
 }
-
 echo json_encode($response);
 ?>

@@ -22,7 +22,8 @@ create table usuario (
     contrasenia varchar(30) not null,
     domicilio varchar (100) not null,
     -- false / 0 será un usuario normal y el admin true / 1
-    tipo boolean not null
+    tipo boolean not null,
+    newsletter boolean not null
 );
 
 
@@ -48,12 +49,6 @@ create table pedido (
     fecha date not null,
     foreign key (idProducto) references producto(id) on delete cascade,
     foreign key (idCliente) references usuario(id) on delete cascade
-);
-
-create table usuarios_newsletter (
-    id int auto_increment primary key,
-    correoElectronico varchar(50) not null,
-    foreign key (correoElectronico) references usuario(correoElectronico) on delete cascade
 );
 
 -- Insertar productos
@@ -87,18 +82,6 @@ VALUES
 (null, 'PRX 35mm', 'Tissot', 'PRX', 2615, 't_prx35mm.png', 5, '35 mm, brazalete de acero.'),
 (null, 'Classic dream', 'Tissot', 'Dream', 1949, 't_classicDream.png', 5, '42 mm, brazalete de acero.'),
 (null, 'PRX automatic', 'Tissot', 'PRX', 6545, 't_prxAutomatic.png', 3, '41 mm, brazalete de acero inoxidable. Cristal de zafiro');
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 -- Insertar usuarios
